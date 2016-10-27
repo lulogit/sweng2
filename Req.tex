@@ -1,0 +1,85 @@
+%% LyX 2.2.1 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{textcomp}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{babel}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{5 The problem for assignments 1, 2, 4, and 5 \textendash{} PowerEnJoy }
+
+\maketitle
+You are to develop a digital management system for a car sharing service
+that exclusively employs electric cars. First, the system should provide
+the functionality normally provided by car\textendash sharing services.
+These include:
+\begin{itemize}
+\item { Users must be able to register to the system by providing their
+credentials, payment information and required documents. The credential
+must be unique among all previously registered users. Documents and
+payment information must be verified in order to successfully create
+an account. Users receive back a password that can be used to access
+the system. }
+\item Required documents include driving license (at least 1 year of experience).
+Payment information consist in credit card 
+\item { Registered users must be able to find the locations of available
+cars within a certain distance from their current location or from
+a specified address. The system also provide information about the
+estimated car autonomy in kilometers.}
+\item { Among the available cars in a certain geographical region, users
+must be able to reserve a single car for up to one hour before they
+pick it up, by unlocking the car.}
+\item If a car is not picked\textendash up within one hour from the reservation,
+the system tags the car as available again, and the reservation expires;
+the user pays a fee of 1 EUR. 
+\item An user is able to cancel the reservation before it's expiration,
+paying a cost proportional to the reservation time (the minimum amount
+is relative to a quarter of an hour).
+\item { A user that reaches it's reserved car must be able to tell the
+system he's nearby, so the system unlocks the car and the user may
+enter, checking that the user is within a certain threshold from the
+car. }
+\item As soon as the user unlocks the car, the system starts charging the
+user for a given amount of money per minute; the user is notified
+of the current fare through a screen on the car.
+\item The system debits the user on his card every 10¤. Whether the user
+is not able to pay, the system stops the car respectfully of user's
+safety, after notifying the user on the screen.
+\item The system stops charging the user as soon as the car is parked in
+a safe area and the user exits the car; at this point the system locks
+the car automatically. Then the system applies the discount to the
+total fare and debit/credit the difference relative to the payed amount.
+\item { The set of safe areas for parking cars is pre\textendash defined
+by the management system.}
+\end{itemize}
+In addition to the functionality above, the system should incentivize
+the virtuous behaviors of the users. Specifically: 
+\begin{enumerate}
+\item { If the system detects the user took at least two other passengers
+onto the car, the system applies a discount of 10\% on the last ride.}
+\item { If a car is left with more than 50\% of the battery's charge, the
+system applies a discount of 20\% on the last ride. }
+\item { If a car is left at special safe areas where they can be recharged
+and the user takes care of plugging the car into the power grid, the
+system applies a discount of 30\% on the last ride.}
+\item { If a car is left at more than 3 KM from the nearest power grid
+station or with less than 20\% of the battery's charge, the system
+charges 30\% more on the last ride to compensate for the cost required
+to re\textendash charge the car on\textendash site.}
+\item { If the user enables the money saving option, he/she can input his/her
+final destination and the system provides information about where
+to leave the car to get the discount described above at point (3).
+This location is determined to ensure a uniform distribution of cars
+in the city and depends both on the destination of the user and on
+the availability of power plugs at that safe area.}
+\end{enumerate}
+
+\end{document}
