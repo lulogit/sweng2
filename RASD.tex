@@ -9,6 +9,16 @@
 \usepackage{hyperref}
 \usepackage{float}
 
+\newcommand{\carsharing}{\textit {car sharing }}
+\newcommand{\powerenjoy}{\textit{PowerEnJoy }}
+\newcommand{\registereduser}{\textit {registered user }}
+\newcommand{\staff}{\textit{staff }}
+\newcommand{\service}{\textit{service }}
+\newcommand{\safearea}{\textit{safe area }}
+\newcommand{\powergrid}{\textit{Power Grid }}
+\newcommand{\resevation}{\textit{reservation }}
+\newcommand{\stand}{\textit{stand }}
+
 \makeatletter
 \usepackage{babel}
 
@@ -44,29 +54,42 @@
 	\subsection{Goals}
 	\subsection{Domain Assumptions }
 	\subsection{Glossary}
-		\subsubsection{User}
-		An \textit{user} is a person subscribed to the PowerEnJoy service which can access to the car sharing through his smartphone.
-	\subsubsection{Service}
-		The \textit{service} is the group of actions that an \textit{user} can fulfill trough the mobile.
-	\subsubsection {Safe Area}
-		A \textit{safe area} is a  geographical place (defined by a set of GPS positions) on the map in which parking is allowed. \textit{safe areas} are saved into the system. An user can end a car sharing parking his car only in safe areas.
+		\subsubsection{Car Sharing}
+			\carsharing is a model of car rental where people rent cars for short periods of time, often by the hour.
+		\subsubsection{PowerEnJoy}
+			\powerenjoy is the \carsharing brand object of this document. 
+		\subsubsection{Registered User}
+			A \registereduser is a person subscribed to \powerenjoy which can access to the \carsharing through his smart-phone.
+		\subsubsection{Staff}
+			\staff is the set of people that are \registereduser but can perform special operations. E.g. They own a passepartout for all cars that has all kind of issues, like Low battery.
+		\subsubsection{Service}
+			The \service is the group of actions that a \registereduser can fulfill trough the mobile.	
+		\subsubsection {Safe Area}
+			A \safearea is a  geographical place\footnote{defined by a set of GPS positions} on the map in which parking is allowed. \safearea are saved into the system. A \registereduser can end a \carsharing parking his car only in safe areas.
 	\subsubsection{Power Grid}
-		A \textit{power grid} is the object that charge the battery of an electric car. All \textit{power grid} are displayed in the	map. Each \textit{power grid} is in a \textit{safe area}, a user who plugs his car into a \textit{power grid} receives the 				discount provided by the Service.
+		A \powergrid is the station that charge the battery of an electric car. All \powergrid are displayed in the map onboard \powerenjoy cars. Each \powergrid is in a \safearea. A \registereduser who plugs his car into a \powergrid receives the discount expected within \powerenjoy rules.
 	\subsubsection{Reservation}
-		A \textit{reservation} is the possibility that a user has to "lock" a car at the latest for one hour.
-	\subsection{Further Developments }
-	We think that one of the most important things is to release a Service that can be extended and improved.
+		A \resevation is the possibility that a \registereduser has to book a car at the latest for one hour.
+	\subsubsection{Stand}
+		A \stand is the possibility that a \registereduser has to pause his \carsharing. During a \stand the \registereduser can leave the car, than he can re-unlock it through his samrt-phone 
+
+\subsection{Further Developments}
+	We think that one of the most important things is to release a Service that can be extended and improved. It's trivial that a service like this must be able to be change and be updated.
 	For this purpose we will develop a system open to new extensions. \\
+	Here we provide a series of possible extensions that could be necessary in the future.
 	E.g.:
 	\begin{itemize}
-		\item New discount policies can be introduced to the system, for example discounts for new users. 
-		\item New system policies may be necessary.
+		\item New kind of discount policies can be introduced to the system, for example discounts for new users. 
+		\item New system policies may be necessary, for example new \carsharing conditions.
 		\item New kind of vehicles can be introduced, for example electric scooter and electric bikes.
-		\item Allow new payment methods, for example Paypal\textregistered.
-		\item Develop new services in order to increase the user experience, for example  allow communication among users in order to share a car ride and save money.
+		\item Support to new payment methods, for example Paypal\textregistered, NFC\footnote{Near Field Communication; NFC devices are used in contactless payment systems, similar to those used in credit cards and electronic ticket smartcards and allow mobile payment to replace/supplement these systems. \href{https://en.wikipedia.org/wiki/Near_field_communication}{NFC on Wikipedia}}.
+		\item Develop new services in order to increase the user experience, for example it may be useful to allow communication among users in order to share a car ride and save money.
 	\end{itemize}
 	\subsection{Used Tools}
-
+	\begin{itemize}
+		\item \LaTeX\\
+		\item GitHub\\
+	\end{itemize}
 \section{Specific Requirements}
 	\subsection{Functional Requirements}
 	\subsection{Non Functional Requirements}
