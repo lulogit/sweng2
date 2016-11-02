@@ -8,6 +8,9 @@
 \usepackage{eurosym}
 \usepackage{hyperref}
 \usepackage{float}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{PowerEnJoy RASD}
 
 \newcommand{\carsharing}{\textit {car sharing }}
 \newcommand{\powerenjoy}{\textit{PowerEnJoy }}
@@ -61,13 +64,27 @@
 		\subsubsection{Registered User}
 			A \registereduser is a person subscribed to \powerenjoy which can access to the \carsharing through his smart-phone.
 		\subsubsection{Staff}
-			\staff is the set of people that are \registereduser but can perform special operations. E.g. They own a passepartout for all cars that has all kind of issues, like Low battery.
+			\staff is the set of people that are \registereduser but can perform special operations. They are divided in three different categories.
+			\begin{itemize}
+				\item {Field Staff}
+				\begin{itemize}
+				\item They own a passepartout for cars that has all kind of issues, for example they can menage cars with low battery.
+				\end{itemize}
+				\item{Emergency Staff}
+				\begin{itemize}
+				\item They manage users issues. They are available to communicate with users.
+				\end{itemize}
+				\item{Management Staff}
+				\begin{itemize}
+				\item They manage the system, for example they can change system parameters. They can add new \safearea, modify \carsharing prices.
+				\end{itemize}
+			\end{itemize}
 		\subsubsection{Service}
 			The \service is the group of actions that a \registereduser can fulfill trough the mobile.	
 		\subsubsection {Safe Area}
 			A \safearea is a  geographical place\footnote{defined by a set of GPS positions} on the map in which parking is allowed. \safearea are saved into the system. A \registereduser can end a \carsharing parking his car only in safe areas.
 	\subsubsection{Power Grid}
-		A \powergrid is the station that charge the battery of an electric car. All \powergrid are displayed in the map onboard \powerenjoy cars. Each \powergrid is in a \safearea. A \registereduser who plugs his car into a \powergrid receives the discount expected within \powerenjoy rules.
+		A \powergrid is the station that charge the battery of an electric car. All \powergrid are displayed in the map on-board \powerenjoy cars. Each \powergrid is in a \safearea. A \registereduser who plugs his car into a \powergrid receives the discount expected within \powerenjoy rules.
 	\subsubsection{Reservation}
 		A \resevation is the possibility that a \registereduser has to book a car at the latest for one hour.
 	\subsubsection{Stand}
