@@ -21,6 +21,7 @@
 \newcommand{\powergrid}{\textit{Power Grid }}
 \newcommand{\resevation}{\textit{reservation }}
 \newcommand{\stand}{\textit{stand }}
+\newcommand{\fieldstaff}{\textit{field staff }}
 \usepackage{tabto}
 \usepackage{verbatim}
 
@@ -169,6 +170,44 @@
 \section{Specific Requirements}
 	\subsection{Functional Requirements}
 	\subsection{Non Functional Requirements}
+		\subsubsection{Usability}
+		The application must be easy to use from the user point of view. The user interface should respect the \href{https://www.iso.org/obp/ui/#iso:std:iso:tr:16982:ed-1:v1:en}{ISO/TR 16982:2002 standard.} 
+During the development of the user interface will be purposed some sample tests to some people in order to answer to these points.
+	\begin{itemize}
+		\item Learnability: How easy is it for users to accomplish basic tasks the first time they encounter the design?
+		\item Efficiency: Once users have learned the design, how quickly can they perform tasks?
+		\item Memorability: When users return to the design after a period of not using it, how easily can they re-establish proficiency?
+		\item Errors: How many errors do users make, how severe are these errors, and how easily can they recover from the errors?
+		\item Satisfaction: How pleasant is it to use the design?
+	\end{itemize}
+		\subsubsection{Availability, Reliability, Fault Tolerance, Disaster Recovery}
+		Every user should be able to start a new ride in every moment of the day. Ideally the whole  infrastructure must be able to serve \registereduser 24/7. If the system goes down, the \powerenjoy company will loose money. \par It is trivial that our purpose is to guarantee the best reliability\footnote{Here we refer to the literal meaning, how accurate or able to be trusted someone or something is considered to be}.\par In order to pursue this objective our system architecture must be developed guaranteeing:
+		\begin{itemize}
+			\item Availability
+			\item Reliability
+			\item Fault Tolerance
+			\item Disaster Recovery
+		\end{itemize}
+		\subsubsection{Privacy}
+		Every country where the system is released has its own laws in matter of Privacy and respect of personal data. The system must be developed in the respect of these norms.\par Let's take for example that the system operates in Italy. Here is in force the D.Lgs. 196/2003 \href{http://www.camera.it/parlam/leggi/deleghe/03196dl.htm}{(D.Lgs. on www.camera.it website)} about personal data protection. The system must respect the local law, otherwise the company will be penally prosecutable.
+		\subsubsection{Security}
+		
+		\subsubsection{Portability}
+		In order to satisfy the request from the largest pool of users it is necessary to create an application for the most used mobile OS. Specifically Android\textregistered, iOS\textregistered, Windows Phone \textregistered. 
+\par There are several possibilities to make these applications. Here we identify three possible development guidelines. Every possibility has its Pros and Cons that we are going to analyze.
+		\begin{itemize}
+			\item \textbf{WebApp:} develop a mobile application using tools like PhoneGap\textregistered. The system will be developed once creating a responsive website. Than the website will be transformed to a mobile application via PhoneGap. \\\textbf{Pros:} fast deployment, write code only once. \\\textbf{Cons:} less responsive than other methods.
+			\item \textbf{Cross Compiling:} develop a mobile application using tools like Xamarin\textregistered. The system will be developed sharing code for all the platforms.\\\textbf{Pros:} development of native applications, code sharing among platforms. \\\textbf{Cons: } Limits developer possibilities that he has developing a native app, the code is not totally reusable.
+			\item \textbf{Native App:} develop a mobile application for each operating system on which it would be runned. \\\textbf{Pros:} high performance and responsiveness of the application\\\textbf{Cons:} tripled the effort of development. Each application requires its development team.
+		\end{itemize}		
+		\subsubsection{Money Saving Car distribution}
+		As said in the Assignments document, the money saving option guarantees an uniform distribution of cars in the \safearea.\par In order to do that the system, if money saving is activated, will be able to drive \registereduser to the correct \powergrid. The city will be divided in concentric circles that forms circular crowns, each circular crown is divided in slices. Each slice has it's own frequency of picking up cars. This frequency is seen as a weight in the map. The weight indicates proportionally the optimal number of cars that should be available in that slice. So, given the destination of the \registereduser, the system can calculate the best solution for the user.
+The system will provide solutions that are no more far than 1km from the selected destination.
+This allocation method is also used from \fieldstaff in order to re-allocate cars that were under maintenance.
+
+		\subsubsection{Application Programming Interface}
+		In order to extend its functionalities the system shall provide an programmable interface. That interface represents a way for programmers to create own application which can interact with \powerenjoy. For example our system must be integrable in a car sharing aggregator. So an user using a third party application must be able to reserve its \powerenjoy.
+		
 
 \section{Scenarios Identifying}
 \section{UML Models And Use Cases}
