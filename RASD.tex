@@ -6,7 +6,7 @@
 \usepackage{textcomp}
 \usepackage{graphicx}
 \usepackage{eurosym}
-\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref}
 \usepackage{float}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -142,11 +142,20 @@
 
 	We suppose that the following conditions hold in the analysed world:
 	\begin{domainassumptions}
-		
+
 		\domainassumption{ The geographical area covered by the service is included in the coverage area of most common mobile communication technologies (3g, 4g) offered by main telecommunications companies. }
+
 		\domainassumption{ Only correctly registered users can access the functionalities provided by the system. }
+		\domainassumption{ Users will not park cars in position not covered by GPS signal (such as underground parking slots). }
+
 		\domainassumption{ Cars are able to send diagnostic for the manutention process in addition to realtime telemetrics and status of the battery.  }
 		\domainassumption{ Cars can be selectively remotely locked, unlocked, powered on and powered off by authorized personal. }
+		\domainassumption{ Cars periodically notify the system of their position, in case of accident / failure the notification process stops. }
+
+		\domainassumption{ Both user's and cars' GPS position can't be faked by any mean (e.g: GPS spoofing). }
+		
+		
+		%\domainassumption{ . }
 
 	\end{domainassumptions}
 
