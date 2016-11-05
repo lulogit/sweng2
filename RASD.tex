@@ -30,8 +30,12 @@
 			\newcounter{goalId}
 			\newcommand{\goal}[1]{ 
 				\stepcounter{goalId} 
-				\item[G.\arabic{goalId}]{##1}
+				\hypertarget{G\arabic{goalId}}{
+					\item[
+						 G.\arabic{goalId}
+					]{ ##1 }
 				}
+			}
 			\begin{description}
 		}
 		{
@@ -51,9 +55,9 @@
 		\end{description}
 	}
 
-\newenvironment{requirements}
+\newcounter{RequirementId}
+\newenvironment{requirementsgroup}
 	{
-		\newcounter{RequirementId}
 		\newcommand{\req}[1]{ 
 			\stepcounter{RequirementId} 
 			\item[R.\arabic{RequirementId}]{##1}
@@ -63,6 +67,8 @@
 	{
 		\end{description}
 	}
+
+\newcommand{\goalref}[1]{  \hyperlink{G#1}{G.#1} }
 
 \makeatletter
 \usepackage{babel}
@@ -136,6 +142,9 @@
 		\goal{ To create a system that gives the possibility to be monitored and administrated by \powerenjoy's authorized personal. }
 		\goal{  To empower the authorized personal in order to be able to quickly react to emergencies, potentially dangerous situations and users' requests for help.}
 		\goal{ To create a system that provides a programmable interface, in order reduce the costs of further enanchements / manutenution to the system exploiting internal personal or third party developers.}
+		
+		% \goal{ . }
+
 	\end{goals}
 
 	\subsection{Domain Assumptions }
@@ -153,7 +162,6 @@
 		\domainassumption{ Cars periodically notify the system of their position, in case of accident / failure the notification process stops. }
 
 		\domainassumption{ Both user's and cars' GPS position can't be faked by any mean (e.g: GPS spoofing). }
-		
 		
 		%\domainassumption{ . }
 
@@ -213,42 +221,39 @@
 \section{Specific Requirements}
 	\subsection{Functional Requirements}
 	
-	\begin{requirements}
-		 \req { Users must be able to register to the system by providing their
-		credentials, payment information and required documents. The credential
-		must be unique among all previously registered users. Documents and
-		payment information must be verified in order to successfully create
-		an account. Users receive back a password that can be used to access
-		the system. }
-		 \req Required documents include driving license (at least 1 year of experience).
-		Payment information consist in credit card 
-		 \req { Registered users must be able to find the locations of available
-		cars within a certain distance from their current location or from
-		a specified address. The system also provide information about the
-		estimated car autonomy in kilometers.}
-		 \req { Among the available cars in a certain geographical region, users
-		must be able to reserve a single car for up to one hour before they
-		pick it up, by unlocking the car.}
-		 \req If a car is not picked\textendash up within one hour from the reservation,
-		the system tags the car as available again, and the reservation expires;
-		the user pays a fee of 1 EUR. 
-		 \req An user is able to cancel the reservation before it's expiration,
-		paying a cost proportional to the reservation time (the minimum amount
-		is relative to a quarter of an hour).
+	
+	With respect to \goalref{1}: 
+	\begin{requirementsgroup}
+		\req{ Guest users must be able to register to the system by providing their credentials, payment information and required documents. }
+		\req{ The provided credential must be unique among all previously registered users. }
+		\req{ Documents and payment information must be verified in order to successfully create an account. }
+		\req{ If registration succeed, registered user receive back a password that can be used to access the system (log in). }
+		\req{ Registered sers must be allowed to reset the password and modify account data }
+	\end{requirementsgroup}
+		
+
+	With respect to \goalref{4}: 
+	\begin{requirementsgroup}
+		 \req { Registered users must be able to find the locations of available cars within a certain distance from their current location or from a specified address. The system also provide information about the estimated car autonomy in kilometers. }
+		 \req { Among the available cars in a certain geographical region, users must be able to reserve a single car for up to one hour before they pick it up (by unlocking the car).}
+		 \req { If a car is not picked\textendash up within one hour from the reservation, the system tags the car as available again, and the reservation expires; the user pays a fee of 1\euro. }
+		 \req { An user is able to cancel the reservation before it's expiration, paying a cost proportional to the reservation time (the minimum amount is relative to a quarter of an hour).}
+	\end{requirementsgroup}	
+	\begin{requirementsgroup}
 		 \req { A user that reaches it's reserved car must be able to tell the
 		system he's nearby, so the system unlocks the car and the user may
 		enter, checking that the user is within a certain threshold from the
 		car. }
-		 \req As soon as the user unlocks the car, the system starts charging the
+		 \req {As soon as the user unlocks the car, the system starts charging the
 		user for a given amount of money per minute; the user is notified
-		of the current fare through a screen on the car.
-		 \req The system debits the user on his card every 10�. Whether the user
+		of the current fare through a screen on the car.}
+		 \req {The system debits the user on his card every 10\euro. Whether the user
 		is not able to pay, the system stops the car respectfully of user's
-		safety, after notifying the user on the screen.
-		 \req The system stops charging the user as soon as the car is parked in
+		safety, after notifying the user on the screen.}
+		 \req {The system stops charging the user as soon as the car is parked in
 		a safe area and the user exits the car; at this point the system locks
 		the car automatically. Then the system applies the discount to the
-		total fare and debit/credit the difference relative to the payed amount.
+		total fare and debit/credit the difference relative to the payed amount.}
 		 \req { The set of safe areas for parking cars is pre\textendash defined
 		by the management system.}
 
@@ -272,7 +277,7 @@
 		This location is determined to ensure a uniform distribution of cars
 		in the city and depends both on the destination of the user and on
 		the availability of power plugs at that safe area.}
-	\end{requirements}	
+	\end{requirementsgroup}	
 
 	\subsection{Non Functional Requirements}
 
