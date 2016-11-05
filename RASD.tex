@@ -24,6 +24,46 @@
 \usepackage{tabto}
 \usepackage{verbatim}
 
+\begin{comment} some new commands and enviroments to painlessly handle requirements, goals and domain assumptions listing \end{comment}
+\newenvironment{goals}
+		{
+			\newcounter{goalId}
+			\newcommand{\goal}[1]{ 
+				\stepcounter{goalId} 
+				\item[G.\arabic{goalId}]{##1}
+				}
+			\begin{description}
+		}
+		{
+			\end{description}
+		}
+
+\newenvironment{domainassumptions}
+	{
+		\newcounter{domainassumptionId}
+		\newcommand{\domainassumption}[1]{ 
+			\stepcounter{domainassumptionId} 
+			\item[D.\arabic{domainassumptionId}]{##1}
+			}
+		\begin{description}
+	}
+	{
+		\end{description}
+	}
+
+\newenvironment{requirements}
+	{
+		\newcounter{RequirementId}
+		\newcommand{\req}[1]{ 
+			\stepcounter{RequirementId} 
+			\item[R.\arabic{RequirementId}]{##1}
+			}
+		\begin{description}
+	}
+	{
+		\end{description}
+	}
+
 \makeatletter
 \usepackage{babel}
 
@@ -79,41 +119,36 @@
   \tab \tab A user can take advantage of the "Money saving" option selecting it on the integrated interface in the car. After    that he/she can input his/her final destination and the system provides information about the station where to leave the    car to get a discount. This destination is determined to ensure the uniform distribution of cars and depends both     on the destination of the user and on the availability of power plugs at the selected station.
 	
 	\subsection{Goals}
+
 	We have selected a list of objectives that we think \powerenjoy  has to reach:
-	\begin{description}
+	\begin{goals}
 		
 		\begin{comment} drivers for PowerEnjoy's success \end{comment}
-		\item [G.1]{ To allow user to simply access to the \powerenjoy services. }
-		\item [G.2]{ To guarantee an higher  probability of finding a car, compared to other car sharing services. }
-		\item [G.3]{ To guarantee an efficient manutenution and recharge process of the cars, oriented to favorite their fairly distribution over the territory. }
+		\goal{ To allow user to simply access to the \powerenjoy services. }
+		\goal{ To guarantee an higher  probability of finding a car, compared to other car sharing services. }
+		\goal{ To guarantee an efficient manutenution and recharge process of the cars, oriented to favorite their fairly distribution over the territory. }
 		\begin{comment} user's goals \end{comment}
-		\item [G.4]{ To allow users to make a reservation for a car in advance, and to cancel a reservation by its expiration time. }
-		\item [G.5]{  To transparently charge the user for the service, minimizing its interaction with payment interfaces. }
-		\item [G.6]{  To allow users to drive cars, minimizing their efforts for finding safe areas where to park.}
-		\item [G.7]{ To encourage users' virtuous behaviour  in relation to service's fairness. }
+		\goal{ To allow users to make a reservation for a car in advance, and to cancel a reservation by its expiration time. }
+		\goal{  To transparently charge the user for the service, minimizing its interaction with payment interfaces. }
+		\goal{  To allow users to drive cars, minimizing their efforts for finding safe areas where to park.}
+		\goal{ To encourage users' virtuous behaviour  in relation to service's fairness. }
 		\begin{comment} service efficiency goals \end{comment}
-		\item [G.8]{ To create a system that gives the possibility to be monitored and administrated by \powerenjoy's authorized personal. }
-		\item [G.9]{  To empower the authorized personal in order to be able to quickly react to emergencies, potentially dangerous situations and users' requests for help.}
-		\item [G.10]{ To create a system that provides a programmable interface, in order reduce the costs of further enanchements / manutenution to the system exploiting internal personal or third party developers.}
-	\end{description}
+		\goal{ To create a system that gives the possibility to be monitored and administrated by \powerenjoy's authorized personal. }
+		\goal{  To empower the authorized personal in order to be able to quickly react to emergencies, potentially dangerous situations and users' requests for help.}
+		\goal{ To create a system that provides a programmable interface, in order reduce the costs of further enanchements / manutenution to the system exploiting internal personal or third party developers.}
+	\end{goals}
 
 	\subsection{Domain Assumptions }
-	We suppose that the following conditions hold in the analysed world:
-	\begin{description}
-		
-		\begin{comment} drivers for PowerEnjoy's success \end{comment}
-		\item [D.1]{ The geographical area covered by the service is included in the coverage area of most common mobile communication technologies (3g, 4g) offered by main telecommunications companies. }
-		\item [D.2]{ Only correctly registered users can access the functionalities provided by the system. }
-		\item [D.3]{ Cars are able to send diagnostic for the manutention process in addition to realtime telemetrics and status of the battery.  }
-		\item [D.]{ Cars can be selectively remotely locked, unlocked, powered on and powered off by authorized personal. }
-		\item [D.]{  }
-		\item [D.]{  }
-		\item [D.]{  }
-		\item [D.]{  }
-		\item [D.]{  }
-		\item [D.]{  }	
 
-	\end{description}
+	We suppose that the following conditions hold in the analysed world:
+	\begin{domainassumptions}
+		
+		\domainassumption{ The geographical area covered by the service is included in the coverage area of most common mobile communication technologies (3g, 4g) offered by main telecommunications companies. }
+		\domainassumption{ Only correctly registered users can access the functionalities provided by the system. }
+		\domainassumption{ Cars are able to send diagnostic for the manutention process in addition to realtime telemetrics and status of the battery.  }
+		\domainassumption{ Cars can be selectively remotely locked, unlocked, powered on and powered off by authorized personal. }
+
+	\end{domainassumptions}
 
 	\subsection{Glossary}
 		\subsubsection{Car Sharing}
@@ -168,6 +203,68 @@
 	\end{itemize}
 \section{Specific Requirements}
 	\subsection{Functional Requirements}
+	
+	\begin{requirements}
+		 \req { Users must be able to register to the system by providing their
+		credentials, payment information and required documents. The credential
+		must be unique among all previously registered users. Documents and
+		payment information must be verified in order to successfully create
+		an account. Users receive back a password that can be used to access
+		the system. }
+		 \req Required documents include driving license (at least 1 year of experience).
+		Payment information consist in credit card 
+		 \req { Registered users must be able to find the locations of available
+		cars within a certain distance from their current location or from
+		a specified address. The system also provide information about the
+		estimated car autonomy in kilometers.}
+		 \req { Among the available cars in a certain geographical region, users
+		must be able to reserve a single car for up to one hour before they
+		pick it up, by unlocking the car.}
+		 \req If a car is not picked\textendash up within one hour from the reservation,
+		the system tags the car as available again, and the reservation expires;
+		the user pays a fee of 1 EUR. 
+		 \req An user is able to cancel the reservation before it's expiration,
+		paying a cost proportional to the reservation time (the minimum amount
+		is relative to a quarter of an hour).
+		 \req { A user that reaches it's reserved car must be able to tell the
+		system he's nearby, so the system unlocks the car and the user may
+		enter, checking that the user is within a certain threshold from the
+		car. }
+		 \req As soon as the user unlocks the car, the system starts charging the
+		user for a given amount of money per minute; the user is notified
+		of the current fare through a screen on the car.
+		 \req The system debits the user on his card every 10�. Whether the user
+		is not able to pay, the system stops the car respectfully of user's
+		safety, after notifying the user on the screen.
+		 \req The system stops charging the user as soon as the car is parked in
+		a safe area and the user exits the car; at this point the system locks
+		the car automatically. Then the system applies the discount to the
+		total fare and debit/credit the difference relative to the payed amount.
+		 \req { The set of safe areas for parking cars is pre\textendash defined
+		by the management system.}
+
+		\req{ In addition to the functionality above, the system should incentivize
+		the virtuous behaviors of the users. Specifically: }
+
+		 \req { If the system detects the user took at least two other passengers
+		onto the car, the system applies a discount of 10\% on the last ride.}
+		 \req { If a car is left with more than 50\% of the battery's charge, the
+		system applies a discount of 20\% on the last ride. }
+		 \req { If a car is left at special safe areas where they can be recharged
+		and the user takes care of plugging the car into the power grid, the
+		system applies a discount of 30\% on the last ride.}
+		 \req { If a car is left at more than 3 KM from the nearest power grid
+		station or with less than 20\% of the battery's charge, the system
+		charges 30\% more on the last ride to compensate for the cost required
+		to re\textendash charge the car on\textendash site.}
+		 \req { If the user enables the money saving option, he/she can input his/her
+		final destination and the system provides information about where
+		to leave the car to get the discount described above at point (3).
+		This location is determined to ensure a uniform distribution of cars
+		in the city and depends both on the destination of the user and on
+		the availability of power plugs at that safe area.}
+	\end{requirements}	
+
 	\subsection{Non Functional Requirements}
 
 \section{Scenarios Identifying}
