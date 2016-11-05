@@ -183,27 +183,32 @@ During the development of the user interface will be purposed some sample tests 
 		\subsubsection{Availability, Reliability, Fault Tolerance, Disaster Recovery}
 		Every user should be able to start a new ride in every moment of the day. Ideally the whole  infrastructure must be able to serve \registereduser 24/7. If the system goes down, the \powerenjoy company will loose money. \par It is trivial that our purpose is to guarantee the best reliability\footnote{Here we refer to the literal meaning, how accurate or able to be trusted someone or something is considered to be}.\par In order to pursue this objective our system architecture must be developed guaranteeing:
 		\begin{itemize}
-			\item Availability
-			\item Reliability
-			\item Fault Tolerance
-			\item Disaster Recovery
+			\item Availability: at least 99.99\% (Downtime: approx 8.66 seconds per day, 52,56 minute per year) for the back end, 99.9\% (Downtime:1.44 minute per day) for the UI.
+			\item Reliability: at least 2 month between failures.
+			\item Fault Tolerance: the probability of a failure that makes the system unusable is less than 0.001\%.
+			\item Disaster Recovery: All Informations about users, cars, \safearea must be recoverable after disaster situation with a probability of 99.999\%.
 		\end{itemize}
 		\subsubsection{Privacy}
 		Every country where the system is released has its own laws in matter of Privacy and respect of personal data. The system must be developed in the respect of these norms.\par Let's take for example that the system operates in Italy. Here is in force the D.Lgs. 196/2003 \href{http://www.camera.it/parlam/leggi/deleghe/03196dl.htm}{(D.Lgs. on www.camera.it website)} about personal data protection. The system must respect the local law, otherwise the company will be penally prosecutable.
 		\subsubsection{Security}
-		
+		The system security provides secure communication among users and serves and guarantees the protection of data from malicious agents. In order to guarantee security the system will adopt these measures.
+		\begin{itemize}
+			\item\textbf {https} to communicate sensible informations.
+			\item\textbf{Cryptography} to encript sensible data.
+			\item\textbf{}
 		\subsubsection{Portability}
 		In order to satisfy the request from the largest pool of users it is necessary to create an application for the most used mobile OS. Specifically Android\textregistered, iOS\textregistered, Windows Phone \textregistered. 
 \par There are several possibilities to make these applications. Here we identify three possible development guidelines. Every possibility has its Pros and Cons that we are going to analyze.
 		\begin{itemize}
 			\item \textbf{WebApp:} develop a mobile application using tools like PhoneGap\textregistered. The system will be developed once creating a responsive website. Than the website will be transformed to a mobile application via PhoneGap. \\\textbf{Pros:} fast deployment, write code only once. \\\textbf{Cons:} less responsive than other methods.
-			\item \textbf{Cross Compiling:} develop a mobile application using tools like Xamarin\textregistered. The system will be developed sharing code for all the platforms.\\\textbf{Pros:} development of native applications, code sharing among platforms. \\\textbf{Cons: } Limits developer possibilities that he has developing a native app, the code is not totally reusable.
-			\item \textbf{Native App:} develop a mobile application for each operating system on which it would be runned. \\\textbf{Pros:} high performance and responsiveness of the application\\\textbf{Cons:} tripled the effort of development. Each application requires its development team.
+			\item \textbf{Cross Compiling:} develop a mobile application using tools like Xamarin\textregistered. The system will be developed sharing code for all the platforms.\\\textbf{Pros:} development of native applications, code sharing among platforms. \\\textbf{Cons: } Not complete native llok and feel, the code is not totally reusable (only \approx 80\%) .
+			\item \textbf{Native App:} develop a mobile application for each operating system on which it would run. \\\textbf{Pros:} high performance and responsiveness of the application, native look and feel\\\textbf{Cons:} tripled the effort of development. Each application requires its development team.
 		\end{itemize}		
 		\subsubsection{Money Saving Car distribution}
-		As said in the Assignments document, the money saving option guarantees an uniform distribution of cars in the \safearea.\par In order to do that the system, if money saving is activated, will be able to drive \registereduser to the correct \powergrid. The city will be divided in concentric circles that forms circular crowns, each circular crown is divided in slices. Each slice has it's own frequency of picking up cars. This frequency is seen as a weight in the map. The weight indicates proportionally the optimal number of cars that should be available in that slice. So, given the destination of the \registereduser, the system can calculate the best solution for the user.
+		As said in the Assignments document, the money saving option guarantees an uniform distribution of cars in the \safearea.\par In order to do that the system, if money saving is activated, will be able to drive \registereduser to the correct \powergrid. Each city covered by the service, will be divided in concentric circles that forms circular crowns, each circular crown is divided in slices. Each slice has its own frequency of picking up cars. This frequency is seen as a weight in the map. The weight indicates proportionally the optimal number of cars that should be available in that slice. So, given the destination of the \registereduser, the system can calculate the best solution for the user.
 The system will provide solutions that are no more far than 1km from the selected destination.
 This allocation method is also used from \fieldstaff in order to re-allocate cars that were under maintenance.
+		
 
 		\subsubsection{Application Programming Interface}
 		In order to extend its functionalities the system shall provide an programmable interface. That interface represents a way for programmers to create own application which can interact with \powerenjoy. For example our system must be integrable in a car sharing aggregator. So an user using a third party application must be able to reserve its \powerenjoy.
