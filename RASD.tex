@@ -221,15 +221,21 @@
 \section{Specific Requirements}
 	\subsection{Functional Requirements}
 	
-	
-	With respect to \goalref{1}: 
+	The system must give the possibility to \textbf{guest users}:
 	\begin{requirementsgroup}
-		\req{ Guest users must be able to register to the system by providing their credentials, payment information and required documents. }
-		\req{ The provided credential must be unique among all previously registered users. }
-		\req{ Documents and payment information must be verified in order to successfully create an account. }
-		\req{ If registration succeed, registered user receive back a password that can be used to access the system (log in). }
-		\req{ Registered sers must be allowed to reset the password and modify account data }
+		\req{ to register to the system by providing their credentials (must be unique among previously registered users), payment information and required documents. }
+		\req{ to receive back password and user pin code in case off successful registration (for later log in). }
+	\end{requirementsgroup}	
+	In addition:
+	\begin{requirementsgroup}
+		\req{ credentials must be unique among previously registered users }
+		\req{ documents and payment information must be verified in order to successfully create an account. }
 	\end{requirementsgroup}
+
+	\textbf{ Registered users } must be allowed to:
+	\begin{requirementsgroup}
+		\req{  to reset the password and modify account data }
+	\end{requirementsgroup}	
 		
 
 	With respect to \goalref{4}: 
@@ -239,6 +245,7 @@
 		 \req { If a car is not picked\textendash up within one hour from the reservation, the system tags the car as available again, and the reservation expires; the user pays a fee of 1\euro. }
 		 \req { An user is able to cancel the reservation before it's expiration, paying a cost proportional to the reservation time (the minimum amount is relative to a quarter of an hour).}
 	\end{requirementsgroup}	
+	With respect to \goalref{5}: 
 	\begin{requirementsgroup}
 		 \req { A user that reaches it's reserved car must be able to tell the
 		system he's nearby, so the system unlocks the car and the user may
@@ -248,15 +255,17 @@
 		user for a given amount of money per minute; the user is notified
 		of the current fare through a screen on the car.}
 		 \req {The system debits the user on his card every 10\euro. Whether the user
-		is not able to pay, the system stops the car respectfully of user's
-		safety, after notifying the user on the screen.}
+		is not able to pay, the system notify the user and inform the management staff. % the system stops the car respectfully of user's safety, after notifying the user on the screen. 
+		}
 		 \req {The system stops charging the user as soon as the car is parked in
 		a safe area and the user exits the car; at this point the system locks
 		the car automatically. Then the system applies the discount to the
-		total fare and debit/credit the difference relative to the payed amount.}
+		total fare and debit/credit the difference relative to the paid amount.}
 		 \req { The set of safe areas for parking cars is pre\textendash defined
 		by the management system.}
-
+	\end{requirementsgroup}
+	With respect to \goalref{5}: 
+	\begin{requirementsgroup}
 		\req{ In addition to the functionality above, the system should incentivize
 		the virtuous behaviors of the users. Specifically: }
 
