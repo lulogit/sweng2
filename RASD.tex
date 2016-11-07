@@ -25,7 +25,11 @@
 \newcommand{\powergrids}{\textit{power grids }}
 \newcommand{\reservation}{\textit{reservation }}
 \newcommand{\stand}{\textit{stand }}
+<<<<<<< HEAD
 \newcommand{\fieldstaff}{\textit{field staff }}
+=======
+\newcommand{\personalpin}{\textit{personal pin }}
+>>>>>>> origin/usecase_powerenjoy_user
 \usepackage{tabto}
 \usepackage{verbatim}
 
@@ -204,7 +208,9 @@
 	\subsubsection{Reservation}
 		A \reservation is the possibility that a \registereduser has to book a car at the latest for one hour.
 	\subsubsection{Stand}
-		A \stand is the possibility that a \registereduser has to pause his \carsharing. During a \stand the \registereduser can leave the car, than he can re-unlock it through his smart-phone 
+		A \stand is the possibility that a \registereduser has to pause his \carsharing. During a \stand the \registereduser can leave the car, than he can re-unlock it through his smart-phone.
+	\subsubsection{Personal  Personal Identification Number (pin)}
+		 \personalpin is a number of 5 digits that the user inserts on the car screen to enable driving commands.
 
 \subsection{Further Developments}
 	We think that one of the most important things is to release a \service that can be extended and improved. It's trivial that a \service like this must be able to be changed and updated.
@@ -547,6 +553,239 @@ This allocation method is also used from \fieldstaff in order to re-allocate car
 			\end{itemize}
 		\end{tabular}
 		\end{center}
+
+
+	\subsubsection{Search Car}
+	\begin{center}
+	\begin{tabular}{l||p{10cm}}
+	\textbf{Name} 
+		& Search Car\\ [8px]
+	\textbf{Actors} 
+		& PowerEnJoy User\\ [8px]
+	\textbf{Assumptions} 
+		& \begin{itemize}
+			\item The user is logged in to the system.
+		\end{itemize}\\
+	\textbf{Flow of events}
+		& \begin{enumerate}
+	 		\item The user opens PowerEnJoy app on his smartphone 
+	 		\item The user interface displays all available cars around the user position according to the setted range. 
+			\item Optionally the user can search the cars around an inserted address, or near a remarkable place. 
+		\end{enumerate}\\ 
+	\textbf{Exit conditions}
+		&The user finds a car that satisfies his need and choses too reserve it.\\ [8px]
+	\textbf{Exceptions}
+		& \begin{itemize}
+			\item The user does not find an useful car and exit the application.
+			\item The user want not really reserve a car. 
+		\end{itemize}
+	\end{tabular}
+	\end{center}
+
+	\subsubsection{Reserve Car}
+	\begin{center}
+	\begin{tabular}{l||p{10cm}}
+	\textbf{Name} 
+		& Reserve Car\\ [8px]
+	\textbf{Actors} 
+		& PowerEnJoy User\\ [8px]
+	\textbf{Assumptions} 
+		& \begin{itemize}
+			\item The user is logged in to the system.
+			\item The user has Searched Cars and has find an optimal one
+		\end{itemize}\\
+	\textbf{Flow of events}
+		& \begin{enumerate}
+ 			\item The user selects the car that he want reserve
+ 			\item The user interface displays all informations about the car (E.g. Autonomy in kilometers) and a button for reserve it. 
+			\item The user choses to reserve the car. 
+			\item The user confirms his choose.
+		\end{enumerate}\\ 
+	\textbf{Exit conditions}
+		&The system confirms the successful reservation, displays the time before reservation expiration and the route for reach it from the current position of the user. \\ [8px]
+	\textbf{Exceptions}
+		& \begin{itemize}
+			\item The user exits the procedure before confirming it.
+			\item Another user reserves another car while our user is reserving it, the system notify the user. The reservation ends unsuccessfully.
+		\end{itemize}
+	\end{tabular}
+	\end{center}
+
+	\subsubsection{Cancel Reservation}
+	\begin{center}
+	\begin{tabular}{l||p{10cm}}
+	\textbf{Name} 
+		& Cancel Resarvation\\ [8px]
+	\textbf{Actors} 
+		& PowerEnJoy User\\ [8px]
+	\textbf{Assumptions} 
+		& \begin{itemize}
+			\item The user is logged in to the system.
+			\item The user has an active reservation.
+		\end{itemize}\\
+	\textbf{Flow of events}
+		& \begin{enumerate}
+ 			\item The user opens PowerEnJoy app on his smartphone 
+ 			\item The user interface displays user's current reservation.
+			\item The user eliminates the reservation clicking on the cancel reservation button.
+			\item The user confirms his selection.
+		\end{enumerate}\\ 
+	\textbf{Exit conditions}
+		&The user successfully cancel his reservation. The reserved car returns available for other users.\\ [8px]
+	\textbf{Exceptions}
+		&...\\[8px]
+	\end{tabular}
+	\end{center}
+
+	\subsubsection{Pick up car}
+	\begin{center}
+	\begin{tabular}{l||p{10cm}}
+	\textbf{Name} 
+		& Pick up car\\ [8px]
+	\textbf{Actors} 
+		& PowerEnJoy User\\ [8px]
+	\textbf{Assumptions} 
+	& \begin{itemize}
+		\item The user is logged in to the system.
+		\item The user has a reservation active.
+		\item The user is no far than 10 meters from the car
+		\item The user inserts the correct \personalpin 
+	\end{itemize}\\
+	\textbf{Flow of events}
+		& \begin{enumerate}
+ 		\item The user is close to his reserved car.
+ 		\item The user selects the unlock car button (displayed in the application) UI on it's smartphone.
+		\item The system unlocks the car.
+		\item The user gets in the car and insets his \personalpin.
+		\item The system detects all passengers from cars sensors.
+		\item Optionally the user can decide to activate the "Money Saving Option"
+		\item The user starts driving his car.
+		\item the system calculates the fare and shows it on the display
+		\end{enumerate}\\ 
+	\textbf{Exit conditions}
+		&\begin{itemize}
+			\item The user makes a \stand.
+			\item The user releases car.
+		\end{itemize}\\
+	\textbf{Exceptions}
+		& \begin{itemize}
+			\item The user run out of money on his credit card.
+			\item The car runs out of battery.
+		\end{itemize}
+	\end{tabular}
+	\end{center}
+	
+	\subsubsection{Stand}
+	\begin{center}
+	\begin{tabular}{l||p{10cm}}
+	\textbf{Name} 
+		& Stand\\ [8px]
+	\textbf{Actors} 
+		& PowerEnJoy User\\ [8px]
+	\textbf{Assumptions} 
+	& \begin{itemize}
+		\item The user has picked up a car. 
+	\end{itemize}\\
+	\textbf{Flow of events}
+		& \begin{enumerate}
+ 		\item The user parks the car.
+ 		\item The user selects the\stand option on the car screen.
+		\item Driving command are disabled by the system. 
+		\item The user get off the car.
+		\item The system locks the car.
+		\end{enumerate}\\ 
+	\textbf{Exit conditions}
+		&\begin{itemize}
+			\item When the user wants end the \stand he re-unlocks and start driving the car as he has done in the "Pick up car" use case.
+		\end{itemize}\\
+	\textbf{Exceptions}
+		& \begin{itemize}
+			\item The user run out of money on his credit card. (The user will not be able to re-unlock the car.)
+		\end{itemize}
+	\end{tabular}
+	\end{center}
+	
+	\subsubsection{Money Saving Option}
+	\begin{center}
+	\begin{tabular}{l||p{10cm}}
+	\textbf{Name} 
+		& Money Saving Option\\ [8px]
+	\textbf{Actors} 
+		& PowerEnJoy User\\ [8px]
+	\textbf{Assumptions} 
+	& \begin{itemize}
+		\item The user has picked up a car. 
+	\end{itemize}\\
+	\textbf{Flow of events}
+		& \begin{enumerate}
+ 		\item The user selects his destination address on the car screen
+		\item The system purposes the \powergrid station according to algorithm constraints.
+		\end{enumerate}\\ 
+	\textbf{Exit conditions}
+		&\begin{itemize}
+			\item The user releases the car.
+		\end{itemize}\\
+	\textbf{Exceptions}
+		& \begin{itemize}
+			\item There are no available \powergrid stations in 1 km range from the destination. (The system during driving will notify the user through the car screen if a \powergrid becomes free.)
+		\end{itemize}
+	\end{tabular}
+	\end{center}
+
+	\subsubsection{Release Car}
+	\begin{center}
+	\begin{tabular}{l||p{10cm}}
+	\textbf{Name} 
+		& Release Car\\ [8px]
+	\textbf{Actors} 
+		& PowerEnJoy User\\ [8px]
+	\textbf{Assumptions} 
+	& \begin{itemize}
+		\item The user has picked up a car. 
+	\end{itemize}\\
+	\textbf{Flow of events}
+		& \begin{enumerate}
+ 		\item The user parks the car in a \safearea.
+		\item The user selects the end \carsharing option on the car screen.
+		\item Driving command are disabled by the system. 
+		\item The system starts calculating fare discounts.
+		\end{enumerate}\\ 
+	\textbf{Exit conditions}
+		&\begin{itemize}
+			\item The user get off the car, than the system locks the car.
+		\end{itemize}\\
+	\textbf{Exceptions}
+		& \begin{itemize}
+			\item The user is not in a safe area and he cannot end \carsharing. 
+		\end{itemize}
+	\end{tabular}
+	\end{center}
+
+\subsubsection{Plug car}
+	\begin{center}
+	\begin{tabular}{l||p{10cm}}
+	\textbf{Name} 
+		& Release Car\\ [8px]
+	\textbf{Actors} 
+		& PowerEnJoy User\\ [8px]
+	\textbf{Assumptions} 
+	& \begin{itemize}
+		\item The user has parked a car near a \powergrid and has ended his \carsharing. 
+	\end{itemize}\\
+	\textbf{Flow of events}
+		& \begin{enumerate}
+ 			\item The user inserts his \personalpin into the \powergrid screen, in order to let the \powergrid enabled to charge cars.
+			\item The user plugs the car to the \powergrid.
+			\item The system detects that the car of our user is charging at the \powergrid unlocked by the same user. 
+		\end{enumerate}\\ 
+	\textbf{Exit conditions}
+		&\begin{itemize}
+			\item The user receives the expected discount.
+		\end{itemize}\\
+	\textbf{Exceptions}
+		&...\\[8px]
+	\end{tabular}
+	\end{center}
 
 	\subsection{Class Diagram}
 \section{External Interfaces}
