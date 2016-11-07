@@ -221,48 +221,50 @@
 \section{Specific Requirements}
 	\subsection{Functional Requirements}
 	
-	The system must give the possibility to \textbf{guest users}:
+	\subsection*{Guest users}
+	The system must give guest users the possibility to:
 	\begin{requirementsgroup}
-		\req{ to register to the system by providing their credentials (must be unique among previously registered users), payment information and required documents. }
-		\req{ to receive back password and user pin code in case off successful registration (for later log in). }
+		\req{ to register to the system by providing their credentials, payment information and required documents. }
+		\req{ to receive back password (for login) and pin code (to power on cars) in case off successful registration . }
 	\end{requirementsgroup}	
 	In addition:
 	\begin{requirementsgroup}
 		\req{ credentials must be unique among previously registered users }
 		\req{ documents and payment information must be verified in order to successfully create an account. }
 	\end{requirementsgroup}
-
-	\textbf{ Registered users } must be allowed to:
+	
+	
+	\subsection*{Registered users}
+	Registered users must be allowed to:
 	\begin{requirementsgroup}
-		\req{  to reset the password and modify account data }
-	\end{requirementsgroup}	
+		\req{  to log-in as \powerenjoy users or  field/emergency/management staff user. }
+		\req{  to reset the password.}
+		\req{  to modify account data. }
+	\end{requirementsgroup}
+	
+	\subsection*{ \powerenjoy users }
+	They are registered users, so they are subject to the same requirements, moreover the system must guarantee them:
+	\begin{requirementsgroup}
+		 \req { to find the locations of available cars within a certain distance from their current location or from a specified address. }
+		 \req { to be provided information about the searched cars' estimated autonomy in kilometers. }
+		 \req { to reserve a single car, among the available ones, for up to one hour before picking it up (by unlocking the car).}
+
+		 \req { to cancel the reservation before it's expiration, paying a cost proportional to the reservation time (the minimum amount is relative to a quarter of an hour).}
+		 \req { to be charged of a fee (1\euro) whether the reserved car is not picked\textendash up within one hour from the reservation: the car must be tagged as available again, while the reservation expires. }
+
+		 \req { to unlock a reserved car when it is within a certain distance (threshold) from the car. }
+		 \req { to be charged for a given amount of money per minute as soon as the car is unlocked. } 
+		 \req { to be notified of the current fare through a screen on the car. }
+		 \req { to stop being charged as soon as the car is parked in a safe area and he exits the car: the car must  automatically locked. }
+		 \req { to be excluded from the fruition of \powerenjoy services whether the payment is unable to complete, until all pending payment are performed.  }
+
 		
-
-	With respect to \goalref{4}: 
-	\begin{requirementsgroup}
-		 \req { Registered users must be able to find the locations of available cars within a certain distance from their current location or from a specified address. The system also provide information about the estimated car autonomy in kilometers. }
-		 \req { Among the available cars in a certain geographical region, users must be able to reserve a single car for up to one hour before they pick it up (by unlocking the car).}
-		 \req { If a car is not picked\textendash up within one hour from the reservation, the system tags the car as available again, and the reservation expires; the user pays a fee of 1\euro. }
-		 \req { An user is able to cancel the reservation before it's expiration, paying a cost proportional to the reservation time (the minimum amount is relative to a quarter of an hour).}
 	\end{requirementsgroup}	
+
+
 	With respect to \goalref{5}: 
 	\begin{requirementsgroup}
-		 \req { A user that reaches it's reserved car must be able to tell the
-		system he's nearby, so the system unlocks the car and the user may
-		enter, checking that the user is within a certain threshold from the
-		car. }
-		 \req {As soon as the user unlocks the car, the system starts charging the
-		user for a given amount of money per minute; the user is notified
-		of the current fare through a screen on the car.}
-		 \req {The system debits the user on his card every 10\euro. Whether the user
-		is not able to pay, the system notify the user and inform the management staff. % the system stops the car respectfully of user's safety, after notifying the user on the screen. 
-		}
-		 \req {The system stops charging the user as soon as the car is parked in
-		a safe area and the user exits the car; at this point the system locks
-		the car automatically. Then the system applies the discount to the
-		total fare and debit/credit the difference relative to the paid amount.}
-		 \req { The set of safe areas for parking cars is pre\textendash defined
-		by the management system.}
+		 \req { The set of safe areas for parking cars is pre\textendash defined by the management system.}
 	\end{requirementsgroup}
 	With respect to \goalref{5}: 
 	\begin{requirementsgroup}
