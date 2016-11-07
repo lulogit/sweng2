@@ -226,9 +226,10 @@
 			\item The user confirms his choose.
 		\end{enumerate}\\ 
 	\textbf{Exit conditions}
-		&The system confirms the successful reservation, displays the time before reservation expiration and the route for reach it from the current position of the user. \\ [8px]
+		&The system confirms the successful reservation, displays the time before reservation expiration and the route for reach it from the current position of the user.\\ [8px]
 	\textbf{Exceptions}
 		& \begin{itemize}
+			\item Reservation expires.
 			\item The user exits the procedure before confirming it.
 			\item Another user reserves another car while our user is reserving it, the system notify the user. The reservation ends unsuccessfully.
 		\end{itemize}
@@ -272,7 +273,7 @@
 	& \begin{itemize}
 		\item The user is logged in to the system.
 		\item The user has a reservation active.
-		\item The user is no far than 10 meters from the car
+		\item The user is no far than 10 meters from the car.
 		\item The user inserts the correct \personalpin 
 	\end{itemize}\\
 	\textbf{Flow of events}
