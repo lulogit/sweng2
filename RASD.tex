@@ -391,7 +391,7 @@
 	\begin{center}
 	\begin{tabular}{l||p{10cm}}
 	\textbf{Name} 
-		& Release Car\\ [8px]
+		& Plug Car\\ [8px]
 	\textbf{Actors} 
 		& PowerEnJoy User\\ [8px]
 	\textbf{Assumptions} 
@@ -412,6 +412,59 @@
 		&...\\[8px]
 	\end{tabular}
 	\end{center}
+
+\subsubsection{Handle Emergency}
+	\begin{center}
+	\begin{tabular}{l||p{10cm}}
+	\textbf{Name} 
+		& Handle Emergency\\ [8px]
+	\textbf{Actors} 
+		& Emergency Staff, PowerEnJoy User\\ [8px]
+	\textbf{Assumptions} 
+		&...\\[8px]
+	\textbf{Flow of events}
+		& \begin{enumerate}
+			\item The system notifies the Emergency Staff that an emergency rose up.
+			\item Given the nature of the emergency the staff handles.
+				\begin{itemize}
+					\item if the emergency is a "Help Request" the staff is able to interact to the \registereduser.
+					\item if a "Car Accident" has happened the staff takes the proper decisions, and the field staff is allerted.
+					\item if a car has the "Empty Battery" the Emergency Staff signals it to the Field Staff.
+			\end{itemize} 
+		\end{enumerate}\\ 
+	\textbf{Exit conditions}
+		&\begin{itemize}
+			\item The emergency has been resolved.
+		\end{itemize}\\
+	\textbf{Exceptions}
+		&...\\[8px]
+	\end{tabular}
+	\end{center}
+
+\subsubsection{Maintain Car}
+	\begin{center}
+	\begin{tabular}{l||p{10cm}}
+	\textbf{Name} 
+		&Maintain Car\\ [8px]
+	\textbf{Actors} 
+		& Field Staff\\ [8px]
+	\textbf{Assumptions} 
+		&An issue with a car has happened.\\
+	\textbf{Flow of events}
+		& \begin{enumerate}
+			\item The Field Staff reaches the car that needs maintenance.
+			\item The Field Staff evaluates the car situation and take a decision on how to maintain it. 
+			\item Once the car is repaired the field staff relocates the car in a \safearea and set it visible to PowerEnJoy Users.
+		\end{enumerate}\\ 
+	\textbf{Exit conditions}
+		&\begin{itemize}
+			\item The car has been maintained.
+		\end{itemize}\\
+	\textbf{Exceptions}
+		&The car cannot be maintained.\\[8px]
+	\end{tabular}
+	\end{center}
+
 
 	\subsection{Class Diagram}
 \section{External Interfaces}
