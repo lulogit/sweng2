@@ -239,7 +239,7 @@
 	\subsubsection{Registered users}
 	Registered users must be allowed to:
 	\begin{requirementsgroup}
-		\req{  to log-in as \powerenjoy users or  field/emergency/management staff user. }
+		\req{  to log-in as \powerenjoy users or field/emergency/management staff user. }
 		\req{  to reset the password.}
 		\req{  to modify account data. }
 	\end{requirementsgroup}
@@ -266,10 +266,62 @@
 		 \req { to be applied an overcharge of 30\% on the last ride, whether the car is left farer than 3 KM from the nearest charge station or with less than 20\% of the battery's charge. }
 		 \req { to enable the money saving option, thus be shown information about where to park the car (near to an entered destination) in order to get the discount described above. }
 		 %This location is determined to ensure a uniform distribution of cars in the city and depends both on the destination of the user and on the availability of power plugs at that safe area.
+
+		\req { to be notified of changes in the service policies (different fares or terms of services). }
 	\end{requirementsgroup}	
 
+	\subsubsection{ Field staff users }
+	They are registered users, so they are subject to the same requirements, moreover the system must empower them:
 	\begin{requirementsgroup}
-		 \req { The set of safe areas for parking cars is pre\textendash defined by the management system.}
+		\req{  . }
+	\end{requirementsgroup}
+
+	\subsubsection{ Management staff users }
+	They are registered users, so they are subject to the same requirements, moreover the system must empower them:
+	\begin{requirementsgroup}
+		 \req { to configure the list of available safe areas and power plugs over the service covered area. }
+		 \req { to configure the list of cars available for the service }
+		 \req { to configure service policies: 
+			\begin{itemize}
+				\item{update existing service's fares}
+				\item{introducing new service's fares}
+				\item{update discounts}
+				\item{introducing new discounts}
+				\item{update the terms of the service}
+			\end{itemize}
+		  }
+		 \req { to manage personnel's accounts:
+			\begin{itemize}
+				\item{create}
+				\item{delete}
+				\item{modify}
+			\end{itemize}
+			for:
+			\begin{itemize}
+				\item{field staff user}
+				\item{emergency staff user}
+				\item{management staff user}
+			\end{itemize}
+		}
+		 \req { to handle exceptional cases of unpaid rides:
+			\begin{itemize}
+				\item{check pending payment status.}
+				\item{re-enable \powerenjoy users with to service).}
+			\end{itemize}
+		 }
+	\end{requirementsgroup}
+
+	\subsubsection{ Emergency staff users }
+	They are registered users, so they are subject to the same requirements, moreover the system must empower them:
+	\begin{requirementsgroup}
+		\req{  . }
+	\end{requirementsgroup}
+
+	\subsubsection{ Third party developers }
+	The system should permit third party developers:
+	\begin{requirementsgroup}
+		\req{ to access all the functionalities of a \powerenjoy users through a set of public APIs (provided the user gave the consensus).}
+		\req{ to register new \powerenjoy users through a set of public APIs. }
 	\end{requirementsgroup}
 
 	\subsection{Non Functional Requirements}
