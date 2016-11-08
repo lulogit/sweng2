@@ -132,7 +132,7 @@
 		\begin{comment} drivers for PowerEnjoy's success \end{comment}
 		\goal{ To allow user to simply access to the \powerenjoy services. }
 		\goal{ To guarantee an higher  probability of finding a car, compared to other car sharing services. }
-		\goal{ To guarantee an efficient manutenution and recharge process of the cars, oriented to favorite their fairly distribution over the territory. }
+		\goal{ To guarantee an efficient maintenance and recharge process of the cars, oriented to favourite their fairly distribution over the territory. }
 		\begin{comment} user's goals \end{comment}
 		\goal{ To allow users to make a reservation for a car in advance, and to cancel a reservation by its expiration time. }
 		\goal{  To transparently charge the user for the service, minimizing its interaction with payment interfaces. }
@@ -141,7 +141,7 @@
 		\begin{comment} service efficiency goals \end{comment}
 		\goal{ To create a system that gives the possibility to be monitored and administrated by \powerenjoy's authorized personal. }
 		\goal{  To empower the authorized personal in order to be able to quickly react to emergencies, potentially dangerous situations and users' requests for help.}
-		\goal{ To create a system that provides a programmable interface, in order reduce the costs of further enanchements / manutenution to the system exploiting internal personal or third party developers.}
+		\goal{ To create a system that provides a programmable interface, in order reduce the costs of further enhancements / maintenance to the system exploiting internal personal or third party developers.}
 		
 		% \goal{ . }
 
@@ -157,11 +157,13 @@
 		\domainassumption{ Only correctly registered users can access the functionalities provided by the system. }
 		\domainassumption{ Users will not park cars in position not covered by GPS signal (such as underground parking slots). }
 
-		\domainassumption{ Cars are able to send diagnostic for the manutention process in addition to realtime telemetrics and status of the battery.  }
+		\domainassumption{ Cars are able to send diagnostic for the maintenance process in addition to real-time telemetry about speed and status of the battery.  }
 		\domainassumption{ Cars can be selectively remotely locked, unlocked, powered on and powered off by authorized personal. }
 		\domainassumption{ Cars periodically notify the system of their position, in case of accident / failure the notification process stops. }
 
 		\domainassumption{ Both user's and cars' GPS position can't be faked by any mean (e.g: GPS spoofing). }
+
+		\domainassumption{ Each plug in charge stations is capable to be remotely  enabled/disabled for the charge of cars. }
 		
 		%\domainassumption{ . }
 
@@ -221,7 +223,7 @@
 \section{Specific Requirements}
 	\subsection{Functional Requirements}
 	
-	\subsection*{Guest users}
+	\subsubsection{Guest users}
 	The system must give guest users the possibility to:
 	\begin{requirementsgroup}
 		\req{ to register to the system by providing their credentials, payment information and required documents. }
@@ -234,7 +236,7 @@
 	\end{requirementsgroup}
 	
 	
-	\subsection*{Registered users}
+	\subsubsection{Registered users}
 	Registered users must be allowed to:
 	\begin{requirementsgroup}
 		\req{  to log-in as \powerenjoy users or  field/emergency/management staff user. }
@@ -242,7 +244,7 @@
 		\req{  to modify account data. }
 	\end{requirementsgroup}
 	
-	\subsection*{ \powerenjoy users }
+	\subsubsection{ \powerenjoy users }
 	They are registered users, so they are subject to the same requirements, moreover the system must guarantee them:
 	\begin{requirementsgroup}
 		 \req { to find the locations of available cars within a certain distance from their current location or from a specified address. }
@@ -266,12 +268,9 @@
 		 %This location is determined to ensure a uniform distribution of cars in the city and depends both on the destination of the user and on the availability of power plugs at that safe area.
 	\end{requirementsgroup}	
 
-
-	With respect to \goalref{5}: 
 	\begin{requirementsgroup}
 		 \req { The set of safe areas for parking cars is pre\textendash defined by the management system.}
 	\end{requirementsgroup}
-	With respect to \goalref{5}: 
 
 	\subsection{Non Functional Requirements}
 
