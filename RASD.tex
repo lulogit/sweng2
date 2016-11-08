@@ -16,6 +16,7 @@
 \newcommand{\powerenjoy}{\textit{PowerEnjoy }}
 \newcommand{\registereduser}{\textit {registered user }}
 \newcommand{\registeredusers}{\textit {registered users }}
+\newcommand{\powerenjoyuser}{\textit{PowerEnjoy User }}
 \newcommand{\staff}{\textit{staff }}
 \newcommand{\service}{\textit{service }}
 \newcommand{\services }{\textit{services }}
@@ -27,11 +28,16 @@
 \newcommand{\stand}{\textit{stand }}
 \newcommand{\rent}{\textit{rent }}
 \newcommand{\fieldstaff}{\textit{field staff }}
+\newcommand{\resevation}{\textit{reservation }}
+\newcommand{\stopover}{\textit{stopover }}
+\newcommand{\personalpin}{\textit{personal pin }}
+\newcommand{\guest}{\textit{guest }}
+\newcommand{\thirdparty}{\textit{third party developer}}
 \usepackage{tabto}
 \usepackage{verbatim}
 \usepackage{etoolbox}
 
-\begin{comment} some new commands and enviroments to painlessly handle requirements, goals and domain assumptions listing \end{comment}
+\begin{comment} some new commands and environments to painlessly handle requirements, goals and domain assumptions listing \end{comment}
 \newenvironment{goals}
 		{
 			\newcounter{goalId}
@@ -182,18 +188,23 @@
 	\end{domainassumptions}
 
 	\subsection{Glossary}
+		\label{sec:Glossary}
 		\subsubsection{Car Sharing}
 			\carsharing is a model of car rental where people rent cars for short periods of time, often by the hour.
-		\subsubsection{PowerEnjoy}
-			\powerenjoy is the \carsharing brand object of this document. 
-		\subsubsection{Registered User}
-			A \registereduser is a person subscribed to \powerenjoy which can access to the \carsharing through his smart-phone.
+		\subsubsection{PowerEnJoy}
+			\powerenjoy is the \carsharing brand object of this document.
+		\subsubsection{Guest User}
+			A \guest is a person not logged in to the system.
+		\subsubsection{Registered User} 
+			A \registereduser is a person registered to \powerenjoy.
+		\subsubsection{PowerEnJoy User}
+			A \powerenjoyuser is a \registereduser can access to the \carsharing through his smart-phone.
 		\subsubsection{Staff}
-			\staff is the set of people that are \registeredusers but can perform special operations. They are divided in three different categories.
+			\staff is the set of people that are \registereduser  but can perform special operations. They are divided in three different categories.
 			\begin{itemize}
 				\item {Field \staff}
 				\begin{itemize}
-				\item They own a passepartout for cars that has all kind of issues, for example they can menage cars with low battery.
+				\item They own a passepartout for cars that has all kind of issues, for example they can manage cars with low battery.
 				\end{itemize}
 				\item{Emergency \staff}
 				\begin{itemize}
@@ -204,18 +215,20 @@
 				\item They manage the system, for example they can change system parameters. They can add new \safeareas, modify \carsharing prices.
 				\end{itemize}
 			\end{itemize}
+		\subsubsection{Third Party Developer}
+			\thirdparty is a person that can fulfill operations on \powerenjoy system via API.
 		\subsubsection{Service}
-			The \service is the group of actions that a \registereduser can fulfill trough the mobile.	
+			The \service is the group of actions that a \powerenjoyuser can fulfill trough the mobile.	
 		\subsubsection {Safe Area}
-			A \safearea is a  geographical place\footnote{defined by a set of GPS positions} on the map in which parking is allowed. \safeareas are saved into the system. A \registereduser can end a \carsharing session only parking used car in a \safearea.
+			A \safearea is a  geographical place\footnote{defined by a set of GPS positions} on the map in which parking is allowed. \safearea are saved into the system. A \powerenjoyuser can end a \carsharing parking his car only in safe areas.
 	\subsubsection{Power Grid}
-		A \powergrid is the station that charge the battery of an electric car. All \powergrids are displayed in the map on-board \powerenjoy cars. Each \powergrid is in a \safearea. A \registereduser who plugs his car into a \powergrid receives the discount expected within \powerenjoy rules.
+		A \powergrid is the station that charge the battery of an electric car. All \powergrid are displayed in the map on-board \powerenjoy cars. Each \powergrid is in a \safearea. A \powerenjoyuser who plugs his car into a \powergrid receives the discount expected within \powerenjoy rules.
 	\subsubsection{Reservation}
-		A \reservation is the possibility that a \registereduser has to book a car at the latest for one hour.
+		A \resevation is the possibility that a \powerenjoyuser has to book a car at the latest for one hour.
 	\subsubsection{Stopover}
-		A \stand is the possibility that a \registereduser has to pause his \carsharing. During a \stand the \registereduser can leave the car, than he can re-unlock it through his smart-phone.
-	\subsubsection{Rent}
-		A \rent is the set of actions that the user performs from the moment in which the system unlocks car to the moment in the car is released.
+		A \stopover is the possibility that a \powerenjoyuser has to pause his \carsharing. During a \stopover the \powerenjoyuser can leave the car, than he can re-unlock it through his smart-phone.
+	\subsubsection{Personal  Personal Identification Number (pin)}
+		 \personalpin is a number of 5 digits that the user inserts on the car screen to enable driving commands.
 
 \subsection{Further Developments}
 	We think that one of the most important things is to release a \service that can be extended and improved. It's trivial that a \service like this must be able to be changed and updated.
@@ -431,10 +444,10 @@ During the development of the user interface will be purposed some sample tests 
 		The system security provides secure communication among users and serves and guarantees the protection of data from malicious agents. In order to guarantee security the system must be conformed to the ISO 27001:2013 "Information technology - Security techniques - Information security management systems - Requirements" \footnote{\href{https://en.wikipedia.org/wiki/ISO/IEC_27001:2013}{ISO 27001:2013 on Wikipedia}}
 		\subsubsection{Portability}
 		In order to satisfy the request from the largest pool of users it is necessary to create an application for the most used mobile OS. Specifically Android\textregistered, iOS\textregistered, Windows Phone \textregistered. 
-\par There are several possibilities to make these applications. Here we identify three possible development guidelines. Every possibility has its Pros and Cons that we are going to analyze.
+\par There are several possibilities to make these applications. Here we identify three possible development guidelines. Every possibility has its Pros and Cons that we are going to analyse.
 		\begin{itemize}
 			\item \textbf{WebApp:} develop a mobile application using tools like PhoneGap\textregistered. The system will be developed once creating a responsive website. Than the website will be transformed to a mobile application via PhoneGap. \\\textbf{Pros:} fast deployment, write code only once. \\\textbf{Cons:} less responsive than other methods.
-			\item \textbf{Cross Compiling:} develop a mobile application using tools like Xamarin\textregistered. The system will be developed sharing code for all the platforms.\\\textbf{Pros:} development of native applications, code sharing among platforms. \\\textbf{Cons: } Not complete native llok and feel, the code is not totally reusable (only $\approx 80\%$) .
+			\item \textbf{Cross Compiling:} develop a mobile application using tools like Xamarin\textregistered. The system will be developed sharing code for all the platforms.\\\textbf{Pros:} development of native applications, code sharing among platforms. \\\textbf{Cons: } Not complete native look and feel, the code is not totally reusable (only $\approx 80\%$) .
 			\item \textbf{Native App:} develop a mobile application for each operating system on which it would run. \\\textbf{Pros:} high performance and responsiveness of the application, native look and feel\\\textbf{Cons:} tripled the effort of development. Each application requires its development team.
 		\end{itemize}		
 		\subsubsection{Money Saving Car distribution}
@@ -448,37 +461,536 @@ This allocation method is also used from \fieldstaff in order to re-allocate car
 		
 
 \section{Scenarios Identifying}
-	To allow you to better understand the behavior of this service here we present some possible situations.
+	To allow you to better understand the behaviour of this service here we present some possible situations.
 	\subsection{Scenario 1}
 		Alessandro is planning his weekend. It's his best friend's birthday party and he has to reach a place not covered by public transportation. Alessandro decides to subscribe to the new \powerenjoy \service. He downloads the application on his smartphone, opens the app and clicks on the Sing Up menu. He provides all the information needed to join the \service. In order to do that he sends a scan of his driving license and fills an electronic form containing his personal info (personal details, payment info). Finally he agrees to \service's	"Terms and Conditions'' .
-		Now he is waiting for an acknowledgment of registration. After a while he receives an email reporting his successfully subscription to the \service. Alessandro can now Log In in the application as a \registereduser.
+		Now he is waiting for an acknowledgement of registration. After a while he receives an email reporting his successfully subscription to the \service. Alessandro can now Log In in the application as a \registereduser.
 	\subsection{Scenario 2}
 		Ariana feels smart, last week she has rent a \powerenjoy but she has run out of money in her prepaid card, so the system has locked her account. She owns 2 different prepaid credit cards and she tries to re-subscribe to the \service without settle her debt. Ariana provides all the information for subscribing to the \service and sends it. Her application request is denied.
 	\subsection{Scenario 3}
-		It's Saturday night and Alessandro is a newbie of \powerenjoy \service, he tries to reserve his car, he log in in the app and turns on the GPS of his smartphone. In a few seconds a map appears on the screen. Here are displayed all the available cars around him. Clicking on a car he can see it's autonomy. He choses the nearest car to his house and reserves it clicking on the ``Reserve Now'' button. From this moment he has an hour before it's \reservation expires. He gets ready for the night and than walks to the car. Once arrived he opens the 	\powerenjoy app and goes to the ``Here I am'' menu. The system checks Alessandro's GPS Position and if he is close enough to the car unlocks it. Alessandro is very happy and gets in the car.
+		It's Saturday night and Alessandro is a newbie of \powerenjoy \service, he tries to reserve his car, he log in in the app and turns on the GPS of his smartphone. In a few seconds a map appears on the screen. Here are displayed all the available cars around him. Clicking on a car he can see it's autonomy. He chooses the nearest car to his house and reserves it clicking on the ``Reserve Now'' button. From this moment he has an hour before it's \reservation expires. He gets ready for the night and than walks to the car. Once arrived he opens the 	\powerenjoy app and goes to the ``Here I am'' menu. The system checks Alessandro's GPS Position and if he is close enough to the car unlocks it. Alessandro is very happy and gets in the car.
 	\subsection{Scenario 4}
-		It's Monday morning and Alice is getting ready for her work day. Alice is a \registereduser of \powerenjoy . She is late and won't take the subway today. She reserves a car near her apartment. While she is getting ready for the day, she receives a call from Melissa. Melissa is an Alice working colleague. Melissa is gonna picking Alice up. Alice cancels hers \reservation and pays a fee of 0.25\euro because it is passed less than a quarter of an hour from his \reservation time.
+		It's Monday morning and Alice is getting ready for her work day. Alice is a \registereduser of \powerenjoy . She is late and won't take the subway today. She reserves a car near her apartment. While she is getting ready for the day, she receives a call from Melissa. Melissa is an Alice working colleague. Melissa is going to pick Alice up. Alice cancels hers \reservation and pays a fee of 0.25\euro because it is passed less than a quarter of an hour from his \reservation time.
 	\subsection{Scenario 5}
 		Marcus has to carry his son Mario to school. He reserves a \powerenjoy. While they are going downstairs Mario falls down. He loses consciousness and Marcus calls an Ambulance. In this situation Marcus completely forgets to cancel his \reservation, so after an hour 1\euro is charged	on his credit card.
 	\subsection{Scenario 6}
-		Antony is moving in the subway from Duomo to Sesto Primo Maggio Fs. It's Friday 21th of October and in Sesto Primo Maggio Fs there are not trains to reach Lissone because there is an usual Trenord strike. Fortunately he is a \powerenjoy user. Antony Logs In in the app and selects the manual input car research. Typing on his smartphone ``Sesto San Giovanni'' he easily checks all the available  cars. He choses a car and reserves it. He is very happy because the "Money Saving Option'' guarantees him an high probable possibility to find a car in each \powerenjoy \safearea. Once in Sesto San Giovanni he unlocks his car while all the other commuter can only hope to reach their home within the day after.
+		Antony is moving in the subway from Duomo to Sesto Primo Maggio Fs. It's Friday 21th of October and in Sesto Primo Maggio Fs there are not trains to reach Lissone because there is an usual Trenord strike. Fortunately he is a \powerenjoy user. Antony Logs In in the app and selects the manual input car research. Typing on his smartphone ``Sesto San Giovanni'' he easily checks all the available  cars. He chooses a car and reserves it. He is very happy because the "Money Saving Option'' guarantees him an high probable possibility to find a car in each \powerenjoy \safearea. Once in Sesto San Giovanni he unlocks his car while all the other commuter can only hope to reach their home within the day after.
 	\subsection{Scenario 7}
-		It's raining. Filippo is going towards the \powerenjoy car just reserved when he meets Alessandro and Luca, two his classmates. They have to go home, Filippo offers to give a lift to both for the station and they accept. Once into the car, the system notes that there is two passengers. Arrived at the station Filippo stops the car and his friends leave the veichle. At this time the system store on its memory that on that stretch of road traveled it will have to apply the discount of 10\%.
+		It's raining. Filippo is going towards the \powerenjoy car just reserved when he meets Alessandro and Luca, two his classmates. They have to go home, Filippo offers to give a lift to both for the station and they accept. Once into the car, the system notes that there is two passengers. Arrived at the station Filippo stops the car and his friends leave the vehicle. At this time the system store on its memory that on that stretch of road travelled it will have to apply the discount of 10\%.
 	\subsection{Scenario 8}
-		Andrew has to carry his mom to the airport but remembers that his car is being repaired. He thinks that the best choice is to reserve a car with the \powerenjoy app. After that they go towards the vehicle and, once reached it, Andrew helps his mom to load the heavy suitcase in the back seat. Now everything is ready to go. On the way by the airport on the screen of the car appears a message that explain to the driver that he finished the money on his credit card, so he can finish this trip but his account will be blocked until he will pay the debts towards the company. Arrived at the airport the mom goes out from the car with her suitcase and says goodbye to her son. Once at home Andrew has to pay the full rent because the system notice that the passenger is only one.
+		Andrew has to carry his mother to the airport but remembers that his car is being repaired. He thinks that the best choice is to reserve a car with the \powerenjoy app. After that they go towards the vehicle and, once reached it, Andrew helps his mother to load the heavy suitcase in the back seat. Now everything is ready to go. On the way by the airport on the screen of the car appears a message that explain to the driver that he finished the money on his credit card, so he can finish this trip but his account will be blocked until he will pay the debts towards the company. Arrived at the airport the mother goes out from the car with her suitcase and says goodbye to her son. Once at home Andrew has to pay the full rent because the system notice that the passenger is only one.
 	\subsection{Scenario 9}
 		Paul is late for his first day of teaching. Go by foot will not allow him to arrive on time. He decides to reserve a car with his \powerenjoy app. He opens it and checks the available cars. Unfortunately he notices that the only nearby car have 15\% of battery full and the workplace is 4KM from the nearest \powergrid station, outside a \safearea. The workplace is just 10 minutes by car from its position and the time is running out, so 	he reserves it. Left the \safearea, the car advice Paul by the screen that he should 	park in a \safearea, otherwise will be charged recovery costs. He's too much late and ignores the advice. The system will charge 30\% more on this ride because the car is left with less 20\% of the battery's charge and at more that 3KM from the nearest \powergrid station, furthermore Paul will has to pay recovery costs.
 	\subsection{Scenario 10}
 		Rodolfo has to meet her parents in their downtown manor. He could go by feet but it's a very cold winter day and prefers to reserve a warmer \powerenjoy car. Looking at the cars around him, luckily notices that the nearest car have the battery completely charge! He is clever and kind, so decide not to go directly to his parent's house but to reach the closest station to it in order to plug the car into the \powergrid. Rodolfo reaches the car, get in and starts driving. Arrived at the station, the car's battery level is 90\%. For this journey he will receive a total of 50\% discount: 20\% from the level of the battery ( more than 50\% ) and 30\% from his kindness ( car plugged into a \powergrid ). A very lucky day for Rodolfo!
 	\subsection{Scenario 11}
-		Amelia is a good mom and be careful to save money for her family, in fact she went to the supermarket by foot. After buying the necessary things for the house, she notices that the bags are too heavy to walk back. She remembers that she is subscribed to the \powerenjoy \service. She logs in the app, reserves a car. Than she picks up the car, selects the destination and chooses the ``money saving option''. Although this unforeseen she can save some money. The system computes the destination in order to get the discount. Once arrived to the destination she locks the car and plugs it into the \powergrid. The system applies a discount of 30\% on her ride.
+		Amelia is a good mother and be careful to save money for her family, in fact she went to the supermarket by foot. After buying the necessary things for the house, she notices that the bags are too heavy to walk back. She remembers that she is subscribed to the \powerenjoy \service. She logs in the app, reserves a car. Than she picks up the car, selects the destination and chooses the ``money saving option''. Although this unforeseen she can save some money. The system computes the destination in order to get the discount. Once arrived to the destination she locks the car and plugs it into the \powergrid. The system applies a discount of 30\% on her ride.
 	\subsection{Scenario 12}
 		John is going to the gym using the \powerenjoy \service, when he notices that the car's battery level is critically low, but he decides to go on without takes care of it. At certain point the car informs John that he should go near the roadside because the car will stops shortly. John is a bully and decides to ignore the warning. Taking care of the user's safety the car stops as expected, but John is in the middle of the road! Never having been in a similar situation he decides to call the assistance using the embedded screen on the car. An operator takes the call and explains John that a field \staff is coming on site and until the car is not parked safely he will continue to pay. A very expensive day for our John.		
 	
 \section{UML Models And Use Cases}
 	\subsection{Use Cases Diagram}
+	\noindent
+	\makebox[\textwidth]{\includegraphics[scale=0.85]{usecase.pdf} }%
+
+
+
 	\subsection{Actors Identifying}
+		\noindent
+		\makebox[\textwidth]{\includegraphics[scale=0.85]{Actors.pdf} }\\
+	Here we explain which is the hierarchy of users. See Users definitions in the \hyperref[sec:Glossary]{Glossary}.  
 	\subsection{Use Cases}
+		\subsubsection{Registration}
+		\begin{center}
+		\begin{tabular}{l||p{10cm}}
+		\textbf{Name} 
+			& Registration\\ [8px]
+		\textbf{Actors} 
+			& Guest user\\ [8px]
+		\textbf{Assumptions} 
+			& \begin{itemize}
+				\item The guest downloaded the app.
+			\end{itemize}\\
+		\textbf{Flow of events}
+			& \begin{enumerate}
+	 			\item The user opens PowerEnJoy app on his smartphone.
+				\item The guest provides his credentials and documents to the system.
+				\item The system verify user's credentials and documents to ensure that he can register in.
+				\item The system sends to the user's e-mail address his own password and pin.
+			\end{enumerate}\\ 
+		\textbf{Exit conditions}
+			& The guest has become a registered user.\\ [8px]
+		\textbf{Exceptions}
+			& \begin{itemize}
+				\item The user's credentials are unsuccessfully verified, an error message is shown. The user is not registered.
+			\end{itemize}
+		\end{tabular}
+		\end{center}
+	
+		\noindent
+		\makebox[\textwidth]{\includegraphics[scale=0.85]{Registration.pdf} }%
+
+
+		\subsubsection{Credentials and Documents Verification}
+		\begin{center}
+		\begin{tabular}{l||p{10cm}}
+		\textbf{Name} 
+			& Credentials and documents verification\\ [8px]
+		\textbf{Actors} 
+			& Bank system, Motorization system\\ [8px]
+		\textbf{Assumptions} 
+			& \begin{itemize}
+				\item The system owns user's documents.
+			\end{itemize}\\
+		\textbf{Flow of events}
+			& \begin{enumerate}
+	 			\item The system sends the documents to the competence authorities.
+				\item The authorities check the authenticity of the documents.
+				\item The authorities send the confirmation to the system.
+			\end{enumerate}\\ 
+		\textbf{Exit conditions}
+			& The user's documents are authenticated.\\ [8px]
+		\textbf{Exceptions}
+			& \begin{itemize}
+				\item The system receives a negative reply from at least one authority. The verification is rejected.
+			\end{itemize}
+		\end{tabular}
+		\end{center}
+		\noindent
+		\makebox[\textwidth]{\includegraphics[scale=0.85]{Credentials_and_documents_verification.pdf}}%
+
+
+		\subsubsection{Login}
+		\begin{center}
+		\begin{tabular}{l||p{10cm}}
+		\textbf{Name} 
+			& Login\\ [8px]
+		\textbf{Actors} 
+			& Registered user\\ [8px]
+		\textbf{Assumptions} 
+			& \begin{itemize}
+				\item The user has successfully signed up to the system.
+				\item The user is not logged to the system yet.
+			\end{itemize}\\
+		\textbf{Flow of events}
+			& \begin{enumerate}
+	 			\item The user opens the app.
+				\item The user declares his identity.
+				\item The system recognises the identity and ensures that the user who is logging in is who he claims to be.
+				\item The user can visualize his personal page and access to system's functionalities provided to him.
+			\end{enumerate}\\ 
+		\textbf{Exit conditions}
+			& The user is logged into the system now.\\ [8px]
+		\textbf{Exceptions}
+			& \begin{itemize}
+				\item The informations inserted are wrong, an error message is shown. The user is not logged.
+			\end{itemize}
+		\end{tabular}
+		\end{center}
+		\noindent
+		\makebox[\textwidth]{\includegraphics[scale=0.85]{Login.pdf}}%
+
+		\subsubsection{Password Recovery}
+		\begin{center}
+		\begin{tabular}{l||p{10cm}}
+		\textbf{Name} 
+			& Password recovery\\ [8px]
+		\textbf{Actors} 
+			& Registered user\\ [8px]
+		\textbf{Assumptions} 
+			& \begin{itemize}
+				\item The user is not logged to the system yet.
+			\end{itemize}\\
+		\textbf{Flow of events}
+			& \begin{enumerate}
+	 			\item The user opens the app.
+				\item The user selects the recovery password option.
+				\item The user provides to the system his own pin and e-mail address.
+				\item The system checks that the pin and the address inserted are associated.
+				\item The system sends an e-mail containing the forgotten password to the user's e-mail address.
+			\end{enumerate}\\ 
+		\textbf{Exit conditions}
+			& The e-mail containing the password is sent.\\ [8px]
+		\textbf{Exceptions}
+			& \begin{itemize}
+				\item The pin and address inserted are not associated, an error message is shown. The e-mail is not sent.
+			\end{itemize}
+		\end{tabular}
+		\end{center}
+		\noindent
+		\makebox[\textwidth]{\includegraphics[scale=0.85]{Password_recovery.pdf}}%
+
+		\subsubsection{Update Safe Areas}
+		\begin{center}
+		\begin{tabular}{l||p{10cm}}
+		\textbf{Name} 
+			& Update safe areas\\ [8px]
+		\textbf{Actors} 
+			& Management staff\\ [8px]
+		\textbf{Assumptions} 
+			& \begin{itemize}
+				\item The user is logged as management staff to the system yet.
+			\end{itemize}\\
+		\textbf{Flow of events}
+			& \begin{enumerate}
+	 			\item The staff goes in the safe area section of the app, that is visible only by management staff.
+				\item The user interface shows a list of actual safe areas.
+				\item The staff select to add a new safe area or to update an existing one.
+				\item The staff provides the necessary parameters for the action.
+				\item The system takes care of the request.
+			\end{enumerate}\\ 
+		\textbf{Exit conditions}
+			& The safe areas set is updated.\\ [8px]
+		\textbf{Exceptions}
+			& \begin{itemize}
+				\item The parameters inserted are inconsistent, an error message is shown. The safe areas set is unchanged.
+			\end{itemize}
+		\end{tabular}
+		\end{center}
+		\noindent
+		\makebox[\textwidth]{\includegraphics[scale=0.85]{Update_safe_areas.pdf}}%
+
+		\subsubsection{Update Polices}
+		\begin{center}
+		\begin{tabular}{l||p{10cm}}
+		\textbf{Name} 
+			& Update polices\\ [8px]
+		\textbf{Actors} 
+			& Management staff\\ [8px]
+		\textbf{Assumptions} 
+			& \begin{itemize}
+				\item The user is logged as management staff to the system yet.
+			\end{itemize}\\
+		\textbf{Flow of events}
+			& \begin{enumerate}
+	 			\item The staff goes in the polices section of the app, that is visible only by management staff.
+				\item The user interface shows a list of actual polices.
+				\item The staff select to add a new policy or to update an existing one.
+				\item The staff provides the necessary parameters for the action.
+				\item The system notify the users that the policies are changed and it blocks them account until they accept the new policies.
+			\end{enumerate}\\ 
+		\textbf{Exit conditions}
+			& The policies set is updated.\\ [8px]
+		\textbf{Exceptions}
+			& \begin{itemize}
+				\item The parameters inserted are inconsistent, an error message is shown. The policies set is unchanged.
+			\end{itemize}
+		\end{tabular}
+		\end{center}
+		\noindent
+		\makebox[\textwidth]{\includegraphics[scale=0.85]{Update_policies.pdf}}%
+
+		\subsubsection{Notify Users}
+		\begin{center}
+		\begin{tabular}{l||p{10cm}}
+		\textbf{Name} 
+			& Notify users\\ [8px]
+		\textbf{Actors} 
+			& PowerEnjoy user\\ [8px]
+		\textbf{Assumptions} 
+			& \begin{itemize}
+				\item The user is logged to the system yet.
+			\end{itemize}\\
+		\textbf{Flow of events}
+			& \begin{enumerate}
+	 			\item The user interface shows a message informing the user that the policies are changed.
+				\item The user accepts the new conditions. 
+				\item The system unlock his account.
+			\end{enumerate}\\ 
+		\textbf{Exit conditions}
+			& Will be applied the new policies to the user.\\ [8px]
+		\textbf{Exceptions}
+			& \begin{itemize}
+				\item The user doesn't accept the new conditions. The user's account is deleted.
+			\end{itemize}
+		\end{tabular}
+		\end{center}
+
+	\subsubsection{Search Car}
+	\begin{center}
+	\begin{tabular}{l||p{10cm}}
+	\textbf{Name} 
+		& Search Car\\ [8px]
+	\textbf{Actors} 
+		& PowerEnJoy User\\ [8px]
+	\textbf{Assumptions} 
+		& \begin{itemize}
+			\item The user is logged in to the system.
+		\end{itemize}\\
+	\textbf{Flow of events}
+		& \begin{enumerate}
+	 		\item The user opens PowerEnJoy app on his smartphone 
+	 		\item The user interface displays all available cars around the user position according to the setted range. 
+			\item Optionally the user can search the cars around an inserted address, or near a remarkable place. 
+		\end{enumerate}\\ 
+	\textbf{Exit conditions}
+		&The user finds a car that satisfies his need and chooses too reserve it.\\ [8px]
+	\textbf{Exceptions}
+		& \begin{itemize}
+			\item The user does not find an useful car and exit the application.
+			\item The user want not really reserve a car. 
+		\end{itemize}
+	\end{tabular}
+	\end{center}
+
+	\subsubsection{Reserve Car}
+	\begin{center}
+	\begin{tabular}{l||p{10cm}}
+	\textbf{Name} 
+		& Reserve Car\\ [8px]
+	\textbf{Actors} 
+		& PowerEnJoy User\\ [8px]
+	\textbf{Assumptions} 
+		& \begin{itemize}
+			\item The user is logged in to the system.
+			\item The user has Searched Cars and has find an optimal one
+		\end{itemize}\\
+	\textbf{Flow of events}
+		& \begin{enumerate}
+ 			\item The user selects the car that he want reserve
+ 			\item The user interface displays all informations about the car (E.g. Autonomy in km) and a button for reserve it. 
+			\item The user chooses to reserve the car. 
+			\item The user confirms his choose.
+		\end{enumerate}\\ 
+	\textbf{Exit conditions}
+		&The system confirms the successful reservation, displays the time before reservation expiration and the route for reach it from the current position of the user.\\ [8px]
+	\textbf{Exceptions}
+		& \begin{itemize}
+			\item Reservation expires.
+			\item The user exits the procedure before confirming it.
+			\item Another user reserves another car while our user is reserving it, the system notify the user. The reservation ends unsuccessfully.
+		\end{itemize}
+	\end{tabular}
+	\end{center}
+
+	\subsubsection{Cancel Reservation}
+	\begin{center}
+	\begin{tabular}{l||p{10cm}}
+	\textbf{Name} 
+		& Cancel Reservation\\ [8px]
+	\textbf{Actors} 
+		& PowerEnJoy User\\ [8px]
+	\textbf{Assumptions} 
+		& \begin{itemize}
+			\item The user is logged in to the system.
+			\item The user has an active reservation.
+		\end{itemize}\\
+	\textbf{Flow of events}
+		& \begin{enumerate}
+ 			\item The user opens PowerEnJoy app on his smartphone 
+ 			\item The user interface displays user's current reservation.
+			\item The user eliminates the reservation clicking on the cancel reservation button.
+			\item The user confirms his selection.
+		\end{enumerate}\\ 
+	\textbf{Exit conditions}
+		&The user successfully cancel his reservation. The reserved car returns available for other users.\\ [8px]
+	\textbf{Exceptions}
+		&...\\[8px]
+	\end{tabular}
+	\end{center}
+
+	\subsubsection{Pick up car}
+	\begin{center}
+	\begin{tabular}{l||p{10cm}}
+	\textbf{Name} 
+		& Pick up car\\ [8px]
+	\textbf{Actors} 
+		& PowerEnJoy User\\ [8px]
+	\textbf{Assumptions} 
+	& \begin{itemize}
+		\item The user is logged in to the system.
+		\item The user has a reservation active.
+		\item The user is no far than 10 meters from the car.
+		\item The user inserts the correct \personalpin 
+	\end{itemize}\\
+	\textbf{Flow of events}
+		& \begin{enumerate}
+ 		\item The user is close to his reserved car.
+ 		\item The user selects the unlock car button (displayed in the application) UI on it's smartphone.
+		\item The system unlocks the car.
+		\item The user gets in the car and insets his \personalpin.
+		\item The system detects all passengers from cars sensors.
+		\item Driving command are enabled by the system. 
+		\item Optionally the user can decide to activate the "Money Saving Option".
+		\item The user starts driving his car.
+		\item the system calculates the fare and shows it on the display.
+		\end{enumerate}\\ 
+	\textbf{Exit conditions}
+		&\begin{itemize}
+			\item The user makes a \stopover.
+			\item The user releases car.
+		\end{itemize}\\
+	\textbf{Exceptions}
+		& \begin{itemize}
+			\item The user run out of money on his credit card.
+			\item The car runs out of battery.
+		\end{itemize}
+	\end{tabular}
+	\end{center}
+	
+	\subsubsection{Stand}
+	\begin{center}
+	\begin{tabular}{l||p{10cm}}
+	\textbf{Name} 
+		& Stand\\ [8px]
+	\textbf{Actors} 
+		& PowerEnJoy User\\ [8px]
+	\textbf{Assumptions} 
+	& \begin{itemize}
+		\item The user has picked up a car. 
+	\end{itemize}\\
+	\textbf{Flow of events}
+		& \begin{enumerate}
+ 		\item The user parks the car.
+ 		\item The user selects the \stopover option on the car screen.
+		\item Driving command are disabled by the system. 
+		\item The user get off the car.
+		\item The system locks the car.
+		\end{enumerate}\\ 
+	\textbf{Exit conditions}
+		&\begin{itemize}
+			\item When the user wants end the \stopover he re-unlocks and start driving the car as he has done in the "Pick up car" use case.
+		\end{itemize}\\
+	\textbf{Exceptions}
+		& \begin{itemize}
+			\item The user run out of money on his credit card. (The user will not be able to re-unlock the car.)
+		\end{itemize}
+	\end{tabular}
+	\end{center}
+	
+	\subsubsection{Money Saving Option}
+	\begin{center}
+	\begin{tabular}{l||p{10cm}}
+	\textbf{Name} 
+		& Money Saving Option\\ [8px]
+	\textbf{Actors} 
+		& PowerEnJoy User\\ [8px]
+	\textbf{Assumptions} 
+	& \begin{itemize}
+		\item The user has picked up a car. 
+	\end{itemize}\\
+	\textbf{Flow of events}
+		& \begin{enumerate}
+ 		\item The user selects his destination address on the car screen
+		\item The system purposes the \powergrid station according to algorithm constraints.
+		\end{enumerate}\\ 
+	\textbf{Exit conditions}
+		&\begin{itemize}
+			\item The user releases the car.
+		\end{itemize}\\
+	\textbf{Exceptions}
+		& \begin{itemize}
+			\item There are no available \powergrid stations in 1 km range from the destination. (The system during driving will notify the user through the car screen if a \powergrid becomes free.)
+		\end{itemize}
+	\end{tabular}
+	\end{center}
+
+	\subsubsection{Release Car}
+	\begin{center}
+	\begin{tabular}{l||p{10cm}}
+	\textbf{Name} 
+		& Release Car\\ [8px]
+	\textbf{Actors} 
+		& PowerEnJoy User\\ [8px]
+	\textbf{Assumptions} 
+	& \begin{itemize}
+		\item The user has picked up a car. 
+	\end{itemize}\\
+	\textbf{Flow of events}
+		& \begin{enumerate}
+ 		\item The user parks the car in a \safearea.
+		\item The user selects the end \carsharing option on the car screen.
+		\item Driving command are disabled by the system. 
+		\item The system starts calculating fare discounts.
+		\end{enumerate}\\ 
+	\textbf{Exit conditions}
+		&\begin{itemize}
+			\item The user get off the car, than the system locks the car.
+		\end{itemize}\\
+	\textbf{Exceptions}
+		& \begin{itemize}
+			\item The user is not in a safe area and he cannot end \carsharing. 
+		\end{itemize}
+	\end{tabular}
+	\end{center}
+
+\subsubsection{Plug car}
+	\begin{center}
+	\begin{tabular}{l||p{10cm}}
+	\textbf{Name} 
+		& Plug Car\\ [8px]
+	\textbf{Actors} 
+		& PowerEnJoy User\\ [8px]
+	\textbf{Assumptions} 
+	& \begin{itemize}
+		\item The user has parked a car near a \powergrid and has ended his \carsharing. 
+	\end{itemize}\\
+	\textbf{Flow of events}
+		& \begin{enumerate}
+ 			\item The user inserts his \personalpin into the \powergrid screen, in order to let the \powergrid enabled to charge cars.
+			\item The user plugs the car to the \powergrid.
+			\item The system detects that the car of our user is charging at the \powergrid unlocked by the same user. 
+		\end{enumerate}\\ 
+	\textbf{Exit conditions}
+		&\begin{itemize}
+			\item The user receives the expected discount.
+		\end{itemize}\\
+	\textbf{Exceptions}
+		&...\\[8px]
+	\end{tabular}
+	\end{center}
+
+\subsubsection{Handle Emergency}
+	\begin{center}
+	\begin{tabular}{l||p{10cm}}
+	\textbf{Name} 
+		& Handle Emergency\\ [8px]
+	\textbf{Actors} 
+		& Emergency Staff, PowerEnJoy User\\ [8px]
+	\textbf{Assumptions} 
+		&...\\[8px]
+	\textbf{Flow of events}
+		& \begin{enumerate}
+			\item The system notifies the Emergency Staff that an emergency rose up.
+			\item Given the nature of the emergency the staff handles.
+				\begin{itemize}
+					\item if the emergency is a "Help Request" the staff is able to interact to the \powerenjoyuser.
+					\item if a "Car Accident" has happened the staff takes the proper decisions, and the field staff is alerted.
+					\item if a car has the "Empty Battery" the Emergency Staff signals it to the Field Staff.
+			\end{itemize} 
+		\end{enumerate}\\ 
+	\textbf{Exit conditions}
+		&\begin{itemize}
+			\item The emergency has been resolved.
+		\end{itemize}\\
+	\textbf{Exceptions}
+		&...\\[8px]
+	\end{tabular}
+	\end{center}
+
+\subsubsection{Maintain Car}
+	\begin{center}
+	\begin{tabular}{l||p{10cm}}
+	\textbf{Name} 
+		&Maintain Car\\ [8px]
+	\textbf{Actors} 
+		& Field Staff\\ [8px]
+	\textbf{Assumptions} 
+		&An issue with a car has happened.\\
+	\textbf{Flow of events}
+		& \begin{enumerate}
+			\item The Field Staff reaches the car that needs maintenance.
+			\item The Field Staff evaluates the car situation and take a decision on how to maintain it. 
+			\item Once the car is repaired the field staff relocates the car in a \safearea and set it visible to PowerEnJoy Users.
+		\end{enumerate}\\ 
+	\textbf{Exit conditions}
+		&\begin{itemize}
+			\item The car has been maintained.
+		\end{itemize}\\
+	\textbf{Exceptions}
+		&The car cannot be maintained.\\[8px]
+	\end{tabular}
+	\end{center}
 
 	\subsection{Class Diagram}
 \section{External Interfaces}
