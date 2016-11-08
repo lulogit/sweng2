@@ -6,7 +6,7 @@
 \usepackage{textcomp}
 \usepackage{graphicx}
 \usepackage{eurosym}
-\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref}
 \usepackage{float}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -24,6 +24,57 @@
 \newcommand{\rent}{\textit{rent }}
 \usepackage{tabto}
 \usepackage{verbatim}
+\usepackage{etoolbox}
+
+\begin{comment} some new commands and enviroments to painlessly handle requirements, goals and domain assumptions listing \end{comment}
+\newenvironment{goals}
+		{
+			\newcounter{goalId}
+			\newcommand{\goal}[1]{ 
+				\stepcounter{goalId} 
+				\hypertarget{G\arabic{goalId}}{
+					\item[
+						 G.\arabic{goalId}
+					]{ ##1 }
+				}
+			}
+			\begin{description}
+		}
+		{
+			\end{description}
+		}
+
+\newenvironment{domainassumptions}
+	{
+		\newcounter{domainassumptionId}
+		\newcommand{\domainassumption}[1]{ 
+			\stepcounter{domainassumptionId} 
+			\item[D.\arabic{domainassumptionId}]{##1}
+			}
+		\begin{description}
+	}
+	{
+		\end{description}
+	}
+
+\newcounter{reqId}
+\newenvironment{requirementsgroup}
+		{
+			\newcommand{\req}[1]{ 
+				\stepcounter{reqId} 
+				\hypertarget{R\arabic{reqId}}{
+					\item[
+						 R.\arabic{reqId}
+					]{ ##1 }
+				}
+			}
+			\begin{description}
+		}
+		{
+			\end{description}
+		}
+\newcommand{\goalref}[1]{  \hyperlink{G#1}{G.#1} }
+\newcommand{\reqref}[1]{  \hyperlink{R#1}{R.#1} }
 
 \makeatletter
 \usepackage{babel}
@@ -80,41 +131,50 @@
   \tab \tab A user can take advantage of the "Money saving" option selecting it on the integrated interface in the car. After    that he/she can input his/her final destination and the system provides information about the station where to leave the    car to get a discount. This destination is determined to ensure the uniform distribution of cars and depends both     on the destination of the user and on the availability of power plugs at the selected station.
 	
 	\subsection{Goals}
+
 	We have selected a list of objectives that we think \powerenjoy  has to reach:
-	\begin{description}
+	\begin{goals}
 		
 		\begin{comment} drivers for PowerEnjoy's success \end{comment}
-		\item [G.1]{ To allow user to simply access to the \powerenjoy services. }
-		\item [G.2]{ To guarantee an higher  probability of finding a car, compared to other car sharing services. }
-		\item [G.3]{ To guarantee an efficient manutenution and recharge process of the cars, oriented to favorite their fairly distribution over the territory. }
+		\goal{ To allow user to simply access to the \powerenjoy services. }
+		\goal{ To guarantee an higher  probability of finding a car, compared to other car sharing services. }
+		\goal{ To guarantee an efficient maintenance and recharge process of the cars, oriented to favourite their fairly distribution over the territory. }
 		\begin{comment} user's goals \end{comment}
-		\item [G.4]{ To allow users to make a reservation for a car in advance, and to cancel a reservation by its expiration time. }
-		\item [G.5]{  To transparently charge the user for the service, minimizing its interaction with payment interfaces. }
-		\item [G.6]{  To allow users to drive cars, minimizing their efforts for finding safe areas where to park.}
-		\item [G.7]{ To encourage users' virtuous behaviour  in relation to service's fairness. }
+		\goal{ To allow users to make a reservation for a car in advance, and to cancel a reservation by its expiration time. }
+		\goal{  To transparently charge the user for the service, minimizing its interaction with payment interfaces. }
+		\goal{  To allow users to drive cars, minimizing their efforts for finding safe areas where to park.}
+		\goal{ To encourage users' virtuous behaviour  in relation to service's fairness. }
 		\begin{comment} service efficiency goals \end{comment}
-		\item [G.8]{ To create a system that gives the possibility to be monitored and administrated by \powerenjoy's authorized personal. }
-		\item [G.9]{  To empower the authorized personal in order to be able to quickly react to emergencies, potentially dangerous situations and users' requests for help.}
-		\item [G.10]{ To create a system that provides a programmable interface, in order reduce the costs of further enanchements / manutenution to the system exploiting internal personal or third party developers.}
-	\end{description}
+		\goal{ To create a system that gives the possibility to be monitored and administrated by \powerenjoy's authorized personal. }
+		\goal{  To empower the authorized personal in order to be able to quickly react to emergencies, potentially dangerous situations and users' requests for help, in best interest of users' safety.}
+		\goal{ To create a system that provides a programmable interface, in order reduce the costs of further enhancements / maintenance to the system exploiting internal personal or third party developers.}
+		
+		% \goal{ . }
+
+	\end{goals}
 
 	\subsection{Domain Assumptions }
-	We suppose that the following conditions hold in the analysed world:
-	\begin{description}
-		
-		\begin{comment} drivers for PowerEnjoy's success \end{comment}
-		\item [D.1]{ The geographical area covered by the service is included in the coverage area of most common mobile communication technologies (3g, 4g) offered by main telecommunications companies. }
-		\item [D.2]{ Only correctly registered users can access the functionalities provided by the system. }
-		\item [D.3]{ Cars are able to send diagnostic for the manutention process in addition to realtime telemetrics and status of the battery.  }
-		\item [D.]{ Cars can be selectively remotely locked, unlocked, powered on and powered off by authorized personal. }
-		\item [D.]{  }
-		\item [D.]{  }
-		\item [D.]{  }
-		\item [D.]{  }
-		\item [D.]{  }
-		\item [D.]{  }	
 
-	\end{description}
+	We suppose that the following conditions hold in the analysed world:
+	\begin{domainassumptions}
+
+		\domainassumption{ The geographical area covered by the service is included in the coverage area of most common mobile communication technologies (3g, 4g) offered by main telecommunications companies. }
+
+		\domainassumption{ Only correctly registered users can access the functionalities provided by the system. }
+		\domainassumption{ Users will not park cars in position not covered by GPS signal (such as underground parking slots). }
+
+		\domainassumption{ Cars are able to send diagnostic for the maintenance process in addition to real-time telemetry about speed and status of the battery.  }
+		\domainassumption{ Cars can be selectively remotely locked, unlocked, powered on and powered off by authorized personal. }
+		\domainassumption{ Cars periodically notify the system of their position, in case of accident / failure the notification process stops. }
+		\domainassumption{ Cars are provided with an hand-free communication set that can be remotely activated. }
+
+		\domainassumption{ Both user's and cars' GPS position can't be faked by any mean (e.g: GPS spoofing). }
+
+		\domainassumption{ Each plug in charge stations is capable to be remotely  enabled/disabled for the charge of cars. }
+		
+		%\domainassumption{ . }
+
+	\end{domainassumptions}
 
 	\subsection{Glossary}
 		\subsubsection{Car Sharing}
@@ -173,6 +233,175 @@
 	\end{itemize}
 \section{Specific Requirements}
 	\subsection{Functional Requirements}
+	
+	\subsubsection{Guest users}
+	The system must give guest users the possibility to:
+	\begin{requirementsgroup}
+		\req{ to register to the system by providing their credentials, payment information and required documents.
+			\begin{itemize}
+				\item{credentials must be unique among previously registered users }
+				\item{documents and payment information must be verified in order to successfully create an account.}
+			\end{itemize}
+		 }
+		\req{ to receive back password (for login) and pin code (to power on cars) in case off successful registration . }
+	\end{requirementsgroup}	
+	
+	
+	\subsubsection{Registered users}
+	Registered users must be allowed to:
+	\begin{requirementsgroup}
+		\req{  to log-in as \powerenjoy users or field/emergency/management staff user. }
+		\req{  to reset the password.}
+		\req{  to modify account data. }
+	\end{requirementsgroup}
+	
+	\subsubsection{ \powerenjoy users }
+	They are registered users, so they are subject to the same requirements, moreover the system must guarantee them:
+	\begin{requirementsgroup}
+		 \req { to find the locations of available cars within a certain distance from their current location or from a specified address.
+			\begin{itemize}
+				\item{information are provided regarding the cars' estimated autonomy in kilometers }
+			\end{itemize}
+		 }
+		 \req { to reserve a single car, among the available ones, for up to one hour before picking it up (by unlocking the car).}
+		 \req { to cancel the reservation before it's expiration
+			\begin{itemize}
+				\item{paying a cost proportional to the reservation time }
+				\item{the minimum amount is relative to a quarter of an hour}
+			\end{itemize}
+		}
+		 \req { to be charged of a fee (1\euro) whether the reserved car is not picked\textendash up within one hour from the reservation.
+			\begin{itemize}
+				\item{the car must be tagged as available again }
+				\item{the reservation expires}
+			\end{itemize}
+		 }
+
+		 \req { to rent a car (reserved or available), specifically:
+			\begin{itemize}
+				\item { to unlock a reserved car when it is within a certain distance (threshold) from the car }
+				\item { to be charged for a given amount of money per minute as soon as the car is unlocked. } 
+			 	\item { to be notified of the current fare through a screen on the car. }
+			 	\item { to stop being charged as soon as the car is parked in a safe area and he exits the car (that is automatically locked) }
+			\end{itemize}
+		}
+		 
+		 \req { to be excluded from the fruition of \powerenjoy services whether the payment is unable to complete, until all pending payment are performed.  }
+
+		 \req { to be applied a discount of 10\% on the last ride, whether it brings at least two other passengers onto the car. }
+		 \req { to be applied a discount of 20\% on the last ride, whether the car is left with more than 50\% of the battery's charge. }
+		 \req { to be applied a discount of 30\% on the last ride, whether it takes care of plugging-in the car to the charge station. }
+		 \req { to be applied an overcharge of 30\% on the last ride, whether the car is left farer than 3 KM from the nearest charge station or with less than 20\% of the battery's charge. }
+		 \req { to enable the money saving option in order to get the discount described above [\reqref{14}], specifically:
+			\begin{itemize}
+				\item { to input a destination }
+				\item { to be shown information about where to park the car (within 1km from entered destination) } 
+			\end{itemize}
+		}
+
+		\req { to be notified of changes in the service policies
+			\begin{itemize}
+				\item { different fares }
+				\item { updated terms of services } 
+			\end{itemize}
+		}
+	\end{requirementsgroup}	
+
+	\subsubsection{ Field staff users }
+	They are registered users, so they are subject to the same requirements, moreover the system must help them:
+	\begin{requirementsgroup}
+		\req{ to be notified of relocation/maintenance requests for cars }
+		\req{  to relocate an assigned car:
+			\begin{itemize}
+				\item{locate assigned car }
+				\item{unlock assigned car}
+				\item{check diagnostic of assigned car}
+				\item{power on assigned car}
+				\item{enable / disable power plugs}
+				\item{lock assigned car}
+				\item{locate maintenance facility}
+			\end{itemize}
+		 }
+		\req{ to ask for special equipment (e.g: tow truck) or additional field staff help after evaluating the situation. }
+	\end{requirementsgroup}
+
+	\subsubsection{ Management staff users }
+	They are registered users, so they are subject to the same requirements, moreover the system must empower them:
+	\begin{requirementsgroup}
+		 \req { to configure the list of available safe areas and power plugs over the service covered area. }
+		 \req { to configure the list of cars available for the service }
+		 \req { to configure service policies: 
+			\begin{itemize}
+				\item{update existing service's fares}
+				\item{introducing new service's fares}
+				\item{update discounts}
+				\item{introducing new discounts}
+				\item{update the terms of the service}
+			\end{itemize}
+		  }
+		 \req { to manage personnel's accounts:
+			\begin{itemize}
+				\item{create}
+				\item{delete}
+				\item{modify}
+			\end{itemize}
+			for:
+			\begin{itemize}
+				\item{field staff user}
+				\item{emergency staff user}
+				\item{management staff user}
+			\end{itemize}
+		}
+		 \req { to handle exceptional cases of unpaid rents:
+			\begin{itemize}
+				\item{check pending payment status.}
+				\item{re-enable \powerenjoy users to the service.}
+			\end{itemize}
+		 }
+	\end{requirementsgroup}
+
+	\subsubsection{ Emergency staff users }
+	They are registered users, so they are subject to the same requirements, moreover the system must empower them:
+	\begin{requirementsgroup}
+		\req{ to be promptly notified of potentially dangerous situations / emergencies: 
+			\begin{itemize}
+				\item{cars malfunctioning during a rent}
+				\item{car accidents}
+				\item{cars with empty battery not parked in safe areas}
+			\end{itemize}
+		 }
+		\req{ to be promptly notified of \powerenjoy users' help request.  }
+		\req{ to have an overview regarding the state and location of:
+			\begin{itemize}
+				\item{cars}
+				\item{power plugs}
+				\item{current rents}
+				\item{reservation}
+				\item{field staff users} 
+			\end{itemize}
+		}
+		\req{ to perform actions to resolve issue:
+			\begin{itemize}
+				\item{cancel a \powerenjoy user's reservation}
+				\item{recover a \powerenjoy user's pin code}
+				\item{unlock / lock rented car}
+				\item{set a car as available / unavailable }
+				\item{speak with user on rented cars through installed hands-free communication set} 
+				\item{assign a field staff user to relocate a car with priority}
+				\item{notify appropriate authorities of a car accident (first-aid, fire-fighters, police, insurance company ...) }
+			\end{itemize}
+		 }
+		\req { to dispatch the issue to administration staff users.}
+		
+	\end{requirementsgroup}
+
+	\subsubsection{ Third party developers }
+	The system should permit third party developers:
+	\begin{requirementsgroup}
+		\req{ to access all the functionalities of a \powerenjoy users through a set of public APIs (provided the user gave the consensus).}
+		\req{ to register new \powerenjoy users through a set of public APIs. }
+	\end{requirementsgroup}
+
 	\subsection{Non Functional Requirements}
 
 \section{Scenarios Identifying}
