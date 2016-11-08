@@ -23,6 +23,7 @@
 \newcommand{\stand}{\textit{stand }}
 \usepackage{tabto}
 \usepackage{verbatim}
+\usepackage{etoolbox}
 
 \begin{comment} some new commands and enviroments to painlessly handle requirements, goals and domain assumptions listing \end{comment}
 \newenvironment{goals}
@@ -55,20 +56,24 @@
 		\end{description}
 	}
 
-\newcounter{RequirementId}
+\newcounter{reqId}
 \newenvironment{requirementsgroup}
-	{
-		\newcommand{\req}[1]{ 
-			\stepcounter{RequirementId} 
-			\item[R.\arabic{RequirementId}]{##1}
+		{
+			\newcommand{\req}[1]{ 
+				\stepcounter{reqId} 
+				\hypertarget{R\arabic{reqId}}{
+					\item[
+						 R.\arabic{reqId}
+					]{ ##1 }
+				}
 			}
-		\begin{description}
-	}
-	{
-		\end{description}
-	}
-
+			\begin{description}
+		}
+		{
+			\end{description}
+		}
 \newcommand{\goalref}[1]{  \hyperlink{G#1}{G.#1} }
+\newcommand{\reqref}[1]{  \hyperlink{R#1}{R.#1} }
 
 \makeatletter
 \usepackage{babel}
@@ -140,7 +145,7 @@
 		\goal{ To encourage users' virtuous behaviour  in relation to service's fairness. }
 		\begin{comment} service efficiency goals \end{comment}
 		\goal{ To create a system that gives the possibility to be monitored and administrated by \powerenjoy's authorized personal. }
-		\goal{  To empower the authorized personal in order to be able to quickly react to emergencies, potentially dangerous situations and users' requests for help.}
+		\goal{  To empower the authorized personal in order to be able to quickly react to emergencies, potentially dangerous situations and users' requests for help, in best interest of users' safety.}
 		\goal{ To create a system that provides a programmable interface, in order reduce the costs of further enhancements / maintenance to the system exploiting internal personal or third party developers.}
 		
 		% \goal{ . }
@@ -160,6 +165,7 @@
 		\domainassumption{ Cars are able to send diagnostic for the maintenance process in addition to real-time telemetry about speed and status of the battery.  }
 		\domainassumption{ Cars can be selectively remotely locked, unlocked, powered on and powered off by authorized personal. }
 		\domainassumption{ Cars periodically notify the system of their position, in case of accident / failure the notification process stops. }
+		\domainassumption{ Cars are provided with an hand-free communication set that can be remotely activated. }
 
 		\domainassumption{ Both user's and cars' GPS position can't be faked by any mean (e.g: GPS spoofing). }
 
@@ -264,16 +270,28 @@
 		 \req { to be applied a discount of 20\% on the last ride, whether the car is left with more than 50\% of the battery's charge. }
 		 \req { to be applied a discount of 30\% on the last ride, whether it takes care of plugging-in the car to the charge station. }
 		 \req { to be applied an overcharge of 30\% on the last ride, whether the car is left farer than 3 KM from the nearest charge station or with less than 20\% of the battery's charge. }
-		 \req { to enable the money saving option, thus be shown information about where to park the car (near to an entered destination) in order to get the discount described above. }
+		 \req { to enable the money saving option, thus be shown information about where to park the car (near to an entered destination) in order to get the discount described above [\reqref{20}]. }
 		 %This location is determined to ensure a uniform distribution of cars in the city and depends both on the destination of the user and on the availability of power plugs at that safe area.
 
 		\req { to be notified of changes in the service policies (different fares or terms of services). }
 	\end{requirementsgroup}	
 
 	\subsubsection{ Field staff users }
-	They are registered users, so they are subject to the same requirements, moreover the system must empower them:
+	They are registered users, so they are subject to the same requirements, moreover the system must help them:
 	\begin{requirementsgroup}
-		\req{  . }
+		\req{ to be notified of relocation/maintenance requests for cars }
+		\req{  to relocate an assigned car:
+			\begin{itemize}
+				\item{locate assigned car }
+				\item{unlock assigned car}
+				\item{check diagnostic of assigned car}
+				\item{power on assigned car}
+				\item{enable / disable power plugs}
+				\item{lock assigned car}
+				\item{locate maintenance facility}
+			\end{itemize}
+		 }
+		\req{ to ask for special equipment (e.g: tow truck) or additional field staff help after evaluating the situation. }
 	\end{requirementsgroup}
 
 	\subsubsection{ Management staff users }
@@ -314,7 +332,36 @@
 	\subsubsection{ Emergency staff users }
 	They are registered users, so they are subject to the same requirements, moreover the system must empower them:
 	\begin{requirementsgroup}
-		\req{  . }
+		\req{ to be promptly notified of potentially dangerous situations / emergencies: 
+			\begin{itemize}
+				\item{cars malfunctioning during a rent}
+				\item{car accidents}
+				\item{cars with empty battery not parked in safe areas}
+			\end{itemize}
+		 }
+		\req{ to be promptly notified of \powerenjoy users' help request.  }
+		\req{ to have an overview regarding the state and location of:
+			\begin{itemize}
+				\item{cars}
+				\item{power plugs}
+				\item{current rents}
+				\item{reservation}
+				\item{field staff users} 
+			\end{itemize}
+		}
+		\req{ to perform actions to resolve issue:
+			\begin{itemize}
+				\item{cancel a \powerenjoy user's reservation}
+				\item{recover a \powerenjoy user's pin code}
+				\item{unlock / lock rented car}
+				\item{set a car as available / unavailable }
+				\item{speak with user on rented cars through installed hands-free communication set} 
+				\item{assign a field staff user to relocate a car with priority}
+				\item{notify appropriate authorities of a car accident (first-aid, fire-fighters, police, insurance company ...) }
+			\end{itemize}
+		 }
+		\req { to dispatch the issue to administration staff users.}
+		
 	\end{requirementsgroup}
 
 	\subsubsection{ Third party developers }
