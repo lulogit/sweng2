@@ -176,9 +176,227 @@
 \section{Scenarios Identifying}
 \section{UML Models And Use Cases}
 	\subsection{Use Cases Diagram}
+	\vspace*{\fill}
+	\noindent
+	\makebox[\textwidth]{\includegraphics[scale=0.85]{usecase.pdf} }%
+
+	\rule{0pt}{2cm}Some text here (not very much).
+
+
 	\subsection{Actors Identifying}
 	\subsection{Use Cases}
+		\subsubsection{Registration}
+		\begin{center}
+		\begin{tabular}{l||p{10cm}}
+		\textbf{Name} 
+			& Registration\\ [8px]
+		\textbf{Actors} 
+			& Guest user\\ [8px]
+		\textbf{Assumptions} 
+			& \begin{itemize}
+				\item The guest downloaded the app.
+			\end{itemize}\\
+		\textbf{Flow of events}
+			& \begin{enumerate}
+	 			\item The user opens PowerEnJoy app on his smartphone.
+				\item The guest provides his credentials and documents to the system.
+				\item The system verify user's credentials and documents to ensure that he can register in.
+				\item The system sends to the user's e-mail address his own password and pin.
+			\end{enumerate}\\ 
+		\textbf{Exit conditions}
+			& The guest has become a registered user.\\ [8px]
+		\textbf{Exceptions}
+			& \begin{itemize}
+				\item The user's credentials are unsuccessfully verified, an error message is shown. The user is not registered.
+			\end{itemize}
+		\end{tabular}
+		\end{center}
 	
+		\vspace*{\fill}
+		\noindent
+		\makebox[\textwidth]{\includegraphics[scale=0.85]{Registration.pdf} }%
+
+
+		\subsubsection{Credentials and Documents Verification}
+		\begin{center}
+		\begin{tabular}{l||p{10cm}}
+		\textbf{Name} 
+			& Credentials and documents verification\\ [8px]
+		\textbf{Actors} 
+			& Bank system, Motorization system\\ [8px]
+		\textbf{Assumptions} 
+			& \begin{itemize}
+				\item The system owns user's documents.
+			\end{itemize}\\
+		\textbf{Flow of events}
+			& \begin{enumerate}
+	 			\item The system sends the documents to the competence authorities.
+				\item The authorities check the authenticity of the documents.
+				\item The authorities send the confirmation to the system.
+			\end{enumerate}\\ 
+		\textbf{Exit conditions}
+			& The user's documents are authenticated.\\ [8px]
+		\textbf{Exceptions}
+			& \begin{itemize}
+				\item The system receives a negative reply from at least one authority. The verification is rejected.
+			\end{itemize}
+		\end{tabular}
+		\end{center}
+		\vspace*{\fill}
+		\noindent
+		\makebox[\textwidth]{\includegraphics[scale=0.85]{Credentials_and_documents_verification.pdf}}%
+
+
+		\subsubsection{Login}
+		\begin{center}
+		\begin{tabular}{l||p{10cm}}
+		\textbf{Name} 
+			& Login\\ [8px]
+		\textbf{Actors} 
+			& Registered user\\ [8px]
+		\textbf{Assumptions} 
+			& \begin{itemize}
+				\item The user has successfully signed up to the system.
+				\item The user is not logged to the system yet.
+			\end{itemize}\\
+		\textbf{Flow of events}
+			& \begin{enumerate}
+	 			\item The user opens the app.
+				\item The user declares his identity.
+				\item The system recognises the identity and ensures that the user who is logging in is who he claims to be.
+				\item The user can visualize his personal page and access to system's functionalities provided to him.
+			\end{enumerate}\\ 
+		\textbf{Exit conditions}
+			& The user is logged into the system now.\\ [8px]
+		\textbf{Exceptions}
+			& \begin{itemize}
+				\item The informations inserted are wrong, an error message is shown. The user is not logged.
+			\end{itemize}
+		\end{tabular}
+		\end{center}
+		\vspace*{\fill}
+		\noindent
+		\makebox[\textwidth]{\includegraphics[scale=0.85]{Login.pdf}}%
+
+		\subsubsection{Password Recovery}
+		\begin{center}
+		\begin{tabular}{l||p{10cm}}
+		\textbf{Name} 
+			& Password recovery\\ [8px]
+		\textbf{Actors} 
+			& Registered user\\ [8px]
+		\textbf{Assumptions} 
+			& \begin{itemize}
+				\item The user is not logged to the system yet.
+			\end{itemize}\\
+		\textbf{Flow of events}
+			& \begin{enumerate}
+	 			\item The user opens the app.
+				\item The user selects the recovery password option.
+				\item The user provides to the system his own pin and e-mail address.
+				\item The system checks that the pin and the address inserted are associated.
+				\item The system sends an e-mail containing the forgotten password to the user's e-mail address.
+			\end{enumerate}\\ 
+		\textbf{Exit conditions}
+			& The e-mail containing the password is sent.\\ [8px]
+		\textbf{Exceptions}
+			& \begin{itemize}
+				\item The pin and address inserted are not associated, an error message is shown. The e-mail is not sent.
+			\end{itemize}
+		\end{tabular}
+		\end{center}
+		\vspace*{\fill}
+		\noindent
+		\makebox[\textwidth]{\includegraphics[scale=0.85]{Password_recovery.pdf}}%
+
+		\subsubsection{Update Safe Areas}
+		\begin{center}
+		\begin{tabular}{l||p{10cm}}
+		\textbf{Name} 
+			& Update safe areas\\ [8px]
+		\textbf{Actors} 
+			& Management staff\\ [8px]
+		\textbf{Assumptions} 
+			& \begin{itemize}
+				\item The user is logged as management staff to the system yet.
+			\end{itemize}\\
+		\textbf{Flow of events}
+			& \begin{enumerate}
+	 			\item The staff goes in the safe area section of the app, that is visible only by management staff.
+				\item The user interface shows a list of actual safe areas.
+				\item The staff select to add a new safe area or to update an existing one.
+				\item The staff provides the necessary parameters for the action.
+				\item The system takes care of the request.
+			\end{enumerate}\\ 
+		\textbf{Exit conditions}
+			& The safe areas set is updated.\\ [8px]
+		\textbf{Exceptions}
+			& \begin{itemize}
+				\item The parameters inserted are inconsistent, an error message is shown. The safe areas set is unchanged.
+			\end{itemize}
+		\end{tabular}
+		\end{center}
+		\vspace*{\fill}
+		\noindent
+		\makebox[\textwidth]{\includegraphics[scale=0.85]{Update_safe_areas.pdf}}%
+
+		\subsubsection{Update Polices}
+		\begin{center}
+		\begin{tabular}{l||p{10cm}}
+		\textbf{Name} 
+			& Update polices\\ [8px]
+		\textbf{Actors} 
+			& Management staff\\ [8px]
+		\textbf{Assumptions} 
+			& \begin{itemize}
+				\item The user is logged as management staff to the system yet.
+			\end{itemize}\\
+		\textbf{Flow of events}
+			& \begin{enumerate}
+	 			\item The staff goes in the polices section of the app, that is visible only by management staff.
+				\item The user interface shows a list of actual polices.
+				\item The staff select to add a new policy or to update an existing one.
+				\item The staff provides the necessary parameters for the action.
+				\item The system notify the users that the policies are changed and it blocks them account until they accept the new policies.
+			\end{enumerate}\\ 
+		\textbf{Exit conditions}
+			& The policies set is updated.\\ [8px]
+		\textbf{Exceptions}
+			& \begin{itemize}
+				\item The parameters inserted are inconsistent, an error message is shown. The policies set is unchanged.
+			\end{itemize}
+		\end{tabular}
+		\end{center}
+		\vspace*{\fill}
+		\noindent
+		\makebox[\textwidth]{\includegraphics[scale=0.85]{Update_policies.pdf}}%
+
+		\subsubsection{Notify Users}
+		\begin{center}
+		\begin{tabular}{l||p{10cm}}
+		\textbf{Name} 
+			& Notify users\\ [8px]
+		\textbf{Actors} 
+			& PowerEnjoy user\\ [8px]
+		\textbf{Assumptions} 
+			& \begin{itemize}
+				\item The user is logged to the system yet.
+			\end{itemize}\\
+		\textbf{Flow of events}
+			& \begin{enumerate}
+	 			\item The user interface shows a message informing the user that the policies are changed.
+				\item The user accepts the new conditions. 
+				\item The system unlock his account.
+			\end{enumerate}\\ 
+		\textbf{Exit conditions}
+			& Will be applied the new policies to the user.\\ [8px]
+		\textbf{Exceptions}
+			& \begin{itemize}
+				\item The user doesn't accept the new conditions. The user's account is deleted.
+			\end{itemize}
+		\end{tabular}
+		\end{center}
+
 	\subsubsection{Search Car}
 	\begin{center}
 	\begin{tabular}{l||p{10cm}}
@@ -464,7 +682,6 @@
 		&The car cannot be maintained.\\[8px]
 	\end{tabular}
 	\end{center}
-
 
 	\subsection{Class Diagram}
 \section{External Interfaces}
