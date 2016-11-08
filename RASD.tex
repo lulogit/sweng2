@@ -15,13 +15,16 @@
 \newcommand{\carsharing}{\textit {car sharing }}
 \newcommand{\powerenjoy}{\textit{PowerEnJoy }}
 \newcommand{\registereduser}{\textit {registered user }}
+\newcommand{\powerenjoyuser}{\textit{PowerEnjoy User }}
 \newcommand{\staff}{\textit{staff }}
 \newcommand{\service}{\textit{service }}
 \newcommand{\safearea}{\textit{safe area }}
 \newcommand{\powergrid}{\textit{Power Grid }}
 \newcommand{\resevation}{\textit{reservation }}
-\newcommand{\stand}{\textit{stand }}
+\newcommand{\stopover}{\textit{stopover }}
 \newcommand{\personalpin}{\textit{personal pin }}
+\newcommand{\guest}{\textit{guest }}
+\newcommand{\thirdparty}{\textit{third party developer}}
 \usepackage{tabto}
 \usepackage{verbatim}
 
@@ -117,14 +120,19 @@
 	\end{description}
 
 	\subsection{Glossary}
+		\label{sec:Glossary}
 		\subsubsection{Car Sharing}
 			\carsharing is a model of car rental where people rent cars for short periods of time, often by the hour.
 		\subsubsection{PowerEnJoy}
-			\powerenjoy is the \carsharing brand object of this document. 
-		\subsubsection{Registered User}
-			A \registereduser is a person subscribed to \powerenjoy which can access to the \carsharing through his smart-phone.
+			\powerenjoy is the \carsharing brand object of this document.
+		\subsubsection{Guest User}
+			A \guest is a person not logged in to the system.
+		\subsubsection{Registered User} 
+			A \registereduser is a person registered to \powerenjoy.
+		\subsubsection{PowerEnJoy User}
+			A \powerenjoyuser is a \registereduser can access to the \carsharing through his smart-phone.
 		\subsubsection{Staff}
-			\staff is the set of people that are \registereduser but can perform special operations. They are divided in three different categories.
+			\staff is the set of people that are \registereduser  but can perform special operations. They are divided in three different categories.
 			\begin{itemize}
 				\item {Field Staff}
 				\begin{itemize}
@@ -139,16 +147,18 @@
 				\item They manage the system, for example they can change system parameters. They can add new \safearea, modify \carsharing prices.
 				\end{itemize}
 			\end{itemize}
+		\subsubsection{Third Party Developer}
+			\thirdparty is a person that can fullfill operations on \powerenjoy system via API.
 		\subsubsection{Service}
-			The \service is the group of actions that a \registereduser can fulfill trough the mobile.	
+			The \service is the group of actions that a \powerenjoyuser can fulfill trough the mobile.	
 		\subsubsection {Safe Area}
-			A \safearea is a  geographical place\footnote{defined by a set of GPS positions} on the map in which parking is allowed. \safearea are saved into the system. A \registereduser can end a \carsharing parking his car only in safe areas.
+			A \safearea is a  geographical place\footnote{defined by a set of GPS positions} on the map in which parking is allowed. \safearea are saved into the system. A \powerenjoyuser can end a \carsharing parking his car only in safe areas.
 	\subsubsection{Power Grid}
-		A \powergrid is the station that charge the battery of an electric car. All \powergrid are displayed in the map on-board \powerenjoy cars. Each \powergrid is in a \safearea. A \registereduser who plugs his car into a \powergrid receives the discount expected within \powerenjoy rules.
+		A \powergrid is the station that charge the battery of an electric car. All \powergrid are displayed in the map on-board \powerenjoy cars. Each \powergrid is in a \safearea. A \powerenjoyuser who plugs his car into a \powergrid receives the discount expected within \powerenjoy rules.
 	\subsubsection{Reservation}
-		A \resevation is the possibility that a \registereduser has to book a car at the latest for one hour.
-	\subsubsection{Stand}
-		A \stand is the possibility that a \registereduser has to pause his \carsharing. During a \stand the \registereduser can leave the car, than he can re-unlock it through his smart-phone.
+		A \resevation is the possibility that a \powerenjoyuser has to book a car at the latest for one hour.
+	\subsubsection{Stopover}
+		A \stopover is the possibility that a \powerenjoyuser has to pause his \carsharing. During a \stopover the \powerenjoyuser can leave the car, than he can re-unlock it through his smart-phone.
 	\subsubsection{Personal  Personal Identification Number (pin)}
 		 \personalpin is a number of 5 digits that the user inserts on the car screen to enable driving commands.
 
@@ -176,14 +186,15 @@
 \section{Scenarios Identifying}
 \section{UML Models And Use Cases}
 	\subsection{Use Cases Diagram}
-	\vspace*{\fill}
 	\noindent
 	\makebox[\textwidth]{\includegraphics[scale=0.85]{usecase.pdf} }%
 
-	\rule{0pt}{2cm}Some text here (not very much).
 
 
 	\subsection{Actors Identifying}
+		\noindent
+		\makebox[\textwidth]{\includegraphics[scale=0.85]{Actors.pdf} }\\
+	Here we explain which is the hierarchy of users. See Users definitions in the \hyperref[sec:Glossary]{Glossary}.  
 	\subsection{Use Cases}
 		\subsubsection{Registration}
 		\begin{center}
@@ -212,7 +223,6 @@
 		\end{tabular}
 		\end{center}
 	
-		\vspace*{\fill}
 		\noindent
 		\makebox[\textwidth]{\includegraphics[scale=0.85]{Registration.pdf} }%
 
@@ -242,7 +252,6 @@
 			\end{itemize}
 		\end{tabular}
 		\end{center}
-		\vspace*{\fill}
 		\noindent
 		\makebox[\textwidth]{\includegraphics[scale=0.85]{Credentials_and_documents_verification.pdf}}%
 
@@ -274,7 +283,6 @@
 			\end{itemize}
 		\end{tabular}
 		\end{center}
-		\vspace*{\fill}
 		\noindent
 		\makebox[\textwidth]{\includegraphics[scale=0.85]{Login.pdf}}%
 
@@ -305,7 +313,6 @@
 			\end{itemize}
 		\end{tabular}
 		\end{center}
-		\vspace*{\fill}
 		\noindent
 		\makebox[\textwidth]{\includegraphics[scale=0.85]{Password_recovery.pdf}}%
 
@@ -336,7 +343,6 @@
 			\end{itemize}
 		\end{tabular}
 		\end{center}
-		\vspace*{\fill}
 		\noindent
 		\makebox[\textwidth]{\includegraphics[scale=0.85]{Update_safe_areas.pdf}}%
 
@@ -367,7 +373,6 @@
 			\end{itemize}
 		\end{tabular}
 		\end{center}
-		\vspace*{\fill}
 		\noindent
 		\makebox[\textwidth]{\includegraphics[scale=0.85]{Update_policies.pdf}}%
 
@@ -508,7 +513,7 @@
 		\end{enumerate}\\ 
 	\textbf{Exit conditions}
 		&\begin{itemize}
-			\item The user makes a \stand.
+			\item The user makes a \stopover.
 			\item The user releases car.
 		\end{itemize}\\
 	\textbf{Exceptions}
@@ -533,14 +538,14 @@
 	\textbf{Flow of events}
 		& \begin{enumerate}
  		\item The user parks the car.
- 		\item The user selects the\stand option on the car screen.
+ 		\item The user selects the \stopover option on the car screen.
 		\item Driving command are disabled by the system. 
 		\item The user get off the car.
 		\item The system locks the car.
 		\end{enumerate}\\ 
 	\textbf{Exit conditions}
 		&\begin{itemize}
-			\item When the user wants end the \stand he re-unlocks and start driving the car as he has done in the "Pick up car" use case.
+			\item When the user wants end the \stopover he re-unlocks and start driving the car as he has done in the "Pick up car" use case.
 		\end{itemize}\\
 	\textbf{Exceptions}
 		& \begin{itemize}
@@ -645,7 +650,7 @@
 			\item The system notifies the Emergency Staff that an emergency rose up.
 			\item Given the nature of the emergency the staff handles.
 				\begin{itemize}
-					\item if the emergency is a "Help Request" the staff is able to interact to the \registereduser.
+					\item if the emergency is a "Help Request" the staff is able to interact to the \powerenjoyuser.
 					\item if a "Car Accident" has happened the staff takes the proper decisions, and the field staff is allerted.
 					\item if a car has the "Empty Battery" the Emergency Staff signals it to the Field Staff.
 			\end{itemize} 
