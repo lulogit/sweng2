@@ -508,17 +508,21 @@ During the development of the user interface will be purposed some sample tests 
 		\subsubsection{Security}
 		The system security provides secure communication among users and serves and guarantees the protection of data from malicious agents. In order to guarantee security the system must be conformed to the ISO 27001:2013 "Information technology - Security techniques - Information security management systems - Requirements" \footnote{\href{https://en.wikipedia.org/wiki/ISO/IEC_27001:2013}{ISO 27001:2013 on Wikipedia}}
 		\subsubsection{Portability}
-		In order to satisfy the request from the largest pool of users it is necessary to create an application for the most used mobile OS. Specifically Android\textregistered, iOS\textregistered, Windows Phone \textregistered. 
-\par There are several possibilities to make these applications. Here we identify three possible development guidelines. Every possibility has its Pros and Cons that we are going to analyse.
-		\begin{itemize}
-			\item \textbf{WebApp:} develop a mobile application using tools like PhoneGap\textregistered. The system will be developed once creating a responsive website. Than the website will be transformed to a mobile application via PhoneGap. \\\textbf{Pros:} fast deployment, write code only once. \\\textbf{Cons:} less responsive than other methods.
-			\item \textbf{Cross Compiling:} develop a mobile application using tools like Xamarin\textregistered. The system will be developed sharing code for all the platforms.\\\textbf{Pros:} development of native applications, code sharing among platforms. \\\textbf{Cons: } Not complete native look and feel, the code is not totally reusable (only $\approx 80\%$) .
-			\item \textbf{Native App:} develop a mobile application for each operating system on which it would run. \\\textbf{Pros:} high performance and responsiveness of the application, native look and feel\\\textbf{Cons:} tripled the effort of development. Each application requires its development team.
-		\end{itemize}		
+		The software should work on at least the 90\% of commercial devices described the paragraph about External interface. Furthermore the system source code must be portable from a platform to another for at least the 75\%.		
+		
 		\subsubsection{Money Saving Car distribution}
-		As said in the Assignments document, the money saving option guarantees uniform distribution of cars in the \safearea.\par In order to do that the system will be able to drive \registereduser to the correct \powergrid, if money saving is activated. Each city covered by the service will be divided in concentric circles that form circular crowns, each circular crown is divided in slices. Each slice has its own frequency of picking up cars. This frequency is seen as a weight in the map. The weight indicates proportionally the optimal number of cars that should be available in that slice. So, given the destination of the \registereduser, the system can calculate the best solution for the user.
+		As said in the Assignments document, the money saving option guarantees uniform distribution of cars in the \safearea.\par In order to do that the system will be able to drive \registereduser to the correct \powergrid, if money saving is activated. Each city covered by the service will be divided in concentric circles that form circular crowns, each circular crown is divided in slices, called City Zones. Each City Zone has its own frequency of picking up cars. This frequency is seen as a weight in the map. The weight indicates proportionally the optimal number of cars that should be available in that zone. So, given the destination of the \registereduser, the system can calculate the best solution for the user.
 The system will provide solutions that are no more far than 1km from the selected destination.
 This allocation method is also used from \fieldstaff in order to re-allocate cars that were under maintenance.
+		\noindent
+		\begin{figure}[H]
+\centering
+\includegraphics[scale=0.4]{mappazone.pdf}% "%" necessario
+
+\caption{City Zones Map division}
+\end{figure}
+		
+
 		
 
 		\subsubsection{Application Programming Interface}
