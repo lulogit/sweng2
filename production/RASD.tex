@@ -78,8 +78,8 @@
 \newcommand{\services }{\textit{services }}
 \newcommand{\safearea}{\textit{safe area }}
 \newcommand{\safeareas}{\textit{safe areas }}
-\newcommand{\powergrid}{\textit{power grid }}
-\newcommand{\powergrids}{\textit{power grids }}
+\newcommand{\powerplug}{\textit{power plug }}
+\newcommand{\powerplugs}{\textit{power plugs }}
 \newcommand{\reservation}{\textit{reservation }}
 \newcommand{\stand}{\textit{stand }}
 \newcommand{\rent}{\textit{rent }}
@@ -89,6 +89,7 @@
 \newcommand{\personalpin}{\textit{personal pin }}
 \newcommand{\guest}{\textit{guest }}
 \newcommand{\thirdparty}{\textit{third party developer}}
+\newcommand{\powerplugslot}{\textit{power plug slot}}
 \usepackage{tabto}
 \usepackage{verbatim}
 \usepackage{etoolbox}
@@ -245,8 +246,7 @@ We have identified Actors and situations that can be useful to manage the system
 		\domainassumption{ Each power plug slot has its own park slot }
 		\domainassumption{ Users use power plug's park slot only if they charge theirs cars in the power plug associated }
 		\domainassumption{ Number of field officiers is sufficient to guarantee the handling of field issues within 15 minutes from the reporting }
-		\domainassumption{ Number of power plugs is sufficient to allow users to use them without difficulty }
-		\domainassumption{ Number of park slots is balanced in relation to population density of city zones }
+		\domainassumption{ Number of park slots and plugs is balanced in relation to population density of city zones }
 		\domainassumption{ Number of users is large enough to allow the statistical assumption that there is not an excessive unbalancing of distribution of cars in the city }
 
 	\end{domainassumptions}
@@ -285,8 +285,10 @@ We have identified Actors and situations that can be useful to manage the system
 			The \service is the group of actions that a \powerenjoyuser can fulfill trough the mobile.	
 		\subsubsection {Safe Area}
 			A \safearea is a  geographical place\footnote{defined by a set of GPS positions} on the map in which parking is allowed. \safearea are saved into the system. A \powerenjoyuser can end a \carsharing parking his car only in safe areas.
-	\subsubsection{Power Grid}
-		A \powergrid is the station that charge the battery of an electric car. All \powergrid are displayed in the map on-board \powerenjoy cars. Each \powergrid is in a \safearea. A \powerenjoyuser who plugs his car into a \powergrid receives the discount expected within \powerenjoy rules.
+	\subsubsection{Power Plug}
+		A \powerplug is the station that charge the battery of an electric car. All \powerplug are displayed in the map on-board \powerenjoy cars. Each \powerplug is in a \safearea. A \powerenjoyuser who plugs his car into a \powerplug receives the discount expected within \powerenjoy rules.
+	\subsubsection{Power Plug Slot}
+		A \powerplugslot is a parking that can contain only 1 car annexed to a \powerplug. Each car parked here is charging.
 	\subsubsection{Reservation}
 		A \resevation is the possibility that a \powerenjoyuser has to book a car at the latest for one hour.
 	\subsubsection{Stopover}
@@ -645,11 +647,11 @@ During the development of the user interface will be purposed some sample tests 
 	\subsection{Scenario 8}
 		Andrew has to carry his mother to the airport but remembers that his car is being repaired. He thinks that the best choice is to reserve a car with the \powerenjoy app. After that they go towards the vehicle and, once reached it, Andrew helps his mother to load the heavy suitcase in the back seat. Now everything is ready to go. On the way by the airport on the screen of the car appears a message that explain to the driver that he finished the money on his credit card, so he can finish this trip but his account will be blocked until he will pay the debts towards the company. Arrived at the airport the mother goes out from the car with her suitcase and says goodbye to her son. Once at home Andrew has to pay the full rent because the system notice that the passenger is only one.
 	\subsection{Scenario 9}
-		Paul is late for his first day of teaching. Go by foot will not allow him to arrive on time. He decides to reserve a car with his \powerenjoy app. He opens it and checks the available cars. Unfortunately he notices that the only nearby car have 15\% of battery full and the workplace is 4KM from the nearest \powergrid station, outside a \safearea. The workplace is just 10 minutes by car from its position and the time is running out, so 	he reserves it. Left the \safearea, the car advice Paul by the screen that he should 	park in a \safearea, otherwise will be charged recovery costs. He's too much late and ignores the advice. The system will charge 30\% more on this ride because the car is left with less 20\% of the battery's charge and at more that 3KM from the nearest \powergrid station, furthermore Paul will has to pay recovery costs.
+		Paul is late for his first day of teaching. Go by foot will not allow him to arrive on time. He decides to reserve a car with his \powerenjoy app. He opens it and checks the available cars. Unfortunately he notices that the only nearby car have 15\% of battery full and the workplace is 4KM from the nearest \powerplug station, outside a \safearea. The workplace is just 10 minutes by car from its position and the time is running out, so 	he reserves it. Left the \safearea, the car advice Paul by the screen that he should 	park in a \safearea, otherwise will be charged recovery costs. He's too much late and ignores the advice. The system will charge 30\% more on this ride because the car is left with less 20\% of the battery's charge and at more that 3KM from the nearest \powerplug station, furthermore Paul will has to pay recovery costs.
 	\subsection{Scenario 10}
-		Rodolfo has to meet her parents in their downtown manor. He could go by feet but it's a very cold winter day and prefers to reserve a warmer \powerenjoy car. Looking at the cars around him, luckily notices that the nearest car have the battery completely charge! He is clever and kind, so decide not to go directly to his parent's house but to reach the closest station to it in order to plug the car into the \powergrid. Rodolfo reaches the car, get in and starts driving. Arrived at the station, the car's battery level is 90\%. For this journey he will receive a total of 50\% discount: 20\% from the level of the battery ( more than 50\% ) and 30\% from his kindness ( car plugged into a \powergrid ). A very lucky day for Rodolfo!
+		Rodolfo has to meet her parents in their downtown manor. He could go by feet but it's a very cold winter day and prefers to reserve a warmer \powerenjoy car. Looking at the cars around him, luckily notices that the nearest car have the battery completely charge! He is clever and kind, so decide not to go directly to his parent's house but to reach the closest station to it in order to plug the car into the \powerplug. Rodolfo reaches the car, get in and starts driving. Arrived at the station, the car's battery level is 90\%. For this journey he will receive a total of 50\% discount: 20\% from the level of the battery ( more than 50\% ) and 30\% from his kindness ( car plugged into a \powerplug ). A very lucky day for Rodolfo!
 	\subsection{Scenario 11}
-		Amelia is a good mother and be careful to save money for her family, in fact she went to the supermarket by foot. After buying the necessary things for the house, she notices that the bags are too heavy to walk back. She remembers that she is subscribed to the \powerenjoy \service. She logs in the app, reserves a car. Than she picks up the car, selects the destination and chooses the ``money saving option''. Although this unforeseen she can save some money. The system computes the destination in order to get the discount. Once arrived to the destination she locks the car and plugs it into the \powergrid. The system applies a discount of 30\% on her ride.
+		Amelia is a good mother and be careful to save money for her family, in fact she went to the supermarket by foot. After buying the necessary things for the house, she notices that the bags are too heavy to walk back. She remembers that she is subscribed to the \powerenjoy \service. She logs in the app, reserves a car. Than she picks up the car, selects the destination and chooses the ``money saving option''. Although this unforeseen she can save some money. The system computes the destination in order to get the discount. Once arrived to the destination she locks the car and plugs it into the \powerplug. The system applies a discount of 30\% on her ride.
 	\subsection{Scenario 12}
 		John is going to the gym using the \powerenjoy \service, when he notices that the car's battery level is critically low, but he decides to go on without takes care of it. At certain point the car informs John that he should go near the roadside because the car will stops shortly. John is a bully and decides to ignore the warning. Taking care of the user's safety the car stops as expected, but John is in the middle of the road! Never having been in a similar situation he decides to call the assistance using the embedded screen on the car. An operator takes the call and explains John that a field \staff is coming on site and until the car is not parked safely he will continue to pay. A very expensive day for our John.		
 	
@@ -1037,7 +1039,7 @@ During the development of the user interface will be purposed some sample tests 
 	\textbf{Flow of events}
 		& \begin{enumerate}
  		\item The user selects his destination address on the car screen
-		\item The system purposes the \powergrid station according to algorithm constraints.
+		\item The system purposes the \powerplug station according to algorithm constraints.
 		\end{enumerate}\\ 
 	\textbf{Exit conditions}
 		&\begin{itemize}
@@ -1045,7 +1047,7 @@ During the development of the user interface will be purposed some sample tests 
 		\end{itemize}\\
 	\textbf{Exceptions}
 		& \begin{itemize}
-			\item There are no available \powergrid stations in 1 km range from the destination. (The system during driving will notify the user through the car screen if a \powergrid becomes free.)
+			\item There are no available \powerplug stations in 1 km range from the destination. (The system during driving will notify the user through the car screen if a \powerplug becomes free.)
 		\end{itemize}
 	\end{tabular}
 	\end{center}
@@ -1088,13 +1090,13 @@ During the development of the user interface will be purposed some sample tests 
 		& PowerEnJoy User\\ [8px]
 	\textbf{Assumptions} 
 	& \begin{itemize}
-		\item The user has parked a car near a \powergrid and has ended his \carsharing. 
+		\item The user has parked a car near a \powerplug and has ended his \carsharing. 
 	\end{itemize}\\
 	\textbf{Flow of events}
 		& \begin{enumerate}
- 			\item The user inserts his \personalpin into the \powergrid screen, in order to let the \powergrid enabled to charge cars.
-			\item The user plugs the car to the \powergrid.
-			\item The system detects that the car of our user is charging at the \powergrid unlocked by the same user. 
+ 			\item The user inserts his \personalpin into the \powerplug screen, in order to let the \powerplug enabled to charge cars.
+			\item The user plugs the car to the \powerplug.
+			\item The system detects that the car of our user is charging at the \powerplug unlocked by the same user. 
 		\end{enumerate}\\ 
 	\textbf{Exit conditions}
 		&\begin{itemize}
