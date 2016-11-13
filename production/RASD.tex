@@ -598,10 +598,18 @@ During the development of the user interface will be purposed some sample tests 
 		\subsubsection{Portability}
 		The software should work on at least the 90\% of commercial devices described the paragraph about External interface. Furthermore the system source code must be portable from a platform to another for at least the 75\%.		
 		
-		\subsubsection{Money Saving Car distribution}
-		As said in the Assignments document, the money saving option guarantees uniform distribution of cars in the \safearea.\par In order to do that the system will be able to drive \registereduser to the correct \powergrid, if money saving is activated. Each city covered by the service will be divided in concentric circles that form circular crowns, each circular crown is divided in slices, called City Zones. Each City Zone has its own frequency of picking up cars. This frequency is seen as a weight in the map. The weight indicates proportionally the optimal number of cars that should be available in that zone. So, given the destination of the \registereduser, the system can calculate the best solution for the user.
-The system will provide solutions that are no more far than 1km from the selected destination.
-This allocation method is also used from \fieldstaff in order to re-allocate cars that were under maintenance.
+		\subsubsection{Money Saving and car distribution}
+		The money saving option guarantees the user the minimum possible rent cost, and ensures an uniform distribution of cars in the \safeareas. \par The factors taken into considerations by this part of the system in suggesting the destination are:
+		\begin{itemize}
+			\item { plug availability near destination (considering charge times and scheduled relocations) }
+			\item { autonomy and battery charge level of the car }
+			\item { current positions of rented cars  }
+			\item { destination (the suggested location must be within a threshold from it) }
+			\item { parked cars' distribution in city zones: \\
+				\par Each city covered by the service is partitioned into circular crowns cut in slices: each area on this concentric grid is defined as City Zone. Each City Zone is assigned a weight based on rent frequency and number of parked cars, this parameter represent the optimal number of car that should be available in that zone. 
+			}
+		\end{itemize} 
+		
 		\noindent
 		\begin{figure}[H]
 \centering
@@ -1153,8 +1161,10 @@ This allocation method is also used from \fieldstaff in order to re-allocate car
 	\noindent
 		\makebox[\textwidth]{\includegraphics[scale=0.35]{./uml/class_diag.pdf} }\\
 	\subsection*{Note}
-		This class diagram shows the the principal objects of the world that we are describing. We consider the world in a certain time. We model the Rent and reservation Classes is considered in relation at the latest one time with the user because we consider only instances that are active in a certain moment.
-		Here we highline class diagram showing the Company purpose.
+		This class diagram shows the the principal objects of the world that we are describing. We consider the world in a certain time. We model the Rent and reservation Classes is considered in relation at the latest one time with the user because we consider only instances that are active in a certain moment. 
+		
+	\clearpage Here we highlight class diagram showing the Company purpose.
+		
 	\noindent
 		\makebox[\textwidth]{\includegraphics[scale=0.35]{./uml/efficiency_prod.pdf} }\\	
 	\noindent
