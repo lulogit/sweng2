@@ -1198,7 +1198,7 @@ During the development of the user interface will be purposed some sample tests 
 	\noindent
 		\makebox[\textwidth]{\includegraphics[scale=0.35]{./uml/class_diag.pdf} }\\
 	\subsection*{Note}
-		This class diagram shows the the principal objects of the world that we are describing. We consider the world in a certain time. We model the Rent and reservation Classes is considered in relation at the latest one time with the user because we consider only instances that are active in a certain moment. 
+		This class diagram shows the the principal objects of the world that we are describing. We consider the world in a certain instant. So we modelled the Rent and reservation Classes as current rent and reservation, not considering the previous ones. 
 		
 	\clearpage Here we highlight class diagram showing the Company purpose.
 		
@@ -1219,7 +1219,7 @@ During the development of the user interface will be purposed some sample tests 
 
 	
 \section{External Interfaces}
-In order to deploy our system, given Goals, Domain Assumptions and Requirements, we would like to give a boundary of the hardware and external software systems that will be involved in our project.
+Stated Goals, Domain Assumptions and Requirements, we would like to define the boundary of the hardware and external software systems that will be involved in our project.
 \subsection{User Devices}
 	Each \powerenjoyuser, and \fieldstaff user should operate through a device that has these characteristics:
 		\begin{itemize}
@@ -1238,18 +1238,21 @@ In order to deploy our system, given Goals, Domain Assumptions and Requirements,
 		\item ECU (Electronic Control Unit) must be able to supervise the car needs of maintenance via specific sensors (e.g. tire pressure sensor)
 		\end{itemize}
 	Furthermore the battery autonomy that is displayed to the \powerenjoyuser is rescaled to map real 10-100\% to 0-100\%.
+	
+	\noindent	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.11]{auto.pdf}% "%" necessario
+		\caption{Car sensors and hardware overview}
+	\end{figure}
+	
 	\subsubsection{Equipment usability}
 	Here we clarify some use of cars' technologies:
 	\begin{itemize}
 		\item Cars can be selectively remotely locked, unlocked, powered on and powered off by authorized personal.
-		\item Cars periodically notify the system of their position, in case of accident / failure the notification process stops.
+		\item Cars periodically notify the system of their position, in case of accident / failure the notification process stops and an emergency is reported to the emergency staff.
 		\item Cars' speakerphone can be remotely activated by authorized personal.
 	\end{itemize}
-	\begin{figure}[H]
-		\centering
-		\includegraphics[scale=0.1]{auto.pdf}% "%" necessario
-		\caption{City Zones Map division}
-	\end{figure}
 
 		
 \subsection{Power Plug}
