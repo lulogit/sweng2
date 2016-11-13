@@ -68,6 +68,7 @@
 \pagestyle{fancy}
 \lhead{\powerenjoy RASD}
 
+\newcommand{\rent}{\textit{rent }}
 \newcommand{\carsharing}{\textit {car sharing }}
 \newcommand{\powerenjoy}{\textit{PowerEnjoy }}
 \newcommand{\registereduser}{\textit {registered user }}
@@ -78,20 +79,24 @@
 \newcommand{\services }{\textit{services }}
 \newcommand{\safearea}{\textit{safe area }}
 \newcommand{\safeareas}{\textit{safe areas }}
-\newcommand{\powergrid}{\textit{power grid }}
-\newcommand{\powergrids}{\textit{power grids }}
+\newcommand{\powerplug}{\textit{power plug }}
+\newcommand{\powerplugs}{\textit{power plugs }}
 \newcommand{\reservation}{\textit{reservation }}
 \newcommand{\stand}{\textit{stand }}
-\newcommand{\rent}{\textit{rent }}
 \newcommand{\fieldstaff}{\textit{field staff }}
 \newcommand{\resevation}{\textit{reservation }}
 \newcommand{\stopover}{\textit{stopover }}
 \newcommand{\personalpin}{\textit{personal pin }}
 \newcommand{\guest}{\textit{guest }}
-\newcommand{\thirdparty}{\textit{third party developer}}
+\newcommand{\thirdparty}{\textit{third party developer }}
+\newcommand{\powerplugslot}{\textit{power plug slot }}
 \usepackage{tabto}
 \usepackage{verbatim}
 \usepackage{etoolbox}
+\usepackage[table]{xcolor}
+\usepackage{booktabs}
+\usepackage{wasysym}
+\usepackage{multirow}
 
 \begin{comment} some new commands and environments to painlessly handle requirements, goals and domain assumptions listing \end{comment}
 \newenvironment{goals}
@@ -173,28 +178,54 @@
 \tableofcontents{} \pagebreak{}
 
 \section{Introduction}
-	\subsection{Purpose }
-	
-		The purpose of our team is to project \powerenjoy, which is  a platform that will be used to manage a \carsharing \service 
- 		 in the city area.\\
- 		The platform will allow clients to find and reserve electric cars using mobile app from their self phone, and it will 	also manage the communication of the emergency situations to the proper \staff.\\
-  		Furthermore, a particular \powerenjoy feature is the application of certain discounts to its users.\\
+	\subsection{Purpose}
+
+		The purpose of our team is to project the system for \powerenjoy, a new born car sharing company. \\
+ 		The platform will allow clients to find and reserve electric cars using smart devices (described in section 5) and to rent available cars, applying several eco-friendly discounts to incentive user virtuous behaviour.\\
+ 		In addition the system will take care of emergencies and potentially dangerous situation (such as car malfunctioning, car accidents and user's help requests) by empowering the staff to be responsive in their actions and always have an overview of the situation.\\
  		 \tab \tab This document aims to describe the high-level functionalities that will be offered by \powerenjoy \service. The RASD is intended to be viewed by the stakeholders, that will evaluate the correctness of any assumption and decision in this document.
+
   
- \subsection{Scope and Problem Description}
+ \subsection{Scope}
  
-  The government of a large city would like to introduce an ecological way to travel within the city area. In particular,     uniform distribution of cars in the city is a significant target.\\
-  \tab \tab The cars are electric as anticipated and inside them it is available an integrated interface. Through this interface   is possible to communicate with the system (e.g. to call emergency \staff).\\
-  \tab \tab Users can choose and reserve a car through a mobile app. The system answers to the request by showing the    time left to the expiration of the \reservation.\\
-  The \staff is divided in three categories:\\
-   - Field \staff\\
-   - Emergency \staff\\
-   - Management \staff\\
-  \tab \tab Field \staff use the mobile application to inform the system about their availability and to confirm that they are    going to take care of a certain call (e.g. retrieve a broken car, move a vehicle with a low battery or to ensure the uniform    distribution in the city, etc...).\\
-  \tab \tab Emergency \staff use the mobile application to answer customers calls and to take care of special situations (e.g. car accident).\\
-  \tab \tab Management \staff use the mobile application to handle the \service (e.g. set the \safeareas, fares, discounts,     etc...).\\
-  \tab \tab The system guarantees a uniform distribution of cars in the city. The way in which this is guaranteed is explained later in this document.   \\
-  \tab \tab A user can take advantage of the "Money saving" option selecting it on the integrated interface in the car. After    that he/she can input his/her final destination and the system provides information about the station where to leave the car to get a discount. This destination is determined to ensure the uniform distribution of cars and depends both on the destination of the user and on the availability of power plugs at the selected station.
+  %PowerEnJoy would introduce an ecological way to travel within the city area. Uniform distribution of cars in the city is a significant target.
+%  \par The cars are electric. And h Through this interface   is possible to communicate with the system (e.g. to call emergency \staff).\\
+%   \tab \tab Users can choose and reserve a car through a mobile app. The system answers to the request by showing the    time left to the expiration of the \reservation.\\
+ %  The \staff is divided in three categories:\\
+ %   - Field \staff\\
+ %   - Emergency \staff\\
+ %   - Management \staff\\
+  % \tab \tab Field \staff use the mobile application to inform the system about their availability and to confirm that they are    going to take care of a certain call (e.g. retrieve a broken car, move a vehicle with a low battery or to ensure the uniform    distribution in the city, etc...).\\
+%   \tab \tab Emergency \staff use the mobile application to answer customers calls and to take care of special situations (e.g. car % accident).\\
+%   \tab \tab Management \staff use the mobile application to handle the \service (e.g. set the \safeareas, fares, discounts,     etc...).\\
+%   \tab \tab The system guarantees a uniform distribution of cars in the city. The way in which this is guaranteed is explained later in this document.   \\
+%   \tab \tab A user can take advantage of the "Money saving" option selecting it on the integrated interface in the car. After    that he/she can input his/her final destination and the system provides information about the station where to leave the car to get a discount. This destination is determined to ensure the uniform distribution of cars and depends both on the destination of the user and on the availability of power plugs at the selected station.
+
+
+PowerEnJoy service is a car sharing service that aim is to develop a new way of car sharing:
+\begin{itemize}
+	\item Electric cars.
+	\item Discount policies for users eco-friendly behaviors.
+\end{itemize}
+
+\subsection{Proposed solution overview}
+The solution described in this document will focus on three key point:
+\begin{itemize}
+	\item{increase the user satisfaction by enhancing the probability of finding nearby cars.}
+	\item{a part of the system (Back-end Process Management) will maximize the efficiency of the services by keeping the fairest possible distribution of charged cars over the territory by: 
+		\begin{itemize}
+			\item{organize the staff assigning relocation request (also to manage the recharge process of cars)}
+			\item{offer discounts to the users that end a rent in a suggested location (Money Saving option). Its amount is computed accordingly to the company's economic return of relocating that car in the suggested destination
+			}
+		\end{itemize}
+	}
+	\item{the configurability and extensibility of all the parameters of the service (fares, Safe areas, cars, discounts ...) }
+\end{itemize}
+
+Through our analysis we have figured out how the system could be organized.
+We have identified useful Actors and situations to model the system to be.
+
+
 	
 	\subsection{Goals}
 
@@ -213,9 +244,7 @@
 		\begin{comment} service efficiency goals \end{comment}
 		\goal{ To create a system that gives the possibility to be monitored and administrated by \powerenjoy's authorized personal. }
 		\goal{  To empower the authorized personal in order to be able to quickly react to emergencies, potentially dangerous situations and users' requests for help, in best interest of users' safety.}
-		\goal{ To create a system that provides a programmable interface, in order reduce the costs of further enhancements / maintenance to the system exploiting internal personal or third party developers.}
-		
-		% \goal{ . }
+		\goal{ To create a system that provides a programmable interface, in order to reduce the costs of further enhancements / maintenance to the system exploiting internal personal or third party developers.}
 
 	\end{goals}
 
@@ -225,26 +254,22 @@
 	We suppose that the following conditions hold in the analysed world:
 	\begin{domainassumptions}
 
-		\domainassumption{ The geographical area covered by the service is included in the coverage area of most common mobile communication technologies (3g, 4g) offered by main telecommunications companies. }
-
 		\domainassumption{ Only correctly registered users can access the functionalities provided by the system. }
 		\domainassumption{ Users will not park cars in position not covered by GPS signal (such as underground parking slots). }
-
-		\domainassumption{ Cars are able to send diagnostic for the maintenance process in addition to real-time telemetry about speed and status of the battery.  }
-		\domainassumption{ Cars can be selectively remotely locked, unlocked, powered on and powered off by authorized personal. }
-		\domainassumption{ Cars periodically notify the system of their position, in case of accident / failure the notification process stops. }
-		\domainassumption{ Cars are provided with an hand-free communication set that can be remotely activated. }
-
 		\domainassumption{ Both user's and cars' GPS position can't be faked by any mean (e.g: GPS spoofing). }
-
-		\domainassumption{ Each plug in charge stations is capable to be remotely  enabled/disabled for the charge of cars. }
-		
-		%\domainassumption{ . }
+		\domainassumption{ Each power plug slot has its own park slot }
+		\domainassumption{ Users use power plug's park slot only if they charge theirs cars in the power plug associated }
+		\domainassumption{ Number of field officiers is sufficient to guarantee the handling of field issues within 15 minutes from the reporting }
+		\domainassumption{ Number of park slots and plugs is balanced in relation to population density of city zones }
+		\domainassumption{ Number of users is large enough to allow the statistical assumption that there is not an excessive unbalancing of distribution of cars in the city }
 
 	\end{domainassumptions}
 
 	\subsection{Glossary}
 		\label{sec:Glossary}
+		
+		\subsubsection{Rent}
+			A \rent is the activity that between a picking up and a release. It can include some \stopover.
 		\subsubsection{Car Sharing}
 			\carsharing is a model of car rental where people rent cars for short periods of time, often by the hour.
 		\subsubsection{PowerEnJoy}
@@ -254,7 +279,7 @@
 		\subsubsection{Registered User} 
 			A \registereduser is a person registered to \powerenjoy.
 		\subsubsection{PowerEnJoy User}
-			A \powerenjoyuser is a \registereduser can access to the \carsharing through his smart-phone.
+			A \powerenjoyuser is a \registereduser can access to the \carsharing through his smart device.
 		\subsubsection{Staff}
 			\staff is the set of people that are \registereduser  but can perform special operations. They are divided in three different categories.
 			\begin{itemize}
@@ -268,22 +293,24 @@
 				\end{itemize}
 				\item{Management \staff}
 				\begin{itemize}
-				\item They manage the system, for example they can change system parameters. They can add new \safeareas, modify \carsharing prices.
+				\item They manage the system, for example they can change system parameters. They can add new \safeareas, modify \carsharing prices and create new \staff accounts.
 				\end{itemize}
 			\end{itemize}
 		\subsubsection{Third Party Developer}
 			\thirdparty is a person that can fulfill operations on \powerenjoy system via API.
 		\subsubsection{Service}
-			The \service is the group of actions that a \powerenjoyuser can fulfill trough the mobile.	
+			The \service is the group of actions that a \powerenjoyuser can fulfill trough his smart device.	
 		\subsubsection {Safe Area}
-			A \safearea is a  geographical place\footnote{defined by a set of GPS positions} on the map in which parking is allowed. \safearea are saved into the system. A \powerenjoyuser can end a \carsharing parking his car only in safe areas.
-	\subsubsection{Power Grid}
-		A \powergrid is the station that charge the battery of an electric car. All \powergrid are displayed in the map on-board \powerenjoy cars. Each \powergrid is in a \safearea. A \powerenjoyuser who plugs his car into a \powergrid receives the discount expected within \powerenjoy rules.
+			A \safearea is a  geographical place\footnote{defined by a set of geolocation positions} on the map in which parking is allowed. \safearea are saved into the system. A \rent can end parking the car only in safe areas.
+	\subsubsection{Power Plug}
+		A \powerplug is the station that charges the battery of an electric car. All \powerplugs are displayed in the map on-board \powerenjoy cars. Each \powerplug is in a \safearea. A \powerenjoyuser who plugs his car into a \powerplug receives the discount expected within \powerenjoy rules.
+	\subsubsection{Power Plug Slot}
+		A \powerplugslot is a parking that can contain only one car annexed to a \powerplug. Each car parked here is charging.
 	\subsubsection{Reservation}
 		A \resevation is the possibility that a \powerenjoyuser has to book a car at the latest for one hour.
 	\subsubsection{Stopover}
 		A \stopover is the possibility that a \powerenjoyuser has to pause his \carsharing. During a \stopover the \powerenjoyuser can leave the car, than he can re-unlock it through his smart-phone.
-	\subsubsection{Personal  Personal Identification Number (pin)}
+	\subsubsection{Personal Identification Number (pin)}
 		 \personalpin is a number of 5 digits that the user inserts on the car screen to enable driving commands.
 
 \subsection{Further Developments}
@@ -295,8 +322,7 @@
 		\item New kind of discount policies can be introduced to the system, for example discounts for new types of users. 
 		\item New system policies may be necessary, for example new \carsharing conditions.
 		\item New kind of vehicles can be introduced, for example electric scooters and electric bikes.
-		\item Support to new payment methods, for example Paypal\textregistered, NFC\footnote{Near Field Communication; NFC devices are used in contactless payment systems, similar to those used in credit cards and electronic ticket smartcards and allow mobile payment to replace/supplement these systems. \href{https://en.wikipedia.org/wiki/Near_field_communication}{NFC on Wikipedia}}.
-		\item Develop new \service in order to increase the user experience, for example it may be useful to allow communication among users in order to share a car ride and save money.
+		\item Develop new services in order to increase the user experience, for example it may be useful to allow communication among users in order to share a car ride and save money.
 	\end{itemize}
 	\subsection{Used Tools}
 	\begin{itemize}
@@ -308,7 +334,7 @@
 	\subsection{Functional Requirements}
 	
 	\subsubsection{Guest users}
-	The system must give guest users the possibility to:
+	The system must give guest users the possibility:
 	\begin{requirementsgroup}
 		\req{ to register to the system by providing their credentials, payment information and required documents.
 			\begin{itemize}
@@ -316,12 +342,11 @@
 				\item{documents and payment information must be verified in order to successfully create an account.}
 			\end{itemize}
 		 }
-		\req{ to receive back password (for login) and pin code (to power on cars) in case off successful registration . }
+		\req{ to receive back password (for login) and pin code (to power-on cars) in case of successful registration . }
 	\end{requirementsgroup}	
-	
-	
+		
 	\subsubsection{Registered users}
-	Registered users must be allowed to:
+	Registered users must be allowed:
 	\begin{requirementsgroup}
 		\req{  to log-in as \powerenjoy users or field/emergency/management staff user. }
 		\req{  to reset the password.}
@@ -336,8 +361,8 @@
 				\item{information are provided regarding the cars' estimated autonomy in kilometers }
 			\end{itemize}
 		 }
-		 \req { to reserve a single car, among the available ones, for up to one hour before picking it up (by unlocking the car).}
-		 \req { to cancel the reservation before it's expiration
+		 \req { to reserve a single car, among the available ones, provided that the user has not ended a rent on that car within last 15 minutes. }
+		 \req { to cancel the reservation before it's expiration (1 hour after reservation)
 			\begin{itemize}
 				\item{paying a cost proportional to the reservation time }
 				\item{the minimum amount is relative to a quarter of an hour}
@@ -352,23 +377,26 @@
 
 		 \req { to rent a car (reserved or available), specifically:
 			\begin{itemize}
-				\item { to unlock a reserved car when it is within a certain distance (threshold) from the car }
+				\item { to unlock a car when it is within a certain distance (threshold) from the car }
+				\item { to enable engine by inputting a personal PIN code. }
 				\item { to be charged for a given amount of money per minute as soon as the car is unlocked. } 
-			 	\item { to be notified of the current fare through a screen on the car. }
-			 	\item { to stop being charged as soon as the car is parked in a safe area and he exits the car (that is automatically locked) }
+			 	\item { to be notified of the current fare amount through a screen on the car. }
+			 	\item { to be able to lock/unlock the car, starting/finishing a stopover (with different fare) }
+			 	\item { to stop being charged as soon as the car is parked in a safe area, he exits the car (that is automatically locked) and select to end the rent. }
+				\item { to transparently pay for the rent 5 minutes after its termination, being notified of the final price (including discounts). }
 			\end{itemize}
-		}
-		 
+		 }
 		 \req { to be excluded from the fruition of \powerenjoy services whether the payment is unable to complete, until all pending payment are performed.  }
 
-		 \req { to be applied a discount of 10\% on the last ride, whether it brings at least two other passengers onto the car. }
+		 \req { to be applied a discount of 10\% on the last ride, whether it brings at least two other passengers onto the car (the discount is applied for the actual time the car was transporting at least 2 passengers). }
 		 \req { to be applied a discount of 20\% on the last ride, whether the car is left with more than 50\% of the battery's charge. }
-		 \req { to be applied a discount of 30\% on the last ride, whether it takes care of plugging-in the car to the charge station. }
+		 \req { to be applied a discount of 30\% on the last ride, whether it takes care of plugging-in the car to the \powerplug. }
 		 \req { to be applied an overcharge of 30\% on the last ride, whether the car is left farer than 3 KM from the nearest charge station or with less than 20\% of the battery's charge. }
-		 \req { to enable the money saving option in order to get the discount described above [\reqref{14}], specifically:
+		 \req { to enable the money saving option in order to minimize the total cost of a rent regarding to the destination, specifically:
 			\begin{itemize}
 				\item { to input a destination }
-				\item { to be shown information about where to park the car (within 1km from entered destination) } 
+				\item { to be shown suggestions about where to park the car (within 1km from entered destination) in order to get discounts described above } 
+				\item { to be applied an additional discount whether the rent is terminated in the suggested location, calculated by BPM with respect to secondary business goals. }
 			\end{itemize}
 		}
 
@@ -383,8 +411,8 @@
 	\subsubsection{ Field staff users }
 	They are registered users, so they are subject to the same requirements, moreover the system must help them:
 	\begin{requirementsgroup}
-		\req{ to be notified of relocation/maintenance requests for cars }
-		\req{  to relocate an assigned car:
+		\req{ to be notified of relocation/maintenance requests for cars (and the cancellation / modification of an assigned request) }
+		\req{  to relocate an assigned car:c
 			\begin{itemize}
 				\item{locate assigned car }
 				\item{unlock assigned car}
@@ -464,16 +492,100 @@
 				\item{notify appropriate authorities of a car accident (first-aid, fire-fighters, police, insurance company ...) }
 			\end{itemize}
 		 }
-		\req { to dispatch the issue to administration staff users.}
 		
 	\end{requirementsgroup}
+	
 
 	\subsubsection{ Third party developers }
-	The system should permit third party developers:
+	They are registered users, so they are subject to the same requirements, moreover the system must permit them:
 	\begin{requirementsgroup}
 		\req{ to access all the functionalities of a \powerenjoy users through a set of public APIs (provided the user gave the consensus).}
 		\req{ to register new \powerenjoy users through a set of public APIs. }
 	\end{requirementsgroup}
+	
+	\subsubsection{ Back-end Process Management (BPM) }
+	In addition, the system should guarantee that:
+	\begin{requirementsgroup}
+		\req{  no \powerenjoyuser reserves or rents multiple cars simultaneously. }
+		\req{ car are automatically set as unavailable when an accident is registered:
+			\begin{itemize}
+				\item{if car is reserved, reservation is cancelled (without fee) and user is notified.}
+				\item{if car is on a rent, the rent is terminated and the user pays the current fare price.}
+			\end{itemize}
+		 }
+		 \req { a pending relocation / maintenance request on a car is cancelled when an accident is registered on that car }
+		 \req { maintenance request is automatically assigned to least busy Field Staff user when a minor malfunctioning / scheduled maintenance deadline is registered on car  }
+		 \req { all relevant events (\powerenjoyuser / staff actions, car accidents, ...) are logged for future analysis.  }		 
+		 
+	\end{requirementsgroup}
+	
+	\subsubsection{ Requirement - Goals mapping}
+	
+	%\rowcolors{3}{gray!25}{white!50}
+	\begin{table}[H]
+	\newcommand{\C}{\CheckedBox}
+	\newcommand{\U}{\Square}
+	\centering
+	$\begin{array}{ c c *{4}{c}  *{4}{c}  *{2}{c}  }
+	\toprule
+	\emph{Actor} & \emph{Req.}  & \multicolumn{10}{c}{\emph{Goal} } \\
+	\midrule
+	&&\goalref{1} & \goalref{2} & \goalref{3} & \goalref{4} & \goalref{5} & \goalref{6} & \goalref{7} & \goalref{8} & \goalref{9} & \goalref{10}\\
+	\multirow{2}{*}{Guest user} 
+	& \reqref{1} & \C & \U & \U & \U & \U & \U & \U & \U & \U & \U  \\
+	& \reqref{2} & \C & \U & \U & \U & \U & \U & \U & \U & \U & \U  \\
+	\hline
+	\multirow{3}{*}{Registered user} 
+	& \reqref{3} & \C & \U & \U & \U & \U & \U & \U & \U & \U & \U  \\
+	& \reqref{4} & \C & \U & \U & \U & \U & \U & \U & \U & \U & \U  \\
+	& \reqref{5} & \C & \U & \U & \U & \U & \U & \U & \U & \U & \U  \\
+	\hline
+	\multirow{12}{*}{\powerenjoy user} 
+	& \reqref{6} & \U & \C & \U & \U & \U & \U & \U & \U & \U & \U  \\
+	& \reqref{7} & \U & \U & \U & \U & \U & \U & \U & \U & \U & \U  \\
+	& \reqref{8} & \U & \U & \U & \U & \U & \U & \U & \U & \U & \U  \\
+	& \reqref{9} & \U & \U & \U & \U & \U & \U & \U & \U & \U & \U  \\
+	& \reqref{10} & \U & \U & \U & \U & \U & \U & \U & \U & \U & \U  \\
+	& \reqref{11} & \U & \U & \U & \U & \U & \U & \U & \U & \U & \U  \\
+	& \reqref{12} & \U & \U & \U & \U & \U & \U & \U & \U & \U & \U  \\
+	& \reqref{13} & \U & \U & \U & \U & \U & \U & \U & \U & \U & \U  \\
+	& \reqref{14} & \U & \U & \U & \U & \U & \U & \U & \U & \U & \U  \\
+	& \reqref{15} & \U & \U & \U & \U & \U & \U & \U & \U & \U & \U  \\
+	& \reqref{16} & \U & \C & \U & \U & \U & \U & \U & \U & \U & \U  \\
+	& \reqref{17} & \U & \U & \U & \U & \U & \U & \U & \U & \U & \U  \\
+	\hline
+	\multirow{3}{*}{Field staff user} 
+	& \reqref{18} & \U & \U & \U & \U & \U & \U & \U & \U & \U & \U  \\
+	& \reqref{19} & \U & \C & \U & \U & \U & \U & \U & \U & \U & \U  \\
+	& \reqref{20} & \U & \U & \U & \U & \U & \U & \U & \U & \U & \U  \\
+	\hline
+	\multirow{5}{*}{Management staff user} 
+	& \reqref{21} & \U & \U & \U & \U & \U & \U & \U & \U & \U & \U  \\
+	& \reqref{22} & \U & \U & \U & \U & \U & \U & \U & \U & \U & \U  \\
+	& \reqref{23} & \U & \U & \U & \U & \U & \U & \U & \U & \U & \U  \\
+	& \reqref{24} & \U & \U & \U & \U & \U & \U & \U & \U & \U & \U  \\
+	& \reqref{25} & \U & \U & \U & \U & \U & \U & \U & \U & \U & \U  \\
+	\hline
+	\multirow{5}{*}{Emergency staff user} 
+	& \reqref{26} & \U & \U & \U & \U & \U & \U & \U & \U & \U & \U  \\
+	& \reqref{27} & \U & \U & \U & \U & \U & \U & \U & \U & \U & \U  \\
+	& \reqref{28} & \U & \U & \U & \U & \U & \U & \U & \U & \U & \U  \\
+	& \reqref{29} & \U & \U & \U & \U & \U & \U & \U & \U & \U & \U  \\
+	& \reqref{30} & \U & \U & \U & \U & \U & \U & \U & \U & \U & \U  \\
+	\hline
+	\multirow{2}{*}{Third party developer} & \reqref{31} & \U & \U & \U & \U & \U & \U & \U & \U & \U & \U  \\
+	& \reqref{32} & \U & \U & \U & \U & \U & \U & \U & \U & \U & \U  \\
+	%\bottomrule
+	\end{array}$
+	\end{table}
+	
+\subsubsection{Functional Requirements Priorities}
+Among the Functional requirements introduced in this section, we identify an importance priority list from the Company Point of View.
+\begin{enumerate}
+	\item \textbf{PowerEnJoy User Requirements}: it's trivial that this is the core for the Company, provide the service.
+	\item \textbf{Staff Requirements}: the backend is very important in order to guarantee a trustful service
+	\item \textbf{Third Party Development Requirement}: despite we believe that it is very important the integration in other systems, it's priority it's the lower compared to the others
+\end{enumerate}
 
 	\subsection{Non Functional Requirements}
 		\subsubsection{Usability}
@@ -499,17 +611,29 @@ During the development of the user interface will be purposed some sample tests 
 		\subsubsection{Security}
 		The system security provides secure communication among users and serves and guarantees the protection of data from malicious agents. In order to guarantee security the system must be conformed to the ISO 27001:2013 "Information technology - Security techniques - Information security management systems - Requirements" \footnote{\href{https://en.wikipedia.org/wiki/ISO/IEC_27001:2013}{ISO 27001:2013 on Wikipedia}}
 		\subsubsection{Portability}
-		In order to satisfy the request from the largest pool of users it is necessary to create an application for the most used mobile OS. Specifically Android\textregistered, iOS\textregistered, Windows Phone \textregistered. 
-\par There are several possibilities to make these applications. Here we identify three possible development guidelines. Every possibility has its Pros and Cons that we are going to analyse.
+		The software should work on at least the 90\% of commercial devices described the paragraph about External interface. Furthermore the system source code must be portable from a platform to another for at least the 75\%.		
+		
+		\subsubsection{Money Saving and car distribution}
+		The money saving option guarantees the user the minimum possible rent cost, and ensures an uniform distribution of cars in the \safeareas. \par The factors taken into considerations by this part of the system in suggesting the destination are:
 		\begin{itemize}
-			\item \textbf{WebApp:} develop a mobile application using tools like PhoneGap\textregistered. The system will be developed once creating a responsive website. Than the website will be transformed to a mobile application via PhoneGap. \\\textbf{Pros:} fast deployment, write code only once. \\\textbf{Cons:} less responsive than other methods.
-			\item \textbf{Cross Compiling:} develop a mobile application using tools like Xamarin\textregistered. The system will be developed sharing code for all the platforms.\\\textbf{Pros:} development of native applications, code sharing among platforms. \\\textbf{Cons: } Not complete native look and feel, the code is not totally reusable (only $\approx 80\%$) .
-			\item \textbf{Native App:} develop a mobile application for each operating system on which it would run. \\\textbf{Pros:} high performance and responsiveness of the application, native look and feel\\\textbf{Cons:} tripled the effort of development. Each application requires its development team.
-		\end{itemize}		
-		\subsubsection{Money Saving Car distribution}
-		As said in the Assignments document, the money saving option guarantees uniform distribution of cars in the \safearea.\par In order to do that the system will be able to drive \registereduser to the correct \powergrid, if money saving is activated. Each city covered by the service will be divided in concentric circles that form circular crowns, each circular crown is divided in slices. Each slice has its own frequency of picking up cars. This frequency is seen as a weight in the map. The weight indicates proportionally the optimal number of cars that should be available in that slice. So, given the destination of the \registereduser, the system can calculate the best solution for the user.
-The system will provide solutions that are no more far than 1km from the selected destination.
-This allocation method is also used from \fieldstaff in order to re-allocate cars that were under maintenance.
+			\item { plug availability near destination (considering charge times and scheduled relocations) }
+			\item { autonomy and battery charge level of the car }
+			\item { current positions of rented cars  }
+			\item { destination (the suggested location must be within a threshold from it) }
+			\item { parked cars' distribution in city zones: \\
+				\par Each city covered by the service is partitioned into circular crowns cut in slices: each area on this concentric grid is defined as City Zone. Each City Zone is assigned a weight based on rent frequency and number of parked cars, this parameter represent the optimal number of car that should be available in that zone. 
+			}
+		\end{itemize} 
+		
+		\noindent
+		\begin{figure}[H]
+\centering
+\includegraphics[scale=0.4]{mappazone.pdf}% "%" necessario
+
+\caption{City Zones Map division}
+\end{figure}
+		
+
 		
 
 		\subsubsection{Application Programming Interface}
@@ -536,11 +660,11 @@ This allocation method is also used from \fieldstaff in order to re-allocate car
 	\subsection{Scenario 8}
 		Andrew has to carry his mother to the airport but remembers that his car is being repaired. He thinks that the best choice is to reserve a car with the \powerenjoy app. After that they go towards the vehicle and, once reached it, Andrew helps his mother to load the heavy suitcase in the back seat. Now everything is ready to go. On the way by the airport on the screen of the car appears a message that explain to the driver that he finished the money on his credit card, so he can finish this trip but his account will be blocked until he will pay the debts towards the company. Arrived at the airport the mother goes out from the car with her suitcase and says goodbye to her son. Once at home Andrew has to pay the full rent because the system notice that the passenger is only one.
 	\subsection{Scenario 9}
-		Paul is late for his first day of teaching. Go by foot will not allow him to arrive on time. He decides to reserve a car with his \powerenjoy app. He opens it and checks the available cars. Unfortunately he notices that the only nearby car have 15\% of battery full and the workplace is 4KM from the nearest \powergrid station, outside a \safearea. The workplace is just 10 minutes by car from its position and the time is running out, so 	he reserves it. Left the \safearea, the car advice Paul by the screen that he should 	park in a \safearea, otherwise will be charged recovery costs. He's too much late and ignores the advice. The system will charge 30\% more on this ride because the car is left with less 20\% of the battery's charge and at more that 3KM from the nearest \powergrid station, furthermore Paul will has to pay recovery costs.
+		Paul is late for his first day of teaching. Go by foot will not allow him to arrive on time. He decides to reserve a car with his \powerenjoy app. He opens it and checks the available cars. Unfortunately he notices that the only nearby car have 15\% of battery full and the workplace is 4KM from the nearest \powerplug station, outside a \safearea. The workplace is just 10 minutes by car from its position and the time is running out, so 	he reserves it. Left the \safearea, the car advice Paul by the screen that he should 	park in a \safearea, otherwise will be charged recovery costs. He's too much late and ignores the advice. The system will charge 30\% more on this ride because the car is left with less 20\% of the battery's charge and at more that 3KM from the nearest \powerplug station, furthermore Paul will has to pay recovery costs.
 	\subsection{Scenario 10}
-		Rodolfo has to meet her parents in their downtown manor. He could go by feet but it's a very cold winter day and prefers to reserve a warmer \powerenjoy car. Looking at the cars around him, luckily notices that the nearest car have the battery completely charge! He is clever and kind, so decide not to go directly to his parent's house but to reach the closest station to it in order to plug the car into the \powergrid. Rodolfo reaches the car, get in and starts driving. Arrived at the station, the car's battery level is 90\%. For this journey he will receive a total of 50\% discount: 20\% from the level of the battery ( more than 50\% ) and 30\% from his kindness ( car plugged into a \powergrid ). A very lucky day for Rodolfo!
+		Rodolfo has to meet her parents in their downtown manor. He could go by feet but it's a very cold winter day and prefers to reserve a warmer \powerenjoy car. Looking at the cars around him, luckily notices that the nearest car have the battery completely charge! He is clever and kind, so decide not to go directly to his parent's house but to reach the closest station to it in order to plug the car into the \powerplug. Rodolfo reaches the car, get in and starts driving. Arrived at the station, the car's battery level is 90\%. For this journey he will receive a total of 50\% discount: 20\% from the level of the battery ( more than 50\% ) and 30\% from his kindness ( car plugged into a \powerplug ). A very lucky day for Rodolfo!
 	\subsection{Scenario 11}
-		Amelia is a good mother and be careful to save money for her family, in fact she went to the supermarket by foot. After buying the necessary things for the house, she notices that the bags are too heavy to walk back. She remembers that she is subscribed to the \powerenjoy \service. She logs in the app, reserves a car. Than she picks up the car, selects the destination and chooses the ``money saving option''. Although this unforeseen she can save some money. The system computes the destination in order to get the discount. Once arrived to the destination she locks the car and plugs it into the \powergrid. The system applies a discount of 30\% on her ride.
+		Amelia is a good mother and be careful to save money for her family, in fact she went to the supermarket by foot. After buying the necessary things for the house, she notices that the bags are too heavy to walk back. She remembers that she is subscribed to the \powerenjoy \service. She logs in the app, reserves a car. Than she picks up the car, selects the destination and chooses the ``money saving option''. Although this unforeseen she can save some money. The system computes the destination in order to get the discount. Once arrived to the destination she locks the car and plugs it into the \powerplug. The system applies a discount of 30\% on her ride.
 	\subsection{Scenario 12}
 		John is going to the gym using the \powerenjoy \service, when he notices that the car's battery level is critically low, but he decides to go on without takes care of it. At certain point the car informs John that he should go near the roadside because the car will stops shortly. John is a bully and decides to ignore the warning. Taking care of the user's safety the car stops as expected, but John is in the middle of the road! Never having been in a similar situation he decides to call the assistance using the embedded screen on the car. An operator takes the call and explains John that a field \staff is coming on site and until the car is not parked safely he will continue to pay. A very expensive day for our John.		
 	
@@ -928,7 +1052,7 @@ This allocation method is also used from \fieldstaff in order to re-allocate car
 	\textbf{Flow of events}
 		& \begin{enumerate}
  		\item The user selects his destination address on the car screen
-		\item The system purposes the \powergrid station according to algorithm constraints.
+		\item The system purposes the \powerplug station according to algorithm constraints.
 		\end{enumerate}\\ 
 	\textbf{Exit conditions}
 		&\begin{itemize}
@@ -936,7 +1060,7 @@ This allocation method is also used from \fieldstaff in order to re-allocate car
 		\end{itemize}\\
 	\textbf{Exceptions}
 		& \begin{itemize}
-			\item There are no available \powergrid stations in 1 km range from the destination. (The system during driving will notify the user through the car screen if a \powergrid becomes free.)
+			\item There are no available \powerplug stations in 1 km range from the destination. (The system during driving will notify the user through the car screen if a \powerplug becomes free.)
 		\end{itemize}
 	\end{tabular}
 	\end{center}
@@ -979,13 +1103,13 @@ This allocation method is also used from \fieldstaff in order to re-allocate car
 		& PowerEnJoy User\\ [8px]
 	\textbf{Assumptions} 
 	& \begin{itemize}
-		\item The user has parked a car near a \powergrid and has ended his \carsharing. 
+		\item The user has parked a car near a \powerplug and has ended his \carsharing. 
 	\end{itemize}\\
 	\textbf{Flow of events}
 		& \begin{enumerate}
- 			\item The user inserts his \personalpin into the \powergrid screen, in order to let the \powergrid enabled to charge cars.
-			\item The user plugs the car to the \powergrid.
-			\item The system detects that the car of our user is charging at the \powergrid unlocked by the same user. 
+ 			\item The user inserts his \personalpin into the \powerplug screen, in order to let the \powerplug enabled to charge cars.
+			\item The user plugs the car to the \powerplug.
+			\item The system detects that the car of our user is charging at the \powerplug unlocked by the same user. 
 		\end{enumerate}\\ 
 	\textbf{Exit conditions}
 		&\begin{itemize}
@@ -1049,12 +1173,102 @@ This allocation method is also used from \fieldstaff in order to re-allocate car
 	\end{center}
 
 	\subsection{Class Diagram}
+	\noindent
+		\makebox[\textwidth]{\includegraphics[scale=0.35]{./uml/class_diag.pdf} }\\
+	\subsection*{Note}
+		This class diagram shows the the principal objects of the world that we are describing. We consider the world in a certain time. We model the Rent and reservation Classes is considered in relation at the latest one time with the user because we consider only instances that are active in a certain moment. 
+		
+	\clearpage Here we highlight class diagram showing the Company purpose.
+		
+	\noindent
+		\makebox[\textwidth]{\includegraphics[scale=0.35]{./uml/efficiency_prod.pdf} }\\	
+	\noindent
+		\makebox[\textwidth]{\includegraphics[scale=0.35]{./uml/estensibility.pdf} }\\	
+	\noindent
+		\makebox[\textwidth]{\includegraphics[scale=0.35]{./uml/user_services.pdf} }\\	
+	\subsection{Car Status Chart}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.3]{./uml/car_status.pdf}% "%" necessario
+		\caption{UML Car State Chart}
+	\end{figure}
+	\subsection*{Note}
+	This state chart shows all the possible states that the system will allow for a car.
+
+	
 \section{External Interfaces}
+In order to deploy our system, given Goals, Domain Assumptions and Requirements, we would like to give a boundary of the hardware and external software systems that will be involved in our project.
+\subsection{User Devices}
+	Each \powerenjoyuser, and \fieldstaff user should operate through a device that has these characteristics:
+		\begin{itemize}
+			\item Network connection
+			\item Geolocation system capable to give a precision comparable to the one given by the GPS used for civil scopes.
+		\end{itemize}
+\subsection{Cars}
+	Each Car used for the \powerenjoy service must be equipped with these features:
+	\begin{itemize}
+		\item Touch Screen
+		\item Speakerphone
+		\item Occupant classification system
+		\item Geolocation system
+		\item on-board computer supporting the chosen Navigation system
+		\item Network connection
+		\item ECU (Electronic Control Unit) must be able to supervise the car needs of maintenance via specific sensors (e.g. tire pressure sensor)
+		\end{itemize}
+	Furthermore the battery autonomy that is displayed to the \powerenjoyuser is rescaled to map real 10-100\% to 0-100\%.
+	\subsubsection{Equipment usability}
+	Here we clarify some use of cars' technologies:
+	\begin{itemize}
+		\item Cars can be selectively remotely locked, unlocked, powered on and powered off by authorized personal.
+		\item Cars periodically notify the system of their position, in case of accident / failure the notification process stops.
+		\item Cars' speakerphone can be remotely activated by authorized personal.
+	\end{itemize}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.1]{auto.pdf}% "%" necessario
+		\caption{City Zones Map division}
+	\end{figure}
+
+		
+\subsection{Power Plug}
+	Each power plug for the \powerenjoy service must be equipped as follow:
+		\begin{itemize}
+			\item Network Connection
+			\item Phisical/Touch keyboard in order to allow \personalpin insertion.
+		\end{itemize}
+\subsection{Navigation System}
+	The navigation and map system will be provided from an external services through their API (e.g. TomTom, Google Maps).
+\subsection{Payments}
+	The payments system will be provided by external services through their API (e.g.Stripe, Dwolla).
+
 \section{Alloy Model}
-	
+	in order to verify the consistency of our model we use the Alloy Analyzer.
+	\subsection{Alloy Source code}
 	\lstinputlisting[language=alloy, frame=trBL, caption=Complete Alloy Code]{Alloy.als}
-	
+	\subsection{Models}
+		We have created three different scenarios about the PowerEnJoy service. Each scenario is an event in the system.
+		\subsubsection{Scenario 1 - Emergency}
+			
+		\subsubsection{Scenario 2 - Reservation}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.8]{Scenario2_OK.png}% "%" necessario
+				\caption{Reservation}
+			\end{figure}
+		Here we 
+
+		\subsubsection{Scenario 3 - Payment}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.8]{Scenario3_OK.png}% "%" necessario
+				\caption{Payment}
+			\end{figure}
+
 
 \section{Hours of Work}
-
+	\begin{itemize}
+		\item Alessandro Erba $\approx$ 55h
+		\item Filippo Leveni 	$\approx$ 55h
+		\item Luca Lodi $\approx$ 55h
+	\end{itemize}
 \end{document}
