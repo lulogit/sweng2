@@ -696,7 +696,6 @@ During the development of the user interface will be purposed some sample tests 
 	\makebox[\textwidth]{\includegraphics[scale=0.85]{usecase.pdf} }%
 
 
-
 	\subsection{Actors Identifying}
 		\noindent
 		\makebox[\textwidth]{\includegraphics[scale=0.85]{Actors.pdf} }\\
@@ -711,11 +710,11 @@ During the development of the user interface will be purposed some sample tests 
 			& Guest user\\ [8px]
 		\textbf{Assumptions} 
 			& \begin{itemize}
-				\item The guest downloaded the app.
+				\item The guest user can open the PowerEnJoy Software on his smart device.
 			\end{itemize}\\
 		\textbf{Flow of events}
 			& \begin{enumerate}
-	 			\item The user opens PowerEnJoy app on his smartphone.
+	 			\item The user opens PowerEnJoy app on his  smart device.
 				\item The guest provides his credentials and documents to the system.
 				\item The system verify user's credentials and documents to ensure that he can register in.
 				\item The system sends to the user's e-mail address his own password and pin.
@@ -776,9 +775,9 @@ During the development of the user interface will be purposed some sample tests 
 			\end{itemize}\\
 		\textbf{Flow of events}
 			& \begin{enumerate}
-	 			\item The user opens the app.
+	 			\item The user opens the PowerEnJoy software on his smart device.
 				\item The user declares his identity.
-				\item The system recognises the identity and ensures that the user who is logging in is who he claims to be.
+				\item The system recognizes the identity and ensures that the user who is logging in is who he claims to be.
 				\item The user can visualize his personal page and access to system's functionalities provided to him.
 			\end{enumerate}\\ 
 		\textbf{Exit conditions}
@@ -805,7 +804,7 @@ During the development of the user interface will be purposed some sample tests 
 			\end{itemize}\\
 		\textbf{Flow of events}
 			& \begin{enumerate}
-	 			\item The user opens the app.
+	 			\item The user opens the PowerEnJoy software on his smart device.
 				\item The user selects the recovery password option.
 				\item The user provides to the system his own pin and e-mail address.
 				\item The system checks that the pin and the address inserted are associated.
@@ -835,7 +834,7 @@ During the development of the user interface will be purposed some sample tests 
 			\end{itemize}\\
 		\textbf{Flow of events}
 			& \begin{enumerate}
-	 			\item The staff goes in the safe area section of the app, that is visible only by management staff.
+	 			\item The staff goes in the safe area section of the PowerEnJoy software, that is visible only by management staff.
 				\item The user interface shows a list of actual safe areas.
 				\item The staff select to add a new safe area or to update an existing one.
 				\item The staff provides the necessary parameters for the action.
@@ -865,7 +864,7 @@ During the development of the user interface will be purposed some sample tests 
 			\end{itemize}\\
 		\textbf{Flow of events}
 			& \begin{enumerate}
-	 			\item The staff goes in the polices section of the app, that is visible only by management staff.
+	 			\item The staff goes in the polices section of the PowerEnJoy software, that is visible only by management staff.
 				\item The user interface shows a list of actual polices.
 				\item The staff select to add a new policy or to update an existing one.
 				\item The staff provides the necessary parameters for the action.
@@ -921,7 +920,7 @@ During the development of the user interface will be purposed some sample tests 
 		\end{itemize}\\
 	\textbf{Flow of events}
 		& \begin{enumerate}
-	 		\item The user opens PowerEnJoy app on his smartphone 
+	 		\item The user opens PowerEnJoy app on his smart device
 	 		\item The user interface displays all available cars around the user position according to the setted range. 
 			\item Optionally the user can search the cars around an inserted address, or near a remarkable place. 
 		\end{enumerate}\\ 
@@ -960,7 +959,7 @@ During the development of the user interface will be purposed some sample tests 
 		& \begin{itemize}
 			\item Reservation expires.
 			\item The user exits the procedure before confirming it.
-			\item Another user reserves another car while our user is reserving it, the system notify the user. The reservation ends unsuccessfully.
+			\item Another user reserves car while our user is reserving it, the system notify the user. The reservation ends unsuccessfully.
 		\end{itemize}
 	\end{tabular}
 	\end{center}
@@ -979,7 +978,7 @@ During the development of the user interface will be purposed some sample tests 
 		\end{itemize}\\
 	\textbf{Flow of events}
 		& \begin{enumerate}
- 			\item The user opens PowerEnJoy app on his smartphone 
+ 			\item The user opens PowerEnJoy software on his smart device.
  			\item The user interface displays user's current reservation.
 			\item The user eliminates the reservation clicking on the cancel reservation button.
 			\item The user confirms his selection.
@@ -1008,7 +1007,7 @@ During the development of the user interface will be purposed some sample tests 
 	\textbf{Flow of events}
 		& \begin{enumerate}
  		\item The user is close to his reserved car.
- 		\item The user selects the unlock car button (displayed in the application) UI on it's smartphone.
+ 		\item The user selects the unlock car button (displayed in the application) UI on it's smart device.
 		\item The system unlocks the car.
 		\item The user gets in the car and insets his \personalpin.
 		\item The system detects all passengers from cars sensors.
@@ -1024,7 +1023,6 @@ During the development of the user interface will be purposed some sample tests 
 		\end{itemize}\\
 	\textbf{Exceptions}
 		& \begin{itemize}
-			\item The user run out of money on his credit card.
 			\item The car runs out of battery.
 		\end{itemize}
 	\end{tabular}
@@ -1054,9 +1052,7 @@ During the development of the user interface will be purposed some sample tests 
 			\item When the user wants end the \stopover he re-unlocks and start driving the car as he has done in the "Pick up car" use case.
 		\end{itemize}\\
 	\textbf{Exceptions}
-		& \begin{itemize}
-			\item The user run out of money on his credit card. (The user will not be able to re-unlock the car.)
-		\end{itemize}
+		& ...
 	\end{tabular}
 	\end{center}
 	
