@@ -1270,21 +1270,27 @@ In order to deploy our system, given Goals, Domain Assumptions and Requirements,
 	\subsection{Models}
 		We have created three different scenarios about the PowerEnJoy service. Each scenario is an event in the system.
 		\subsubsection{Scenario 1 - Emergency}
-			
+		\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.3]{./alloy/Scenario1_OK.png}% "%" necessario
+				\caption{Emergency}
+			\end{figure}
+		Here we can see a car accident event. Car2 is a car picked up during a Money Saving Rent (The user has just connected it into a \powerplug). Car Accident1 happens and the car becomes broken. The the emergency staff is alerted. The user pays for his rent.
 		\subsubsection{Scenario 2 - Reservation}
 			\begin{figure}[H]
 				\centering
-				\includegraphics[scale=0.8]{Scenario2_OK.png}% "%" necessario
+				\includegraphics[scale=0.8]{./alloy/Scenario2_OK.png}% "%" necessario
 				\caption{Reservation}
 			\end{figure}
-		Here we 
+		Here we show a reservation event that occurs. Car1 is available and plugged into a \powerplug. \powerenjoyuser 2 has no reservations or rents active. He reserves Car1 that becomes Car0, an instance of Reservation is created between the \powerenjoyuser (who is become number 1) and  the car. The car changes state and becomes Reserved.
 
 		\subsubsection{Scenario 3 - Payment}
 			\begin{figure}[H]
 				\centering
-				\includegraphics[scale=0.8]{Scenario3_OK.png}% "%" necessario
+				\includegraphics[scale=0.8]{./alloy/Scenario3_OK.png}% "%" necessario
 				\caption{Payment}
 			\end{figure}
+		Here we show an example of payment event. We can see a money saving rent active on the Car2.  In the rent there is a Passenger. The User2 is in a different place from the car because he left it in \stopover connected to a \powerplug. The user decides to end the rent and the car becomes available. A payment is created and the power plug discount is given for this  ride.
 
 
 \section{Hours of Work}
