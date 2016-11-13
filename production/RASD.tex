@@ -179,10 +179,10 @@
 \section{Introduction}
 	\subsection{Purpose}
 	
-		The purpose of our team is to project \powerenjoy, which is  a platform that will be used to manage a \carsharing \service  in the city area.\\
- 		The platform will allow clients to find and reserve electric cars using smart devices (In Section 5 these devices are described), and it will also manage the communication of the emergency situations to the proper \staff.\\
-  		Furthermore, a particular \powerenjoy feature is the application of certain discounts to its users.\\
- 		 \tab \tab This document aims to describe the high-level functionalities that will be offered by \powerenjoy \service. The RASD is intended to be viewed by the stakeholders , that will evaluate the correctness of any assumption and decision in this document.
+		The purpose of our team is to project the system for \powerenjoy, a new born car sharing company. \\
+ 		The platform will allow clients to find and reserve electric cars using smart devices (described in section 5) and to rent available cars, applying several eco-friendly discounts to incentive user virtuous behaviour.\\
+ 		In addition the system will take care of emergencies and potentially dangerous situation (such as car malfunctioning, car accidents and user's help requests) by empowering the staff to be responsive in their actions and always have an overview of the situation.\\
+ 		 \tab \tab This document aims to describe the high-level functionalities that will be offered by \powerenjoy \service. The RASD is intended to be viewed by the stakeholders, that will evaluate the correctness of any assumption and decision in this document.
   
  \subsection{Scope}
  
@@ -199,17 +199,29 @@
 %   \tab \tab The system guarantees a uniform distribution of cars in the city. The way in which this is guaranteed is explained later in this document.   \\
 %   \tab \tab A user can take advantage of the "Money saving" option selecting it on the integrated interface in the car. After    that he/she can input his/her final destination and the system provides information about the station where to leave the car to get a discount. This destination is determined to ensure the uniform distribution of cars and depends both on the destination of the user and on the availability of power plugs at the selected station.
 
-PowerEnJoy service is a car sharing service. Its aim is to develop a new way of car sharing.
-three crucial and innovative points of the service:
-
+PowerEnJoy service is a car sharing service that aim is to develop a new way of car sharing:
 \begin{itemize}
 	\item Electric cars.
-	\item Uniform distribution of cars, in order to easily find a car near the user position.
 	\item Discount policies for users eco-friendly behaviors.
 \end{itemize}
 
+\subsection{Proposed solution overview}
+The solution described in this document will focus on three key point:
+\begin{itemize}
+	\item{increase the user satisfaction by enhancing the probability of finding nearby cars.}
+	\item{a part of the system (Back-end Process Management) will maximize the efficiency of the services by keeping the fairest possible distribution of charged cars over the territory by: 
+		\begin{itemize}
+			\item{organize the staff assigning relocation request (also to manage the recharge process of cars)}
+			\item{offer discounts to the users that end a rent in a suggested location (Money Saving option). Its amount is computed accordingly to the company's economic return of relocating that car in the suggested destination
+			}
+		\end{itemize}
+	}
+	\item{the configurability and extensibility of all the parameters of the service (fares, Safe areas, cars, discounts ...) }
+\end{itemize}
+
 Through our analysis we have figured out how the system could be organized.
-We have identified Actors and situations that can be useful to manage the system.
+We have identified useful Actors and situations to model the system to be.
+
 
 	
 	\subsection{Goals}
