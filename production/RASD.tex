@@ -1242,9 +1242,28 @@ In order to deploy our system, given Goals, Domain Assumptions and Requirements,
 	The payments system will be provided by external services through their API (e.g.Stripe, Dwolla).
 
 \section{Alloy Model}
-	
+	in order to verify the consistency of our model we use the Alloy Analyzer.
+	\subsection{Alloy Source code}
 	\lstinputlisting[language=alloy, frame=trBL, caption=Complete Alloy Code]{Alloy.als}
-	
+	\subsection{Models}
+		We have created three different scenarios about the PowerEnJoy service. Each scenario is an event in the system.
+		\subsubsection{Scenario 1 - Emergency}
+			
+		\subsubsection{Scenario 2 - Reservation}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.8]{Scenario2_OK.png}% "%" necessario
+				\caption{Reservation}
+			\end{figure}
+		Here we 
+
+		\subsubsection{Scenario 3 - Payment}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.8]{Scenario3_OK.png}% "%" necessario
+				\caption{Payment}
+			\end{figure}
+
 
 \section{Hours of Work}
 	\begin{itemize}
