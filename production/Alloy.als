@@ -263,6 +263,8 @@ pred evtEndRent[ //p: end rent
 	#~paymentRent[u.currentRent] = 1 //f: the rent has associated exactly one payment
 	PassengersDiscount in p.discounts <=> #u.currentRent.passengers >= 2 //f: passengers discount is earned iff the rent's passengers are at least two
 	not (u.currentRent = MoneySavingRent) implies not(MoneySavingDiscount in p.discounts) //f: money saving discount can be earned only if the rent considered is a MoneySavingRent
+	(MoneySavingDiscount in p.discounts) <=> (u.currentRent.inputtedDestination=c.currentLocation and u.currentRent in MoneySavingRent)
+	//(u.currentRent in MoneySavingRent) implies (MoneySavingDiscount in p.discounts <=> u.currentRent.inputtedDestination=c.currentLocation) //f: money saving discount is earned iff the car after the event is parked in the location suggested by the system
 	PowerPluggedDiscount in p.discounts <=> ~parkedCars[c] in PowerPlugSlot //f: power plugged discount is earned iff the the car considered is park in a power plug slot
 	BatteryAutonomyDiscount in p.discounts 	<=> c.batteryCharge >= 3 //f: battery autonomy discount is earned iff the battery charge is over the level 3
 	FarFromPowerPlugDiscount  in p.discounts <=> (c.batteryCharge <= 1) or (far_from_power_plug[c]) //f: far from power plug discount is charged iff car's battery level is lower than 1 or the car is parked far from power plug
