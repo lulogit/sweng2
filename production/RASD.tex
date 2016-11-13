@@ -1150,6 +1150,27 @@ This allocation method is also used from \fieldstaff in order to re-allocate car
 	\end{center}
 
 	\subsection{Class Diagram}
+	\noindent
+		\makebox[\textwidth]{\includegraphics[scale=0.35]{./uml/class_diag.pdf} }\\
+	\subsection*{Note}
+		This class diagram shows the the principal objects of the world that we are describing. We consider the world in a certain time. We model the Rent and reservation Classes is considered in relation at the latest one time with the user because we consider only instances that are active in a certain moment.
+		Here we highline class diagram showing the Company purpose.
+	\noindent
+		\makebox[\textwidth]{\includegraphics[scale=0.35]{./uml/efficiency_prod.pdf} }\\	
+	\noindent
+		\makebox[\textwidth]{\includegraphics[scale=0.35]{./uml/estensibility.pdf} }\\	
+	\noindent
+		\makebox[\textwidth]{\includegraphics[scale=0.35]{./uml/user_services.pdf} }\\	
+	\subsection{Car Status Chart}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.3]{./uml/car_status.pdf}% "%" necessario
+		\caption{UML Car State Chart}
+	\end{figure}
+	\subsection*{Note}
+	This state chart shows all the possible states that the system will allow for a car.
+
+	
 \section{External Interfaces}
 In order to deploy our system, given Goals, Domain Assumptions and Requirements, we would like to give a boundary of the hardware and external software systems that will be involved in our project.
 \subsection{User Devices}
@@ -1178,11 +1199,10 @@ In order to deploy our system, given Goals, Domain Assumptions and Requirements,
 		\item Cars' speakerphone can be remotely activated by authorized personal.
 	\end{itemize}
 	\begin{figure}[H]
-\centering
-\includegraphics[scale=0.1]{auto.pdf}% "%" necessario
-
-\caption{City Zones Map division}
-\end{figure}
+		\centering
+		\includegraphics[scale=0.1]{auto.pdf}% "%" necessario
+		\caption{City Zones Map division}
+	\end{figure}
 
 		
 \subsection{Power Plug}
