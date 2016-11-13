@@ -1059,6 +1059,44 @@ This allocation method is also used from \fieldstaff in order to re-allocate car
 
 	\subsection{Class Diagram}
 \section{External Interfaces}
+In order to deploy our system, given Goals, Domain Assumptions and Requirements, we would like to give a boundary of the hardware and external software systems that will be involved in our project.
+\subsection{User Devices}
+	Each \powerenjoyuser, and \fieldstaff user should operate through a device that has these characteristics:
+		\begin{itemize}
+			\item Network connection
+			\item Geolocation system capable to give a precision comparable to the one given by the GPS used for civil scopes.
+		\end{itemize}
+\subsection{Cars}
+	Each Car used for the \powerenjoy service must be equipped with these features:
+	\begin{itemize}
+		\item Touch Screen
+		\item Speakerphone
+		\item Occupant classification system
+		\item Geolocation system
+		\item on-board computer supporting the chosen Navigation system
+		\item Network connection
+		\item ECU (Electronic Control Unit) must be able to supervise the car needs of maintenance via specific sensors (e.g. tire pressure sensor)
+		\end{itemize}
+	Furthermore the battery autonomy that is displayed to the \powerenjoyuser is rescaled to map real 10-100\% to 0-100\%.
+	\begin{figure}[H]
+\centering
+\includegraphics[scale=0.1]{auto.pdf}% "%" necessario
+
+\caption{City Zones Map division}
+\end{figure}
+
+		
+\subsection{Power Plug}
+	Each power plug for the \powerenjoy service must be equipped as follow:
+		\begin{itemize}
+			\item Network Connection
+			\item Phisical/Touch keyboard in order to allow \personalpin insertion.
+		\end{itemize}
+\subsection{Navigation System}
+	The navigation and map system will be provided from an external services through their API (e.g. TomTom, Google Maps).
+\subsection{Payments}
+	The payments system will be provided by external services through their API (e.g.Stripe, Dwolla).
+
 \section{Alloy Model}
 \section{Hours of Work}
 
