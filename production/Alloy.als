@@ -210,7 +210,7 @@ pred evtCarAccident[ //  car accident
 	e!=e' //  the emergency staff before and after the event is represented by two different emergency staff
 	#(~accidentCar)[c] = 0 //  the car before the event isn't involved in any accident
 	#(~accidentCar)[c'] = 1 //  the car after the event is involved in an accident
-	(c.currentRent != none) implies (one p: Payment | p.paymentRent = c.currentRent and compute_discounts[p.paymentRent,p]) //  all car in accident must pay the current rent
+	(~car[c] != none) implies (one p: Payment | p.paymentRent = ~car[c] and compute_discounts[p.paymentRent,p]) //  all car in accident must pay the current rent
 
 }
 
@@ -310,6 +310,6 @@ pred scenario3[
 	(no c'': Car | c'' != c and c'' != c' and (event[c'',c'] or event[c, c'']) )
 }
 
-//run scenario1
+run scenario1
 //run scenario2
-run scenario3
+//run scenario3
