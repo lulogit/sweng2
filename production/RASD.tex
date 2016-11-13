@@ -218,8 +218,6 @@
 		\goal{ To create a system that gives the possibility to be monitored and administrated by \powerenjoy's authorized personal. }
 		\goal{  To empower the authorized personal in order to be able to quickly react to emergencies, potentially dangerous situations and users' requests for help, in best interest of users' safety.}
 		\goal{ To create a system that provides a programmable interface, in order reduce the costs of further enhancements / maintenance to the system exploiting internal personal or third party developers.}
-		
-		% \goal{ . }
 
 	\end{goals}
 
@@ -229,21 +227,15 @@
 	We suppose that the following conditions hold in the analysed world:
 	\begin{domainassumptions}
 
-		\domainassumption{ The geographical area covered by the service is included in the coverage area of most common mobile communication technologies (3g, 4g) offered by main telecommunications companies. }
-
 		\domainassumption{ Only correctly registered users can access the functionalities provided by the system. }
 		\domainassumption{ Users will not park cars in position not covered by GPS signal (such as underground parking slots). }
-
-		\domainassumption{ Cars are able to send diagnostic for the maintenance process in addition to real-time telemetry about speed and status of the battery.  }
-		\domainassumption{ Cars can be selectively remotely locked, unlocked, powered on and powered off by authorized personal. }
-		\domainassumption{ Cars periodically notify the system of their position, in case of accident / failure the notification process stops. }
-		\domainassumption{ Cars are provided with an hand-free communication set that can be remotely activated. }
-
 		\domainassumption{ Both user's and cars' GPS position can't be faked by any mean (e.g: GPS spoofing). }
-
-		\domainassumption{ Each plug in charge stations is capable to be remotely  enabled/disabled for the charge of cars. }
-		
-		%\domainassumption{ . }
+		\domainassumption{ Each power plug slot has its own park slot }
+		\domainassumption{ Users use power plug's park slot only if they charge theirs cars in the power plug associated }
+		\domainassumption{ Number of field officiers is sufficient to guarantee the handling of field issues within 15 minutes from the reporting }
+		\domainassumption{ Number of power plugs is sufficient to allow users to use them without difficulty }
+		\domainassumption{ Number of park slots is balanced in relation to population density of city zones }
+		\domainassumption{ Number of users is large enough to allow the statistical assumption that there is not an excessive unbalancing of distribution of cars in the city }
 
 	\end{domainassumptions}
 
@@ -1138,6 +1130,13 @@ In order to deploy our system, given Goals, Domain Assumptions and Requirements,
 		\item ECU (Electronic Control Unit) must be able to supervise the car needs of maintenance via specific sensors (e.g. tire pressure sensor)
 		\end{itemize}
 	Furthermore the battery autonomy that is displayed to the \powerenjoyuser is rescaled to map real 10-100\% to 0-100\%.
+	\subsubsection{Equipment usability}
+	Here we clarify some use of cars' technologies:
+	\begin{itemize}
+		\item Cars can be selectively remotely locked, unlocked, powered on and powered off by authorized personal.
+		\item Cars periodically notify the system of their position, in case of accident / failure the notification process stops.
+		\item Cars' speakerphone can be remotely activated by authorized personal.
+	\end{itemize}
 	\begin{figure}[H]
 \centering
 \includegraphics[scale=0.1]{auto.pdf}% "%" necessario
