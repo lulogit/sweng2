@@ -17,14 +17,8 @@ sig PowerenjoyUser { //s: user
 }
 
 sig EmergencyStaff { //s: emergency staff
-	handledEmergency: lone Emergency, //f: max 1 emergency handled at the same time
 	emergenciesQueue: set Emergency //f: queue of emergencies to be handled by this specific emergency staff
-}{
-	handledEmergency = none implies #emergenciesQueue = 0 //f: no queued emergencies if not handling one
-	handledEmergency not in emergenciesQueue //f: no handled emergency in queued emergencies
 }
-
-
 
 abstract sig Emergency {//s: emergency
 }
@@ -52,6 +46,7 @@ sig RelocationRequest { //s:relocation request
 }{
 	not(assignedCar.state in (PickedUp + Reserved + OnStopover)) //f: car to be relocated have not to be picked up or reserved
 	destination != assignedCar.currentLocation //f: no relocation in the same place where the car is
+	assignedCar.state != Broken //f: no relocation of broken cars
 }
 
 fact NoMultipleRelocationsOnSamePlace { //f: no multiple relocations on the same place
@@ -78,6 +73,7 @@ sig Car { //s: car
 	state = Available implies (one s: SafeArea | this in s.parkedCars) //f: available cars must be parked in safe area
 	#~accidentCar[this] > 0 implies state = Broken //f: cars with accident are not available
 	batteryCharge = 0 implies state = Broken //f: cars with battery charge = 0 are considered broken
+	state in  PickedUp + OnStopover implies (one r:Rent | r.car = this)
 }
 
 fact PreserveBatteryChargeInEvent { //f: the events are istantaneous, so the battery charge is the same before and after it
@@ -189,6 +185,7 @@ pred Contains[s: SafeArea, l: Location]{ //p: contains
 }
 
 pred far_from_power_plug[c: Car]{ //p: far from power plug
+	
 }
 
 pred different_location[c1,c2: one Car]{ //p: different location
@@ -207,11 +204,14 @@ pred evtCarAccident[ //p: car accident
 	c.currentLocation = c'.currentLocation //f: since the event is istantaneous, the car's location before and after it is the same
 	c'.batteryCharge = c.batteryCharge or c'.batteryCharge = 0 //f: since the event is istantaneous, the car's battery charge before and after it is the same, or the battery is broken
 	c'.state in Broken //f: the car after the accident is broken
-	e.handledEmergency!=none implies (a in e'.emergenciesQueue and e.handledEmergency=e'.handledEmergency) //f: since the event is istantaneous, if an emergency staff is handling an emergency, the emergency handled before and after the event is the same
-	e.handledEmergency=none implies a = e'.handledEmergency //f: if an emergency staff isn't handling an emergency, the accident is handled by him after the event
+	a in e'.emergenciesQueue //f: add car accident to emergency queue
+	a not in e.emergenciesQueue //f: accident was not in queue
+	(e.emergenciesQueue & e'.emergenciesQueue = e.emergenciesQueue) //f: preserve emergency queue
 	e!=e' //f: the emergency staff before and after the event is represented by two different emergency staff
 	#(~accidentCar)[c] = 0 //f: the car before the event isn't involved in any accident
 	#(~accidentCar)[c'] = 1 //f: the car after the event is involved in an accident
+	(c.currentRent != none) implies (one p: Payment | p.paymentRent = c.currentRent and compute_discounts[p.paymentRent,p]) //f: all car in accident must pay the current rent
+	
 }
 
 pred event[c,c': one Car]{ //p: car event
@@ -252,6 +252,7 @@ pred evtEndRent[ //p: end rent
 	c,c': one Car, //f: car before and after the event
 	p: one Payment //f: payment related to the rent
 	]{
+	(no p': Payment | p!=p') //f: no payments unrelated to event
 	u.currentRent != none //f: the involved user must have an active rent before the event
 	u.currentRent.car = c //f: the car considered is the car rented by the user
 	u'.currentRent = none //f: the involved user must not have any active rent after the event
@@ -261,13 +262,16 @@ pred evtEndRent[ //p: end rent
 	parked_in_safe_area[c] //f: car rent ends only if a car is parked in a safe area 
 	parked_in_safe_area[c']  //f: since the event is istantaneous, the car is still parked in a safe area after the event
 	#~paymentRent[u.currentRent] = 1 //f: the rent has associated exactly one payment
-	PassengersDiscount in p.discounts <=> #u.currentRent.passengers >= 2 //f: passengers discount is earned iff the rent's passengers are at least two
-	not (u.currentRent = MoneySavingRent) implies not(MoneySavingDiscount in p.discounts) //f: money saving discount can be earned only if the rent considered is a MoneySavingRent
-	(MoneySavingDiscount in p.discounts) <=> (u.currentRent.inputtedDestination=c.currentLocation and u.currentRent in MoneySavingRent)
-	//(u.currentRent in MoneySavingRent) implies (MoneySavingDiscount in p.discounts <=> u.currentRent.inputtedDestination=c.currentLocation) //f: money saving discount is earned iff the car after the event is parked in the location suggested by the system
-	PowerPluggedDiscount in p.discounts <=> ~parkedCars[c] in PowerPlugSlot //f: power plugged discount is earned iff the the car considered is park in a power plug slot
-	BatteryAutonomyDiscount in p.discounts 	<=> c.batteryCharge >= 3 //f: battery autonomy discount is earned iff the battery charge is over the level 3
-	FarFromPowerPlugDiscount  in p.discounts <=> (c.batteryCharge <= 1) or (far_from_power_plug[c]) //f: far from power plug discount is charged iff car's battery level is lower than 1 or the car is parked far from power plug
+	compute_discounts[u.currentRent, p]
+}
+
+pred compute_discounts[r: Rent, p: Payment]{
+	(one d:PassengersDiscount | d in p.discounts) <=> #r.passengers >= 2 //f: passengers discount is earned iff the rent's passengers are at least two
+	not(r in MoneySavingRent) implies not(MoneySavingDiscount in p.discounts) //f: money saving discount can be earned only if the rent considered is a MoneySavingRent
+	(one d:MoneySavingDiscount | d in p.discounts) <=> (r.inputtedDestination = r.car.currentLocation and r in MoneySavingRent)
+	(one d:PowerPluggedDiscount | d in p.discounts) <=> ~parkedCars[r.car] in PowerPlugSlot //f: power plugged discount is earned iff the the car considered is park in a power plug slot
+	(one d:BatteryAutonomyDiscount | d in p.discounts) 	<=> r.car.batteryCharge >= 3 //f: battery autonomy discount is earned iff the battery charge is over the level 3
+	(one d:FarFromPowerPlugDiscount | d in p.discounts) <=> (r.car.batteryCharge <= 1) or (far_from_power_plug[r.car]) //f: far from power plug discount is charged iff car's battery level is lower than 1 or the car is parked far from power plug
 }
 
 pred parked_in_safe_area[c: Car]{//p: parked in a safe area
@@ -277,7 +281,7 @@ pred parked_in_safe_area[c: Car]{//p: parked in a safe area
 
 fact EmergenciesOfEmergencyStaffMustBeDisjoint { //f: emergencies of emergency staff must be disjoint, with the exception of the emergency staff involved in an event that is represented by two different emergency staff(before and after it)
 		all disjoint e1,e2: EmergencyStaff |
-			(no a:CarAccident,c1,c2:Car | evtCarAccident[a,c1,c2,e1,e2] or evtCarAccident[a,c2,c1,e1,e2]) implies ({e1.handledEmergency}+e1.emergenciesQueue) & ({e2.handledEmergency}+e2.emergenciesQueue) = none
+			(no a:CarAccident,c1,c2:Car | evtCarAccident[a,c1,c2,e1,e2] or evtCarAccident[a,c2,c1,e1,e2]) implies (e1.emergenciesQueue) & (e2.emergenciesQueue) = none
 }
 
 pred scenario1[
