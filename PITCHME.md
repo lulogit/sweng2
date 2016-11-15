@@ -78,6 +78,7 @@ a new car sharing
 * to input a destination
 * to be shown suggestions about where to park the car (within 1km from entered destination) in order to get discounts described above
 * to be applied an additional discount whether the rent is terminated in the suggested location, calculated by BPM with respect to secondary business goals.
+
 #VSLIDE
 **R.17** to be notified of changes in the service policies
 * different fares
@@ -117,8 +118,9 @@ service covered area.
 * update discounts
 * introducing new discounts
 * update the terms of the service
+
 #VSLIDE
-R.24 to manage personnel's accounts:
+**R.24** to manage personnel's accounts:
 * create
 * delete
 * modify
@@ -126,6 +128,7 @@ for:
 * field staff user
 * emergency staff user
 * management staff user
+
 #VSLIDE
 **R.25** to handle exceptional cases of unpaid rents:
 * check pending payment status.
@@ -140,15 +143,18 @@ cies:
 * cars malfunctioning during a rent
 * car accidents
 * cars with empty battery not parked in safe areas
+
 #VSLIDE
-R.27 to be promptly notied of PowerEnjoy users' help request.
+**R.27** to be promptly notified of PowerEnjoy users' help request.
+
 #VSLIDE
-R.28 to have an overview regarding the state and location of:
+**R.28** to have an overview regarding the state and location of:
 * cars
 * power plugs
 * current rents
 * reservation
 * field staff users
+
 #VSLIDE
 **R.29** to perform actions to resolve issue:
 * cancel a PowerEnjoy user's reservation
