@@ -57,11 +57,11 @@ a new car sharing
 #VSLIDE
 **R.10** to rent a car (reserved or available), specifically: to unlock a car when the user is within a certain distance (threshold) from the car.
  * to enable engine by inputting a personal PIN code.
- * to be charged for a given amount of money per minute as soon as the car is unlocked.
- * to be notified of the current price through a screen on the car.
- * to be able to lock/unlock the car, starting/finishing a stopover (with different fare)
- * to stop being charged as soon as the car is parked in a safe area, he exits the car (that is automatically locked) and select to end the rent.
-  * to transparently pay for the rent 5 minutes after its termination, being notified of the final price (including discounts).
+* to be charged for a given amount of money per minute as soon as the car is unlocked.
+* to be notified of the current price through a screen on the car.
+* to be able to lock/unlock the car, starting/finishing a stopover (with different fare)
+* to stop being charged as soon as the car is parked in a safe area, he exits the car (that is automatically locked) and select to end the rent.
+* to transparently pay for the rent 5 minutes after its termination, being notified of the final price (including discounts).
 #VSLIDE
 **R.11** to be excluded from the fruition of PowerEnjoy services whether the payment is unable to complete, until all pending payment are performed.
 #VSLIDE
