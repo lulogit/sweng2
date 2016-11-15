@@ -99,18 +99,18 @@ cellation / modification of an assigned request)
 * lock assigned car
 * locate maintenance facility
 #VSLIDE
-**R.20** to ask for special equipment (e.g: tow truck) or additional eld sta
-help after evaluating the situation.
+**R.20** to ask for special equipment (e.g: tow truck) or additional field staff help after evaluating the situation.
+
 #HSLIDE 
 ### Management staff users
 ![icon](presentation/management_staff.png)
 #VSLIDE
-R.21 to configure the list of available safe areas and power plugs over the
+**R.21** to configure the list of available safe areas and power plugs over the
 service covered area.
 #VSLIDE
-R.22 to cofigure the list of cars available for the service
+**R.22** to cofigure the list of cars available for the service
 #VSLIDE
-R.23 to configure service policies:
+**R.23** to configure service policies:
 * update existing service's fares
 * introducing new service's fares
 * update discounts
@@ -126,16 +126,17 @@ for:
 * emergency staff user
 * management staff user
 #VSLIDE
-R.25 to handle exceptional cases of unpaid rents:
+**R.25** to handle exceptional cases of unpaid rents:
 * check pending payment status.
 * re-enable PowerEnjoy users to the service.
+
 #HSLIDE
 ### Emergency staff user
 ![icon](presentation/emergency_staff.png)
 #VSLIDE
-R.26 to be promptly notied of potentially dangerous situations / emergen-
+**R.26** to be promptly notied of potentially dangerous situations / emergen-
 cies:
-* cars malfunctioning during a rent
+* cars malfunctioning during a rent
 * car accidents
 * cars with empty battery not parked in safe areas
 #VSLIDE
@@ -148,11 +149,11 @@ R.28 to have an overview regarding the state and location of:
 * reservation
 * field staff users
 #VSLIDE
-R.29 to perform actions to resolve issue:
+**R.29** to perform actions to resolve issue:
 * cancel a PowerEnjoy user's reservation
 * recover a PowerEnjoy user's pin code
 * unlock / lock rented car
-* set a car as available / unavailable
+* set a car as available / unavailable
 * speak with user on rented cars through installed hands-free communication set
 * assign a field staff user to relocate a car with priority
 * notify appropriate authorities of a car accident (first-aid, fire-fighters,police, insurance company ...)
