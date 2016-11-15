@@ -153,8 +153,6 @@ R.25 to handle exceptional cases of unpaid rents:
  check pending payment status.
  re-enable PowerEnjoy users to the service.
 #HSLIDE
-Requirements
-#VSLIDE
 ### Emergency staff user
 ![icon](presentation/emergency_staff.png)
 #VSLIDE
