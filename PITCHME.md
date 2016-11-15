@@ -1,12 +1,24 @@
-#HSLIDE
+#HSLIDE?image=presentation/car_sharing.png
 # PowerEnJoy
-- Erba Alessandro
-- Leveni Filippo
-- Lodi Luca
+  - Erba Alessandro
+  - Leveni Filippo
+  - Lodi Luca
 
-#HSLIDE
-# PowerEnjoy:
+#HSLIDE?image=presentation/car_sharing.png
+### PowerEnjoy
 a new car sharing
+
+#VSLIDE?image=presentation/car_sharing.png
+### PowerEnjoy
+electric cars
+
+#VSLIDE?image=presentation/car_sharing.png
+### PowerEnjoy
+incentive eco-friendly behaviors
+
+#VSLIDE?image=presentation/car_sharing.png
+### PowerEnjoy
+highest probability of finding cars 
 
 #HSLIDE
 # Goals
