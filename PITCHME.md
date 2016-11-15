@@ -1,24 +1,26 @@
-#HSLIDE?image=presentation/car_sharing.png
+#HSLIDE?image=https://images.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fit%2Farchive%2Fb%2Fbe%2F20151105101950%2521Logo_Politecnico_Milano.png&f=1
+
+#HSLIDE
 # PowerEnJoy
   - Erba Alessandro
   - Leveni Filippo
   - Lodi Luca
 
-#HSLIDE?image=presentation/car_sharing.png
+#HSLIDE
 ### PowerEnjoy
 a new car sharing
 
-#VSLIDE?image=presentation/car_sharing.png
-### PowerEnjoy
-electric cars
+#VSLIDE
+### Electric cars
+![ec](presentation/electric_car_sharing.png)
 
-#VSLIDE?image=presentation/car_sharing.png
-### PowerEnjoy
-incentive eco-friendly behaviors
 
-#VSLIDE?image=presentation/car_sharing.png
-### PowerEnjoy
-highest probability of finding cars 
+#VSLIDE
+### Incentives eco-friendly behaviors
+![ec](presentation/car_sharing.png)
+
+#VSLIDE
+### Highest probability of finding cars 
 
 #HSLIDE
 # Goals
