@@ -75,8 +75,8 @@ a new car sharing
 **R.15** to be applied an overcharge of 30% on the last ride, whether the car is left farer than 3 KM from the nearest charge station or with less than 20% of the battery's charge.
 #VSLIDE
 **R.16** to enable the money saving option in order to minimize the total cost of a rent regarding to the destination, specifically:
- * to input a destination
- * to be shown suggestions about where to park the car (within 1km from entered destination) in order to get discounts described above
+* to input a destination
+* to be shown suggestions about where to park the car (within 1km from entered destination) in order to get discounts described above
  to be applied an additional discount whether the rent is terminated in the suggested location, calculated by BPM with respect to secondary business goals.
 #VSLIDE
 **R.17** to be notified of changes in the service policies
@@ -90,13 +90,13 @@ a new car sharing
 cellation / modification of an assigned request)
 #VSLIDE
 **R.19** to relocate an assigned car:
- * locate assigned car
- * unlock assigned car
- * check diagnostic of assigned car
- * power on assigned car
- * enable / disable power plugs
- lock assigned car
- locate maintenance facility
+* locate assigned car
+* unlock assigned car
+* check diagnostic of assigned car
+* power on assigned car
+* enable / disable power plugs
+* lock assigned car
+* locate maintenance facility
 #VSLIDE
 R.20 to ask for special equipment (e.g: tow truck) or additional eld sta
 help after evaluating the situation.
@@ -110,53 +110,51 @@ service covered area.
 R.22 to cofigure the list of cars available for the service
 #VSLIDE
 R.23 to configure service policies:
- update existing service's fares
- introducing new service's fares
- update discounts
- introducing new discounts
- update the terms of the service
+* update existing service's fares
+* introducing new service's fares
+* update discounts
+* introducing new discounts
+* update the terms of the service
 #VSLIDE
 R.24 to manage personnel's accounts:
- create
- delete
- modify
+* create
+* delete
+* modify
 for:
- field staff user
- emergency staff user
- management staff user
+* field staff user
+* emergency staff user
+* management staff user
 #VSLIDE
 R.25 to handle exceptional cases of unpaid rents:
- check pending payment status.
- re-enable PowerEnjoy users to the service.
+* check pending payment status.
+* re-enable PowerEnjoy users to the service.
 #HSLIDE
 ### Emergency staff user
 ![icon](presentation/emergency_staff.png)
 #VSLIDE
 R.26 to be promptly notied of potentially dangerous situations / emergen-
 cies:
- cars malfunctioning during a rent
- car accidents
- cars with empty battery not parked in safe areas
+* cars malfunctioning during a rent
+* car accidents
+* cars with empty battery not parked in safe areas
 #VSLIDE
 R.27 to be promptly notied of PowerEnjoy users' help request.
 #VSLIDE
 R.28 to have an overview regarding the state and location of:
- cars
- power plugs
- current rents
- reservation
- field staff users
+* cars
+* power plugs
+* current rents
+* reservation
+* field staff users
 #VSLIDE
 R.29 to perform actions to resolve issue:
- cancel a PowerEnjoy user's reservation
- recover a PowerEnjoy user's pin code
- unlock / lock rented car
- set a car as available / unavailable
- speak with user on rented cars through installed hands-free commu-
-nication set
- assign a field staff user to relocate a car with priority
- notify appropriate authorities of a car accident (first-aid, re-ghters,
-police, insurance company ...)
+* cancel a PowerEnjoy user's reservation
+* recover a PowerEnjoy user's pin code
+* unlock / lock rented car
+* set a car as available / unavailable
+* speak with user on rented cars through installed hands-free communication set
+* assign a field staff user to relocate a car with priority
+* notify appropriate authorities of a car accident (first-aid, fire-fighters,police, insurance company ...)
 
 #HSLIDE
 # BPM
