@@ -56,12 +56,12 @@ a new car sharing
 **R.9** to be charged of a fee (1€) whether the reserved car is not picked-up within one hour from the reservation.
 #VSLIDE
 **R.10** to rent a car (reserved or available), specifically: to unlock a car when the user is within a certain distance (threshold) from the car.
- - to enable engine by inputting a personal PIN code.
- - to be charged for a given amount of money per minute as soon as the car is unlocked.
- - to be notified of the current price through a screen on the car.
- - to be able to lock/unlock the car, starting/finishing a stopover (with different fare)
- - to stop being charged as soon as the car is parked in a safe area, he exits the car (that is automatically locked) and select to end the rent.
-  - to transparently pay for the rent 5 minutes after its termination, being notified of the final price (including discounts).
+ * to enable engine by inputting a personal PIN code.
+ * to be charged for a given amount of money per minute as soon as the car is unlocked.
+ * to be notified of the current price through a screen on the car.
+ * to be able to lock/unlock the car, starting/finishing a stopover (with different fare)
+ * to stop being charged as soon as the car is parked in a safe area, he exits the car (that is automatically locked) and select to end the rent.
+  * to transparently pay for the rent 5 minutes after its termination, being notified of the final price (including discounts).
 #VSLIDE
 **R.11** to be excluded from the fruition of PowerEnjoy services whether the payment is unable to complete, until all pending payment are performed.
 #VSLIDE
@@ -74,26 +74,26 @@ a new car sharing
 **R.15** to be applied an overcharge of 30% on the last ride, whether the car is left farer than 3 KM from the nearest charge station or with less than 20% of the battery's charge.
 #VSLIDE
 **R.16** to enable the money saving option in order to minimize the total cost of a rent regarding to the destination, specifically:
- - to input a destination
- - to be shown suggestions about where to park the car (within 1km from entered destination) in order to get discounts described above
+ * to input a destination
+ * to be shown suggestions about where to park the car (within 1km from entered destination) in order to get discounts described above
  to be applied an additional discount whether the rent is terminated in the suggested location, calculated by BPM with respect to secondary business goals.
 #VSLIDE
 **R.17** to be notified of changes in the service policies
- - different fares
- - updated terms of service
+ * different fares
+ * updated terms of service
 #HSLIDE
 ### Field staff users
 ![icon](presentation/field_staff.png)
 #VSLIDE
-**R.18 to be notified of relocation/maintenance requests for cars (and the can-
+**R.18** to be notified of relocation/maintenance requests for cars (and the can-
 cellation / modification of an assigned request)
 #VSLIDE
-R.19 to relocate an assigned car:
- locate assigned car
- unlock assigned car
- check diagnostic of assigned car
- power on assigned car
- enable / disable power plugs
+**R.19** to relocate an assigned car:
+ * locate assigned car
+ * unlock assigned car
+ * check diagnostic of assigned car
+ * power on assigned car
+ * enable / disable power plugs
  lock assigned car
  locate maintenance facility
 #VSLIDE
