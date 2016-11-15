@@ -43,7 +43,7 @@ a new car sharing
 #HSLIDE
 # Actors
 
-#HVSLIDE 
+#HSLIDE 
 ### PowerEnJoy user
 ![icon](presentation/powerenjoy_user.png)
 #VSLIDE
