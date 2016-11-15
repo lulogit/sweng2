@@ -49,7 +49,7 @@ a new car sharing
 #VSLIDE
 **R.6** find the locations of available cars within a certain distance from their current location or from a specified address.
 #VSLIDE
-**R.7** reserve a single car, among the available ones, provided that the user has not ended a rent on that car within last 15 minutes.
+**R.7** reserve a single car, among the available ones, provided that the user has not ended a rent on that car within last 15 minutes.
 #VSLIDE
 **R.8** cancel the reservation before it's expiration (1 hour after reservation) paying a cost proportional to the reservation time
 #VSLIDE
@@ -77,11 +77,12 @@ a new car sharing
 **R.16** to enable the money saving option in order to minimize the total cost of a rent regarding to the destination, specifically:
 * to input a destination
 * to be shown suggestions about where to park the car (within 1km from entered destination) in order to get discounts described above
- to be applied an additional discount whether the rent is terminated in the suggested location, calculated by BPM with respect to secondary business goals.
+* to be applied an additional discount whether the rent is terminated in the suggested location, calculated by BPM with respect to secondary business goals.
 #VSLIDE
 **R.17** to be notified of changes in the service policies
 * different fares
 * updated terms of service
+
 #HSLIDE
 ### Field staff users
 ![icon](presentation/field_staff.png)
@@ -98,7 +99,7 @@ cellation / modification of an assigned request)
 * lock assigned car
 * locate maintenance facility
 #VSLIDE
-R.20 to ask for special equipment (e.g: tow truck) or additional eld sta
+**R.20** to ask for special equipment (e.g: tow truck) or additional eld sta
 help after evaluating the situation.
 #HSLIDE 
 ### Management staff users
