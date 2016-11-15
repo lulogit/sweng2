@@ -98,6 +98,7 @@ cellation / modification of an assigned request)
 * enable / disable power plugs
 * lock assigned car
 * locate maintenance facility
+
 #VSLIDE
 **R.20** to ask for special equipment (e.g: tow truck) or additional field staff help after evaluating the situation.
 
