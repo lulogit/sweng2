@@ -40,6 +40,13 @@ a new car sharing
 # Actors
 
 #HSLIDE
+# requirements
+
+#VSLIDE 
+### PowerEnJoy user
+![icon](presentation/powerenjoy_user.png)
+
+#HSLIDE
 # BPM
 ### Back-end Process Management
 
@@ -81,3 +88,13 @@ a new car sharing
 
 #VSLIDE
 ### UML
+
+#HSLIDE
+# Alloy
+
+#VSLIDE
+### screen1
+#VSLIDE
+### screen2
+#VSLIDE
+### screen3
