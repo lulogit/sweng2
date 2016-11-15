@@ -56,12 +56,13 @@ a new car sharing
 **R.9** to be charged of a fee (1€) whether the reserved car is not picked-up within one hour from the reservation.
 #VSLIDE
 **R.10** to rent a car (reserved or available), specifically: to unlock a car when the user is within a certain distance (threshold) from the car.
- * to enable engine by inputting a personal PIN code.
+* to enable engine by inputting a personal PIN code.
 * to be charged for a given amount of money per minute as soon as the car is unlocked.
 * to be notified of the current price through a screen on the car.
 * to be able to lock/unlock the car, starting/finishing a stopover (with different fare)
 * to stop being charged as soon as the car is parked in a safe area, he exits the car (that is automatically locked) and select to end the rent.
 * to transparently pay for the rent 5 minutes after its termination, being notified of the final price (including discounts).
+
 #VSLIDE
 **R.11** to be excluded from the fruition of PowerEnjoy services whether the payment is unable to complete, until all pending payment are performed.
 #VSLIDE
@@ -79,8 +80,8 @@ a new car sharing
  to be applied an additional discount whether the rent is terminated in the suggested location, calculated by BPM with respect to secondary business goals.
 #VSLIDE
 **R.17** to be notified of changes in the service policies
- * different fares
- * updated terms of service
+* different fares
+* updated terms of service
 #HSLIDE
 ### Field staff users
 ![icon](presentation/field_staff.png)
