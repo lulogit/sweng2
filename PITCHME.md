@@ -43,11 +43,7 @@ a new car sharing
 #HSLIDE
 # Actors
 
-#HSLIDE
-# requirements
-
-#VSLIDE 
-#VSLIDE 
+#HVSLIDE 
 ### PowerEnJoy user
 ![icon](presentation/powerenjoy_user.png)
 #VSLIDE
@@ -70,8 +66,6 @@ within one hour from the reservation.
 R.10 to rent a car (reserved or available), specically:
  to unlock a car when it is within a certain distance (threshold) from
 the car
-10
-PowerEnjoy RASD 2 SPECIFIC REQUIREMENTS
  to enable engine by inputting a personal PIN code.
  to be charged for a given amount of money per minute as soon as the
 car is unlocked.
@@ -113,8 +107,6 @@ R.17 to be notified of changes in the service policies
  different fares
  updated terms of service
 #HSLIDE
-Requirements
-#VSLIDE
 ### Field staff users
 ![icon](presentation/field_staff.png)
 #VSLIDE
@@ -132,9 +124,7 @@ R.19 to relocate an assigned car:
 #VSLIDE
 R.20 to ask for special equipment (e.g: tow truck) or additional eld sta
 help after evaluating the situation.
-#HSLIDE
-Requirements
-#VSLIDE 
+#HSLIDE 
 ### Management staff users
 ![icon](presentation/management_staff.png)
 #VSLIDE
