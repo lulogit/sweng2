@@ -13,28 +13,32 @@ a new car sharing
 
 #VSLIDE
 ### Business driver related goals
-<li> **G.1** user's simple access to the PowerEnjoy services</li>
+<li> **G.1** user's simple access to the PowerEnjoy services</li><!-- .element: class="fragment" -->
 <li> **G.2** higher probability of ﬁnding a car, compared to competitors</li> <!-- .element: class="fragment" -->
 <li> **G.3** eﬃcient maintenance and recharge process of the cars</li> <!-- .element: class="fragment" -->
 
 #VSLIDE
 ### Car sharing related goals
-- **G.4** To allow users to make a reservation for a car in advance, and to cancel a reservation by its expiration time.
-- **G.5** To transparently charge the user for the service, minimizing its interaction with payment interfaces. <!-- .element: class="fragment" -->
-- **G.6** To allow users to drive cars, minimizing their eﬀorts for ﬁnding safe areas where to park. <!-- .element: class="fragment" -->
-- **G.7** To encourage users’ virtuous behaviour in relation to service’s fairness.<!-- .element: class="fragment" -->
+<li> **G.4** car reservation, reservation cancellation</li> <!-- .element: class="fragment" -->
+<li> **G.5** minimum interaction with payment interfaces </li><!-- .element: class="fragment" -->
+<li> **G.6** drive cars, ﬁnd safe areas where to park </li><!-- .element: class="fragment" -->
+<li> **G.7** To encourage users’ virtuous behaviour in relation to service’s fairness. </li><!-- .element: class="fragment" -->
 
 #VSLIDE
 ### Process efficiency related goals
-- **G.8** To create a system that gives the possibility to be monitored and administrated by PowerEnjoy ’s authorized personal.
-- **G.9** To empower the authorized personal in order to be able to quickly react to emergencies, potentially dangerous situations and users’ requests for help, in best interest of users’ safety. <!-- .element: class="fragment" -->
-- **G.10** To create a system that provides a programmable interface, in order reduce the costs of further enhancements / maintenance to the system exploiting internal personal or third party developers. <!-- .element: class="fragment" -->
+<li> **G.8** system monitorable / administrable by authorized personal </li><!-- .element: class="fragment" -->
+<li> **G.9** authorized personal quickly react to emergencies, user’s safety </li><!-- .element: class="fragment" -->
+<li> **G.10** programmable interface, reduce maintainance costs, third party developers. </li><!-- .element: class="fragment" -->
 
 #HSLIDE
 # Our solution
-- car distribution algorithm --> user finds car nearby -- > user satisfaction
-- car distribution algorithm --> automatic relocation request assignment --> maximum staff's efficiency
-- configurability and extensibility --> minimum maintenance cost
+
+#VSLIDE
+1) car distribution algorithm --> user finds car nearby -- > user satisfaction
+#VSLIDE
+2) car distribution algorithm --> automatic relocation request assignment --> maximum staff's efficiency
+#VSLIDE
+3) configurability and extensibility --> minimum maintenance cost
 
 #HSLIDE
 # Actors
