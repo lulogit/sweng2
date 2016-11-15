@@ -13,9 +13,9 @@ a new car sharing
 
 #VSLIDE
 ### Business driver related goals
-- **G.1** To allow user to simply access to the PowerEnjoy services.
-- **G.2** To guarantee an higher probability of ﬁnding a car, compared to other car sharing services. <!-- .element: class="fragment" -->
-- **G.3** To guarantee an eﬃcient maintenance and recharge process of the cars, oriented to favourite their fairly distribution over the - territory. <!-- .element: class="fragment" -->
+- **G.1** <span>user's simple access to the PowerEnjoy services</span>
+- **G.2** <span>higher probability of ﬁnding a car, compared to competitors</span> <!-- .element: class="fragment" -->
+- **G.3** <span>eﬃcient maintenance and recharge process of the cars</span> <!-- .element: class="fragment" -->
 
 #VSLIDE
 ### Car sharing related goals
