@@ -179,7 +179,7 @@ a new car sharing
 # Use cases
 
 #VSLIDE
-<img height="700" src="presentation/usecase.png" />
+<img height="650" src="presentation/usecase.png" />
 
 #HSLIDE
 # UML
@@ -190,13 +190,13 @@ a new car sharing
 #VSLIDE?image=presentation/class_diag.pdf.png
 
 #VSLIDE
-<img height="700" src="presentation/user_services.pdf.png" />
+<img height="650" src="presentation/user_services.pdf.png" />
 
 #VSLIDE
-<img height="700" src="presentation/efficiency_prod.pdf.png" />
+<img height="650" src="presentation/efficiency_prod.pdf.png" />
 
 #VSLIDE
-<img height="700" src="presentation/estensibility.pdf.png" />
+<img height="650" src="presentation/estensibility.pdf.png" />
 
 #VSLIDE
 ## Car state chart
