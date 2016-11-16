@@ -21,7 +21,7 @@ a new car sharing
 ![ec](presentation/car_sharing.png)
 
 #VSLIDE
-### Highest probability of finding cars 
+### Higher probability of finding cars 
 ![cd](presentation/car_distribution.png)
 
 #HSLIDE
