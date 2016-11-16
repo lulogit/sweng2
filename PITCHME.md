@@ -178,7 +178,8 @@ a new car sharing
 #HSLIDE
 # Use cases
 
-#VSLIDE?image=presentation/usecase.png
+#VSLIDE
+<img height="700" src="presentation/usecase.png" />
 
 #HSLIDE
 # UML
