@@ -217,22 +217,22 @@ cies:
 ## Class diagram
 
 #VSLIDE
-<img height=760 src="presentation/class_diag.pdf.png" />
+<img height="700" src="presentation/class_diag.pdf.png" />
 
 #VSLIDE
-<img height=760 src="presentation/user_services.pdf.png" />
+<img height="700" src="presentation/user_services.pdf.png" />
 
 #VSLIDE
-<img height=760 src="presentation/efficiency_prod.pdf.png" />
+<img height="700" src="presentation/efficiency_prod.pdf.png" />
 
 #VSLIDE
-<img height=760 src="presentation/estensibility.pdf.png" />
+<img height="700" src="presentation/estensibility.pdf.png" />
 
 #VSLIDE
 ## Car state chart
 
 #VSLIDE
-<img height=760 src="presentation/class_diag.pdf.png" />
+<img height="700" src="presentation/class_diag.pdf.png" />
 
 #HSLIDE
 # Hardware
@@ -240,7 +240,7 @@ cies:
 #VSLIDE
 ## Cars
 #VSLIDE
-<img src="presentation/auto.png" />
+<img height="640" src="presentation/auto.png" />
 
 #VSLIDE
 ### Smart devices
