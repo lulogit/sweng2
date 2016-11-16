@@ -207,8 +207,7 @@ cies:
 #HSLIDE
 # Use cases
 
-#VSLIDE
-<img width=760 src="presentation/usecase.png" />
+#VSLIDE?image=presentation/usecase.png
 
 #HSLIDE
 # UML
@@ -216,8 +215,7 @@ cies:
 #VSLIDE
 ## Class diagram
 
-#VSLIDE
-<img height="700" src="presentation/class_diag.pdf.png" />
+#VSLIDE?image=presentation/class_diag.pdf.png
 
 #VSLIDE
 <img height="700" src="presentation/user_services.pdf.png" />
