@@ -64,6 +64,9 @@ a new car sharing
 #HSLIDE
 # Actors
 
+#VSLIDE
+![actors](presentation/Actors.pdf.png)
+
 #HSLIDE 
 ### PowerEnJoy user
 ![icon](presentation/powerenjoy_user.png)
@@ -86,7 +89,7 @@ a new car sharing
 #VSLIDE
 **R.14** discount 30% for plugging-in carto the power plug
 #VSLIDE
-**R.15** overcharge 30% for car left >3Km from nearest power plug or \<20% charge
+**R.15** overcharge 30% for car left >3Km from nearest power plug or <20% charge
 #VSLIDE
 **R.16** money saving option and discount
 
@@ -115,7 +118,7 @@ a new car sharing
 **R.23** configure service policies
 
 #VSLIDE
-**R.24** manage personnel's accounts
+**R.24** manage personnel accounts
 
 #VSLIDE
 **R.25** handle unpaid rents
@@ -124,13 +127,13 @@ a new car sharing
 ### Emergency staff user
 ![icon](presentation/emergency_staff.png)
 #VSLIDE
-**R.26** notification of dangerous situations / emergencies:
+**R.26** notification of emergencies:
 * cars malfunctioning
 * car accidents
 * cars with empty battery not parked in safe areas
 
 #VSLIDE
-**R.27** handle help request.
+**R.27** handle help request
 
 #VSLIDE
 **R.28** overview of state and location of:
