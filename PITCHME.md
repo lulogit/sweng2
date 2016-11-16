@@ -1,5 +1,4 @@
-#HSLIDE?image=https://images.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fit%2Farchive%2Fb%2Fbe%2F20151105101950%2521Logo_Politecnico_Milano.png&f=1
-
+#HSLIDE?image=presentation/logo.png
 #HSLIDE
 # PowerEnJoy
   - Erba Alessandro
