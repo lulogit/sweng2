@@ -216,20 +216,23 @@ cies:
 # UML
 
 #VSLIDE
-### UML
+![UML](presentation/class_diag.pdf.png)
 
 #VSLIDE
-### UML
+![UML](presentation/user_services.pdf.png)
 
 #VSLIDE
-### UML
+![UML](presentation/efficiency_prod.pdf.png)
+
+#VSLIDE
+![UML](presentation/estensibility.pdf.png)
 
 #HSLIDE
 # Alloy
 
 #VSLIDE
-### screen1
+![alloy](presentation/Scenario1_OK.png)
 #VSLIDE
-### screen2
+![alloy](presentation/Scenario2_OK.png)
 #VSLIDE
-### screen3
+![alloy](presentation/Scenario3_OK.png)
