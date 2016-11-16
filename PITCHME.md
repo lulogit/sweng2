@@ -192,40 +192,58 @@ cies:
 # Money saving option
 
 #HSLIDE
-# Hardware
-
-#VSLIDE
-### Cars
-
-#VSLIDE
-### Smart devices
-
-#HSLIDE
 # Scenarios
 
 #VSLIDE
-### smart device interface
+## smart device interface
+#VSLIDE
+![](presentation/UX.pdf.png)
 
 #VSLIDE
-### car screen interface
+## car screen interface
+#VSLIDE
+![](presentation/screen.pdf.png)
 
 #HSLIDE
 # Use cases
+
+#VSLIDE
+<img height=760 src="presentation/usecase.png" />
 
 #HSLIDE
 # UML
 
 #VSLIDE
-![UML](presentation/class_diag.pdf.png)
+## Class diagram
 
 #VSLIDE
-![UML](presentation/user_services.pdf.png)
+<img height=760 src="presentation/class_diag.pdf.png" />
 
 #VSLIDE
-![UML](presentation/efficiency_prod.pdf.png)
+<img height=760 src="presentation/user_services.pdf.png" />
 
 #VSLIDE
-![UML](presentation/estensibility.pdf.png)
+<img height=760 src="presentation/efficiency_prod.pdf.png" />
+
+#VSLIDE
+<img height=760 src="presentation/estensibility.pdf.png" />
+
+#VSLIDE
+## Car state chart
+
+#VSLIDE
+<img height=760 src="presentation/class_diag.pdf.png" />
+
+#HSLIDE
+# Hardware
+
+#VSLIDE
+## Cars
+#VSLIDE
+<img src="presentation/auto.png" />
+
+#VSLIDE
+### Smart devices
 
 #HSLIDE
 # Alloy
