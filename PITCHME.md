@@ -208,7 +208,7 @@ cies:
 # Use cases
 
 #VSLIDE
-<img height=760 src="presentation/usecase.png" />
+<img width=760 src="presentation/usecase.png" />
 
 #HSLIDE
 # UML
