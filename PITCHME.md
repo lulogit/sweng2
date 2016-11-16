@@ -1,4 +1,6 @@
-#HSLIDE?image=presentation/logo.png
+#HSLIDE
+![logo](presentation/logo.png)
+
 #HSLIDE
 # PowerEnJoy
   - Erba Alessandro
@@ -20,6 +22,7 @@ a new car sharing
 
 #VSLIDE
 ### Highest probability of finding cars 
+![cd](presentation/car_distribution.png)
 
 #HSLIDE
 # Goals
