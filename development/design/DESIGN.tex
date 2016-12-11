@@ -1,4 +1,5 @@
 \documentclass[english]{article}
+\usepackage{amsmath}
 \usepackage{ae,aecompl}
 \usepackage[T1]{fontenc}
 \usepackage[latin9]{inputenc}
@@ -222,13 +223,18 @@
 		\item{ <Map manager> offer services to all other components, so it keeps cached versions of the computed data to speed up further requests of same API call. }
 		\item{  <Emergency manager> contains several event observers. Every time an event is registered (e.g: car malfunctioning), generate a task and assign to other component's queue (<Emergency/Field staff manger>). In addition this component act as API aggregator for the <Emergency staff manager>. }
 	\end{itemize}
+
+\clearpage
 \subsubsection*{Car system}
-	
+
 	\subsubsection{Car app}
-	
+	Application running on the car screen, responsible of displaying current rent price, enabling money saving option, enable stopover mode, send car position and battery updates to server and control car actuators such as door's and power's lock. In addition polls the server for map updates (new safe areas / power plug slots) for the third party navigation system. 
 		\subsubsection{Car controller}
+		Car app subcomponent responsible of accessing car sensors and actuators through the car's ECU manufacturer APIs.
 		\subsubsection{Car navigation adapter}
+		Include navigation capabilities in the app exploiting third party software. Moreover is responsible of updating safe areas / power plug slots informations in the navigation system once an update is received.
 	\subsubsection{Car manager}
+	Component that receives position / battery charge updates from the associated car, and update the database accordingly. \\In addition offer rent manager and field staff manager an interface to control the car (lock/unlock, poweron/poweroff, ...)
 	
 	\begin{figure}[H]
 		\centering
@@ -240,8 +246,11 @@
 	
 	\subsubsection{PowerEnJoyUser mobile app}
 		\subsubsection{Position updater}
+		Periodically retrieve position informations and send to the server.
 		\subsubsection{Notification manager}
+		Listen for push notification from the server about new tasks and display on the smart device.
 		\subsubsection{WebApp rendered}
+		The app for smart device includes a renderer (web view) that runs the actual application (a webapp), in order to achieve the maximum code portability without sacrifice native look in notifications nor loosing the marketing possibilities of smart device's online app markets.
 	\subsubsection{PowerEnJoyUser manager}
 	\subsubsection{GoogleMaps adapter}
 	\subsubsection{Push notification adapter}
@@ -273,13 +282,21 @@
 \subsubsection*{Field staff app}
 	
 	\subsubsection{Field staff mobile app}
+	Mobile app used by field staff users to receive notification of relocation/maintenance requests. After the initial login, enable the user to view list of assigned requests, and for each one of them shows information (including the location) about the target car. Through this app is also possible to unlock and power-on assigned cars, as well as contact emergency staff for support.
 		\subsubsection{Position updater}
+		Periodically retrieve position informations and send to the server.
 		\subsubsection{Notification manager}
+		Listen for push notification from the server about new tasks and display on the smart device.
 		\subsubsection{WebApp rendered}
+		The app for smart device includes a renderer (web view) that runs the actual application (a webapp), in order to achieve the maximum code portability without sacrifice native look in notifications nor loosing the marketing possibilities of smart device's online app markets.
 	\subsubsection{Field staff manager}
+	Dual component of Field staff mobile app on the server, it is created after the internal webapp logins, and it's associated to the webapp session. Provide and manage a queue of all assigned requests and sends push notifications to the app once a new request is registered. 
 		\subsubsection{Request Queue manager}
+		Manage the emergency request queue of a field staff user, it provides an interface to be assigned tasks to BPM and Emergency manager.
 	\subsubsection{Push notification adapter}
+	Exploits third party API (Google cloud messanging API) to send push notifications of new requests to the field staff user's app.
 	\subsubsection{Relocation planner }
+	BPM subcomponent that computes relocations in order to remove charged cars from power plug slots, bring empty battery cars to power plug slots and fairly distribute cars over territory. Computed relocations are assigned to field staff users.
 	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.21]{./ComponentDiagrams/FieldStaff.pdf}% "%" necessario
@@ -290,10 +307,15 @@
 \subsubsection*{Emergency staff webapp}
 
 	\subsubsection{Emergency staff webapp}
+	Webapp (runs inside browser) used by emergency staff users to receive notification of and handle emergency situations. After the initial login, enable the user to view list of assigned emergency tasks, and for each one of them displays on a map an overview of the emergency containing all related informations.
 	\subsubsection{Emergency staff manager}
+	Dual component of Emergency staff webapp on the server, it is created after the webapp logins, and it's associated to the webapp session. Provide and manage a queue of all assigned tasks. In addition it interfaces with Emergency manager to cancel rents/reservations, get an overview of the map and assign requests to field staff users.
 		\subsubsection{Request Queue manager}
+		Manage the emergency task queue of an emergency staff user, it provides an interface to be assigned tasks.
 	\subsubsection{Emergency manager}
+	This component detect car's and user's emergencies, and assign them as task to the field staff users (maintenance requests) or  emergency staff users (emergency task). Moreover aggregate some interfaces from Rent/Reservation/Field staff managers in order to empower the emergency staff in resolving their tasks. It automatically handles simpler task, such as set cars as broken (thus unavailable) after a car accident is registered or assign a maintenance request after a car malfunctioning is registered. \par See low level component view for complete overview of interactions with other components.
 		\subsubsection{Emergency monitor}
+		Contains several subcomponents specialized in recognizing a single type of emergency, and provide them the data needed. Collect usage data from car's sensors in order to detect malfunctioning and interprets the absence of car response as an accident after a timeout.  
 	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.35]{./ComponentDiagrams/EmergencyStaff.pdf}% "%" necessario
@@ -304,10 +326,24 @@
 \subsubsection*{Management staff webapp}
 
 	\subsubsection{Management staff webapp}
+	Webapp (runs inside browser) used by management staff users to configure all service's parameter. After the initial login, enable the user to configure fares, discounts, fees, term of services and add/remove safe areas/power plug slots/cars.
 	\subsubsection{Management staff manager}
+	Dual component of the Management staff webapp on the server, it is created after the webapp logins, and it's associated to the webapp session. Redirects all users request for configuration operation to the Service Configurator.
 	\subsubsection{Service Configurator}
+	Component that provides an interface to modify every parameter of service. It is polled by PowerEnJoyUser manager to find out whether fares/fee/discounts/term of services have been updated. Moreover it is called by BPM/Rent manager/Reservation manager to compute prices and fees, since for flexibility reasons those informations are saved as DSL scripts (see Fare DSL, Discount DSL).
 		\subsubsection{Fare DSL}
+		Interpreter of a specific DSL (Domain Specific Language) to configure and compute fares. It stores each fare as a script,  dynamically interpreted when a price should be calculated. The DSL is specifically designed to mimic Microsoft EXCEL formulae syntax (extended with specific functions to access service parameters) in order to guarantee the faster learning curve to most part of the company's management personnel.\\
+		E.g: 
+		\begin{itemize}
+			\item { = Rent.MOVING\_TIME() * 0.50 + Rent.STOP\_TIME() * 0.15     \\time based fare, considering stopover (0.50\euro/minute for rent, 0.15\euro/minute for stopover)}
+			\item { = IF( Rent.KM() > 10; (Rent.KM()-10) * 0.05; 0) 			      \\ km based fare, start after a minimum of 10 km 0.05\euro/km}
+		\end{itemize}
 		\subsubsection{Discount DSL}
+		Interpreter of a specific DSL (Domain Specific Language) to configure and compute discounts. It stores each discount as a script,  dynamically interpreted when a price should be calculated. The DSL is specifically designed to mimic Microsoft EXCEL formulae syntax (extended with specific functions to access service parameters) in order to guarantee the faster learning curve to most part of the company's management personnel.
+		E.g: 
+		\begin{itemize}
+			\item { = IF( Rent.PASSENGERS()>2; -0.20 ; 0)     \\passenger discount of 20\%, if 2+ passengers (the returned value is multiplied by price and added to price as modifier, for an overcharge the returned value should be positive) }
+		\end{itemize}
 	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.26]{./ComponentDiagrams/ManagementStaff.pdf}% "%" necessario
@@ -536,7 +572,39 @@ This architecture is compliant with the Java EE model, which usually consist in 
 			\item recommending destination for money saving options
 		\end{itemize}
 		In order to accomplish so, a sequence of intermediate steps is repeated in a cycle every 25 minutes, since the field staff reaction time is supposed to be 15 minutes in the domain assumptions.
-		These steps include the computation of a relocation priority for cars (to relocate away) and safe areas / power plug slots (to relocate in), which will be used to select the relocations by picking the car and the safe area with highest priority, and assigning that relocation to field staff user with lower amount of queued tasks.
+		These steps include the computation of a relocation priority for cars (to relocate away) and safe areas / power plug slots (to relocate in), which will be used to select the relocations by picking the car and the safe area with highest priority, and assigning that relocation to field staff user with lower amount of queued tasks.\\\\
+		NOTE: the relocation priority for cars and safe areas is computed as a number, whose value decreases as the priority increases.
+		Two special values are reserved for battery charge related relocations, which have maximum priority:
+		\begin{itemize}
+			\item{ PRIORITY\_HIGH 	     (-1) 	for car with empty battery parked in a safe area }
+			\item{ PRIORITY\_HIGHEST (-2) 	for car with empty full battery parked in a power plug slot }
+		\end{itemize}
+		For cars parked in safe area, the priority is computed looking at two different criteria,  weighted in different ways:
+		\begin{enumerate}
+			\item{ Cars parked in over-parked city zones should be relocated with priority proportional to the car excess in the zone. \\
+					Weighted by IMPORTANCE\_HIGH (1e10) to have maximum impact over the priority. }
+			\item{ Among the safe areas in same city zone, cars parked in almost-full safe areas have precedence. This is represented by the safe area load factor (parked cars / safe area capacity). \\ 
+			Weighted by IMPORTANCE\_LOW (1e5) to have impact over the priority only when safe areas are in the same city zone. }
+		\end{enumerate}
+		For example, consider 3 cars:
+		\begin{enumerate}
+			\item{ parked in safe area with load factor 0.75, in city zone with +20 cars w.r.t. the optimal car number: \\
+			Computed priority is:\\
+			 $
+			 priority = {1 \over \Delta cars} \times importance\_high + load\_factor \times importance\_low = 500075000
+			 $}
+			\item{ parked in safe area with load factor 0.1, in city zone with +100 cars w.r.t. the optimal car number.\\
+			Computed priority is:\\
+			 $
+			 priority = {1 \over \Delta cars} \times importance\_high + load\_factor \times importance\_low = 100010000
+			 $ }
+			\item{ car with \textbf{empty battery} parked in safe area with load factor 0.05, in city zone with -20 cars w.r.t. the optimal car number.\\
+			Computed priority is:\\
+			 $
+			 priority = -1,  \text{because is a special case}
+			 $}
+		\end{enumerate}
+		The cars will be sorted by relocation\_priority in descendent order, thus relocated in order: [3], [2], [1].\\   
 		\code{BPM: }{./Algorithm/bpm.py}
 \section{User Interface Design}%Provide an overview on how the user interface(s) of your system will look like; if you have included this part in the RASD, you can simply refer to what you have already done, possibly, providing here some extensions if applicable.
 		\subsection{PowerEnjoy user}

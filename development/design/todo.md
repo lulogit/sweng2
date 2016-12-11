@@ -1,7 +1,6 @@
 # final check
 
 # git repository:
-- make some branches
 - upload production and release
 - prepare for presentation
 - commit

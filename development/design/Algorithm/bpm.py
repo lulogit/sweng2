@@ -204,7 +204,7 @@ def bpm_cycle():
             - assign relocations to field staff users
             - pre compute money saving discounts for parking solutions
 
-        Repeated every 15 minutes.
+        Repeated every 25 minutes.
     '''
     map_state = bpm_situation_snapshot()
     map_state = compute_cars_relocation_priority(map_state)
