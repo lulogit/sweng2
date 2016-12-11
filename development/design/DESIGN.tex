@@ -245,21 +245,29 @@
 \subsubsection*{PowerEnJoy app}
 	
 	\subsubsection{PowerEnJoyUser mobile app}
+	Mobile app used by PowerEnJoy users to interact with the service. It gives the possibility to register as new user. After the initial login, enables the user to search for cars (near to its location or to an entered address) and reserve or rent an available car. Moreover permits to check the status of a reservation, unlock an available car once nearby and modify account informations. It displays push notifications for updated terms of services (including fares and discounts) .
 		\subsubsection{Position updater}
 		Periodically retrieve position informations and send to the server.
 		\subsubsection{Notification manager}
-		Listen for push notification from the server about new tasks and display on the smart device.
+		Listen for push notification from the server about updated terms of services (including fares and discounts) and display on the smart device.
 		\subsubsection{WebApp rendered}
 		The app for smart device includes a renderer (web view) that runs the actual application (a webapp), in order to achieve the maximum code portability without sacrifice native look in notifications nor loosing the marketing possibilities of smart device's online app markets.
 	\subsubsection{PowerEnJoyUser manager}
+	Dual component of PowerEnJoyUser mobile app on the server, it is created after the internal webapp logins, and it's associated to the webapp session. Provide an unified access to all the interfaces for performing rents and reservations. Updates the user's location on database. Notify the app through push notification once term of services are updated.
 	\subsubsection{GoogleMaps adapter}
+	Exploit Google Maps services to convert addresses into coordinates and to display cars, power plug slots and the shortest path to reach them over an interactive map.
 	\subsubsection{Push notification adapter}
-	
+	Exploits third party API (Google cloud messanging API) to send/receive push notifications to user's app.
 	\subsubsection{Account manager}
+	Handles login requests from all the applications. Register new users, validating  submitted documents. Permit users to modify account informations. Provide PIN / password recovery capabilities.
 		\subsubsection{Registration }
+		For each registration request it completes the validation steps, generates password and PIN codes and sends a confirmation email with user's credentials.
 		\subsubsection{Login}
+		Handle a single login request. Create an appropriate dual component on server for the app that request the login (based on the user account type).
 		\subsubsection{Account data modification }
+		Update users information on database.
 	\subsubsection{DocumentValidationService adapter}
+	Exploit external service to validate documents.
 	
 	\subsubsection{Map manager}
 	\subsubsection{Reservation manager}
@@ -272,9 +280,10 @@
 		\subsubsection{MoneySaving recommender }
 	
 	\subsubsection{External app manager}
+	
 	\begin{figure}[H]
 		\centering
-		\includegraphics[scale=0.26]{./ComponentDiagrams/PowerEnjoyuser.pdf}% "%" necessario
+		\includegraphics[scale=0.24]{./ComponentDiagrams/PowerEnjoyuser.pdf}% "%" necessario
 		\caption{PowerEnJoy app related components}
 	\end{figure}
 	
@@ -282,7 +291,7 @@
 \subsubsection*{Field staff app}
 	
 	\subsubsection{Field staff mobile app}
-	Mobile app used by field staff users to receive notification of relocation/maintenance requests. After the initial login, enable the user to view list of assigned requests, and for each one of them shows information (including the location) about the target car. Through this app is also possible to unlock and power-on assigned cars, as well as contact emergency staff for support.
+	Mobile app used by field staff users to receive notification of relocation/maintenance requests. After the initial login, enables the user to view list of assigned requests, and for each one of them shows information (including the location) about the target car. Through this app is also possible to unlock and power-on assigned cars, as well as contact emergency staff for support.
 		\subsubsection{Position updater}
 		Periodically retrieve position informations and send to the server.
 		\subsubsection{Notification manager}
@@ -290,11 +299,11 @@
 		\subsubsection{WebApp rendered}
 		The app for smart device includes a renderer (web view) that runs the actual application (a webapp), in order to achieve the maximum code portability without sacrifice native look in notifications nor loosing the marketing possibilities of smart device's online app markets.
 	\subsubsection{Field staff manager}
-	Dual component of Field staff mobile app on the server, it is created after the internal webapp logins, and it's associated to the webapp session. Provide and manage a queue of all assigned requests and sends push notifications to the app once a new request is registered. 
+	Dual component of Field staff mobile app on the server, it is created after the internal webapp logins, and it's associated to the webapp session. Provide and manage a queue of all assigned requests and sends push notifications to the app once a new request is registered. It also updates the field staff user's location on database.
 		\subsubsection{Request Queue manager}
 		Manage the emergency request queue of a field staff user, it provides an interface to be assigned tasks to BPM and Emergency manager.
 	\subsubsection{Push notification adapter}
-	Exploits third party API (Google cloud messanging API) to send push notifications of new requests to the field staff user's app.
+	Exploits third party API (Google cloud messanging API) to send/receive push notifications of new requests to the field staff user's app.
 	\subsubsection{Relocation planner }
 	BPM subcomponent that computes relocations in order to remove charged cars from power plug slots, bring empty battery cars to power plug slots and fairly distribute cars over territory. Computed relocations are assigned to field staff users.
 	\begin{figure}[H]
@@ -307,7 +316,7 @@
 \subsubsection*{Emergency staff webapp}
 
 	\subsubsection{Emergency staff webapp}
-	Webapp (runs inside browser) used by emergency staff users to receive notification of and handle emergency situations. After the initial login, enable the user to view list of assigned emergency tasks, and for each one of them displays on a map an overview of the emergency containing all related informations.
+	Webapp (runs inside browser) used by emergency staff users to receive notification of and handle emergency situations. After the initial login, enables the user to view list of assigned emergency tasks, and for each one of them displays on a map an overview of the emergency containing all related informations.
 	\subsubsection{Emergency staff manager}
 	Dual component of Emergency staff webapp on the server, it is created after the webapp logins, and it's associated to the webapp session. Provide and manage a queue of all assigned tasks. In addition it interfaces with Emergency manager to cancel rents/reservations, get an overview of the map and assign requests to field staff users.
 		\subsubsection{Request Queue manager}
@@ -326,7 +335,7 @@
 \subsubsection*{Management staff webapp}
 
 	\subsubsection{Management staff webapp}
-	Webapp (runs inside browser) used by management staff users to configure all service's parameter. After the initial login, enable the user to configure fares, discounts, fees, term of services and add/remove safe areas/power plug slots/cars.
+	Webapp (runs inside browser) used by management staff users to configure all service's parameter. After the initial login, enables the user to configure fares, discounts, fees, term of services and add/remove safe areas/power plug slots/cars.
 	\subsubsection{Management staff manager}
 	Dual component of the Management staff webapp on the server, it is created after the webapp logins, and it's associated to the webapp session. Redirects all users request for configuration operation to the Service Configurator.
 	\subsubsection{Service Configurator}
