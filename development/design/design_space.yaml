@@ -1,0 +1,150 @@
+structure:
+  - component based:
+    pro:
+      - max reuse of code
+      - scalabilità
+    con:
+      - very flat organization of component
+    best with:
+      - JEE
+      - .net
+      - other component based frameworks
+  - monolithic:
+    pro:
+      - very simple
+    con:
+      - unmaintainable
+  - layered:
+    pro:
+      - portability
+      - simplify the design
+    con:
+      - less reuse
+  - pipes and filter:
+    pro:
+      - can speed up performances (pipelines)
+      - multitasking
+    con:
+      - must have components with inputs and outputs, connected in a D.A.G.
+    best with:
+      - functional programming
+
+shared memory:
+  - data centrinc:
+    descr: use of DBMS operations
+    uncompatible:
+      - heavy application logic
+  - blackboard:
+    descr: one single data structure updated by multiple agents
+    best for:
+      - big AI problems
+  - rule based:
+    descr: knowledge as set of rules
+    best for:
+      - semantic reasoning on data
+
+messaging:
+  - event driven:
+    pro:
+      - loosely coupled components / services
+    best with:
+      - message oriented middleware
+      - point 2 point comunication
+      - transactional executive framework
+  - publish subscrib:
+    pro:
+      - network scalability
+      - dynamic network topology
+      - loose coupling
+    con:
+       - less flexibility on the publisher / published data
+       - message delivery issue
+    best with:
+      - message oriented middleware
+      - multicast
+  - asynchronous messaging:
+    pro:
+      - interoperability between different platforms
+      - asyncronicity
+      - broadcast / multicast support
+      - message transformation
+    con:
+      - require message broker
+      - more expensive to maintain
+      - less performances
+
+adaptive systems:
+  - plug ins:
+    pro:
+      - extensibility
+      - third party developers
+  - reflection:
+    pro:
+      - modify system at runtime
+    con:
+      - sometimes complicated
+  - domain specific languages:
+    pro:
+      - domain can be a business area (fare, discounts, ...)
+      - easy configurability / extensibility
+    con:
+      - limited extensibility
+      - cost to develop language
+
+distribuited system:
+  - client-server:
+    pro:
+      - simple
+    best with:
+      - n tiers
+  - shared nothing:
+    pro:
+      - no single point of failure
+      - no single point of contention
+      - scalability
+    con:
+      - centralized DB as single point of failure
+  - space-based:
+    descr: like shared nothing, but with tuple space
+  - peer to peer:
+  - object request broker:
+    pro:
+      - system on multiple machines
+    con:
+      - RMI
+  - REpresentational State Transfer:
+    pro:
+      - performances
+      - scalability
+      - semplicity of interface
+      - modifiability
+      - visibility
+      - portability
+      - reliability
+    con:
+      - stateless
+  - service oriented:
+    descr: like component based, but over network
+  - cloud computing:
+    pro:
+      - agility
+      - cost
+      - maintenance
+      - performances
+      - productivity
+      - reliability
+      - scalability
+      - security
+    con:
+      - lost of control over data
+
+pattern:
+  - 3 tier:
+  - multilayered:
+    descr: like 3 tier but with more layers
+  - MVC:
+  - blackboard pattern:
+    best for:
+      - vehicle identification and tracking
+  - presentation abstraction control:
+    descr: like mvc
