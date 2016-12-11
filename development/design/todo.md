@@ -10,10 +10,7 @@
 - eliminate R.20
 - bpm -> generl purpose reqs.
 
-### comment component
-
 ### final modifications
-- file on email
 
 ### reference
 

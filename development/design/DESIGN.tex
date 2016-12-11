@@ -106,9 +106,9 @@
 	\subsection{Purpose}
 		In the RASD document we have presented the objectives and a general overview of PowerEnjoy system.
 		The purpose of this document is to give more technical details about software and hardware choices that we have found for the system realization.
-		However our main focus will be on software design, because this document will provide the fundamental specifications that will allow the developers to implement the application.
+		This document will focus on software design to provide the fundamental specifications that will allow the developers to implement the system.
 	\subsection{Scope}
-		In order to best describe the architecture and the runtime view of the application, we are going to use different type of diagrams. Such diagrams should convey as much as possible the information on how the software is going to be structured.
+		In order to best describe the architecture and the runtime view of the application, we are going to use different type of diagrams in order to convey as much as possible the information on the software-to-be's structure.
 		In particular we will present some UML diagrams:
 			\begin{itemize}
 				\item{Component Diagram, to describe the high and the low level of the software's architectural structure}
@@ -227,6 +227,12 @@
 \clearpage
 \subsubsection*{Car system}
 
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.35]{./ComponentDiagrams/Car.pdf}% "%" necessario
+		\caption{Car system related components}
+	\end{figure}
+
 	\subsubsection{Car app}
 	Application running on the car screen, responsible of displaying current rent price, enabling money saving option, enable stopover mode, send car position and battery updates to server and control car actuators such as door's and power's lock. In addition polls the server for map updates (new safe areas / power plug slots) for the third party navigation system. 
 		\subsubsection{Car controller}
@@ -236,13 +242,15 @@
 	\subsubsection{Car manager}
 	Component that receives position / battery charge updates from the associated car, and update the database accordingly. \\In addition offer rent manager and field staff manager an interface to control the car (lock/unlock, poweron/poweroff, ...)
 	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[scale=0.35]{./ComponentDiagrams/Car.pdf}% "%" necessario
-		\caption{Car system related components}
-	\end{figure}
+	
 	
 \subsubsection*{PowerEnJoy app}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.24]{./ComponentDiagrams/PowerEnjoyuser.pdf}% "%" necessario
+		\caption{PowerEnJoy app related components}
+	\end{figure}
 	
 	\subsubsection{PowerEnJoyUser mobile app}
 	Mobile app used by PowerEnJoy users to interact with the service. It gives the possibility to register as new user. After the initial login, enables the user to search for cars (near to its location or to an entered address) and reserve or rent an available car. Moreover permits to check the status of a reservation, unlock an available car once nearby and modify account informations. It displays push notifications for updated terms of services (including fares and discounts) .
@@ -257,7 +265,7 @@
 	\subsubsection{GoogleMaps adapter}
 	Exploit Google Maps services to convert addresses into coordinates and to display cars, power plug slots and the shortest path to reach them over an interactive map.
 	\subsubsection{Push notification adapter}
-	Exploits third party API (Google cloud messanging API) to send/receive push notifications to user's app.
+	Exploits third party API to send/receive push notifications to user's app.
 	\subsubsection{Account manager}
 	Handles login requests from all the applications. Register new users, validating  submitted documents. Permit users to modify account informations. Provide PIN / password recovery capabilities.
 		\subsubsection{Registration }
@@ -270,25 +278,32 @@
 	Exploit external service to validate documents.
 	
 	\subsubsection{Map manager}
+	Perform several kind of research over aggregated service data, caching result to efficiently serve all other components. These include car search by location and radius, empty power plug slots / safe areas and estimated battery cost for a path (using a neural network trained with car's data).  It provides an overview of all service related entity to BPM and to Emergency manager.
 	\subsubsection{Reservation manager}
+	Manage the life cycle of a reservation. After an hour is expired cancel the reservation and make user pay a fee.
 	\subsubsection{Rent manager}
+	Manage rent life cycle. Sends lock / unlock requests to car managers. Keep track of total distance and time of rent (including stopover time).  Check the car is parked in a safe area before closing the rent and pay.
 	
 	\subsubsection{Payment manager}
+	Manage payment transactions inside the server. If a transaction cannot be completed for funds insufficiency, temporary disable the user from rent services until the payment is accepted.
 	\subsubsection{PaymentService adapter}
-	
+	Exploit third party API to perform payments using credit card informations.
 	\subsubsection{BPM}
+	Components that manage the relocation and money saving process through two subcomponents.
 		\subsubsection{MoneySaving recommender }
-	
+		On Rent manager's request, compute the parking solution that guarantee the lower journey price to the user, among the ones in a km radius from the user's entered destination. Compute additional discounts for the trips based on the need of relocating a car in the destination's safe area.
+		
 	\subsubsection{External app manager}
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[scale=0.24]{./ComponentDiagrams/PowerEnjoyuser.pdf}% "%" necessario
-		\caption{PowerEnJoy app related components}
-	\end{figure}
+	Provide third party developer the access to all the user functionalities as APIs. This can be useful to integrate PowerEnJoy services into car sharing aggregators or other applications.
 	
 	
 \subsubsection*{Field staff app}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.21]{./ComponentDiagrams/FieldStaff.pdf}% "%" necessario
+		\caption{Field staff app related components}
+	\end{figure}
 	
 	\subsubsection{Field staff mobile app}
 	Mobile app used by field staff users to receive notification of relocation/maintenance requests. After the initial login, enables the user to view list of assigned requests, and for each one of them shows information (including the location) about the target car. Through this app is also possible to unlock and power-on assigned cars, as well as contact emergency staff for support.
@@ -303,17 +318,19 @@
 		\subsubsection{Request Queue manager}
 		Manage the emergency request queue of a field staff user, it provides an interface to be assigned tasks to BPM and Emergency manager.
 	\subsubsection{Push notification adapter}
-	Exploits third party API (Google cloud messanging API) to send/receive push notifications of new requests to the field staff user's app.
+	Exploits third party API to send/receive push notifications of new requests to the field staff user's app.
 	\subsubsection{Relocation planner }
 	BPM subcomponent that computes relocations in order to remove charged cars from power plug slots, bring empty battery cars to power plug slots and fairly distribute cars over territory. Computed relocations are assigned to field staff users.
-	\begin{figure}[H]
-		\centering
-		\includegraphics[scale=0.21]{./ComponentDiagrams/FieldStaff.pdf}% "%" necessario
-		\caption{Field staff app related components}
-	\end{figure}
+	
 	
 	
 \subsubsection*{Emergency staff webapp}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.35]{./ComponentDiagrams/EmergencyStaff.pdf}% "%" necessario
+		\caption{Emergency staff app related components}
+	\end{figure}
 
 	\subsubsection{Emergency staff webapp}
 	Webapp (runs inside browser) used by emergency staff users to receive notification of and handle emergency situations. After the initial login, enables the user to view list of assigned emergency tasks, and for each one of them displays on a map an overview of the emergency containing all related informations.
@@ -324,15 +341,17 @@
 	\subsubsection{Emergency manager}
 	This component detect car's and user's emergencies, and assign them as task to the field staff users (maintenance requests) or  emergency staff users (emergency task). Moreover aggregate some interfaces from Rent/Reservation/Field staff managers in order to empower the emergency staff in resolving their tasks. It automatically handles simpler task, such as set cars as broken (thus unavailable) after a car accident is registered or assign a maintenance request after a car malfunctioning is registered. \par See low level component view for complete overview of interactions with other components.
 		\subsubsection{Emergency monitor}
-		Contains several subcomponents specialized in recognizing a single type of emergency, and provide them the data needed. Collect usage data from car's sensors in order to detect malfunctioning and interprets the absence of car response as an accident after a timeout.  
-	\begin{figure}[H]
-		\centering
-		\includegraphics[scale=0.35]{./ComponentDiagrams/EmergencyStaff.pdf}% "%" necessario
-		\caption{Emergency staff app related components}
-	\end{figure}
+		Contains several subcomponents specialized in recognizing a single type of emergency, and provide them the data needed. Collect usage data from car's sensors in order to detect malfunctioning and accidents. It interprets the absence of car response as a malfunctioning after a time-out has elapsed.  
+	
 	
 	
 \subsubsection*{Management staff webapp}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.26]{./ComponentDiagrams/ManagementStaff.pdf}% "%" necessario
+		\caption{Management staff app related components}
+	\end{figure}
 
 	\subsubsection{Management staff webapp}
 	Webapp (runs inside browser) used by management staff users to configure all service's parameter. After the initial login, enables the user to configure fares, discounts, fees, term of services and add/remove safe areas/power plug slots/cars.
@@ -353,11 +372,7 @@
 		\begin{itemize}
 			\item { = IF( Rent.PASSENGERS()>2; -0.20 ; 0)     \\passenger discount of 20\%, if 2+ passengers (the returned value is multiplied by price and added to price as modifier, for an overcharge the returned value should be positive) }
 		\end{itemize}
-	\begin{figure}[H]
-		\centering
-		\includegraphics[scale=0.26]{./ComponentDiagrams/ManagementStaff.pdf}% "%" necessario
-		\caption{Management staff app related components}
-	\end{figure}
+	
 	
 	
 	\subsection{Deployment view}
@@ -368,8 +383,8 @@ We have structured our diagram focusing on the workload of each component. We of
 		\item Every client connected to the service via Web App should receive responses in real time.
 	\end {itemize}
 In order to fulfill these two needs we have introduced load balancers that distribute the load among servers. 
-We have both N Web Servers and Business servers. The first type of server guarantees the fair management of clients requests and responses. The second type guarantees the fair management of services running on the Business Server.
-We store Data in a database which is separated from the server. The Database is duplicated in a backup database.\\\\
+We have both N Web Servers and Business servers. The first type of server guarantees the fair management of clients requests and manage user's session through Java EE servlets. The second type guarantees the fair management of services running on the Business Server.
+We store Data in a relational database (Microsoft SQL server) which is separated from the server. The Database is duplicated in a backup database.\\\\
 This architecture is compliant with the Java EE model, which usually consist in 4 tier: 
 		\begin{itemize}
 			\item{ client presentation tier (user app, staff apps and car system)}
@@ -384,6 +399,8 @@ This architecture is compliant with the Java EE model, which usually consist in 
 				\includegraphics[scale=0.221875]{Deployment_Diagram.pdf}% "%" necessario
 				\caption{Deployment Diagram}
 			\end{figure}
+			
+			
 	\begin{landscape}
 	\subsection{Runtime view}%You can use sequence diagrams to describe the way components interact to accomplish specific tasks typically related to your use cases
 		\begin{figure}[H]
@@ -393,11 +410,11 @@ This architecture is compliant with the Java EE model, which usually consist in 
 		\end{figure}
 	\end{landscape}
 		\subsubsection{Registration}
-		In this sequence diagram we can see how the components work together in order to sign up an user to the service.
-		For all the next communications the messages are transfered by a web server from mobile app to server's modules and viceversa. This is done for security and optimization purposes.
+		In this sequence diagram we can observe components' interaction during user's sign up process.
+		Notice that messages are transferred from mobile app to server's component (and viceversa) passing through a web server. 		This is done for security and optimization purposes.
 		First of all, the registration form is requested to the web server and the user fills it, then the proper data are sent to the registration module.
 		These data are used to check the existence of the same account in the database.
-		If the existence is verified, the new registration is denied and an error page is shown to the user. Otherwise the documents information to be checked are sent to the proper authority and it is shown to the user a page that tells him that the documents are being verified. At this point the flow is interrupted and every time the user tries to access the account, it will be shown the previous message.
+		If the existence is not verified, the new registration is denied and an error page is shown to the user. Otherwise the documents information are sent to the proper authority and it is shown to the user a page that tells him that the documents are being verified. At this point the flow is interrupted and every time the user tries to access the account, it will be shown the previous message.
 		Once the authority reply reach the system, an action can be performed. If the documents are not verified, an error notification is sent to the user, otherwise a new account is added to the database and a positive notification is sent to the user.
 		\subsubsection{Reservation}
 		The following sequence diagram shows us how the components interact among them when a reservation request is caught by the user's interface.
@@ -405,9 +422,9 @@ This architecture is compliant with the Java EE model, which usually consist in 
 		For all the next communications the messages are transfered by a web server from mobile app to server's modules and viceversa. This is done for security and optimization purposes.
 		Once the position is determined, it is sent to the map manager. It computes the area close to the position and requires to the database the informations of the free cars in that place.
 		The informations are sent to the user's app and now he can read the cars features and choose one.
-		This choice is sent to the reservation manager that creates a new reservation in the database and begins the timer.
-		After that the confirmation is sent to the mobile app and the local timer begins.
-		Leaning to Google servers, is calculated the route from user location to the chosen position, to allow him to get the car without difficulty.
+		This choice is sent to the reservation manager that creates a new reservation in the database and start the timer.
+		After that the confirmation is sent to the mobile app and the local timer starts.
+		The route from user location to the chosen position is calculated through Google Map APIs, to easily reach the car. 
 	\begin{landscape}
 		\begin{figure}[H]
 				\centering
@@ -423,10 +440,10 @@ This architecture is compliant with the Java EE model, which usually consist in 
 		\end{figure}
 	\end{landscape}
 		\subsubsection{Immediate Rent Request}
-		In this other sequence diagram we can see more in detail the particular situation in which a user wants immediately rent a car when he is near it.
-		For all the next communications the messages are transfered by a web server from mobile app to server's modules and viceversa. This is done for security and optimization purposes.
-		The immedate rent request is sent to the rent manager that, after creates a rent in the database, asks to the car manager to unlock it. This module communicates with the car app and finally the operation is carried out by the car controller embedded in it. At the end of the operation, the appropriate screen is enabled on the car.
-		At this point the flow is interrupted until the user fills the car screen with his correct PIN. After the insertion it is verified by a database query carried out by the rent manager. If the PIN is uncorrect, an error page is shown on the car screen and a new PIN insertion is requested, otherwise the "Focus driving screen" is activated on the mobile screen, the driving commands are enabled and the "Driving screen" is shown on the car. 
+		This sequence diagram focus on the particular situation of an user willing to immediately rent a near car.
+		Notice that messages are transferred from mobile app to server's component (and viceversa) passing through a web server. 		This is done for security and optimization purposes.
+		The immediate rent request is sent to the rent manager that creates a rent in the database and asks the car manager to unlock the car. This module communicates with the car app and finally the operation is carried out by the car controller embedded in it. At the end of the operation, the appropriate screen is enabled on the car.
+		At this point the flow is interrupted until the user correctly insert his PIN, which is verified by rent manager. If the PIN is incorrect, an error page is shown on the car screen and a new PIN insertion is requested, otherwise the "Focus driving screen" is activated on the mobile screen, the driving commands are enabled and the "Driving screen" is shown on the car. 
 		\subsubsection{Money Saving Option}
 		In this following sequence diagram the money saving option is described.
 		We place ourselves in the situation in which the user is on the car and the rent is already began.
@@ -512,7 +529,7 @@ This architecture is compliant with the Java EE model, which usually consist in 
 		\paragraph{Push notification API}
 		this interface allow to make the notification possile it the Smartphone applications, it works via \fnurl{PUSH API }{https://developers.google.com/web/fundamentals/getting-started/codelabs/push-notifications/}by Google.
 	\subsubsection*{DBMS API}
-	Java EE persistency
+	This is not a proper API, since we rely on Java EE persistency framework in order to synchronize components with related data on database.
 	\subsubsection*{Calculate Price}
 	this interface allows reservation management and rent management to calculate the respective price given the values that are managed by service configurator.	
 	\subsubsection*{Reservation API}
@@ -554,9 +571,9 @@ This architecture is compliant with the Java EE model, which usually consist in 
 	\paragraph{Car App Client} 
 	This is the application that runs into \powerenjoy cars. It interfaces to the directly to the Private server via remote communication protocol. This client allows to manage the car remotely, to handle the \moneysaving requests and to set recommended destinations.
 	\paragraph{Web Server}
-	It is the interface between the Clients and the Private server. It manages the requests that come from the web clients. 
-	\paragraph{Private Server}
-	The private server runs all the business logic. It is developed using a \fnurl{microsevice architectural pattern}{https://en.wikipedia.org/wiki/Microservices}. This architecture guarantees that services are easy to be replaced and introduced. It also help the server maintainability, specifically if a component fails the error is only in its module
+	It is the interface between the Clients and the Private server. It manages the requests that come from the web clients. It handles user's sessions.
+	\paragraph{Business Server}
+	The business server runs all the business logic. It is developed using a \fnurl{microsevice architectural pattern}{https://en.wikipedia.org/wiki/Microservices}. This architecture guarantees that services are easy to be replaced and introduced. It also help the server maintainability, specifically if a component fails the error is only in its module
 	\paragraph{DBMS}
 	It supports the business logic processes providing data via SQL queries using ODBC protocol.
 	\subsection{Other design decisions}
@@ -802,9 +819,19 @@ This architecture is compliant with the Java EE model, which usually consist in 
 \clearpage
 \section{Effort Spent} %In this section you will include information about the number of hours each group member  has worked towards the fulfillment of this deadline.
 	\begin{itemize}
-		\item Alessandro Erba $\approx$ 43h
-		\item Filippo Leveni 	$\approx$ 43h
-		\item Luca Lodi $\approx$ 43h
+		\item Alessandro Erba $\approx$ 49h
+		\item Filippo Leveni 	$\approx$ 49h
+		\item Luca Lodi $\approx$ 49h
 	\end{itemize}
+	
 \section{References}
+	\begin{itemize}
+\item{\url{https://build.phonegap.com/}}
+\item{\url{http://www.w3schools.com/html/html5_geolocation.asp}}
+\item{\url{https://www.idcheck.io/offer/solutions/developers/}}
+\item{\url{https://developers.google.com/web/fundamentals/getting-started/codelabs/push-notifications/}}
+\item{\url{https://developers.dwolla.com/}}
+\item{\url{https://en.wikipedia.org/wiki/Microservices}}
+	\end{itemize}
+	
 \end{document}
