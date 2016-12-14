@@ -372,12 +372,104 @@
 #HSLIDE
 # Algorithms
 
-#VSLIDE
+#HSLIDE
 ## Car search
-#VSLIDE?gist=cf4227416b55dac54a53
-
 #VSLIDE
+```python
+# dependency module that handles DBMS connection behind the scenes
+# and provides tools for data managing
+# TO_OBJECT_ARRAY is a constant to pass to <result_formatter(results, conversion_type)>
+# <execute_query( query )> runs a query in dbms and return <results>
+from dbms_api import execute_query, result_formatter, TO_OBJECT_ARRAY
+DEFAULT_RADIUS = 500 # meters (CONSTANT)
+
+def search_car(location, radius=DEFAULT_RADIUS):
+    '''
+        Compute the set of available cars within <radius> from <location>.
+        Params:
+            <location>: a GPS coordinate (latitude,longitude)
+            <radius>: the search radius (in meters),
+                        defaults to DEFAULT_RADIUS if not setted
+        returns:
+            an array of object with fields {lat,lon,battery_aut},
+            corresponding to searched cars
+    '''
+    (lat, lon) = position # get latitude and longitude from location
+    # query a SQL (2008+) DBMS for available cars.
+    # <location> field of <cars> table is of <geography> SQL type,
+    #   has .Lat and .Long attributes
+    #   can compute accurate distance from other <geography> variables
+    #       through <.STDistance(other_location)> method
+    available_cars_query = '''
+        DECLARE @orig_lat DECIMAL(12, 9)
+        DECLARE @orig_lon DECIMAL(12, 9)
+        SET @orig_lat={orig_lat}
+        SET @orig_lon={orig_lon}
+        DECLARE @orig geography = geography::Point(@orig_lat, @orig_lng, 4326);
+        DECLARE @radius int
+        SET @radius={radius}
+        SELECT location.Lat AS lat, location.Long AS lon,
+                battery_autonomy AS battery_aut
+            FROM cars
+            WHERE availability = 'available' AND @orig.STDistance(location) < @radius;
+    '''.format(orig_lat=lat, orig_lon=lon,radius=radius) # set parameters in query
+    results = execute_query( available_cars_query )
+    return result_formatter( results, TO_OBJECT_ARRAY )
+```
+
+
+#HSLIDE
 ## BPM
+#VSLIDE
+```python
+# MAIN ALGORITHM FUNCTIONALITIES
+def bpm_cycle():
+    '''
+        Main cycle of BPM algorithm:
+            - assign relocations to field staff users
+            - pre compute money saving discounts for parking solutions
+
+        Repeated every 25 minutes.
+    '''
+    map_state = bpm_situation_snapshot()
+    map_state = compute_cars_relocation_priority(map_state)
+    map_state = compute_safe_areas_relocation_priority(map_state)
+    field_staff_users = field_staff_list()
+    (map_state, relocations) = compute_field_staff_relocations(
+        map_state,
+        field_staff_users)
+    map_state = compute_discounts_for_safe_areas(map_state)
+    # STORE map_state FOR NEXT 15 minutes
+    for relocation in relocations: # assign relocations to field staff
+        assign_relocation(relocation.assigned_staff_member, relocation.task)
+```
+#VSLIDE
+```python
+def money_saving_reccomend(map_state, destination, car):
+    '''
+        Recommend an alternative destination for the user,
+        to guarantee the maximum possible discount to an user driving <car>,
+        willing to go to <destination>.
+
+        An additional money_saving_discount
+        is considered for each parking solution.
+    '''
+    recommended_destination = find(
+        # safe area or power plug slot
+        park in park_search(destination, MONEY_SAVING_RADIUS),
+        maximizing:
+            compute_discount(
+                car,
+                estimate_battery_consumption(car.location, park, time.now()),
+                park
+            ) + map_state.get(park).money_saving_discount
+            # get discount previously computed for that safe area
+    )
+    return recommended_destination
+```
+#VSLIDE
+# Sub algorithms
+
 #VSLIDE
 ```python
 '''
@@ -595,53 +687,7 @@ def compute_discounts_for_safe_areas(map_state):
             plugslot.money_saving_discount = 0
     return updated_state
 ```
-#VSLIDE
-```python
-# MAIN ALGORITHM FUNCTIONALITIES
-def bpm_cycle():
-    '''
-        Main cycle of BPM algorithm:
-            - assign relocations to field staff users
-            - pre compute money saving discounts for parking solutions
 
-        Repeated every 25 minutes.
-    '''
-    map_state = bpm_situation_snapshot()
-    map_state = compute_cars_relocation_priority(map_state)
-    map_state = compute_safe_areas_relocation_priority(map_state)
-    field_staff_users = field_staff_list()
-    (map_state, relocations) = compute_field_staff_relocations(
-        map_state,
-        field_staff_users)
-    map_state = compute_discounts_for_safe_areas(map_state)
-    # STORE map_state FOR NEXT 15 minutes
-    for relocation in relocations: # assign relocations to field staff
-        assign_relocation(relocation.assigned_staff_member, relocation.task)
-```
-#VSLIDE
-```python
-def money_saving_reccomend(map_state, destination, car):
-    '''
-        Recommend an alternative destination for the user,
-        to guarantee the maximum possible discount to an user driving <car>,
-        willing to go to <destination>.
-
-        An additional money_saving_discount
-        is considered for each parking solution.
-    '''
-    recommended_destination = find(
-        # safe area or power plug slot
-        park in park_search(destination, MONEY_SAVING_RADIUS),
-        maximizing:
-            compute_discount(
-                car,
-                estimate_battery_consumption(car.location, park, time.now()),
-                park
-            ) + map_state.get(park).money_saving_discount
-            # get discount previously computed for that safe area
-    )
-    return recommended_destination
-```
 
 
 #HSLIDE
