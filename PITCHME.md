@@ -144,35 +144,6 @@ a new car sharing
 #VSLIDE
 # Money saving option
 
-<!--
-#HSLIDE
-# Scenarios
-
-#VSLIDE
-## Money Saving Option
-
-#VSLIDE
-## Power plug
-
-#VSLIDE
-## smart device interface
-#VSLIDE
-![](presentation/UX.pdf.png)
-
-#VSLIDE
-## car screen interface
-#VSLIDE
-![](presentation/screen.pdf.png)
-
-
-
-#HSLIDE
-# Use cases
-
-#VSLIDE
-<img height="650" src="presentation/usecase.png" />
-
--->
 
 #HSLIDE
 # UML
@@ -221,8 +192,22 @@ a new car sharing
 #VSLIDE
 ![alloy](presentation/Scenario3_OK.png)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #HSLIDE
-# Refuso
+# Resources
 
 #HSLIDE
 # Our solution
@@ -238,5 +223,32 @@ a new car sharing
 #VSLIDE
 - configurability and extensibility
 - minimum maintenance cost<!-- .element: class="fragment" -->
+
+#HSLIDE
+# Scenarios
+
+#VSLIDE
+## Money Saving Option
+
+#VSLIDE
+## Power plug
+
+#VSLIDE
+## smart device interface
+#VSLIDE
+![](presentation/UX.pdf.png)
+
+#VSLIDE
+## car screen interface
+#VSLIDE
+![](presentation/screen.pdf.png)
+
+
+
+#HSLIDE
+# Use cases
+
+#VSLIDE
+<img height="650" src="presentation/usecase.png" />
 
 
