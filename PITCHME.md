@@ -212,7 +212,9 @@
 ## UX
 ### flow
 #VSLIDE
-<img height="550" src="presentation/presentationDD/login+menu.png" />
+<img height="550" src="presentation/presentationDD/legenda.png" />
+#VSLIDE
+<img height="550" src="presentation/presentationDD/Auto.png" />
 
 #HSLIDE
 ## Component
@@ -247,7 +249,11 @@
 ## UX
 ### flow
 #VSLIDE
-<img height="550" src="presentation/presentationDD/login+menu.png" />
+<img height="550" src="presentation/presentationDD/UserRegistration.png" />
+#VSLIDE
+<img height="550" src="presentation/presentationDD/UserPhone.png" />
+#VSLIDE
+<img height="550" src="presentation/presentationDD/Auto.png" />
 
 
 #HSLIDE
@@ -275,7 +281,7 @@
 ## UX
 ### flow
 #VSLIDE
-<img height="550" src="presentation/presentationDD/login+menu.png" />
+<img height="550" src="presentation/presentationDD/Auto.png" />
 
 #HSLIDE
 ## Component
@@ -302,7 +308,7 @@
 ## UX
 ### flow
 #VSLIDE
-<img height="550" src="presentation/presentationDD/login+menu.png" />
+<img height="550" src="presentation/presentationDD/EmergencyStaff.png" />
 
 #HSLIDE
 ## Component
@@ -325,12 +331,6 @@
 ### interfaces
 #VSLIDE
 <img height="550" src="presentation/presentationDD/ManagementStaff.png" />
-
-#HSLIDE
-## UX
-### flow
-#VSLIDE
-<img height="550" src="presentation/presentationDD/login+menu.png" />
 
 #HSLIDE
 ## Component
