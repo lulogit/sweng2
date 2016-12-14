@@ -87,9 +87,6 @@
 #VSLIDE
 **R.19** car relocation
 
-#VSLIDE
-**R.20** special equipment request
-
 #HSLIDE
 ### Management staff users
 ![icon](presentation/management_staff.png)
@@ -274,7 +271,32 @@
 #VSLIDE
 <img height="500" src="presentation/presentationDD/MoneySavingOption.png" />
 
-
+#HSLIDE
+## Requirements
+#VSLIDE
+**R.6** find available cars within a certain distance from current location or from address
+#VSLIDE
+**R.7** reserve a car
+#VSLIDE
+**R.8** cancel the reservation
+#VSLIDE
+**R.9** charge for not pick-up within reservation expiry.
+#VSLIDE
+**R.10** rent a car
+#VSLIDE
+**R.11** service exclusion for pending payments
+#VSLIDE
+**R.12** discount 10% for two other passengers
+#VSLIDE
+**R.13** discount 20% for car left with more than 50% of charge
+#VSLIDE
+**R.14** discount 30% for plugging-in carto the power plug
+#VSLIDE
+**R.15** overcharge 30% for car left >3Km from nearest power plug or \<20% charge
+#VSLIDE
+**R.16** money saving option and discount
+#VSLIDE
+**R.17** service policies change notification
 
 
 
@@ -301,7 +323,12 @@
 #VSLIDE
 <img height="500" src="presentation/presentationDD/Field Staff.png" />
 
-
+#HSLIDE
+## Requirements
+#VSLIDE
+**R.18** notification of relocation/maintenance requests
+#VSLIDE
+**R.19** car relocation
 
 
 
@@ -328,7 +355,27 @@
 #VSLIDE
 <img height="500" src="presentation/presentationDD/Emergency Staff.png" />
 
+#HSLIDE
+## Requirements
+#VSLIDE
+**R.26** notification of emergencies:
+* cars malfunctioning
+* car accidents
+* cars with empty battery not parked in safe areas
 
+#VSLIDE
+**R.27** handle help request
+
+#VSLIDE
+**R.28** overview of state and location of:
+* cars
+* power plugs
+* current rents
+* reservation
+* field staff users
+
+#VSLIDE
+**R.29** actions to resolve issues
 
 
 
@@ -350,8 +397,20 @@
 #VSLIDE
 <img height="500" src="presentation/presentationDD/Management Staff.png" />
 
+#HSLIDE
+## Requirements
+#VSLIDE
+**R.21** configure safe areas and power plugs
+#VSLIDE
+**R.22** cofigure cars list
+#VSLIDE
+**R.23** configure service policies
 
+#VSLIDE
+**R.24** manage personnel accounts
 
+#VSLIDE
+**R.25** handle unpaid rents
 
 
 
