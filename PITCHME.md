@@ -50,28 +50,11 @@ a new car sharing
 <li> **G.10** programmable interface, reduce maintainance costs, third party developers. </li><!-- .element: class="fragment" -->
 
 
-<!-- #HSLIDE
-# Our solution
-
-#VSLIDE
-- car distribution algorithm (BPM)
-- user finds car nearby <!-- .element: class="fragment" -->
-- user satisfaction <!-- .element: class="fragment" -->
-#VSLIDE
-- car distribution algorithm (BPM)
-- automatic relocation request assignment<!-- .element: class="fragment" -->
-- maximum staff's efficiency<!-- .element: class="fragment" -->
-#VSLIDE
-- configurability and extensibility
-- minimum maintenance cost<!-- .element: class="fragment" -->
--->
 #HSLIDE
 # Actors
-<!--
-<!--
+
 #VSLIDE
 ![actors](presentation/Actors.pdf.png)
--->
 
 #HSLIDE
 ### PowerEnJoy user
@@ -237,3 +220,23 @@ a new car sharing
 ![alloy](presentation/Scenario2_OK.png)
 #VSLIDE
 ![alloy](presentation/Scenario3_OK.png)
+
+#HSLIDE
+# Refuso
+
+#HSLIDE
+# Our solution
+
+#VSLIDE
+- car distribution algorithm (BPM)
+- user finds car nearby <!-- .element: class="fragment" -->
+- user satisfaction <!-- .element: class="fragment" -->
+#VSLIDE
+- car distribution algorithm (BPM)
+- automatic relocation request assignment<!-- .element: class="fragment" -->
+- maximum staff's efficiency<!-- .element: class="fragment" -->
+#VSLIDE
+- configurability and extensibility
+- minimum maintenance cost<!-- .element: class="fragment" -->
+
+
