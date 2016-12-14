@@ -186,6 +186,11 @@
 # Architecture
 ### overview
 
+
+
+
+
+
 #VSLIDE
 <img height="500" src="presentation/presentationDD/High Level.png" />
 
@@ -194,14 +199,45 @@
 ![icon](presentation/presentationDD/electric-car photo.png)
 
 #HSLIDE
+## User
+### interfaces
+#VSLIDE
+<img height="550" src="presentation/presentationDD/insertPIN.png" />
+#VSLIDE
+<img height="550" src="presentation/presentationDD/carscreen.png" />
+#VSLIDE
+<img height="550" src="presentation/presentationDD/Stopover-endrent.png" />
+
+
+#HSLIDE
 ## Component
 ### decomposition
 #VSLIDE
 <img height="500" src="presentation/presentationDD/Car.png" />
 
+
+
+
+
+
 #HSLIDE
 ### PowerEnJoy user
 ![icon](presentation/powerenjoy_user.png)
+
+#HSLIDE
+## User
+### interfaces
+#VSLIDE
+<img height="550" src="presentation/presentationDD/login+menu.png" />
+#VSLIDE
+<img height="550" src="presentation/presentationDD/powerEnJoy+accountInfo.png" />
+#VSLIDE
+<img height="550" src="presentation/presentationDD/carInfo+reservation.png" />
+#VSLIDE
+<img height="550" src="presentation/presentationDD/signUp+stopOver.png" />
+#VSLIDE
+<img height="550" src="presentation/presentationDD/focusDriving+requestPin.png" />
+
 
 #HSLIDE
 ## Component
@@ -209,19 +245,20 @@
 #VSLIDE
 <img height="600" src="presentation/presentationDD/PowerEnjoy User.png" />
 
-#HSLIDE
-### Emergency staff user
-![icon](presentation/emergency_staff.png)
 
-#HSLIDE
-## Component
-### decomposition
-#VSLIDE
-<img height="500" src="presentation/presentationDD/Emergency Staff.png" />
+
+
+
 
 #HSLIDE
 ### Field staff users
 ![icon](presentation/field_staff.png)
+
+#HSLIDE
+## User
+### interfaces
+#VSLIDE
+<img height="550" src="presentation/presentationDD/FieldStaff.png" />
 
 #HSLIDE
 ## Component
@@ -229,15 +266,54 @@
 #VSLIDE
 <img height="500" src="presentation/presentationDD/Field Staff.png" />
 
+
+
+
+
+
+#HSLIDE
+### Emergency staff user
+![icon](presentation/emergency_staff.png)
+
+#HSLIDE
+## User
+### interfaces
+#VSLIDE
+<img height="550" src="presentation/presentationDD/EmergencyStaff.png" />
+
+#HSLIDE
+## Component
+### decomposition
+#VSLIDE
+<img height="500" src="presentation/presentationDD/Emergency Staff.png" />
+
+
+
+
+
+
+
 #HSLIDE
 ### Management staff users
 ![icon](presentation/management_staff.png)
+
+#HSLIDE
+## User
+### interfaces
+#VSLIDE
+<img height="550" src="presentation/presentationDD/ManagementStaff.png" />
 
 #HSLIDE
 ## Component
 ### decomposition
 #VSLIDE
 <img height="500" src="presentation/presentationDD/Management Staff.png" />
+
+
+
+
+
+
 
 #HSLIDE
 # Deployment
