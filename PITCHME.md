@@ -65,8 +65,6 @@ a new car sharing
 - configurability and extensibility
 - minimum maintenance cost<!-- .element: class="fragment" -->
 
--->
-
 #HSLIDE
 # Actors
 
