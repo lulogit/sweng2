@@ -192,6 +192,16 @@
 #HSLIDE
 ## Component
 ### decomposition
+#VSLIDE
+<img height="500" src="presentation/presentationDD/Car.png" />
+#VSLIDE
+<img height="500" src="presentation/presentationDD/Emergency staff.png" />
+#VSLIDE
+<img height="500" src="presentation/presentationDD/Field staff.png" />
+#VSLIDE
+<img height="500" src="presentation/presentationDD/Management staff.png" />
+#VSLIDE
+<img height="500" src="presentation/presentationDD/PowerEnjoy user.png" />
 
 #HSLIDE
 # Deployment
@@ -203,10 +213,3 @@
 ### compliant
 #VSLIDE
 <img height="500" src="https://docs.oracle.com/cd/E19226-01/820-7627/images/overview-businessAndEisTiers.gif" />
-
-
-
-#VSLIDE
-## smart device interface
-#VSLIDE
-![](presentation/UX.pdf.png)
