@@ -427,6 +427,22 @@
 #VSLIDE
 <img height="500" src="https://docs.oracle.com/cd/E19226-01/820-7627/images/overview-businessAndEisTiers.gif" />
 
+#VSLIDE
+### number of parallel server:
+ * computed to guarantee availability and reliability
+#VSLIDE
+### load balancer:
+  * performance, reliability
+#VSLIDE
+### db backupper:
+  * availability, data protection
+#VSLIDE
+### 4 tier:
+  * security
+  * secrecy of code
+  * different components
+  * java EE compliant
+
 
 #HSLIDE
 # Algorithms
@@ -752,14 +768,25 @@ def compute_discounts_for_safe_areas(map_state):
 ### and external API
 #VSLIDE
 ## PhoneGap
+* code portability
+* no loose marketplaces users
 #VSLIDE
 ## HTML5 + CSS + JS + JSON + Geolocation
+* very popular / supported stack for webapps
+* flexibility
+* portability
 #VSLIDE
 ## idcheck.io
+* Document verification
 #VSLIDE
 ## Java EE
+* 4 tier
+* entity beans
+* pooling
+* persistency
 #VSLIDE
 ## Dwolla
+* Payments
 #VSLIDE
 ## Google Maps API
 - Google Maps geocoding API
@@ -769,7 +796,9 @@ def compute_discounts_for_safe_areas(map_state):
 #VSLIDE
 ## Google Push Notification API
 #VSLIDE
-## 
+## Microsoft SQL:
+  * performances
+  * geography type and operations
 
 
 #HSLIDE
