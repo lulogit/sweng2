@@ -214,11 +214,19 @@
 #VSLIDE
 <img height="550" src="presentation/presentationDD/legenda.png" />
 #VSLIDE
+<img height="550" src="presentation/presentationDD/UserPhone.png" />
+#VSLIDE
 <img height="550" src="presentation/presentationDD/Auto.png" />
 
 #HSLIDE
 ## Component
 ### decomposition
+#VSLIDE
+<img height="500" src="presentation/presentationDD/Car.png" />
+
+#HSLIDE
+## Sequence
+### diagram
 #VSLIDE
 <img height="500" src="presentation/presentationDD/Car.png" />
 
