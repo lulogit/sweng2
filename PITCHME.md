@@ -12,7 +12,7 @@
 a new car sharing
 
 #HSLIDE
-<img height="640" src="presentation/auto.png" />
+<img height="640" src="presentation/logo_powerenjoy.png" />
 
 #VSLIDE
 ### Electric cars
