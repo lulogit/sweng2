@@ -11,6 +11,9 @@
 ### PowerEnjoy
 a new car sharing
 
+#HSLIDE
+![logo](presentation/logo_powerenjoy.png)
+
 #VSLIDE
 ### Electric cars
 ![ec](presentation/electric_car_sharing.png)
@@ -21,7 +24,7 @@ a new car sharing
 ![ec](presentation/car_sharing.png)
 
 #VSLIDE
-### Higher probability of finding cars 
+### Higher probability of finding cars
 ![cd](presentation/car_distribution.png)
 
 #HSLIDE
@@ -46,7 +49,8 @@ a new car sharing
 <li> **G.9** authorized personal quickly react to emergencies, user’s safety </li><!-- .element: class="fragment" -->
 <li> **G.10** programmable interface, reduce maintainance costs, third party developers. </li><!-- .element: class="fragment" -->
 
-#HSLIDE
+
+<!-- #HSLIDE
 # Our solution
 
 #VSLIDE
@@ -61,13 +65,17 @@ a new car sharing
 - configurability and extensibility
 - minimum maintenance cost<!-- .element: class="fragment" -->
 
+-->
+
 #HSLIDE
 # Actors
 
+<!--
 #VSLIDE
 ![actors](presentation/Actors.pdf.png)
+-->
 
-#HSLIDE 
+#HSLIDE
 ### PowerEnJoy user
 ![icon](presentation/powerenjoy_user.png)
 #VSLIDE
@@ -107,7 +115,7 @@ a new car sharing
 #VSLIDE
 **R.20** special equipment request
 
-#HSLIDE 
+#HSLIDE
 ### Management staff users
 ![icon](presentation/management_staff.png)
 #VSLIDE
@@ -150,12 +158,13 @@ a new car sharing
 # BPM
 ### Back-end Process Management
 
-#VSLIDE 
+#VSLIDE
 # Relocations
 
 #VSLIDE
 # Money saving option
 
+<!--
 #HSLIDE
 # Scenarios
 
@@ -175,14 +184,19 @@ a new car sharing
 #VSLIDE
 ![](presentation/screen.pdf.png)
 
+
+
 #HSLIDE
 # Use cases
 
 #VSLIDE
 <img height="650" src="presentation/usecase.png" />
 
+-->
+
 #HSLIDE
 # UML
+#### (RASD)
 
 #VSLIDE
 ## Class diagram
@@ -214,6 +228,8 @@ a new car sharing
 
 #VSLIDE
 ### Smart devices
+#VSLIDE
+<img height="640" src="presentation/smartphone.png" />
 
 #HSLIDE
 # Alloy
