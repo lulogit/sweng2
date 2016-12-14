@@ -134,7 +134,8 @@
 ### Back-end Process Management
 
 #VSLIDE
-# Relocations assignment
+# Relocations
+### assignment
 
 #VSLIDE
 # Money saving option
@@ -143,6 +144,12 @@
 #HSLIDE
 # UML
 #### (RASD)
+
+#VSLIDE
+## Car state chart
+
+#VSLIDE
+<img height="700" src="presentation/car_status.pdf.png" />
 
 #VSLIDE
 ## Class diagram
@@ -157,12 +164,6 @@
 
 #VSLIDE
 <img height="650" src="presentation/estensibility.pdf.png" />
-
-#VSLIDE
-## Car state chart
-
-#VSLIDE
-<img height="700" src="presentation/car_status.pdf.png" />
 
 #HSLIDE
 # Hardware
@@ -180,6 +181,13 @@
 #HSLIDE
 # D E S I G N
 ### document
+
+#HSLIDE
+# Architecture
+### overview
+
+#VSLIDE
+<img height="500" src="presentation/presentationDD/High Level.svg" />
 
 
 
