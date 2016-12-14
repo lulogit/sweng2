@@ -64,10 +64,10 @@ a new car sharing
 #VSLIDE
 - configurability and extensibility
 - minimum maintenance cost<!-- .element: class="fragment" -->
-
+-->
 #HSLIDE
 # Actors
-
+<!--
 <!--
 #VSLIDE
 ![actors](presentation/Actors.pdf.png)
