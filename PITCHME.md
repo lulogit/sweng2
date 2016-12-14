@@ -208,6 +208,11 @@
 #VSLIDE
 <img height="550" src="presentation/presentationDD/Stopover-endrent.png" />
 
+#HSLIDE
+## UX
+### flow
+#VSLIDE
+<img height="550" src="presentation/presentationDD/login+menu.png" />
 
 #HSLIDE
 ## Component
@@ -234,9 +239,15 @@
 #VSLIDE
 <img height="550" src="presentation/presentationDD/carInfo+reservation.png" />
 #VSLIDE
-<img height="550" src="presentation/presentationDD/signUp+stopOver.png" />
+<img height="550" src="presentation/presentationDD/singUp+stopOver.png" />
 #VSLIDE
 <img height="550" src="presentation/presentationDD/focusDriving+requestPin.png" />
+
+#HSLIDE
+## UX
+### flow
+#VSLIDE
+<img height="550" src="presentation/presentationDD/login+menu.png" />
 
 
 #HSLIDE
@@ -261,6 +272,12 @@
 <img height="550" src="presentation/presentationDD/FieldStaff.png" />
 
 #HSLIDE
+## UX
+### flow
+#VSLIDE
+<img height="550" src="presentation/presentationDD/login+menu.png" />
+
+#HSLIDE
 ## Component
 ### decomposition
 #VSLIDE
@@ -280,6 +297,12 @@
 ### interfaces
 #VSLIDE
 <img height="550" src="presentation/presentationDD/EmergencyStaff.png" />
+
+#HSLIDE
+## UX
+### flow
+#VSLIDE
+<img height="550" src="presentation/presentationDD/login+menu.png" />
 
 #HSLIDE
 ## Component
@@ -304,6 +327,12 @@
 <img height="550" src="presentation/presentationDD/ManagementStaff.png" />
 
 #HSLIDE
+## UX
+### flow
+#VSLIDE
+<img height="550" src="presentation/presentationDD/login+menu.png" />
+
+#HSLIDE
 ## Component
 ### decomposition
 #VSLIDE
@@ -326,3 +355,10 @@
 ### compliant
 #VSLIDE
 <img height="500" src="https://docs.oracle.com/cd/E19226-01/820-7627/images/overview-businessAndEisTiers.gif" />
+
+
+#HSLIDE
+### Questions ?
+<img height="400" src="http://nerdlike.com/wp-content/uploads/napoleon-dynamite.jpg" />
+
+
