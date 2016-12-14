@@ -224,12 +224,6 @@
 #VSLIDE
 <img height="500" src="presentation/presentationDD/Car.png" />
 
-#HSLIDE
-## Sequence
-### diagram
-#VSLIDE
-<img height="500" src="presentation/presentationDD/Car.png" />
-
 
 
 
@@ -269,6 +263,18 @@
 ### decomposition
 #VSLIDE
 <img height="600" src="presentation/presentationDD/PowerEnjoy User.png" />
+
+#HSLIDE
+## Sequence
+### diagram
+#VSLIDE
+<img height="500" src="presentation/presentationDD/Registration.png" />
+#VSLIDE
+<img height="500" src="presentation/presentationDD/Reservation.png" />
+#VSLIDE
+<img height="500" src="presentation/presentationDD/ImmediateRentRequest.png" />
+#VSLIDE
+<img height="500" src="presentation/presentationDD/MoneySavingOption.png" />
 
 
 
