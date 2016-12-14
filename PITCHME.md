@@ -398,6 +398,25 @@
 <img height="500" src="presentation/presentationDD/Management Staff.png" />
 
 #HSLIDE
+## Fare DSL
+#VSLIDE
+```
+= Rent.MOVING TIME() * 0.50 + Rent.STOP TIME() * 0.15
+/* time based fare, considering stopover (0.50e/minute for rent, 0.15e/minute
+for stopover) */
+= IF( Rent.KM() > 10; (Rent.KM()-10) * 0.05; 0)
+/* km based fare, start after a minimum of 10 km 0.05e/km */
+```
+## Discount DSL
+#VSLIDE
+```
+= IF( Rent.PASSENGERS()>2; -0.20 ; 0)
+/* passenger discount of 20%, if 2+ passengers (the returned value is mul-
+tiplied by price and added to price as modifier, for an overcharge the
+returned value should be positive) */
+```
+
+#HSLIDE
 ## Requirements
 #VSLIDE
 **R.21** configure safe areas and power plugs
