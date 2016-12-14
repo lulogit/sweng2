@@ -97,10 +97,9 @@ a new car sharing
 #VSLIDE
 **R.14** discount 30% for plugging-in carto the power plug
 #VSLIDE
-**R.15** overcharge 30% for car left >3Km from nearest power plug or <20% charge
+**R.15** overcharge 30% for car left >3Km from nearest power plug or \<20% charge
 #VSLIDE
 **R.16** money saving option and discount
-
 #VSLIDE
 **R.17** service policies change notification
 
