@@ -198,7 +198,7 @@
 ## Component
 ### decomposition
 #VSLIDE
-<img height="500" src="presentation/presentationDD/PowerEnjoy User.png" />
+<img height="650" src="presentation/presentationDD/PowerEnjoy User.png" />
 #VSLIDE
 <img height="500" src="presentation/presentationDD/Car.png" />
 
@@ -214,6 +214,7 @@
 
 #HSLIDE
 ### Field staff users
+![icon](presentation/field_staff.png)
 
 #HSLIDE
 ## Component
