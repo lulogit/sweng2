@@ -10,9 +10,7 @@
 #HSLIDE
 ### PowerEnjoy
 a new car sharing
-
-#HSLIDE
-<img height="640" src="presentation/logo_powerenjoy.png" />
+<img height="200" src="presentation/logo_powerenjoy.png" />
 
 #VSLIDE
 ### Electric cars
