@@ -189,25 +189,54 @@
 #VSLIDE
 <img height="500" src="presentation/presentationDD/High Level.png" />
 
+
+#HSLIDE
+### PowerEnJoy user
+![icon](presentation/powerenjoy_user.png)
+
 #HSLIDE
 ## Component
 ### decomposition
 #VSLIDE
+<img height="500" src="presentation/presentationDD/PowerEnjoy User.png" />
+#VSLIDE
 <img height="500" src="presentation/presentationDD/Car.png" />
+
+#HSLIDE
+### Emergency staff user
+![icon](presentation/emergency_staff.png)
+
+#HSLIDE
+## Component
+### decomposition
 #VSLIDE
 <img height="500" src="presentation/presentationDD/Emergency Staff.png" />
+
+#HSLIDE
+### Field staff users
+
+#HSLIDE
+## Component
+### decomposition
 #VSLIDE
 <img height="500" src="presentation/presentationDD/Field Staff.png" />
+
+#HSLIDE
+### Management staff users
+![icon](presentation/management_staff.png)
+
+#HSLIDE
+## Component
+### decomposition
 #VSLIDE
 <img height="500" src="presentation/presentationDD/Management Staff.png" />
-#VSLIDE
-<img height="500" src="presentation/presentationDD/PowerEnjoy User.png" />
 
 #HSLIDE
 # Deployment
 ### view
 #VSLIDE
 <img height="500" src="presentation/presentationDD/deployment.png" />
+
 #VSLIDE
 ## Java EE
 ### compliant
