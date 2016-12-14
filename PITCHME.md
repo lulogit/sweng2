@@ -195,13 +195,13 @@
 #VSLIDE
 <img height="500" src="presentation/presentationDD/Car.png" />
 #VSLIDE
-<img height="500" src="presentation/presentationDD/Emergency staff.png" />
+<img height="500" src="presentation/presentationDD/Emergency%20staff.png" />
 #VSLIDE
-<img height="500" src="presentation/presentationDD/Field staff.png" />
+<img height="500" src="presentation/presentationDD/Field%20staff.png" />
 #VSLIDE
-<img height="500" src="presentation/presentationDD/Management staff.png" />
+<img height="500" src="presentation/presentationDD/Management%20staff.png" />
 #VSLIDE
-<img height="500" src="presentation/presentationDD/PowerEnjoy user.png" />
+<img height="500" src="presentation/presentationDD/PowerEnjoy%20user.png" />
 
 #HSLIDE
 # Deployment
