@@ -189,6 +189,15 @@
 #VSLIDE
 <img height="500" src="presentation/presentationDD/High Level.png" />
 
+#HSLIDE
+### PowerEnJoy cars
+![icon](presentation/presentationDD/electric-car photo.png)
+
+#HSLIDE
+## Component
+### decomposition
+#VSLIDE
+<img height="500" src="presentation/presentationDD/Car.png" />
 
 #HSLIDE
 ### PowerEnJoy user
@@ -198,9 +207,7 @@
 ## Component
 ### decomposition
 #VSLIDE
-<img height="650" src="presentation/presentationDD/PowerEnjoy User.png" />
-#VSLIDE
-<img height="500" src="presentation/presentationDD/Car.png" />
+<img height="600" src="presentation/presentationDD/PowerEnjoy User.png" />
 
 #HSLIDE
 ### Emergency staff user
