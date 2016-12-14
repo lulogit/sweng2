@@ -254,8 +254,6 @@
 <img height="550" src="presentation/presentationDD/UserRegistration.png" />
 #VSLIDE
 <img height="550" src="presentation/presentationDD/UserPhone.png" />
-#VSLIDE
-<img height="550" src="presentation/presentationDD/Auto.png" />
 
 
 #HSLIDE
