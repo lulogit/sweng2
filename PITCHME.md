@@ -747,6 +747,29 @@ def compute_discounts_for_safe_areas(map_state):
     return updated_state
 ```
 
+#HSLIDE
+# Technologies
+### and external API
+#VSLIDE
+## PhoneGap
+#VSLIDE
+## HTML5 + CSS + JS + JSON + Geolocation
+#VSLIDE
+## idcheck.io
+#VSLIDE
+## Java EE
+#VSLIDE
+## Dwolla
+#VSLIDE
+## Google Maps API
+- Google Maps geocoding API
+- Google Maps geolocation API
+- Google Places API
+- Google Directions API
+#VSLIDE
+## Google Push Notification API
+#VSLIDE
+## 
 
 
 #HSLIDE
