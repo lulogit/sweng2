@@ -180,6 +180,7 @@
 #VSLIDE
 <img height="640" src="presentation/smartphone.png" />
 
+<!--
 #HSLIDE
 # Alloy
 
@@ -189,7 +190,7 @@
 ![alloy](presentation/Scenario2_OK.png)
 #VSLIDE
 ![alloy](presentation/Scenario3_OK.png)
-
+-->
 
 
 
