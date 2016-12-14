@@ -8,8 +8,7 @@
   - Lodi Luca
 
 #HSLIDE
-### PowerEnjoy
-a new car sharing
+## A new car sharing
 #VSLIDE
 <img height="400" src="presentation/logo_powerenjoy.png" />
 
