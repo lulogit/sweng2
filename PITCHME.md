@@ -187,9 +187,22 @@
 ### overview
 
 #VSLIDE
-<img height="500" src="presentation/presentationDD/High Level.svg" />
+<img height="500" src="presentation/presentationDD/High Level.png" />
 
+#HSLIDE
+## Component
+### decomposition
 
+#HSLIDE
+# Deployment
+### view
+#VSLIDE
+<img height="500" src="presentation/presentationDD/deployment.png" />
+#VSLIDE
+## Java EE
+### compliant
+#VSLIDE
+<img height="500" src="https://docs.oracle.com/cd/E19226-01/820-7627/images/overview-businessAndEisTiers.gif" />
 
 
 
