@@ -51,9 +51,6 @@
 #HSLIDE
 # Actors
 
-#VSLIDE
-![actors](presentation/Actors.pdf.png)
-
 #HSLIDE
 ### PowerEnJoy user
 ![icon](presentation/powerenjoy_user.png)
@@ -137,7 +134,7 @@
 ### Back-end Process Management
 
 #VSLIDE
-# Relocations
+# Relocations assignment
 
 #VSLIDE
 # Money saving option
@@ -181,71 +178,14 @@
 <img height="640" src="presentation/smartphone.png" />
 
 #HSLIDE
-# Alloy
-
-#VSLIDE
-![alloy](presentation/Scenario1_OK.png)
-#VSLIDE
-![alloy](presentation/Scenario2_OK.png)
-#VSLIDE
-![alloy](presentation/Scenario3_OK.png)
+# D E S I G N
+### document
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-#HSLIDE
-# Resources
-
-#HSLIDE
-# Our solution
-
-#VSLIDE
-- car distribution algorithm (BPM)
-- user finds car nearby <!-- .element: class="fragment" -->
-- user satisfaction <!-- .element: class="fragment" -->
-#VSLIDE
-- car distribution algorithm (BPM)
-- automatic relocation request assignment<!-- .element: class="fragment" -->
-- maximum staff's efficiency<!-- .element: class="fragment" -->
-#VSLIDE
-- configurability and extensibility
-- minimum maintenance cost<!-- .element: class="fragment" -->
-
-#HSLIDE
-# Scenarios
-
-#VSLIDE
-## Money Saving Option
-
-#VSLIDE
-## Power plug
 
 #VSLIDE
 ## smart device interface
 #VSLIDE
 ![](presentation/UX.pdf.png)
-
-#VSLIDE
-## car screen interface
-#VSLIDE
-![](presentation/screen.pdf.png)
-
-
-
-#HSLIDE
-# Use cases
-
-#VSLIDE
-<img height="650" src="presentation/usecase.png" />
-
-
