@@ -10,7 +10,7 @@
 #HSLIDE
 ### PowerEnjoy
 a new car sharing
-<br>
+#VSLIDE
 <img height="400" src="presentation/logo_powerenjoy.png" />
 
 #VSLIDE
