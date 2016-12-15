@@ -1,9 +1,9 @@
-
 '''
 map_search_api:
     dependency module that provide access to
     a global overview of map and service:
 '''
+
 ''' [function] bpm_situation_snapshot() '''
 # returns the latest overview of:
 #  Cars: location, battery_charge, is_charging
