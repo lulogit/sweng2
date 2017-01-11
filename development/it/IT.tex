@@ -771,12 +771,16 @@ These data will build a coherent working simulation of which we know the solutio
 
 In particular, the integration tests that require mocks for part of the components are:
 \begin{tabular}{l | p{7cm}}
-I-T & for BPM and Map Manager\\ 
-I-T & for BPM and Rent manager\\
-I-T & for Rent manager an PowerEnJoyUser manager \\
-I-T & for PowerEnJoyUserManager\\
-I-T & \\
-I-T & \\
+I1-T1 & for BPM (relocation code) and Map Manager (user search code)\\ 
+I1-T2 & for BPM (relocation code) and Rent manager (payment, car and user code)\\
+I2-T1 & for Rent manager (payment and car code) an PowerEnJoyUser manager (*) \\
+I2-T2 & for Rent manager (car code) an Payment manager (account suspension code) \\
+I3-T1 & for Reservation manager (payment code) and PowerEnJoyUserManager (*)\\
+I3-T2 & for Payment manager (user suspension code) \\
+I4-T2 & for PowerEnJoyUser manager (*) and Service configurator (configuration code) \\
+I4-T3 & for Account manager (register, login code) \\
+I5-T1 & for Account manager (register, login code) \\
+
      
 \end{tabular}
 
