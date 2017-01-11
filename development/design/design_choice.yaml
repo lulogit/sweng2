@@ -1,0 +1,28 @@
+pattern:
+  - 3 tier:
+  - multilayered:
+  - MVC:
+  - blackboard pattern:
+
+distribuited system:
+  - client-server:
+  - REpresentational State Transfer:
+  - service oriented:
+  - cloud computing:
+
+adaptive systems:
+  - domain specific languages DSL:
+    - fares
+    - discounts
+    - EXCEL syntax enriched
+
+shared memory:
+  - blackboard:
+
+messaging:
+  - event driven:
+    - FirebaseCloudMessage
+
+structure:
+  - component based:
+  - layered:

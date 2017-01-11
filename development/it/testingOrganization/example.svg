@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="example.svg">
+  <defs
+     id="defs4">
+    <inkscape:path-effect
+       effect="skeletal"
+       id="path-effect3034"
+       is_visible="true"
+       pattern="m -92.934034,-128.34014 10,5 0,-10 z"
+       copytype="single_stretched"
+       prop_scale="1"
+       scale_y_rel="false"
+       spacing="0"
+       normal_offset="0"
+       tang_offset="0"
+       prop_units="false"
+       vertical_pattern="false"
+       fuse_tolerance="0" />
+    <inkscape:path-effect
+       effect="skeletal"
+       id="path-effect3030"
+       is_visible="true"
+       pattern="m -92.934034,-128.34014 10,5 0,-10 z"
+       copytype="single_stretched"
+       prop_scale="1"
+       scale_y_rel="false"
+       spacing="0"
+       normal_offset="0"
+       tang_offset="0"
+       prop_units="false"
+       vertical_pattern="false"
+       fuse_tolerance="0" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="425.39064"
+     inkscape:cy="670.34575"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1916"
+     inkscape:window-height="1041"
+     inkscape:window-x="0"
+     inkscape:window-y="37"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#d7ad00;fill-opacity:1;stroke:none"
+       id="rect2985"
+       width="289.23495"
+       height="166.55112"
+       x="125.99635"
+       y="41.413616" />
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="305.45178"
+       y="97.689926"
+       id="text2987"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan2989"
+         x="305.45178"
+         y="97.689926">BPM</tspan></text>
+    <rect
+       style="fill:#f4c400;fill-opacity:1;stroke:none"
+       id="rect2991"
+       width="373.75647"
+       height="177.78687"
+       x="76.771591"
+       y="442.23004" />
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="160.61424"
+       y="490.71741"
+       id="text2993"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan2995"
+         x="160.61424"
+         y="490.71741">Map manager</tspan></text>
+    <path
+       sodipodi:type="arc"
+       style="fill:#ffe680;fill-opacity:1;stroke:none"
+       id="path3016"
+       sodipodi:cx="253.04321"
+       sodipodi:cy="467.48386"
+       sodipodi:rx="16.667517"
+       sodipodi:ry="19.192898"
+       d="m 269.71073,467.48386 a 16.667517,19.192898 0 1 1 -33.33503,0 16.667517,19.192898 0 1 1 33.33503,0 z"
+       transform="translate(-92.934034,-133.34014)" />
+    <path
+       style="fill:#000000;fill-rule:evenodd;stroke:none"
+       d="m 167.68533,214.94572 -12.05783,96.61102 9.97352,0.72724 z"
+       id="path3028"
+       inkscape:path-effect="#path-effect3030"
+       inkscape:original-d="m 167.68533,214.94572 -7.07107,96.97464 0,0"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:#000000;fill-rule:evenodd;stroke:none"
+       d="m 145.46197,444.25035 17.07385,-86.18214 -9.90404,-1.38196 z"
+       id="path3032"
+       inkscape:path-effect="#path-effect3034"
+       inkscape:original-d="M 145.46197,444.25035 157.5838,357.37723"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="182.8376"
+       y="345.2554"
+       id="text3036"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3038"
+         x="182.8376"
+         y="345.2554"
+         style="font-size:20px">Map search API</tspan></text>
+    <rect
+       style="fill:#b7ff80;fill-opacity:0.2606635;stroke:#33bd00;stroke-width:3.13721967;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:37.64663642, 3.1372197;stroke-dashoffset:0"
+       id="rect3040"
+       width="145.21458"
+       height="193.70192"
+       x="111.74554"
+       y="29.706419" />
+    <rect
+       style="fill:#ff3b40;fill-opacity:0.2606635;stroke:#d03500;stroke-width:0.76087856;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:9.13054235, 0.76087853;stroke-dashoffset:0"
+       id="rect3040-3"
+       width="62.738117"
+       height="26.372633"
+       x="398.95593"
+       y="267.41928" />
+    <rect
+       style="fill:#b7ff80;fill-opacity:0.2606635;stroke:#33bd00;stroke-width:3.48208928;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:41.78507284, 3.4820894;stroke-dashoffset:0"
+       id="rect3040-7"
+       width="179.2149"
+       height="193.35706"
+       x="68.986496"
+       y="435.45508" />
+    <rect
+       style="fill:#ff3b40;fill-opacity:0.2606635;stroke:#d03500;stroke-width:3.50130177;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:42.01562131, 3.50130178;stroke-dashoffset:0"
+       id="rect3040-3-5"
+       width="181.216"
+       height="193.33783"
+       x="266.98602"
+       y="27.363081" />
+    <rect
+       style="fill:#b7ff80;fill-opacity:0.2606635;stroke:#33bd00;stroke-width:0.75232458;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:9.02789511, 0.75232459;stroke-dashoffset:0"
+       id="rect3040-35"
+       width="63.756817"
+       height="25.371035"
+       x="397.94153"
+       y="300.75006" />
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="472.7514"
+       y="286.66653"
+       id="text3889"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3891"
+         x="472.7514"
+         y="286.66653"
+         style="font-size:18px">Part to be mocked</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="474.77173"
+       y="323.03201"
+       id="text3893"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3895"
+         x="474.77173"
+         y="323.03201"
+         style="font-size:18px">Implemented part</tspan></text>
+    <rect
+       style="fill:#ff3b40;fill-opacity:0.2606635;stroke:#d03500;stroke-width:3.67873144;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:44.14477579, 3.67873132;stroke-dashoffset:0"
+       id="rect3040-3-5-6"
+       width="200.23148"
+       height="193.1604"
+       x="258.99353"
+       y="434.54327" />
+  </g>
+</svg>
