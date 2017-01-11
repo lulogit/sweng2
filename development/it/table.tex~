@@ -1,0 +1,14 @@
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|p{7cm}|}
+\hline
+ \textbf{Test Case ID} & I@i$-T@t$ \\ \hline
+ \textbf{Test Items} & @using$ \rightarrow @used$ \\ \hline
+ \textbf{Input Specification} & a simulation of the typical @using$ component input coming from
+@used$, attention must be payed to cover the edge or excepional cases related to the --- interface \\ \hline
+ \textbf{Output Specification} & Check wheter the correct methods are invoked, along with the correctness of the parameter types
+and values \\ \hline
+ \textbf{Environmental Needs} & The --- interface must have been already implemented and unit-tested AND I3T1 and I4T1 must have
+already been performed \\ \hline
+\end{tabular}
+\end{table}
