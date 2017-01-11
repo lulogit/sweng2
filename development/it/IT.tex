@@ -766,7 +766,13 @@ Arquillian represents an optimal solution in a such context where many component
 		\end{itemize}
 \section{Program Stubs and Test Data Required}
 		In order to verify correctness of integration test we should use some test data. These data will be samples created by a script. e.g. cars, users, field staff positions.
-These data will build a coherent working simulation of which we know the solution. E.g. for a relocation request we know a priori the field staff user that will be exchanged of this work so if the system assign the job to the expected person, we can assume that test is passed. All these data allow to have a sort of stubs (created using Mockito internally at the same component that allow to simulate all features not already implemented.
+These data will build a coherent working simulation of which we know the solution. 
+\par E.g. for a relocation request we know a priori the field staff user that will be exchanged of this work so if the system assign the job to the expected person, we can assume that test is passed. All these data allow to have a sort of stubs (created using Mockito internally at the same component that allow to simulate all features not already implemented.
+
+In particular, the integration tests that require mocks for part of the components are:
+\begin{tabular}{l|p{7cm}}
+ 
+\end{tabular}
 
 \clearpage
 \section{Effort Spent} %In this section you will include information about the number of hours each group member  has worked towards the fulfillment of this deadline.

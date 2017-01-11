@@ -10,9 +10,18 @@
 - eliminate R.20
 - bpm -> generl purpose reqs.
 
-### final modifications
-
-### reference
+### changes:
+- specify car system interface
+- separation of concerns in modules
+- grasp future evolution of components
+- too high level of abstraction (in end), then BCE diagram (wtf?!?!?)
+- no BCE in architecture
+- highlight and clarify the connection on all the components in your presentation
+  (in terms of naming connections, warnings)
+- final presentation: provide overview / wait for question
+- TIME, TIME, TIME !!! (giga penalization)
+- data flow, not UX diagram
+- correct car_search.py
 
 ### design choices (check):
 - java EE (server stack):

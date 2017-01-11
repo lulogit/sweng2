@@ -23,8 +23,6 @@ def search_car(location, radius=DEFAULT_RADIUS):
     #   can compute accurate distance from other <geography> variables
     #       through <.STDistance(other_location)> method
     available_cars_query = '''
-        DECLARE @orig_lat DECIMAL(12, 9)
-        DECLARE @orig_lon DECIMAL(12, 9)
         SET @orig_lat={orig_lat}
         SET @orig_lon={orig_lon}
         DECLARE @orig geography = geography::Point(@orig_lat, @orig_lng, 4326);
