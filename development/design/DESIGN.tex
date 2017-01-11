@@ -1,5 +1,4 @@
 \documentclass[english]{article}
-
 \usepackage{ae,aecompl}
 \usepackage[T1]{fontenc}
 \usepackage[latin9]{inputenc}
@@ -16,33 +15,44 @@
 \usepackage{booktabs}
 \usepackage{wasysym}
 \usepackage{multirow}
-\makeatother
-\makeatletter
 \usepackage{babel}
+
 \begin{document}
-\begin{figure}
-	\centering
-	\includegraphics[scale=0.5]{logo.pdf} 
-\end{figure}
+
+	\begin{figure}
+		\centering
+		\includegraphics[scale=0.5]{logo.pdf} 
+	\end{figure}
 
 
-\title{\powerenjoy\\
-Design Document\\
-}
+	\title{PowerEnJoy\\
+	Design Document\\
+	}
 
-\date{A.A 2016/2017}
-
-\author{Erba Alessandro\\
- Leveni Filippo\\
- Lodi Luca}
-
-\maketitle
-\pagebreak{}
+	\date{A.A 2016/2017}
+	
+	\author{Erba Alessandro\\
+	 Leveni Filippo\\
+	 Lodi Luca}
+	
+	\maketitle
+	\pagebreak{}
 
 \tableofcontents{} \pagebreak{}
 \section{Introduction}
 	\subsection{Purpose}
+		In the RASD document we have presented the objectives and a general overview of PowerEnjoy system.
+		The purpose of this document is to give more technical details about software and hardware choices that we have found for the system realization.
+		However our main focus will be on software design, because this document will provide the fundamental specifications that will allow the developers to implement the application.
 	\subsection{Scope}
+		In order to best describe the architecture and the runtime view of the application, we are going to use different type of diagrams. Such diagrams should convey as much as possible the information on how the software is going to be structured.
+		In particular we will present some UML diagrams:
+			\begin{itemize}
+				\item{Component Diagram, to describe the high and the low level of the software's architectural structure}
+				\item{Deployment Diagram, to describe the hardware's architectural structure and how the software is mapped on it}
+				\item{Sequence Diagram, to describe the behavior at runtime of the software}
+			\end{itemize}
+		 We will specify which architectural pattern we have chosen and how they are used, we will give a description of the most crucial algorithms and a description of the user interface. Finally, for sake of completeness, we will show how every requirement defined in the RASD document is mapped in this document.
 	\subsection{Definitions, Acronyms, Abbreviations}
 	\subsection{Reference Documents}
 	\subsection{Document Structure}
@@ -50,6 +60,16 @@ Design Document\\
 	\subsection{Overview}%High level components and their interaction
 	\subsection{Component view}
 	\subsection{Deployment view}
+	In the following figure we can see the deployment diagram. Here we show how the different components introduced in the Component View chapter are distributed into system's hardware components.
+We have structured our diagram focusing on the workload of each component. We offer a real time service and we have to deal with these two principal data channels:
+	\begin{itemize}
+		\item All cars are connected and send continuously data in order to be monitored. 
+		\item Every client connected to the service via Web App should receive responses in real time.
+	\end {itemize}
+In order to fulfill these two needs we have introduced load balancers that distribute the load among servers. 
+We have both N Web Servers and Private servers. The first type of server guarantees the fair management of clients requests and responses. The second type guarantees the fair management of services running on the Private Server.
+We store Data in a database which is separated from the server. The Database is duplicated in a backup database.
+
 	\subsection{Runtime view}%You can use sequence diagrams to describe the way components interact to accomplish specific tasks typically related to your use cases
 	\subsection{Component interfaces}
 	\subsection{Selected architectural styles and patterns} %Please explain which styles/patterns you used, why, and how
