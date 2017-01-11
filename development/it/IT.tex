@@ -769,8 +769,11 @@ Arquillian represents an optimal solution in a such context where many component
 These data will build a coherent working simulation of which we know the solution. 
 \par E.g. for a relocation request we know a priori the field staff user that will be exchanged of this work so if the system assign the job to the expected person, we can assume that test is passed. All these data allow to have a sort of stubs (created using Mockito internally at the same component that allow to simulate all features not already implemented.
 
-In particular, the integration tests that require mocks for part of the components are:
-\begin{tabular}{l | p{7cm}}
+\subsubsection*{ The mocks required by first priority test cases are: }
+
+\begin{table}[H]
+\begin{tabular}{l | p{12cm}}
+
 I1-T1 & for BPM (relocation code) and Map Manager (user search code)\\ 
 I1-T2 & for BPM (relocation code) and Rent manager (payment, car and user code)\\
 I2-T1 & for Rent manager (payment and car code) an PowerEnJoyUser manager (*) \\
@@ -779,10 +782,42 @@ I3-T1 & for Reservation manager (payment code) and PowerEnJoyUserManager (*)\\
 I3-T2 & for Payment manager (user suspension code) \\
 I4-T2 & for PowerEnJoyUser manager (*) and Service configurator (configuration code) \\
 I4-T3 & for Account manager (register, login code) \\
-I5-T1 & for Account manager (register, login code) \\
+I5-T1 & for Account manager (register, login code) \\[5px]
 
-     
 \end{tabular}
+\end{table}
+
+\subsubsection*{ The mocks required by second priority test cases are: }
+
+\begin{table}[H]
+\begin{tabular}{l | p{12cm}}
+
+I7-T1 & for Car manager (remote control code) and Emergency manager (*) \\
+
+I7-T2 & for FieldStaff manager (app interface code)  \\
+
+I8-T1 & for  EmergencyStaff manager (task assignment code) \\
+
+I8-T2 & for Emergency manager (* code)  \\
+
+I9-T1 & for Emergency manager (*) and FieldStaff manager (app interface code) \\
+
+I10-T1 & for Car app (position update code)  \\[5px]
+
+\end{tabular}
+\end{table}
+
+\subsubsection*{ The mocks required by third priority test cases are: }
+
+\begin{table}[H]
+\begin{tabular}{l | p{12cm}}
+
+I12-T1 & for ManagementStaff manager (app interface code) and Service configurator (prices / discounts / fees DSL code) \\[5px]
+
+\end{tabular}
+\end{table}
+
+\par NOTE: External app manager does not require any stub nor mock since it is the last feature to be implemented, thus all the interacting components are already have been implemented.
 
 \clearpage
 \section{Effort Spent} %In this section you will include information about the number of hours each group member  has worked towards the fulfillment of this deadline.
