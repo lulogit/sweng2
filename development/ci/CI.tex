@@ -22,7 +22,9 @@
 \usepackage{listings}
 \usepackage{csquotes}
 \usepackage{comment}
-
+\lstset{
+	breaklines=true,
+	}
 \pagestyle{fancy}
 \lhead{\powerenjoy I.T.P.D.}
 \makeatletter
@@ -84,11 +86,37 @@
 	
 \subsubsection*{.getSectionList}	
 \subsubsection*{.renderWidgetString}
+\begin{itemize}
+	\item[40.]{ line 128
+		\begin{lstlisting}
+if (obj == null)
+		\end{lstlisting} must be replaced using
+		\begin{lstlisting}
+if (obj.equals(null))
+		\end{lstlisting}}
+	\item[42.]{line 129
+		\begin{lstlisting}
+Debug.logError(``No object found for listName:''+ listNameExdr.toString(), module);
+		\end{lstlisting}
+		the description of the log could be more precise because in order to make more comprehensible the problem.}
+	\item[42.]{line 142.		\begin{lstlisting} 
+Debug.logError(``Object not list or map type'', module);
+		\end{lstlisting}
+		the description of the log could be more precise because in order to make more comprehensible the problem.}
+	\item[42.]{line 218
+		\begin{lstlisting} 
+ Debug.logError(e, module);
+		\end{lstlisting}
+		the description of the log could be more precise because in order to make more comprehensible the problem.}
+	
+\end{itemize}
+
 \subsubsection*{.getPaginateTarget}
 \subsubsection*{.getPaginate}
 \subsubsection*{.getViewSize}
 \subsubsection*{.renderNextPrev}
 	\begin{itemize}
+	
 	\item[40.]{ line 245 
 		\begin{lstlisting}
 if (targetService = = null) 
@@ -96,7 +124,14 @@ if (targetService = = null)
 		\begin{lstlisting}
 if (targetService.equals(null))
 		\end{lstlisting}}
-	\end{itemize}	
+	
+	
+	 \item[42.]{line 263
+		\begin{lstlisting} 
+ Debug.logWarning(``TargetService is empty.'', module);
+		\end{lstlisting}
+		the description of the log could be more precise because in order to make more comprehensible the problem.}
+\end{itemize}
 \subsubsection*{.accept}
 \subsubsection*{.getListNameExdr}
 \subsubsection*{.getEntryNameExdr}
