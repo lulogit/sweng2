@@ -147,6 +147,19 @@ if (targetService.equals(null))
 \subsubsection*{.getStringArg}
 \subsubsection*{.checkArg}
 \subsubsection*{.getWriter}
+\begin{itemize}
+ \item[various.]{line 143
+		\begin{lstlisting} 
+out.write(url.toString());
+		\end{lstlisting}
+		url is declared as String and as the .toString() javadoc for String type suggests 
+\begin{displayquote}
+		String java.lang.String.toString()
+
+This object (which is already a string!) is itself returned.
+\end{displayquote}}
+\end{itemize}
+
 
 
 
