@@ -1,0 +1,763 @@
+\documentclass[english]{article}
+\usepackage{longtable}
+\usepackage{amsmath}
+\usepackage{ae,aecompl}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage{eurosym}
+\usepackage[hidelinks]{hyperref}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{tabto}
+\usepackage{verbatim}
+\usepackage{etoolbox}
+\usepackage[table]{xcolor}
+\usepackage{booktabs}
+\usepackage{wasysym}
+\usepackage{multirow}
+\usepackage{fancyhdr}
+\usepackage{pdflscape}
+\usepackage[scaled]{beramono}
+\usepackage{csquotes}
+\usepackage{comment}
+\usepackage{listings}
+\usepackage{hhline}
+
+
+\pagestyle{fancy}
+\lhead{\powerenjoy PPD}
+\makeatletter
+\makeatother
+\usepackage{babel}
+ \lstset{
+ 	 breaklines=true,
+ 	 }
+% FP table
+\newenvironment{fptable}[2]{
+	\begin{center}
+	#1
+	\begin{longtable}{|c|c|c|c|}
+	\hline 
+	&
+	\multicolumn{3}{|c|}{{#2}}\\\nopagebreak\hline	
+}{
+	\hline\end{longtable}\end{center}
+}
+
+% FP count table
+\newenvironment{fpcounttable}[1]{
+	\begin{center}
+	\begin{longtable}{|l|l|l|}
+	\hline 
+	#1 & Complexity & FPs \\\hline
+}{
+	\end{longtable}\end{center}
+}
+
+\newenvironment{fptotaltable}{
+	\begin{center}
+	\begin{longtable}{|l|r|}
+	\hline 
+	Function Type & Value \\\hline
+}{
+	\end{longtable}\end{center}
+}
+
+\newcommand{\fptotal}[1]{
+	\multicolumn{2}{|l|}{{Total}}
+	& #1\\\hline
+}
+
+%  table
+\newenvironment{scaledriverstable}[1]{
+	\setlength{\LTleft}{-40pt}
+	\begin{center}
+	#1 
+	\begin{longtable}{|p{\dimexpr.16\textwidth}|p{\dimexpr.14\textwidth}|p{\dimexpr.14\textwidth}|p{\dimexpr.14\textwidth}|p{\dimexpr.14\textwidth}|p{\dimexpr.14\textwidth}|p{\dimexpr.14\textwidth}|}
+	\hline
+}{
+	\hline\end{longtable}\end{center}
+}
+
+% scale driver count table
+\newenvironment{factorcounttable}[1]{
+	\begin{center}
+	\begin{longtable}{|l|r|r|}
+	\hline 
+	#1 & Factor & Value \\\hline
+}{
+	\end{longtable}\end{center}
+}
+
+%  table
+\newenvironment{costdriverstable}[1]{
+	\setlength{\LTleft}{-40pt}
+	\begin{longtable}{|p{\dimexpr.16\textwidth}|p{\dimexpr.14\textwidth}|p{\dimexpr.14\textwidth}|p{\dimexpr.14\textwidth}|p{\dimexpr.14\textwidth}|p{\dimexpr.14\textwidth}|p{\dimexpr.14\textwidth}|}
+	\hline
+	\multicolumn{7}{|c|}{{#1}}\\\hhline{|=======|}
+}{
+	\hline\end{longtable}
+}
+
+\newcommand{\costdescriptors}[7]{
+	#1 & #2 & #3 & #4 & #5 & #6 & #7\\
+}
+
+\newcommand{\ratinglevel}[6]{
+	Rating level & #1 & #2 & #3 & #4 & #5 & #6 \\\hline
+}
+
+\newcommand{\effortmultipliers}[6]{
+	Effort multipliers & #1 & #2 & #3 & #4 & #5 & #6 \\\hline
+}
+
+
+\newcommand{\addfactor}[7]{
+	#1 & #2 & #3 & #4 & #5 & #6 & #7 \\
+}
+\newcommand{\addfactorvalues}[6]{
+SF$_j$ & #1 & #2 & #3 & #4 & #5 & #6 \\\hline
+}
+
+
+% Methods in test tables
+\newcommand{\method}[1]{%
+	\nopagebreak
+	\multicolumn{2}{|c|}{{#1}}\\\nopagebreak\hline
+	\textit{Input} & \textit{Effect}\\\nopagebreak\hline
+}
+
+
+\newcommand{\fpvalues}[4]{%
+	\textit{#1} & \textit{#2}& \textit{#3}& \textit{#4}\\\nopagebreak\hline
+}
+	
+	
+% Double horizontal line for test table
+\newcommand{\dline}{\nopagebreak\hhline{|==|\nopagebreak}}
+
+
+
+
+\newcommand\fnurl[2]{%
+	\href{#2}{#1}\footnote{\url{#2}}%
+}
+\newcommand{\rent}{\textit{rent }}
+\newcommand{\carsharing}{\textit {car sharing }}
+\newcommand{\powerenjoy}{\textit{PowerEnjoy }}
+\newcommand{\registereduser}{\textit {registered user }}
+\newcommand{\registeredusers}{\textit {registered users }}
+\newcommand{\powerenjoyuser}{\textit{PowerEnjoy User }}
+\newcommand{\staff}{\textit{staff }}
+\newcommand{\service}{\textit{service }}
+\newcommand{\services }{\textit{services }}
+\newcommand{\safearea}{\textit{safe area }}
+\newcommand{\safeareas}{\textit{safe areas }}
+\newcommand{\powerplug}{\textit{power plug }}
+\newcommand{\powerplugs}{\textit{power plugs }}
+\newcommand{\reservation}{\textit{reservation }}
+\newcommand{\stand}{\textit{stand }}
+\newcommand{\fieldstaff}{\textit{field staff }}
+\newcommand{\resevation}{\textit{reservation }}
+\newcommand{\stopover}{\textit{stopover }}
+\newcommand{\personalpin}{\textit{personal pin }}
+\newcommand{\guest}{\textit{guest }}
+\newcommand{\thirdparty}{\textit{third party developer }}
+\newcommand{\powerplugslot}{\textit{power plug slot }}
+\newcommand{\moneysaving}{\textit{money saving }}
+
+\begin{document}
+
+	\begin{figure}
+		\centering
+		\includegraphics[scale=0.5]{./Images/logo.pdf} 
+	\end{figure}
+
+
+	\title{PowerEnJoy\\
+	Integration Test Plan Document\\
+	}
+
+	\date{A.A 2016/2017}
+	
+	\author{Erba Alessandro\\
+	 Leveni Filippo\\
+	 Lodi Luca}
+	
+	\maketitle
+	\pagebreak{}
+	\tableofcontents{} 
+	\pagebreak{}
+\section{Introduction}
+\subsection{Purpose and scope}
+\subsection{Definitions, Acronyms, Abbreviations}
+\subsection{Reference Documents}
+\section{Project size, cost and effort estimation}
+\subsection{Size estimation: function points}
+\begin{fptable}{For Internal Logic Files and External Logic Files}{Data Elements}
+\fpvalues{Record Elements}{1-19}{20-50}{51+}
+1 & Low & Low & Avg\\
+2-5 & Low & Avg & High\\
+6+ & Avg & High & High\\
+\end{fptable}
+
+\begin{fptable}{For External Output and External Inquiry}{Data Elements}
+\fpvalues{File Types}{1-5}{6-19}{20+}
+0-1 & Low & Low & Avg\\
+2-3 & Low & Avg & High\\
+4+ & Avg & High & High\\
+\end{fptable}
+
+\begin{fptable}{For External Input}{Data Elements}
+\fpvalues{File Types}{1-4}{5-15}{16+}
+0-1 & Low & Low & Avg\\
+2-3 & Low & Avg & High\\
+4+ & Avg & High & High\\
+\end{fptable}
+
+\begin{fptable}{UFP Complexity Weights}{Complexity Weight}
+\fpvalues{Function Type}{Low}{Average}{High}
+Internal Logic Files & 7 & 10 & 15\\
+External Logic Files & 5 & 7 & 10\\
+External Inputs & 3 & 4 & 6\\
+External Outputs & 4 & 5 & 7\\
+External Inquiries & 3 & 4 & 6\\
+\end{fptable}
+
+\subsubsection{Internal Logic Files (ILFs)}
+\begin{fpcounttable}{ILF}
+Login data & Low & 7 \\
+Passenger data & Low & 7 \\
+Taxi drivers & Low & 7 \\
+Zones & Low & 7 \\
+Queues & Average & 10 \\
+Reservations and requests & Low & 7 \\
+API permissions & Average & 10 \\\hline
+\fptotal{55}	
+\end{fpcounttable}
+
+\subsubsection{External Logic Files (ELFs)}
+\begin{fpcounttable}{ELF}
+ETA computation & Low & 10 \\
+Reverse geocoding & Low & 10 \\
+Map data retrieval & Low & 10 \\\hline
+\fptotal{30}	
+\end{fpcounttable}
+
+\subsubsection{External Inputs (EIs)}
+\begin{fpcounttable}{EI}
+Login/Logout & Low & 2x3 \\
+Password retrieval & Average & 4 \\
+Change settings & Average & 4 \\
+Request or reserve a taxi & High & 2x4 \\
+Delete a reservation & Low & 3 \\
+Register a new passenger account & Average & 4 \\
+View reservation history & Low & 3 \\
+Insert, delete and update zones & High & 3x6 \\
+Insert, delete and update taxi drivers & High & 3x6 \\
+Request service statistics & High & 6 \\
+Grant and revoke app privileges & Average & 2x4 \\
+Grant and revoke plugin privileges & Average & 2x4 \\
+Accept, refuse and end ride & High & 3x6 \\
+Set taxi availability & Average & 4 \\\hline 
+\fptotal{112}	
+\end{fpcounttable}
+
+\subsubsection{External Inquiries (EQs)}
+\begin{fpcounttable}{EQ}
+Retrieve taxi position in queue & Low & 3 \\
+Retrieve passenger reservation history & Low & 3 \\
+Retrieve list of taxi drivers & Low & 3 \\
+Retrieve list of zones & Low & 3 \\
+Retrieve list of passengers & Low & 3 \\
+Retrieve list of approved applications & Low & 3 \\
+Retrieve list of approved plugins & Low & 3 \\\hline 
+\fptotal{21}	
+\end{fpcounttable}
+
+\subsubsection{External Outputs (EOs)}
+\begin{fpcounttable}{EO}
+Taxi request assignment notification & Low & 4 \\
+Request accepted notification & Low & 4 \\
+Request dropped notification & Low & 4 \\
+Zone changed notification & Low & 4 \\
+Position in the queue changed notification & Low & 4 \\\hline 
+\fptotal{20}	
+\end{fpcounttable}
+
+\subsubsection{Overall estimation}
+The following table summarizes the results of our estimation activity:
+
+\begin{fptotaltable}
+	Internal Logic Files & 55 \\
+	External Logic Files & 30 \\
+	External Inputs & 112 \\
+	External Inquiries & 21 \\
+	External Outputs & 20 \\\hline
+	Total & 238\\\hline
+\end{fptotaltable}
+
+\begin{lstlisting}[stepnumber=0]
+	SLOC = 238 * 46 = 10948
+\end{lstlisting}
+and an upper bound of
+\begin{lstlisting}[stepnumber=0]
+	SLOC = 238 * 67 = 15946	
+\end{lstlisting}
+
+\subsection{Cost and effort estimation: COCOMO II}
+\subsubsection{Scale Drivers}
+In order to evaluate the values of the scale drivers, we refer to the following official COCOMO II table:
+
+\begin{scaledriverstable}{Scale Factor values, SF$_j$, for COCOMO II Models}
+	Scale Factors & Very Low & Low & Nominal & High & Very High & Extra High\\\hline
+	\addfactor{PREC}{thoroughly unprecedented}{largely unprecedented}{somewhat unprecedented}{generally familiar}{largely familiar}{thoroughly familiar}
+	\addfactorvalues{6.20}{4.96}{3.72}{2.48}{1.24}{0.00}
+	\addfactor{FLEX}{rigorous}{occasional relaxation}{some relaxation}{general conformity}{some conformity}{general goals}
+	\addfactorvalues{5.07}{4.05}{3.04}{2.03}{1.01}{0.00}
+	\addfactor{RESL}{little (20\%)}{some (40\%)}{often (60\%)}{generally (75\%)}{mostly (90\%)}{full (100\%)}
+	\addfactorvalues{7.07}{5.65}{4.24}{2.83}{1.41}{0.00}
+	\addfactor{TEAM}{very difficult interactions}{some difficult interactions}{basically cooperative interactions}{largely cooperative}{highly cooperative}{seamless interactions}
+	\addfactorvalues{5.48}{4.38}{3.29}{2.19}{1.10}{0.00}
+	\addfactor{PMAT}{Level 1 Lower}{Level 1 Upper}{Level 2}{Level 3}{Level 4}{Level 5}
+	\addfactorvalues{7.80}{6.24}{4.68}{3.12}{1.56}{0.00}
+\end{scaledriverstable}
+The results of our evaluation is the following:
+\begin{factorcounttable}{Scale Driver}
+	Precedentedness (PREC) & Low & 4.96\\
+	Development flexibility (FLEX) & Low & 4.05\\
+	Risk resolution (RESL) & Very high & 1.41\\
+	Team cohesion (TEAM) & Very high & 1.10\\
+	Process maturity (PMAT) & Level 3 & 3.12\\\hline
+	\fptotal{14.64}
+\end{factorcounttable}
+
+\subsubsection{Cost Drivers}
+\begin{itemize}
+	\item  Required Software Reliability:
+	\begin{itemize}
+	\item[] Since the system represents the only way to get taxis in the city, a malfunctioning could lead to important financial losses. For this reason, the RELY cost driver is set to high.
+	\begin{costdriverstable}{RELY Cost Drivers}
+		\costdescriptors{RELY Descriptors}{slightly inconvenience}{easily recoverable losses}{moderate recoverable losses}{high financial loss}{risk to human life}{}\hline
+		\ratinglevel{Very low}{Low}{Nominal}{High}{Very High}{Extra High}
+		\effortmultipliers{0.82}{0.92}{1.00}{1.10}{1.26}{n/a}
+	\end{costdriverstable}
+	\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+	\item Database size:
+	\begin{itemize}
+	\item[] This measure considers the effective size of our database. We don't have the ultimate answer, but our estimation given the tables and fields we have is to reach a 3GB database. Since it is distributed over 10.000-15.000 SLOC, the ratio D/P (measured as testing DB bytes/program SLOC) is between 209 and 314, resulting in the DATA cost driver being high. 
+	\begin{costdriverstable}{DATA Cost Drivers}
+		\costdescriptors{DATA Descriptors}{}{$\frac{D}{P}$ $<$ 10}{10 $\le$ $\frac{D}{P}$ $\le$ 100}{100 $\le$ $\frac{D}{P}$ $\le$ 1000}{$\frac{D}{P}$ $>$ 1000}{}\hline
+		\ratinglevel{Very low}{Low}{Nominal}{High}{Very High}{Extra High}
+		\effortmultipliers{n/a}{0.90}{1.00}{1.14}{1.28}{n/a}
+	\end{costdriverstable}
+	\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+	\item Product complexity: 
+	\begin{itemize}
+	\item[] Set to very high according to the COCOMO II rating scale.
+	\begin{costdriverstable}{CPLX Cost Driver}
+		\ratinglevel{Very low}{Low}{Nominal}{High}{Very High}{Extra High}
+		\effortmultipliers{0.73}{0.87}{1.00}{1.17}{1.34}{1.74}	
+	\end{costdriverstable}
+	\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+	\item Required reusability: 
+	\begin{itemize}
+	\item[] In our case, the reusability requirements are limited in scope to the project itself, so the RUSE cost driver is set to nominal.
+	\begin{costdriverstable}{RUSE Cost Driver}
+		\costdescriptors{RUSE Descriptors}{}{None}{Across project}{Across program}{Across product line}{Across multiple product lines}\hline
+		\ratinglevel{Very low}{Low}{Nominal}{High}{Very High}{Extra High}
+		\effortmultipliers{n/a}{0.95}{1.00}{1.07}{1.15}{1.24}		
+	\end{costdriverstable}
+	\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+	\item Documentation match to life-cycle needs: 
+	\begin{itemize}
+	\item[] This parameter describes the relationship between the  documentation and the application requirements. In our case, every need of the product life-cycle is already foreseen in the documentation, so the DOCU cost driver is set to nominal.
+	\begin{costdriverstable}{DOCU Cost Driver}
+		\costdescriptors{DOCU Descriptors}{Many life-cycle needs uncovered}{Some life-cycle needs uncovered}{Right-sized to life-cycle needs}{Excessive for life-cycle needs}{Very excessive for life-cycle needs}{}\hline
+		\ratinglevel{Very low}{Low}{Nominal}{High}{Very High}{Extra High}
+		\effortmultipliers{0.81}{0.91}{1.00}{1.11}{1.23}{n/a}		
+	\end{costdriverstable}
+	\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+	\item Execution time constraint: 
+	\begin{itemize}
+	\item[] This parameter describes the expected amount of CPU usage with respect to the computational capabilities of the hardware. As myTaxiService is a quite complex piece of software, our expectance is that its CPU usage will be very high.
+	\begin{costdriverstable}{TIME Cost Driver}
+		\costdescriptors{TIME Descriptors}{}{}{$\le$ 50\% use of available execution time}{70\% use of available execution time}{85\% use of available execution time} {95\% use of available execution time}\hline
+		\ratinglevel{Very low}{Low}{Nominal}{High}{Very High}{Extra High}
+		\effortmultipliers{n/a}{n/a}{1.00}{1.11}{1.29}{1.63}	
+	\end{costdriverstable}
+	\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+	\item Storage constraint: 
+	\begin{itemize}
+	\item[] This parameter describes the expected amount of storage usage with respect to the availability of the hardware. As current disk drives can easily contain several terabytes of storage, this value is set to nominal.
+	\begin{costdriverstable}{STOR Cost Driver}
+		\costdescriptors{STOR Descriptors}{}{}{$\le$  50\% use of available storage}{70\% use of available storage}{85\% use of available storage} {95\% use of available storage}\hline
+		\ratinglevel{Very low}{Low}{Nominal}{High}{Very High}{Extra High}
+		\effortmultipliers{n/a}{n/a}{1.00}{1.05}{1.17}{1.46}	
+	\end{costdriverstable}
+	\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+	\item Platform Volatility: 
+	\begin{itemize}
+	\item[] For what concerns the core system, we don't expect our fundamental platforms to change very often. However, the client applications may require at least a major release once every six months to be aligned with the development cycle of the main mobile operating systems. For this reason, this parameter is set to nominal.
+	\pagebreak
+	\begin{costdriverstable}{PVOL Cost Driver}
+		\costdescriptors{PVOL Descriptors}{}{Major change every 12 mo., minor change every 1 mo.}{Major: 6mo; minor: 2wk.}{Major: 2mo, minor: 1wk}	{Major: 2wk; minor: 2 days}{}\hline
+		\ratinglevel{Very low}{Low}{Nominal}{High}{Very High}{Extra High}
+		\effortmultipliers{n/a}{0.87}{1.00}{1.15}{1.30}{n/a}
+	\end{costdriverstable}
+	\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+	\item Analyst Capability: 
+	\begin{itemize}
+	\item[] We think the analysis of the problem has been conducted in a thorough and complete way with respect to a potential real world implementation. For this reason, this parameter is set to high.
+	\begin{costdriverstable}{ACAP Cost Driver}
+		\costdescriptors{ACAP Descriptors}{15th percentile}{35th percentile}{55th percentile}{75th percentile}{90th percentile}{}\hline
+		\ratinglevel{Very low}{Low}{Nominal}{High}{Very High}{Extra High}
+		\effortmultipliers{1.42}{1.19}{1.00}{0.85}{0.71}{n/a}	
+	\end{costdriverstable}
+	\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+	\item Programmer Capability: 
+	\begin{itemize}
+	\item[] We have not implemented the project, so this parameter is just an estimation; however we are fairly in our programming abilities, so we'll set this parameter to high.
+	\begin{costdriverstable}{PCAP Cost Driver}
+		\costdescriptors{PCAP Descriptors}{15th percentile}{35th percentile}{55th percentile}{75th percentile}{90th percentile}{}\hline
+		\ratinglevel{Very low}{Low}{Nominal}{High}{Very High}{Extra High}
+		\effortmultipliers{1.34}{1.15}{1.00}{0.88}{0.76}{n/a}	
+	\end{costdriverstable}
+	\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+	\item Application Experience: 
+	\begin{itemize}
+	\item[] We have some experience in the development of Java applications, but we never tackled a Java EE system of this kind. For this reason we're going to set this parameter to low. 
+	\begin{costdriverstable}{APEX Cost Driver}
+		\costdescriptors{APEX Descriptors}{$\le$ 2 months}{6 months}{1 year}{3 years}{6 years}{}\hline
+		\ratinglevel{Very low}{Low}{Nominal}{High}{Very High}{Extra High}
+		\effortmultipliers{1.22}{1.10}{1.00}{0.88}{0.81}{n/a}
+	\end{costdriverstable}
+	\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+	\item Platform Experience: 
+	\begin{itemize}
+	\item[] We don't have any experience with the Java EE platform, but we have some previous experience with databases, user interfaces and server side development. For this reason, we're going to set this parameter to nominal.
+	\begin{costdriverstable}{PLEX Cost Driver}
+		\costdescriptors{PLEX Descriptors}{$\le$ 2 months}{6 months}{1 year}{3 years}{6 years}{}\hline
+		\ratinglevel{Very low}{Low}{Nominal}{High}{Very High}{Extra High}
+		\effortmultipliers{1.19}{1.09}{1.00}{0.91}{0.85}{n/a}
+	\end{costdriverstable}
+	\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+	\item Language and Tool Experience: 
+	\begin{itemize}
+	\item[] We don't have any experience with the Java EE platform, but we have some previous experience with databases, user interfaces and server side development. We are also knowledgable of the development environment, so we're going to set this parameter to nominal.
+	\begin{costdriverstable}{LTEX Cost Driver}
+		\costdescriptors{LTEX Descriptors}{$\le$ 2 months}{6 months}{1 year}{3 years}{6 years}{}\hline
+		\ratinglevel{Very low}{Low}{Nominal}{High}{Very High}{Extra High}
+		\effortmultipliers{1.20}{1.09}{1.00}{0.91}{0.84}{n/a}
+	\end{costdriverstable}
+	\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+	\item Personnel continuity: 
+	\begin{itemize}
+	\item[] This parameter is quite relevant in our case, since the time we can spend on this project is limited. For this reason, this parameter is set to very low. 
+	\begin{costdriverstable}{PCON Cost Driver}
+		\costdescriptors{PCON Descriptors}{48\% / year}{24\% / year}{12\% / year}{6\% / year}{3\% / year}{}\hline	
+		\ratinglevel{Very low}{Low}{Nominal}{High}{Very High}{Extra High}
+		\effortmultipliers{1.29}{1.12}{1.00}{0.90}{0.81}{n/a}
+	\end{costdriverstable}
+	\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+	\item Usage of Software Tools: 
+	\begin{itemize}
+	\item[] Our application environment is complete and well integrated, so we'll set this parameter as high. 
+	\begin{costdriverstable}{TOOL Cost Driver}
+		\costdescriptors{TOOL Descriptors}{edit, code, debug}{simple, frontend, backend CASE, little integration}{basic life-cycle tools, moderately integrated}{strong, mature life-cycle tools, moderately integrated}{strong, mature, proactive life-cycle tools, well integrated with processes, methods, reuse}{}\hline
+		\ratinglevel{Very low}{Low}{Nominal}{High}{Very High}{Extra High}
+		\effortmultipliers{1.17}{1.09}{1.00}{0.90}{0.78}{n/a}	
+	\end{costdriverstable}
+	\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+	\item Multisite development: 
+	\begin{itemize}
+	\item[] Although we live in two different cities, we have collaborated relying hugely on wideband Internet services including social networks and emails. For this reason, we're going to set this parameter to very high.
+	\pagebreak
+	\begin{costdriverstable}{SITE Cost Driver}
+		\costdescriptors{SITE Collocation Descriptors}{Intern-ational}{Multi-city and multi-company}{Multi-city or multi-company}{Same city or metro area}{Same building or complex}{Fully collocated}
+		\costdescriptors{SITE Communications Descriptors}{Some phone, mail}{Individual phone, fax}{Narrow band email}{Wideband electronic communication}{Wideband elect. comm., occasional video conf.}{Interactive multimedia}\hline
+		\ratinglevel{Very low}{Low}{Nominal}{High}{Very High}{Extra High}
+		\effortmultipliers{1.22}{1.09}{1.00}{0.93}{0.86}{0.80}		
+	\end{costdriverstable}
+	
+	\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+	\item Required development schedule: 
+	\begin{itemize}
+	\item[] Although our efforts were well distributed over the available development time, the definition of all the required documentation took a consistent amount of time, especially for the requirement analysis and the design phases. For this reason, this parameter is set to high.
+	\begin{costdriverstable}{SCED Cost Driver}
+		\costdescriptors{SCED Descriptors}{75\% of nominal}{85\% of nominal}{100\% of nominal}{130\% of nominal}{160\% of nominal}{}\hline
+		\ratinglevel{Very low}{Low}{Nominal}{High}{Very High}{Extra High}
+		\effortmultipliers{1.43}{1.14}{1.00}{1.00}{1.00}{n/a}	
+	\end{costdriverstable}
+	\end{itemize}
+\end{itemize}
+
+
+Overall, our results are expressed by the following table:
+\begin{factorcounttable}{Cost Driver}
+	Required Software Reliability (RELY) & High & 1.10\\
+	Database size (DATA) & High & 1.14\\
+	Product complexity (CPLX) & Very high & 1.34\\
+	Required Reusability (RUSE) & Nominal & 1.00\\
+	Documentation match to life-cycle needs (DOCU) & Nominal & 1.00\\
+	Execution Time Constraint (TIME) & Very high & 1.29 \\
+	Main storage constraint (STOR) & Nominal & 1.00 \\
+	Platform volatility (PVOL) & Nominal & 1.00 \\
+	Analyst capability (ACAP) & High & 0.85 \\
+	Programmer capability (PCAP) & High & 0.88 \\
+	Application Experience (APEX) & Low & 1.10 \\
+	Platform Experience (PLEX) & Nominal & 1.00 \\
+	Language and Tool Experience (LTEX) & Nominal & 1.00 \\
+	Personnel continuity (PCON) & Very low & 1.12 \\
+	Usage of Software Tools (TOOL) & High & 0.90 \\
+	Multisite development (SITE) & Very high & 0.86 \\
+	Required development schedule (SCED) & High & 1.00 \\\hline
+	\fptotal{1.54613}
+\end{factorcounttable}
+
+\subsubsection{Effort equation}
+This final equation gives us the effort estimation measured in Person-Months (PM):
+\begin{lstlisting}[mathescape, numbers=none, frame=single]
+	Effort = A * EAF * KSLOC$^E$
+\end{lstlisting}
+where:
+\begin{lstlisting}[mathescape, numbers=none, frame=single]
+	A = 2.94 (for COCOMO II) 
+	EAF = product of all cost drivers (1.54613)
+	E = exponent derived from the scale drivers. It is computed as:
+		B + 0.01 * $\sum_{i} SF[i]$ = B + 0.01 * 14.64 = 0.91 + 0.1464 = 1.0564
+		in which B is equal to: 0.91 for COCOMO II.
+\end{lstlisting}
+
+With this parameters we can compute the effort value, which has a lower bound of:
+\begin{lstlisting}[mathescape, numbers=none, frame=single]
+	Effort = A * EAF * KSLOC$^E$ = 2.94 * 1.54613 * 10.948$^{1.0564}$ = 56.957 PM $\approx$ 57 PM
+\end{lstlisting}
+and an upper bound of:
+\begin{lstlisting}[mathescape, numbers=none, frame=single]
+	Effort = A * EAF * KSLOC$^E$ = 2.94 * 1.54613 * 15.946$^{1.0564}$ = 84.737 PM $\approx$ 85 PM
+\end{lstlisting}
+
+\subsubsection{Schedule estimation}
+
+\section{Schedule}
+	In this section we are going to present a probable project schedule. Obviously this is a prototype and will be refined during the development. \\
+	In order to mantain readability and to allow a better understanding, the project schedule will be first presented in a global way and then each part will be expanded.
+		\begin{landscape}
+	\subsection{Global}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.675]{./Images/0-GlobalGantt.pdf} 
+		\end{figure}
+		\end{landscape}
+	\subsection{RASD}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.55]{./Images/1-RasdGantt.pdf} 
+		\end{figure}
+	\subsection{DD}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.5]{./Images/2-DDGantt.pdf} 
+		\end{figure}
+		\begin{landscape}
+	\subsection{IT}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.75]{./Images/3-ITGantt.pdf} 
+		\end{figure}
+		\end{landscape}
+		\begin{landscape}
+	\subsection{PP}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.6]{./Images/4-PPGantt.pdf} 
+		\end{figure}
+		\end{landscape}
+		\begin{landscape}
+	\subsection{First release}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.725]{./Images/5-FirstReleaseGantt.pdf} 
+		\end{figure}
+		\end{landscape}
+		\begin{landscape}
+	\subsection{Second release}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.725]{./Images/6-SecondReleaseGantt.pdf} 
+		\end{figure}
+		\end{landscape}
+		\begin{landscape}
+	\subsection{Third release}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.55]{./Images/7-ThirdReleaseGantt.pdf} 
+		\end{figure}
+		\end{landscape}
+		
+\section{Risk management}
+
+	We are going to summarize in tabular format the main risks we think can threat the project and the corresponding mitigating actions we planned.
+	We adopt a proactive strategy against most serious risks related to business and a reactive strategy (for which we have allocated additional time in project schedule) for unpredictable threats.
+	
+	\subsection{Business risks}
+	Can jeopardize the entire project and menace the business viability of the project.
+
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{ p{7cm} c c }
+		\textbf{Risk} & \textbf{Probability} & \textbf{Impact} \\ \hline \\
+		Due to the high number of competitors in the car sharing panorama, the product can not be noticed if not properly advertised & High & Catastrophical \\ \\
+		Unintuitive user interface or wrong set of functionalities drastically reduce the user's adoption of the service & Medium & Catastrophical \\ \\
+		Lost of interest in the product by market users / new competitors introduction in the market & Low & Significant \\ \\
+		
+		Unintuitive user interface reduce the efficiency of the staff & Low & Minor \\ \\
+		\end{tabular}
+	\end{table}
+	
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{ p{6cm} p{6cm} }
+		\textbf{Risk} & \textbf{Mitigation plan} \\ \hline \\
+		Not properly advertised & Designers, advertisers and sales personnel actively take part to the early stages of UX designing, in order to have a shared vision of the project through all the involved personnel. \\ \\
+		Unintuitive user interface / wrong set of functionalities & Surveys and user group to fit the service experience to the average market user. \\ 
+		& Analysis of other car-sharing services experience to offer a fast learning curve to their users and emphatize our strength points. \\ \\
+		 Lost of interest / new competitors & Occasional in-app quality assessment of the user's service experience in exchange of car sharing credit. \\ \\
+		 Low staff enthusiasm / efficiency & Interaction with staff exponent during the early phase of the user interface design through the presentation / assessment of mockups. \\ 
+		 & In-house usability test for UI prototypes during the early phases of implementation. \\
+		\end{tabular}
+	\end{table}
+	
+	\subsection{Project risks}
+	Threaten the project schedule and can increase the project cost.
+
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{ p{7cm} c c }
+		\textbf{Risk} & \textbf{Probability} & \textbf{Impact} \\ \hline \\
+		`Goldplating` software features results in a delayed schedule & Low & Significant \\ \\
+		Personnel shortfall in proximity of milestones / meeting can delay the release date & High & Minor \\ \\
+		\end{tabular}
+	\end{table}
+	
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{ p{5cm} p{6cm} }
+		\textbf{Risk} & \textbf{Mitigation plan} \\ \hline \\ 
+		`Goldplating` software features results in a delayed schedule & Planning of 3 features-incremental releases that can be adjusted in feature-richness if schedule problems arise. \\ 		\\
+		Personnel shortfall & Introduction of additional time in the schedule between predicted milestone date and milestone release date in order to mitigate personnel absence or for fix eventual problems. 	\\ 
+		& Encourage developer motivation through involvement in early analysis phases and in following meetings, thus incentive a shared product vision that lead to better teamwork. \\	
+		\end{tabular}
+	\end{table}
+	
+	
+	\subsection{Technical risks}
+	Threaten the quality and timeliness of the project,  leading to a more difficult implementation.
+
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{ p{7cm} c c }
+		\textbf{Risk} & \textbf{Probability} & \textbf{Impact} \\ \hline \\
+		Integration test fails require a redesign of part of the components & Medium & Significant \\  \\
+		Unstable external software components / services lead to service partial or full crashes & Low & Significant \\ \\
+				\end{tabular}
+	\end{table}
+	
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{ p{5cm} p{6cm} }
+		\textbf{Risk} & \textbf{Mitigation plan} \\ \hline \\
+		 Integration test fails  &  Adoption of critical modules test strategy to be able to deal with this kind of issue as soon as possible. \\  \\
+		Unstable external software  & Selection of widely adopted services (such as Google Map services). \\
+		& Exploration / planning of possible external services' alternatives in case of downtime or discontinuation of those services. \\
+		\end{tabular}
+	\end{table}
+	
+	
+	
+
+
+\section{Effort Spent}
+
+\begin{itemize}
+		\item Alessandro Erba $\approx$ 10h
+		\item Filippo Leveni 	$\approx$ 10h
+		\item Luca Lodi $\approx$ 10h
+	\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
