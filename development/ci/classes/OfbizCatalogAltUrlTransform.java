@@ -86,17 +86,17 @@ public class OfbizCatalogAltUrlTransform implements TemplateTransformModel {
         final boolean secure = checkArg(args, "secure", false);
 
         return new Writer(out) {
-            
+
             @Override
             public void write(char[] cbuf, int off, int len) throws IOException {
                 buf.append(cbuf, off, len);
             }
-            
+
             @Override
             public void flush() throws IOException {
                 out.flush();
             }
-            
+
             @Override
             public void close() throws IOException {
                 try {
@@ -106,7 +106,7 @@ public class OfbizCatalogAltUrlTransform implements TemplateTransformModel {
                     String productCategoryId = getStringArg(args, "productCategoryId");
                     String productId = getStringArg(args, "productId");
                     String url = "";
-                    
+
                     Object prefix = env.getVariable("urlPrefix");
                     String viewSize = getStringArg(args, "viewSize");
                     String viewIndex = getStringArg(args, "viewIndex");

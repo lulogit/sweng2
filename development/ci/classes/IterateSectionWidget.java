@@ -383,5 +383,3 @@ public class IterateSectionWidget extends ModelScreenWidget {
     }
 
 }
-
-
