@@ -19,9 +19,12 @@
 \usepackage{fancyhdr}
 \usepackage{pdflscape}
 \usepackage[scaled]{beramono}
+\usepackage{listings}
 \usepackage{csquotes}
 \usepackage{comment}
-
+\lstset{
+	breaklines=true,
+	}
 \pagestyle{fancy}
 \lhead{\powerenjoy I.T.P.D.}
 \makeatletter
@@ -55,6 +58,7 @@
 \newcommand{\powerplugslot}{\textit{power plug slot }}
 \newcommand{\moneysaving}{\textit{money saving }}
 \begin{document}
+\lstset{language=Java} 
 
 	\begin{figure}
 		\centering
@@ -79,13 +83,206 @@
 \section{IterateSectionWidget}
 	\subsection{Functional role}
 	\subsection{Application of the checklist}
-	
+\begin{itemize}
+	\item[23.]{The javadoc is not used as shows at this link:\\
+https://ci.apache.org/projects/ofbiz/site/javadocs/org/apache/ofbiz/widget/model/IterateSectionWidget.html}
+	\item[25.]{line 55
+		\begin{lstlisting}
+@SuppressWarnings("serial")
+		\end{lstlisting}
+Between class documentation comment and class statement must not be any code.
+}
+\end{itemize}
+\subsubsection*{.IterateSectionWidget}
+\begin{itemize}
+		\item[33.]{ 
+			\begin{itemize}
+				\item{line 77
+						\begin{lstlisting}
+String entryName = iterateSectionElement.getAttribute("entry");
+						\end{lstlisting} must be moved to the top}
+				\item{line 82
+						\begin{lstlisting}
+String keyName = iterateSectionElement.getAttribute("key");
+						\end{lstlisting} must be moved to the top}
+				\item{line 89
+						\begin{lstlisting}
+int viewSize = DEFAULT_PAGE_SIZE;
+						\end{lstlisting} must be moved to the top}
+				\item{line 90
+						\begin{lstlisting}
+String viewSizeStr = iterateSectionElement.getAttribute("view-size");
+						\end{lstlisting} must be moved to the top}
+				\item{line 95
+						\begin{lstlisting}
+List<? extends Element> childElementList = UtilXml.childElementList(iterateSectionElement);
+						\end{lstlisting} must be moved to the top}
+			\end{itemize}
+}
+		\item[39.]{ 
+			\begin{itemize}
+				\item{line 95
+						\begin{lstlisting}
+List<? extends Element> childElementList = UtilXml.childElementList(iterateSectionElement);
+						\end{lstlisting} must be declared using a constructor.}
+			\end{itemize}
+}
+\end{itemize}
 \subsubsection*{.getSectionList}	
 \subsubsection*{.renderWidgetString}
+\begin{itemize}
+	\item[27.]{The method is too long (90 lines), it should be reduced.
+}
+		\item[33.]{ 
+			\begin{itemize}
+				\item{line 132
+						\begin{lstlisting}
+List<?> theList = null;
+						\end{lstlisting} must be moved to the top}
+				\item{line 146
+						\begin{lstlisting}
+int startPageNumber = WidgetWorker.getPaginatorNumber(context);
+						\end{lstlisting} must be moved to the top}
+				\item{line 171
+						\begin{lstlisting}
+Iterator<?> iter = theList.iterator();
+						\end{lstlisting} must be moved to the top}
+				\item{line 172
+						\begin{lstlisting}
+int itemIndex = -1;
+						\end{lstlisting} must be moved to the top}
+				\item{line 173
+						\begin{lstlisting}
+int iterateIndex = 0;
+						\end{lstlisting} must be moved to the top}
+				\item{line 179
+						\begin{lstlisting}
+Object item = iter.next();
+						\end{lstlisting} must be moved to the top of the "while" block}
+			\end{itemize}
+		}
+		\item[39.]{ 
+			\begin{itemize}
+				\item{line 132
+						\begin{lstlisting}
+List<?> theList = null;
+						\end{lstlisting} must be declared using a constructor.}
+			\end{itemize}
+}
+	\item[40.]{ line 128
+		\begin{lstlisting}
+if (obj == null)
+		\end{lstlisting} must be replaced using
+		\begin{lstlisting}
+if (obj.equals(null))
+		\end{lstlisting}}
+	\item[42.]{line 129
+		\begin{lstlisting}
+Debug.logError(``No object found for listName:''+ listNameExdr.toString(), module);
+		\end{lstlisting}
+		the description of the log could be more precise because in order to make more comprehensible the problem.}
+	\item[42.]{line 142.		\begin{lstlisting} 
+Debug.logError(``Object not list or map type'', module);
+		\end{lstlisting}
+		the description of the log could be more precise because in order to make more comprehensible the problem.}
+	\item[42.]{line 218
+		\begin{lstlisting} 
+ Debug.logError(e, module);
+		\end{lstlisting}
+		the description of the log could be more precise because in order to make more comprehensible the problem.}
+	
+\end{itemize}
+
 \subsubsection*{.getPaginateTarget}
 \subsubsection*{.getPaginate}
 \subsubsection*{.getViewSize}
 \subsubsection*{.renderNextPrev}
+	\begin{itemize}
+	\item[27.]{The method is too long (100 lines), it should be reduced.
+}	
+		\item[33.]{ 
+			\begin{itemize}
+				\item{line 249
+						\begin{lstlisting}
+Map<String, Object> inputFields = UtilGenerics.checkMap(context.get("requestParameters"));
+						\end{lstlisting} must be moved to the top}
+				\item{line 250
+						\begin{lstlisting}
+Map<String, Object> queryStringMap = UtilGenerics.toMap(context.get("queryStringMap"));
+						\end{lstlisting} must be moved to the top}
+				\item{line 255
+						\begin{lstlisting}
+String queryString = UtilHttp.urlEncodeArgs(inputFields);
+						\end{lstlisting} must be moved to the top}
+				\item{line 256
+						\begin{lstlisting}
+int paginatorNumber = WidgetWorker.getPaginatorNumber(context);
+						\end{lstlisting} must be moved to the top}
+				\item{line 267
+						\begin{lstlisting}
+int viewIndex = -1;
+						\end{lstlisting} must be moved to the top}
+				\item{line 274
+						\begin{lstlisting}
+int viewSize = -1;
+						\end{lstlisting} must be moved to the top}
+				\item{line 298
+						\begin{lstlisting}
+int lowIndex = viewIndex * viewSize;
+						\end{lstlisting} must be moved to the top}
+				\item{line 299
+						\begin{lstlisting}
+int highIndex = (viewIndex + 1) * viewSize;
+						\end{lstlisting} must be moved to the top}
+				\item{line 305
+						\begin{lstlisting}
+HttpServletRequest request = (HttpServletRequest) context.get("request");
+						\end{lstlisting} must be moved to the top}
+				\item{line 306
+						\begin{lstlisting}
+HttpServletResponse response = (HttpServletResponse) context.get("response");
+						\end{lstlisting} must be moved to the top}
+				\item{line 308
+						\begin{lstlisting}
+ServletContext ctx = (ServletContext) request.getAttribute("servletContext");
+						\end{lstlisting} must be moved to the top}
+				\item{line 309
+						\begin{lstlisting}
+RequestHandler rh = (RequestHandler) ctx.getAttribute("_REQUEST_HANDLER_");
+						\end{lstlisting} must be moved to the top}
+				\item{line 317
+						\begin{lstlisting}
+StringBuilder linkText = new StringBuilder(targetService);
+						\end{lstlisting} must be moved to the top of the "if" block}
+				\item{line 328
+						\begin{lstlisting}
+String previous = UtilProperties.getMessage("CommonUiLabels", "CommonPrevious", (Locale) context.get("locale"));
+						\end{lstlisting} must be moved to the top of the "if" block}
+				\item{line 339
+						\begin{lstlisting}
+StringBuilder linkText = new StringBuilder(targetService);
+						\end{lstlisting} must be moved to the top of the "if" block}
+				\item{line 349
+						\begin{lstlisting}
+String next = UtilProperties.getMessage("CommonUiLabels", "CommonNext", (Locale) context.get("locale"));
+						\end{lstlisting} must be moved to the top of the "if" block}
+			\end{itemize}
+		}
+	\item[40.]{ line 245 
+		\begin{lstlisting}
+if (targetService = = null) 
+		\end{lstlisting} must be replaced using
+		\begin{lstlisting}
+if (targetService.equals(null))
+		\end{lstlisting}}
+	
+	
+	 \item[42.]{line 263
+		\begin{lstlisting} 
+ Debug.logWarning(``TargetService is empty.'', module);
+		\end{lstlisting}
+		the description of the log could be more precise because in order to make more comprehensible the problem.}
+\end{itemize}
 \subsubsection*{.accept}
 \subsubsection*{.getListNameExdr}
 \subsubsection*{.getEntryNameExdr}
@@ -97,10 +294,29 @@
 \section{OfbizCatalogAltUrlTransform}
 	\subsection{Functional role}
 	\subsection{Application of the checklist}
-	
+\begin{itemize}
+	\item[23.]{The javadoc is not used as shows at this link:\\
+https://ci.apache.org/projects/ofbiz/site/javadocs/org/apache/ofbiz/product/category/ftl/OfbizCatalogAltUrlTransform.html}
+	\item[25.]{line 50\\
+There is no class comment. It must be added.
+}
+\end{itemize}
 \subsubsection*{.getStringArg}
 \subsubsection*{.checkArg}
 \subsubsection*{.getWriter}
+\begin{itemize}
+ \item[various.]{line 143
+		\begin{lstlisting} 
+out.write(url.toString());
+		\end{lstlisting}
+		url is declared as String and as the .toString() javadoc for String type suggests 
+\begin{displayquote}
+		String java.lang.String.toString()
+
+This object (which is already a string!) is itself returned.
+\end{displayquote}}
+\end{itemize}
+
 
 
 
