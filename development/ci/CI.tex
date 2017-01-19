@@ -84,9 +84,63 @@
 	\subsection{Functional role}
 	\subsection{Application of the checklist}
 	
+\subsubsection*{Class attributes }	
+\begin{itemize}
+
+\item[2.]{line 56
+		\begin{lstlisting} 
+public class IterateSectionWidget extends ModelScreenWidget {
+		\end{lstlisting}
+		Class name should be nouns, in mixed case, with the first letter of each word
+in capitalized. `Iterate' is a verb, thus class name should be changed to `SectionWidgetIterator'.}
+
+\item[7.]{line 58
+		\begin{lstlisting} 
+public static final String module = IterateSectionWidget.class.getName();
+		\end{lstlisting}
+		Constant declared without respecting UPPERCASE naming convention.}
+
+		\item[18.]{lines  *\\
+		Lack of comment describing the purpose of the code.}
+\end{itemize}
+
+\subsubsection*{Class constructor}	
+\begin{itemize}
+\item[13.]{lines 70, 87, 88, 95, 99, 101 \\
+		line exceed recommended 80 characters length.}
+
+\item[14.]{lines  87, 99\\
+		line exceed 120 characters length.}
+\item[18.]{lines  *\\
+		Lack of comment describing the purpose of the code.}
+\end{itemize}
+	
 \subsubsection*{.getSectionList}	
+\begin{itemize}
+\item[18.]{lines  *\\
+		Lack of comment describing the purpose of the code.}
+\end{itemize}
 \subsubsection*{.renderWidgetString}
 \begin{itemize}
+    
+    	\item[12.]{ line 223-227
+		\begin{lstlisting}
+}
+/*
+ * @return
+ */
+ public String getPaginateTarget(Map<String, Object> context) {
+		\end{lstlisting} should separate sections of file though blank lines and optional comments.}
+		
+\item[13.]{lines 113, 122, 129, 134, 150-152, 157, 193, 197, 208, 210-211 \\
+		line exceed recommended 80 characters length.}
+
+\item[14.]{lines  113, 122\\
+		line exceed 120 characters length.}
+		
+		\item[18.]{lines  *\\
+		Lack of comment describing the purpose of the code.}
+
 	\item[40.]{ line 128
 		\begin{lstlisting}
 if (obj == null)
@@ -112,10 +166,86 @@ Debug.logError(``Object not list or map type'', module);
 \end{itemize}
 
 \subsubsection*{.getPaginateTarget}
+\begin{itemize}
+\item[18.]{lines  *\\
+		Lack of comment describing the purpose of the code.}
+\end{itemize}
+
 \subsubsection*{.getPaginate}
+\begin{itemize}
+\item[13.]{lines 232-233 \\
+		line exceed recommended 80 characters length.}
+\end{itemize}
 \subsubsection*{.getViewSize}
+\begin{itemize}
+\item[18.]{lines  *\\
+		Lack of comment describing the purpose of the code.}
+\end{itemize}
 \subsubsection*{.renderNextPrev}
 	\begin{itemize}
+	
+	\item[11.]{ line 318-319
+		\begin{lstlisting}
+if (linkText.indexOf("?") < 0)  linkText.append("?");
+else linkText.append("&amp;");
+		\end{lstlisting} must be replaced using
+		\begin{lstlisting}
+if (linkText.indexOf("?") < 0)  {
+    linkText.append("?");
+} else {
+    linkText.append("&amp;");
+}
+		\end{lstlisting}}
+		
+		\item[11.]{ line 340-341
+		\begin{lstlisting}
+if (linkText.indexOf("?") < 0)  linkText.append("?");
+else linkText.append("&amp;");
+		\end{lstlisting} must be replaced using
+		\begin{lstlisting}
+if (linkText.indexOf("?") < 0)  {
+    linkText.append("?");
+} else {
+    linkText.append("&amp;");
+}
+		\end{lstlisting}}
+	
+	\item[13.]{lines 243, 249, 250, 257, 300, 305-306, 308-309, 311, 320, 324, 327-329, 333-335, 345, 348-350 \\
+		line exceed recommended 80 characters length.}
+
+\item[14.]{lines  243, 324, 328, 333-334, 345\\
+		line exceed 120 characters length.}
+		
+		\item[18.]{lines  *\\
+		Lack of comment describing the purpose of the code.}
+		
+\item[19.]{ line 282-296
+		\begin{lstlisting}
+/*
+int highIndex = -1;
+try {
+    highIndex = modelForm.getHighIndex();
+} catch (Exception e) {
+    highIndex = 0;
+}
+
+int lowIndex = -1;
+try {
+    lowIndex = modelForm.getLowIndex();
+} catch (Exception e) {
+    lowIndex = 0;
+}
+ */
+		\end{lstlisting}
+		Code commented out without indication of the reason nor of the date by which remove the comment.}
+		
+\item[19.]{ line 320
+		\begin{lstlisting}
+//if (queryString != null && !queryString.equals("null")) linkText += queryString + "&";	
+		\end{lstlisting}
+		Code commented out without indication of the reason nor of the date by which remove the comment.}
+		
+
 	
 	\item[40.]{ line 245 
 		\begin{lstlisting}
@@ -133,21 +263,111 @@ if (targetService.equals(null))
 		the description of the log could be more precise because in order to make more comprehensible the problem.}
 \end{itemize}
 \subsubsection*{.accept}
+\begin{itemize}
+\item[18.]{lines  *\\
+		Lack of comment describing the purpose of the code.}
+\end{itemize}
 \subsubsection*{.getListNameExdr}
+\begin{itemize}
+\item[18.]{lines  *\\
+		Lack of comment describing the purpose of the code.}
+\end{itemize}
 \subsubsection*{.getEntryNameExdr}
+\begin{itemize}
+\item[18.]{lines  *\\
+		Lack of comment describing the purpose of the code.}
+\end{itemize}
 \subsubsection*{.getKeyNameExdr}
+\begin{itemize}
+\item[18.]{lines  *\\
+		Lack of comment describing the purpose of the code.}
+\end{itemize}
 \subsubsection*{.getPaginateTarget}
+\begin{itemize}
+\item[18.]{lines  *\\
+		Lack of comment describing the purpose of the code.}
+\end{itemize}
 \subsubsection*{.getPaginate}
+\begin{itemize}
+\item[18.]{lines  *\\
+		Lack of comment describing the purpose of the code.}
+\end{itemize}
 
 
 \section{OfbizCatalogAltUrlTransform}
 	\subsection{Functional role}
 	\subsection{Application of the checklist}
+
+\subsubsection*{Class attributes }	
+\begin{itemize}
+
+\item[7.]{line 52
+		\begin{lstlisting} 
+public final static String module = OfbizCatalogUrlTransform.class.getName();
+		\end{lstlisting}
+		Constant declared without respecting UPPERCASE naming convention.}
+
+\item[13.]{line 52
+		\begin{lstlisting} 
+public final static String module = OfbizCatalogUrlTransform.class.getName();
+		\end{lstlisting}
+		line exceed recommended 80 characters length.}
+		
+		\item[18.]{lines  *\\
+		Lack of comment describing the purpose of the code.}
+\end{itemize}
 	
 \subsubsection*{.getStringArg}
+\begin{itemize}
+
+\item[2.]{line 55-64
+		\begin{lstlisting} 
+Object o = args.get(key);
+if (o instanceof SimpleScalar) {
+    return ((SimpleScalar) o).getAsString();
+} else if (o instanceof StringModel) {
+    return ((StringModel) o).getAsString();
+} else if (o instanceof SimpleNumber) {
+    return ((SimpleNumber) o).getAsNumber().toString();
+} else if (o instanceof NumberModel) {
+    return ((NumberModel) o).getAsNumber().toString();
+}
+		\end{lstlisting}
+		single character name for non `throwaway'  variable `o'.}
+
+
+\item[18.]{lines  *\\
+		Lack of comment describing the purpose of the code.}
+\end{itemize}
 \subsubsection*{.checkArg}
+\begin{itemize}
+
+\item[2.]{line 55-64
+		\begin{lstlisting} 
+Object o = args.get(key);
+if (o instanceof SimpleScalar) {
+    SimpleScalar s = (SimpleScalar) o;
+    return "true".equalsIgnoreCase(s.getAsString());
+}
+		\end{lstlisting}
+		single character name for non `throwaway'  variables `o' and `s'.}
+\item[18.]{lines  *\\
+		Lack of comment describing the purpose of the code.}
+\end{itemize}
 \subsubsection*{.getWriter}
 \begin{itemize}
+
+
+
+\item[13.]{lines 91, 105-106, 116, 119, 121, 125, 131-132, 135-137, 139-141\\
+		line exceed recommended 80 characters length.}
+
+\item[14.]{lines  119, 121, 135-137, 139-141\\
+		line exceed 120 characters length.}
+
+\item[18.]{lines  *\\
+		Lack of comment describing the purpose of the code.}
+
  \item[various.]{line 143
 		\begin{lstlisting} 
 out.write(url.toString());
