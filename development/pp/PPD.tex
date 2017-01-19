@@ -167,12 +167,26 @@ SF$_j$ & #1 & #2 & #3 & #4 & #5 & #6 \\\hline
 \newcommand{\thirdparty}{\textit{third party developer }}
 \newcommand{\powerplugslot}{\textit{power plug slot }}
 \newcommand{\moneysaving}{\textit{money saving }}
-
+\newcommand{\ilh}{ & High & 15}
+\newcommand{\ila}{ & Avg & 10}
+\newcommand{\ill}{ & Low & 7}
+\newcommand{\elh}{ & High & 10}
+\newcommand{\ela}{ & Avg & 7}
+\newcommand{\ello}{ & Low & 5}
+\newcommand{\eih}{ & High & 6}
+\newcommand{\eia}{ &Avg & 4}
+\newcommand{\eil}{ & Low & 3}
+\newcommand{\eoh}{ & High & 7}
+\newcommand{\eoa}{ & Avg & 5}
+\newcommand{\eol}{ & Low & 4}
+\newcommand{\einh}{ & High & 6}
+\newcommand{\eina}{ & Avg & 4}
+\newcommand{\einl}{ & Low & 3}
 \begin{document}
 
 	\begin{figure}
 		\centering
-		\includegraphics[scale=0.5]{./Images/logo.pdf} 
+		\includegraphics[scale=0.5]{Images/logo.pdf} 
 	\end{figure}
 
 
@@ -227,84 +241,219 @@ External Inquiries & 3 & 4 & 6\\
 \end{fptable}
 
 \subsubsection{Internal Logic Files (ILFs)}
+\powerenjoy uses ILF in order to save informations required to offer service functionalities.
+We have identified at least 10 categories of ILF that will be necessary.
+
+\begin {enumerate}
+	\item \textbf{Reservation:} the data about a \reservation are composed by information about the \powerenjoyuser who have made the reservation request, the reservation's target \textit{car info} and the \textit{time} in which the reservation will expire. 
+	\item \textbf{Rent:}the data about a \rent are composed by information about the \powerenjoyuser who is doing the \rent, the info about the \textit{car} the that is the target of the rent, the \textit{kilometers travelled}, the \textit{cost} of the rent, the \textit{discounts} applied for this rent, the \
+	\item \textbf{Payment:}\powerenjoyuser, time stamp, account, payed, description
+	\item  \textbf {Car:}The data about the car are GPS position, battery autonomy, availability status, parked, charge level percentage.
+	\item  \textbf{User:} All the user related information info, user name, password, \personalpin, e-mail, Driving License, ID, credit card information, the user status (active or suspended)
+	\item  \textbf{Staff:} All the staff related information info, privilege, name, surname, contacts, user name, password, task queue
+	\item  \textbf{Map:} The data stored for the map have a Hierarchical structure, in Figure~\ref{fig:mapStruct} how data are organized.
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.4]{Images/mapStruct.pdf}% "%" necessario
+				\caption{Map data Structure}
+				\label{fig:mapStruct}
+			\end{figure}
+	\item  \textbf{BPM \& Relocations:} Computed Discounts, Pending Relocations, Fuel Consumption Weights, Safe areas info 
+	\item  \textbf{Fare and Discounts DSL:}Are all the files that contains the DSL scripts and compiled DSL scripts to compute fare and discounts.
+	\item  \textbf{API auth Data:} All the informations about external developers are stored adn the data are strutured in a table containing these info App ID, developer info,  Detailed list about Available API.
+\end {enumerate}
+given all the data structures just explained above and using ILF related FP table we can come up with this function points analysis.
 \begin{fpcounttable}{ILF}
-Login data & Low & 7 \\
-Passenger data & Low & 7 \\
-Taxi drivers & Low & 7 \\
-Zones & Low & 7 \\
-Queues & Average & 10 \\
-Reservations and requests & Low & 7 \\
-API permissions & Average & 10 \\\hline
-\fptotal{55}	
+Reservation data\ill\\
+Rent data\ilh \\
+Payment data\ill\\
+Car data\ila \\
+User data \ill\\
+Staff data\ila \\
+Map data\ilh \\
+BPM \& Relocations data\ila\\
+Fare and Discounts data \ill\\
+API auth data\ill\\\hline
+\fptotal{95}	
 \end{fpcounttable}
 
-\subsubsection{External Logic Files (ELFs)}
-\begin{fpcounttable}{ELF}
-ETA computation & Low & 10 \\
-Reverse geocoding & Low & 10 \\
-Map data retrieval & Low & 10 \\\hline
-\fptotal{30}	
+\subsubsection{External Interface Files (EIFs)}
+\powerenjoy uses EIF in order use external services.
+We have identified at least 5 categories of EIF that will be necessary.
+
+\begin {enumerate}
+	\item \textbf{Google Map:} Are the files needed to getthe Google Maps API's working, especially for Maps JavaScript API, Google Maps Geocoding API, Google Places API, GoogleMaps Geolocation API, Google Maps Directions API
+	\item \textbf{Car Navigation:} these are used to compute path, find safe areas, and all the operations  needed for  the service
+	\item \textbf{Car Controller:}  All  the info retrieved from the  car Controller, these are Car status, sensor data, position, number of passengers. The stucture of this data is complex especially for the sensor data and are continuously  send from the cars to the system.
+	\item \textbf{Payment:} Are the data of the credit card that the external pyment service needs in order to perform the payment.
+	\item \textbf{Document Validation:} Are the documents data that are passed to the external  service in order to make the validation possible.
+\end {enumerate}
+given all the data structures just explained and using EIF related FP table we can come up with this function points analysis.
+\begin{fpcounttable}{EIF}
+Google Map\ello x3 \\
+Car Navigation\ello \\
+Car Controller\elh \\
+Payment \ello\\
+Document Validation \ello\\\hline
+\fptotal{40}	
 \end{fpcounttable}
 
 \subsubsection{External Inputs (EIs)}
+\powerenjoy service supports many kind of interaction features with different categories of users.
+Especially we have found 6 categories of users.
+\begin{enumerate}
+\item All users:
+\begin{itemize}
+\item \textbf{Login/Logout} simple operation for each type of user.
+\item  \textbf{password retrieval} average complexity operation performed by each type of user, as it involves a number of steps in order to be sure the user is really entitled to retrieve his password. For this reason, it contributes 4 FPs for each type of user.
+\end{itemize}
+\item \powerenjoyuser:
+\begin{itemize}
+\item \textbf{Reserve} average complexity operation because it includes the elaboration of the route to the car
+\item \textbf{Cancel} low complexity operation because it include a small operation.
+\item \textbf{Rent} this operation is divided in sub-operations each one has its contribute to the FP's definition. Each one has a Low complexity apart of Charge operation. It involves the interaction with the power plug slot and it is classified Average.
+	\begin{itemize}
+		\item Start 
+		\item Unlock
+		\item Stopover
+		\item Park
+		\item Charge
+	\end{itemize}
+\item\textbf{Register} Classified as high complexity operation because it includes a lot of data to be inserted and involves the call to external services for document verification.
+\item\textbf{Update info} As the registration it can involve a lot of operations in the backend
+\item\textbf{Recover Pin} An average complexity procedure because it involves the response by the system and the generation of the new code.
+\end{itemize}
+\item External Developers:
+\begin{itemize}
+\item \textbf{New App} A low complexity operation. 
+\end{itemize}
+\item Emergency Staff:
+\begin{itemize}
+\item \textbf{Assign to Field Staff} classified as average because of the interaction with component that it implies.
+\item \textbf{Set Car Availability} classified as low because it only changes the car status
+\end{itemize}
+\item Field Staff:
+\begin{itemize}
+\item \textbf{Unlock Car} Classified as low because they open the car using their passepartout.
+\item \textbf{Start Engine} Classified as low because it implies only the pin insertion
+\end{itemize}
+\item Management Staff:
+\begin{itemize}
+\item \textbf{Modify}
+	\begin{itemize}
+	\item\textit{Discount} defined High because it is a complex object to be  configured
+	\item \textit{Fare} defined High because it is a complex object to be  configured
+	\item \textit{City Zone} Defined low because it is not so difficult to be configured
+	\item \textit{Safe Area} Defined as average because you have to insert set of coordinates
+	\item \textit{power plug} Defined as average because you have to insert set of coordinates
+	\item \textit{Car}  Defined low because it is not so difficult to be configured 
+	\item \textit{term of conditions}  Defined low because it is not so difficult to be configured
+	\item \textit{staff account} Defined as average because you have to insert define a lot of informations
+	\item \textit{grant/ remove privilege}  defined  High because it is a complex object to be configured
+	\end{itemize}
+\end{itemize}
+\end{enumerate}
 \begin{fpcounttable}{EI}
-Login/Logout & Low & 2x3 \\
-Password retrieval & Average & 4 \\
-Change settings & Average & 4 \\
-Request or reserve a taxi & High & 2x4 \\
-Delete a reservation & Low & 3 \\
-Register a new passenger account & Average & 4 \\
-View reservation history & Low & 3 \\
-Insert, delete and update zones & High & 3x6 \\
-Insert, delete and update taxi drivers & High & 3x6 \\
-Request service statistics & High & 6 \\
-Grant and revoke app privileges & Average & 2x4 \\
-Grant and revoke plugin privileges & Average & 2x4 \\
-Accept, refuse and end ride & High & 3x6 \\
-Set taxi availability & Average & 4 \\\hline 
-\fptotal{112}	
+Login/Logout \eil x12 \\
+Password retrieval \eia x6 \\
+Reserve \eia \\
+Cancel \eil \\
+Money Saving Option \eil \\
+Rent& - & - \\
+-Start \eil\\
+-Unlock \eil\\
+-Stopover \eil\\
+-Park \eil\\
+-Charge \eia\\
+Register \eih\\
+Update info \eih\\
+Recover Pin \eia\\
+New App \eil\\
+Assign to field staff \eia\\
+Set Car Availability \eil\\
+Unlock car\eil\\
+Sart engine\eil\\
+Modify &-&-\\
+-Discount \eih\\
+-Fare \eih\\
+-city zone \eil\\
+-safe area \eia\\
+-power plug\eia\\
+-car\eil\\
+-term of conditions\eil \\
+-staff account\eia\\
+-grant/ remove privilege\eih\\\hline 
+
+\fptotal{157}	
 \end{fpcounttable}
 
 \subsubsection{External Inquiries (EQs)}
+As specied by the FP guidelines, an inquiry is essentially a data retrieval request performed by an user.
+\powerenjoy supports interactions of this type:
+\begin{itemize} 
+	\item \powerenjoyuser must be able to Retrieve near cars
+	\item \powerenjoyuser must be able to Retrieve Reserved Car position
+	\item emergency \staff must be able to Retrieve Task
+	\item field \staff must be able to Retrieve Manteinance/Relocation Requests 
+	\item field \staff must be able to Retrieve assigned cars 
+	\item emergency\staff and field \staff must be able to Retrieve Car info
+	\item \thirdparty developers must be able to Retrieve app privileges
+	\item all users must be able to Retrieve map info 
+\end{itemize}
+The resulting table is the following:
 \begin{fpcounttable}{EQ}
-Retrieve taxi position in queue & Low & 3 \\
-Retrieve passenger reservation history & Low & 3 \\
-Retrieve list of taxi drivers & Low & 3 \\
-Retrieve list of zones & Low & 3 \\
-Retrieve list of passengers & Low & 3 \\
-Retrieve list of approved applications & Low & 3 \\
-Retrieve list of approved plugins & Low & 3 \\\hline 
-\fptotal{21}	
+Retrive near cars \eih \\
+Retrieve Reserved Car position \eil \\
+Retrieve Task \eia \\
+Retrieve Manteinance/Relocation Requests  \eia x2\\
+Retrieve assigned cars \eil\\
+Retrieve Car info \eia x2\\
+Retrieve app privileges\eih \\
+Retrieve map info \eil x6\\ \hline 
+\fptotal{56}	
 \end{fpcounttable}
 
 \subsubsection{External Outputs (EOs)}
+As part of its normal behavior, \powerenjoy service occasionally needs to communicate with the user outside the context of an inquiry. These occasions are:
+\begin{itemize}
+	\item Notify emergency \staff of the raise of a New Emergency
+	\item Notify Field \staff of a New Manteinance request 
+	\item Notify field \staff a New Relocation Request
+	\item Notify \powerenjoy users of Updated Fare/Terms Of Service/Discounts
+	\item Display Rent Info in the car
+	\item Notify the \powerenjoyuser sending a Reservation Reminder
+	\item Notify Staff for not Payed Rents
+\end{itemize}
+\pagebreak
 \begin{fpcounttable}{EO}
-Taxi request assignment notification & Low & 4 \\
-Request accepted notification & Low & 4 \\
-Request dropped notification & Low & 4 \\
-Zone changed notification & Low & 4 \\
-Position in the queue changed notification & Low & 4 \\\hline 
-\fptotal{20}	
+New Emergency\eol\\
+New Manteinance request \eol\\
+New Relocation Request\eol\\
+Update Fare/Terms Of Service/Discounts \eol x3\\
+Rent Info in cars \eoa\\
+Reservation Reminder\eol\\
+Suspension for Rent not Payed\eoh\\\hline 
+\fptotal{40}	
 \end{fpcounttable}
 
 \subsubsection{Overall estimation}
 The following table summarizes the results of our estimation activity:
 
 \begin{fptotaltable}
-	Internal Logic Files & 55 \\
-	External Logic Files & 30 \\
-	External Inputs & 112 \\
-	External Inquiries & 21 \\
-	External Outputs & 20 \\\hline
-	Total & 238\\\hline
+	Internal Logic Files & 95 \\
+	External Logic Files & 40 \\
+	External Inputs & 147 \\
+	External Inquiries & 56 \\
+	External Outputs & 40 \\\hline
+	Total & 378\\\hline
 \end{fptotaltable}
-
+Given 378 as total FP estimation we calculate the Source Line Of Code using J2EE parameters as follows:
 \begin{lstlisting}[stepnumber=0]
-	SLOC = 238 * 46 = 10948
+	SLOC = 378 * 46 = 17388
 \end{lstlisting}
 and an upper bound of
 \begin{lstlisting}[stepnumber=0]
-	SLOC = 238 * 67 = 15946	
+	SLOC = 378 * 67 = 25326
 \end{lstlisting}
 
 \subsection{Cost and effort estimation: COCOMO II}
@@ -326,19 +475,19 @@ In order to evaluate the values of the scale drivers, we refer to the following 
 \end{scaledriverstable}
 The results of our evaluation is the following:
 \begin{factorcounttable}{Scale Driver}
-	Precedentedness (PREC) & Low & 4.96\\
-	Development flexibility (FLEX) & Low & 4.05\\
-	Risk resolution (RESL) & Very high & 1.41\\
-	Team cohesion (TEAM) & Very high & 1.10\\
-	Process maturity (PMAT) & Level 3 & 3.12\\\hline
-	\fptotal{14.64}
+	Precedentedness (PREC) & Nominal & 3.72\\
+	Development flexibility (FLEX) & High & 2.03\\
+	Risk resolution (RESL) & Low & 5,65\\
+	Team cohesion (TEAM) & High & 2,19\\
+	Process maturity (PMAT) & Low & 6,24\\\hline
+	\fptotal{19,83}
 \end{factorcounttable}
 
 \subsubsection{Cost Drivers}
 \begin{itemize}
 	\item  Required Software Reliability:
 	\begin{itemize}
-	\item[] Since the system represents the only way to get taxis in the city, a malfunctioning could lead to important financial losses. For this reason, the RELY cost driver is set to high.
+	\item[] Since the system represents the only way to reserve, unlock and use cars it must reliable 24/7 so we set this parameter as High.
 	\begin{costdriverstable}{RELY Cost Drivers}
 		\costdescriptors{RELY Descriptors}{slightly inconvenience}{easily recoverable losses}{moderate recoverable losses}{high financial loss}{risk to human life}{}\hline
 		\ratinglevel{Very low}{Low}{Nominal}{High}{Very High}{Extra High}
@@ -350,7 +499,8 @@ The results of our evaluation is the following:
 \begin{itemize}
 	\item Database size:
 	\begin{itemize}
-	\item[] This measure considers the effective size of our database. We don't have the ultimate answer, but our estimation given the tables and fields we have is to reach a 3GB database. Since it is distributed over 10.000-15.000 SLOC, the ratio D/P (measured as testing DB bytes/program SLOC) is between 209 and 314, resulting in the DATA cost driver being high. 
+	\item[] This measure attempts to capture the affect large data requirements have on product development. The reason the size of the database is important to consider it because of the effort required to generate the test data that will be used to exercise
+the program. \par The value will be set to \textit{nominal}.
 	\begin{costdriverstable}{DATA Cost Drivers}
 		\costdescriptors{DATA Descriptors}{}{$\frac{D}{P}$ $<$ 10}{10 $\le$ $\frac{D}{P}$ $\le$ 100}{100 $\le$ $\frac{D}{P}$ $\le$ 1000}{$\frac{D}{P}$ $>$ 1000}{}\hline
 		\ratinglevel{Very low}{Low}{Nominal}{High}{Very High}{Extra High}
@@ -358,7 +508,7 @@ The results of our evaluation is the following:
 	\end{costdriverstable}
 	\end{itemize}
 \end{itemize}
-
+In accordance with the new COCOMO II CPLEX rating scale, this value will be high.
 \begin{itemize}
 	\item Product complexity: 
 	\begin{itemize}
@@ -373,7 +523,8 @@ The results of our evaluation is the following:
 \begin{itemize}
 	\item Required reusability: 
 	\begin{itemize}
-	\item[] In our case, the reusability requirements are limited in scope to the project itself, so the RUSE cost driver is set to nominal.
+	\item[] This cost driver accounts for the additional effort needed to construct components intended for reuse on the current or future projects. This effort is consumed with creating more generic design of software, more elaborate documentation, and more extensive testing to ensure components are ready for use in other applications.
+We have chosen a \textit{nominal} value because the architecture is quite dependent to the goals required.
 	\begin{costdriverstable}{RUSE Cost Driver}
 		\costdescriptors{RUSE Descriptors}{}{None}{Across project}{Across program}{Across product line}{Across multiple product lines}\hline
 		\ratinglevel{Very low}{Low}{Nominal}{High}{Very High}{Extra High}
@@ -385,7 +536,7 @@ The results of our evaluation is the following:
 \begin{itemize}
 	\item Documentation match to life-cycle needs: 
 	\begin{itemize}
-	\item[] This parameter describes the relationship between the  documentation and the application requirements. In our case, every need of the product life-cycle is already foreseen in the documentation, so the DOCU cost driver is set to nominal.
+	\item[] In accordance with the new COCOMO II DOCU rating scale, this value will be \textit{high}.
 	\begin{costdriverstable}{DOCU Cost Driver}
 		\costdescriptors{DOCU Descriptors}{Many life-cycle needs uncovered}{Some life-cycle needs uncovered}{Right-sized to life-cycle needs}{Excessive for life-cycle needs}{Very excessive for life-cycle needs}{}\hline
 		\ratinglevel{Very low}{Low}{Nominal}{High}{Very High}{Extra High}
@@ -397,7 +548,7 @@ The results of our evaluation is the following:
 \begin{itemize}
 	\item Execution time constraint: 
 	\begin{itemize}
-	\item[] This parameter describes the expected amount of CPU usage with respect to the computational capabilities of the hardware. As myTaxiService is a quite complex piece of software, our expectance is that its CPU usage will be very high.
+	\item[] This parameter describes the expected amount of CPU usage with respect to the computational capabilities of the hardware. In accordance with the new COCOMO II TIME rating scale, this value will be \textit{high}.
 	\begin{costdriverstable}{TIME Cost Driver}
 		\costdescriptors{TIME Descriptors}{}{}{$\le$ 50\% use of available execution time}{70\% use of available execution time}{85\% use of available execution time} {95\% use of available execution time}\hline
 		\ratinglevel{Very low}{Low}{Nominal}{High}{Very High}{Extra High}
@@ -409,7 +560,7 @@ The results of our evaluation is the following:
 \begin{itemize}
 	\item Storage constraint: 
 	\begin{itemize}
-	\item[] This parameter describes the expected amount of storage usage with respect to the availability of the hardware. As current disk drives can easily contain several terabytes of storage, this value is set to nominal.
+	\item[] This parameter describes the expected amount of storage usage with respect to the availability of the hardware.In accordance with the new COCOMO II STOR rating scale, this value will be high. this value is set to nominal.
 	\begin{costdriverstable}{STOR Cost Driver}
 		\costdescriptors{STOR Descriptors}{}{}{$\le$  50\% use of available storage}{70\% use of available storage}{85\% use of available storage} {95\% use of available storage}\hline
 		\ratinglevel{Very low}{Low}{Nominal}{High}{Very High}{Extra High}
@@ -434,7 +585,7 @@ The results of our evaluation is the following:
 \begin{itemize}
 	\item Analyst Capability: 
 	\begin{itemize}
-	\item[] We think the analysis of the problem has been conducted in a thorough and complete way with respect to a potential real world implementation. For this reason, this parameter is set to high.
+	\item[] In accordance with the new COCOMO II ACAP rating scale, this value will be \textit{low}.
 	\begin{costdriverstable}{ACAP Cost Driver}
 		\costdescriptors{ACAP Descriptors}{15th percentile}{35th percentile}{55th percentile}{75th percentile}{90th percentile}{}\hline
 		\ratinglevel{Very low}{Low}{Nominal}{High}{Very High}{Extra High}
@@ -446,7 +597,7 @@ The results of our evaluation is the following:
 \begin{itemize}
 	\item Programmer Capability: 
 	\begin{itemize}
-	\item[] We have not implemented the project, so this parameter is just an estimation; however we are fairly in our programming abilities, so we'll set this parameter to high.
+	\item[]  In accordance with the new COCOMO II PCAP rating scale, this value will be \textit{low}.
 	\begin{costdriverstable}{PCAP Cost Driver}
 		\costdescriptors{PCAP Descriptors}{15th percentile}{35th percentile}{55th percentile}{75th percentile}{90th percentile}{}\hline
 		\ratinglevel{Very low}{Low}{Nominal}{High}{Very High}{Extra High}
@@ -458,7 +609,7 @@ The results of our evaluation is the following:
 \begin{itemize}
 	\item Application Experience: 
 	\begin{itemize}
-	\item[] We have some experience in the development of Java applications, but we never tackled a Java EE system of this kind. For this reason we're going to set this parameter to low. 
+	\item[]  In accordance with the new COCOMO II APEX rating scale, we rate this parameter as \textit{low}.
 	\begin{costdriverstable}{APEX Cost Driver}
 		\costdescriptors{APEX Descriptors}{$\le$ 2 months}{6 months}{1 year}{3 years}{6 years}{}\hline
 		\ratinglevel{Very low}{Low}{Nominal}{High}{Very High}{Extra High}
@@ -470,7 +621,7 @@ The results of our evaluation is the following:
 \begin{itemize}
 	\item Platform Experience: 
 	\begin{itemize}
-	\item[] We don't have any experience with the Java EE platform, but we have some previous experience with databases, user interfaces and server side development. For this reason, we're going to set this parameter to nominal.
+	\item[] We don't have any experience with the Java EE platform. For this reason, we're going to set this parameter to \textit{low}.
 	\begin{costdriverstable}{PLEX Cost Driver}
 		\costdescriptors{PLEX Descriptors}{$\le$ 2 months}{6 months}{1 year}{3 years}{6 years}{}\hline
 		\ratinglevel{Very low}{Low}{Nominal}{High}{Very High}{Extra High}
@@ -482,7 +633,7 @@ The results of our evaluation is the following:
 \begin{itemize}
 	\item Language and Tool Experience: 
 	\begin{itemize}
-	\item[] We don't have any experience with the Java EE platform, but we have some previous experience with databases, user interfaces and server side development. We are also knowledgable of the development environment, so we're going to set this parameter to nominal.
+	\item[]  In accordance with the new COCOMO II LTEX rating scale, this value will be \textit{high}.
 	\begin{costdriverstable}{LTEX Cost Driver}
 		\costdescriptors{LTEX Descriptors}{$\le$ 2 months}{6 months}{1 year}{3 years}{6 years}{}\hline
 		\ratinglevel{Very low}{Low}{Nominal}{High}{Very High}{Extra High}
@@ -494,7 +645,7 @@ The results of our evaluation is the following:
 \begin{itemize}
 	\item Personnel continuity: 
 	\begin{itemize}
-	\item[] This parameter is quite relevant in our case, since the time we can spend on this project is limited. For this reason, this parameter is set to very low. 
+	\item[]  In accordance with the new COCOMO II PCON rating scale, this value will be \textit{high}. 
 	\begin{costdriverstable}{PCON Cost Driver}
 		\costdescriptors{PCON Descriptors}{48\% / year}{24\% / year}{12\% / year}{6\% / year}{3\% / year}{}\hline	
 		\ratinglevel{Very low}{Low}{Nominal}{High}{Very High}{Extra High}
@@ -506,7 +657,7 @@ The results of our evaluation is the following:
 \begin{itemize}
 	\item Usage of Software Tools: 
 	\begin{itemize}
-	\item[] Our application environment is complete and well integrated, so we'll set this parameter as high. 
+	\item[] Our application environment is complete and well integrated, so we'll set this parameter as \textit{high}. 
 	\begin{costdriverstable}{TOOL Cost Driver}
 		\costdescriptors{TOOL Descriptors}{edit, code, debug}{simple, frontend, backend CASE, little integration}{basic life-cycle tools, moderately integrated}{strong, mature life-cycle tools, moderately integrated}{strong, mature, proactive life-cycle tools, well integrated with processes, methods, reuse}{}\hline
 		\ratinglevel{Very low}{Low}{Nominal}{High}{Very High}{Extra High}
@@ -518,7 +669,7 @@ The results of our evaluation is the following:
 \begin{itemize}
 	\item Multisite development: 
 	\begin{itemize}
-	\item[] Although we live in two different cities, we have collaborated relying hugely on wideband Internet services including social networks and emails. For this reason, we're going to set this parameter to very high.
+	\item[]  In accordance with the new COCOMO II SITE rating scale, this value will be \textit{extra high}.
 	\pagebreak
 	\begin{costdriverstable}{SITE Cost Driver}
 		\costdescriptors{SITE Collocation Descriptors}{Intern-ational}{Multi-city and multi-company}{Multi-city or multi-company}{Same city or metro area}{Same building or complex}{Fully collocated}
@@ -533,7 +684,7 @@ The results of our evaluation is the following:
 \begin{itemize}
 	\item Required development schedule: 
 	\begin{itemize}
-	\item[] Although our efforts were well distributed over the available development time, the definition of all the required documentation took a consistent amount of time, especially for the requirement analysis and the design phases. For this reason, this parameter is set to high.
+	\item[] In accordance with the new COCOMO II SCED rating scale, this value will be \textit{nominal}.
 	\begin{costdriverstable}{SCED Cost Driver}
 		\costdescriptors{SCED Descriptors}{75\% of nominal}{85\% of nominal}{100\% of nominal}{130\% of nominal}{160\% of nominal}{}\hline
 		\ratinglevel{Very low}{Low}{Nominal}{High}{Very High}{Extra High}
@@ -546,23 +697,23 @@ The results of our evaluation is the following:
 Overall, our results are expressed by the following table:
 \begin{factorcounttable}{Cost Driver}
 	Required Software Reliability (RELY) & High & 1.10\\
-	Database size (DATA) & High & 1.14\\
-	Product complexity (CPLX) & Very high & 1.34\\
+	Database size (DATA) & Nominal & 1\\
+	Product complexity (CPLX) & High & 1,17\\
 	Required Reusability (RUSE) & Nominal & 1.00\\
-	Documentation match to life-cycle needs (DOCU) & Nominal & 1.00\\
-	Execution Time Constraint (TIME) & Very high & 1.29 \\
+	Documentation match to life-cycle needs (DOCU) & High & 1,11\\
+	Execution Time Constraint (TIME) & High & 1,11 \\
 	Main storage constraint (STOR) & Nominal & 1.00 \\
-	Platform volatility (PVOL) & Nominal & 1.00 \\
-	Analyst capability (ACAP) & High & 0.85 \\
-	Programmer capability (PCAP) & High & 0.88 \\
+	Platform volatility (PVOL) & High & 1.15 \\
+	Analyst capability (ACAP) & Low & 1,19 \\
+	Programmer capability (PCAP) & Low & 1,15 \\
 	Application Experience (APEX) & Low & 1.10 \\
-	Platform Experience (PLEX) & Nominal & 1.00 \\
-	Language and Tool Experience (LTEX) & Nominal & 1.00 \\
-	Personnel continuity (PCON) & Very low & 1.12 \\
+	Platform Experience (PLEX) & Low & 1.09 \\
+	Language and Tool Experience (LTEX) & Highl & 0.91 \\
+	Personnel continuity (PCON) & Very high & 0.81 \\
 	Usage of Software Tools (TOOL) & High & 0.90 \\
-	Multisite development (SITE) & Very high & 0.86 \\
-	Required development schedule (SCED) & High & 1.00 \\\hline
-	\fptotal{1.54613}
+	Multisite development (SITE) & Extr high & 0.80\\
+	Required development schedule (SCED) & Nominal & 1.00 \\\hline
+	\fptotal{1.58798}
 \end{factorcounttable}
 
 \subsubsection{Effort equation}
@@ -573,22 +724,69 @@ This final equation gives us the effort estimation measured in Person-Months (PM
 where:
 \begin{lstlisting}[mathescape, numbers=none, frame=single]
 	A = 2.94 (for COCOMO II) 
-	EAF = product of all cost drivers (1.54613)
+	EAF = product of all cost drivers (1.58798)
 	E = exponent derived from the scale drivers. It is computed as:
-		B + 0.01 * $\sum_{i} SF[i]$ = B + 0.01 * 14.64 = 0.91 + 0.1464 = 1.0564
+		B + 0.01 * $\sum_{i} SF[i]$ = B + 0.01 * 19,83 = 0.91 + 0.1983 = 1.1083
 		in which B is equal to: 0.91 for COCOMO II.
 \end{lstlisting}
 
 With this parameters we can compute the effort value, which has a lower bound of:
 \begin{lstlisting}[mathescape, numbers=none, frame=single]
-	Effort = A * EAF * KSLOC$^E$ = 2.94 * 1.54613 * 10.948$^{1.0564}$ = 56.957 PM $\approx$ 57 PM
+	Effort = A * EAF * KSLOC$^E$ = 2.94 * 1.58798 * 17.338$^{1.1083}$ = 110,249 PM $\approx$ 110 PM
 \end{lstlisting}
 and an upper bound of:
 \begin{lstlisting}[mathescape, numbers=none, frame=single]
-	Effort = A * EAF * KSLOC$^E$ = 2.94 * 1.54613 * 15.946$^{1.0564}$ = 84.737 PM $\approx$ 85 PM
+	Effort = A * EAF * KSLOC$^E$ = 2.94 * 1.58798 * 25.326$^{1.1083}$ = 167,79 PM $\approx$ 168 PM
 \end{lstlisting}
 
 \subsubsection{Schedule estimation}
+In order to estimate the real project timespan, we should divide the effort by the members' number (divide by 3 in our case).
+\begin{lstlisting}[mathescape, numbers=none]
+	Effort = 110,249 PM 
+	Duration  = 110,249 PM / 3 = 36,74 months 
+	
+	Effort = 167,79 PM
+	Duration  = 167,79 PM / 3 = 55,93 months 
+\end{lstlisting}
+We think this excessively wide timespan (4 years and 6 months) is incompatible with the business viability of the project, in fact all the assumptions made in the early analysis could became invalid because of new competitors or changes in laws and regulations.
+Thus we need to hire qualified staff to reduce project's timespan to a reasonable amount (time to market).
+\par Cocomo II provides us with the right set of formulas to estimate a feasible and reasonable time to market for our project, non-regarding on the number of people working on the project. We can divide the effort by this computed time to market to decide how many people to hire (approximately) to finish in that time.
+
+Cocomo II's results are:
+\begin{lstlisting}[mathescape, numbers=none]
+	Duration = 3.67 * Effort$^F$
+\end{lstlisting}
+As a lower bound, we consider
+\begin{lstlisting}[mathescape, numbers=none]
+	F = 0.28 + 0.2 * (E - B) = 0,31966
+	Effort = 110,249 PM 
+	Duration = 3.67 * (110,249)$^{0,31966}$ = 16,5 months
+\end{lstlisting}
+while as an upper bound, we consider
+\begin{lstlisting}[mathescape, numbers=none]
+	F = 0.28 + 0.2 * (E - B) = 0,31966
+	Effort = 167,789 PM 
+	Duration = 3.67 * (167,789)$^{0,31966}$ = 18,9 months
+\end{lstlisting}
+\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.55]{./Images/COCOMOutput18.png} 
+		\end{figure}
+
+
+From this result we can estimate in normal estimation and upper bound cases:
+\begin{lstlisting}[mathescape, numbers=none]
+ People = Effort / Duration 
+	= 110,249 PM / 16.5 months 
+	= 6.68 (approx 7 people)
+\end{lstlisting}
+\begin{lstlisting}[mathescape, numbers=none]
+ People = Effort / Duration 
+	= 167,789 PM / 18,9 months 
+	= 8.87 (approx 9 people)
+\end{lstlisting}
+Therefore we could hire additional 5 people to be able to go to market in approximately 16.5 months (with an uncertainty of 2 months).
+In case of delay, we could mitigate by balancing the amount of features in each one of the planned 3 releases.
 
 \section{Schedule}
 	In this section we are going to present a probable project schedule. Obviously this is a prototype and will be refined during the development. \\
@@ -597,7 +795,7 @@ and an upper bound of:
 	\subsection{Global}
 		\begin{figure}[H]
 			\centering
-			\includegraphics[scale=0.675]{./Images/0-GlobalGantt.pdf} 
+			\includegraphics[scale=0.675]{Images/0-Global18.pdf} 
 		\end{figure}
 		\end{landscape}
 	\subsection{RASD}
@@ -628,21 +826,21 @@ and an upper bound of:
 	\subsection{First release}
 		\begin{figure}[H]
 			\centering
-			\includegraphics[scale=0.725]{./Images/5-FirstReleaseGantt.pdf} 
+			\includegraphics[scale=0.725]{./Images/5-FirstRelease18.pdf} 
 		\end{figure}
 		\end{landscape}
 		\begin{landscape}
 	\subsection{Second release}
 		\begin{figure}[H]
 			\centering
-			\includegraphics[scale=0.725]{./Images/6-SecondReleaseGantt.pdf} 
+			\includegraphics[scale=0.725]{./Images/6-SecondRelease18.pdf} 
 		\end{figure}
 		\end{landscape}
 		\begin{landscape}
 	\subsection{Third release}
 		\begin{figure}[H]
 			\centering
-			\includegraphics[scale=0.55]{./Images/7-ThirdReleaseGantt.pdf} 
+			\includegraphics[scale=0.55]{./Images/7-ThirdRelease18.pdf} 
 		\end{figure}
 		\end{landscape}
 		
