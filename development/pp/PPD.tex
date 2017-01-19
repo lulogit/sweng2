@@ -205,9 +205,84 @@ SF$_j$ & #1 & #2 & #3 & #4 & #5 & #6 \\\hline
 	\tableofcontents{} 
 	\pagebreak{}
 \section{Introduction}
-\subsection{Purpose and scope}
-\subsection{Definitions, Acronyms, Abbreviations}
-\subsection{Reference Documents}
+\subsection{Purpose and Scope}
+	This document will provide the guideline to accomplish the project planning for the \powerenjoy service, it will provide specifically:
+	\begin{itemize}
+		\item an estimation of the project size 
+		\item an estimation of the effort required to develop the project
+		\item the schedule for the project
+		\item the task assignment policy
+		\item description of risk management approach
+	\end{itemize}
+	\subsection{List of Definitions and Abbreviations}
+	\subsubsection{Rent}
+			A \rent is the activity beginning with the pick up and ending with the release of a car. It can include some \stopover.
+		\subsubsection{Car Sharing}
+			\carsharing is a model of car rental where people rent cars for short periods of time, often by the hour.
+		\subsubsection{PowerEnJoy}
+			\powerenjoy is the \carsharing brand object of this document.
+		\subsubsection{Guest User}
+			A \guest is a person not logged in to the system.
+		\subsubsection{Registered User} 
+			A \registereduser is a person registered to \powerenjoy.
+		\subsubsection{PowerEnJoy User}
+			A \powerenjoyuser is a \registereduser can access to the \carsharing through his smart device.
+		\subsubsection{Staff}
+			\staff is the set of people that are \registereduser  but can perform special operations. They are divided in three different categories.
+			\begin{itemize}
+				\item {Field \staff}
+				\begin{itemize}
+				\item They own a passepartout for cars reporting any issues \\ \par (e.g: cars with low battery).
+				\end{itemize}
+				\item{Emergency \staff}
+				\begin{itemize}
+				\item They manage users issues. They are able to directly contact users.
+				\end{itemize}
+				\item{Management \staff}
+				\begin{itemize}
+				\item They manage the system, configuring its parameters. They can add new \safeareas, modify \carsharing fares and create new \staff accounts.
+				\end{itemize}
+			\end{itemize}
+		\subsubsection{Third Party Developer}
+			\thirdparty is a person that can fulfill operations on \powerenjoy system via API.
+		\subsubsection{Service}
+			The \service is the group of actions that a \powerenjoyuser can fulfill trough his smart device.	
+		\subsubsection {Safe Area}
+			A \safearea is a  geographical place\footnote{defined by a set of geolocation positions} on the map in which parking is allowed. \safearea are saved into the system. A \rent can end parking the car only in safe areas.
+	\subsubsection{Power Plug}
+		A \powerplug is the station that charges the battery of an electric car. All \powerplugs are displayed in the map on-board \powerenjoy cars. Each \powerplug is in a \safearea. A \powerenjoyuser who plugs his car into a \powerplug receives a discount according to \powerenjoy rules.
+	\subsubsection{Power Plug Slot}
+		A \powerplugslot is a parking slot reserved for the \powerplug charge of cars.
+	\subsubsection{Parking solution}
+		Either a \safearea or a \powerplugslot.
+	\subsubsection{Reservation}
+		A \resevation is the action of booking a car, within an hour from its pick up.
+	\subsubsection{Stopover}
+		A \stopover is a temporary power-off of a rented car. During a \stopover the \powerenjoyuser can leave the car,  and re-unlock it later through his smart device. It is subject to a different fare than the rest of rent time.
+	\subsubsection{Fare}
+		A policy to compute price of a rent, complete of involved parameters. \par E.g: proportional to time, 0.67\euro/minute during active rent time 
+	\subsubsection{Personal Identification Number (PIN)}
+		 \personalpin is a number of 5 digits that the user inserts on the car screen to enable driving commands.
+	
+\subsection{List of Reference Documents}
+	\begin{thebibliography}{9}
+
+		\bibitem{RASD}
+			Erba A., Leveni F., Lodi L.,
+  			\emph{Requirement Analysis Specification Document},
+ 			2016.
+ 			
+		\bibitem{DD}
+			 Erba A., Leveni F., Lodi L.,
+  			\emph{Design Document},
+ 			2016.
+ 			
+		\bibitem{IT}
+			 Erba A., Leveni F., Lodi L.,
+  			\emph{Design Document},
+ 			2017.
+	\end{thebibliography}	 
+		 
 \section{Project size, cost and effort estimation}
 \subsection{Size estimation: function points}
 \begin{fptable}{For Internal Logic Files and External Logic Files}{Data Elements}
@@ -263,6 +338,8 @@ We have identified at least 10 categories of ILF that will be necessary.
 	\item  \textbf{API auth Data:} All the informations about external developers are stored adn the data are strutured in a table containing these info App ID, developer info,  Detailed list about Available API.
 \end {enumerate}
 given all the data structures just explained above and using ILF related FP table we can come up with this function points analysis.
+
+\pagebreak
 \begin{fpcounttable}{ILF}
 Reservation data\ill\\
 Rent data\ilh \\
@@ -353,6 +430,8 @@ Especially we have found 6 categories of users.
 	\end{itemize}
 \end{itemize}
 \end{enumerate}
+
+\pagebreak
 \begin{fpcounttable}{EI}
 Login/Logout \eil x12 \\
 Password retrieval \eia x6 \\
@@ -460,6 +539,7 @@ and an upper bound of
 \subsubsection{Scale Drivers}
 In order to evaluate the values of the scale drivers, we refer to the following official COCOMO II table:
 
+\pagebreak
 \begin{scaledriverstable}{Scale Factor values, SF$_j$, for COCOMO II Models}
 	Scale Factors & Very Low & Low & Nominal & High & Very High & Extra High\\\hline
 	\addfactor{PREC}{thoroughly unprecedented}{largely unprecedented}{somewhat unprecedented}{generally familiar}{largely familiar}{thoroughly familiar}
@@ -488,6 +568,7 @@ The results of our evaluation is the following:
 	\item  Required Software Reliability:
 	\begin{itemize}
 	\item[] Since the system represents the only way to reserve, unlock and use cars it must reliable 24/7 so we set this parameter as High.
+	\pagebreak
 	\begin{costdriverstable}{RELY Cost Drivers}
 		\costdescriptors{RELY Descriptors}{slightly inconvenience}{easily recoverable losses}{moderate recoverable losses}{high financial loss}{risk to human life}{}\hline
 		\ratinglevel{Very low}{Low}{Nominal}{High}{Very High}{Extra High}
@@ -573,7 +654,6 @@ We have chosen a \textit{nominal} value because the architecture is quite depend
 	\item Platform Volatility: 
 	\begin{itemize}
 	\item[] For what concerns the core system, we don't expect our fundamental platforms to change very often. However, the client applications may require at least a major release once every six months to be aligned with the development cycle of the main mobile operating systems. For this reason, this parameter is set to nominal.
-	\pagebreak
 	\begin{costdriverstable}{PVOL Cost Driver}
 		\costdescriptors{PVOL Descriptors}{}{Major change every 12 mo., minor change every 1 mo.}{Major: 6mo; minor: 2wk.}{Major: 2mo, minor: 1wk}	{Major: 2wk; minor: 2 days}{}\hline
 		\ratinglevel{Very low}{Low}{Nominal}{High}{Very High}{Extra High}
@@ -642,6 +722,7 @@ We have chosen a \textit{nominal} value because the architecture is quite depend
 	\end{itemize}
 \end{itemize}
 
+\pagebreak
 \begin{itemize}
 	\item Personnel continuity: 
 	\begin{itemize}
@@ -693,7 +774,7 @@ We have chosen a \textit{nominal} value because the architecture is quite depend
 	\end{itemize}
 \end{itemize}
 
-
+\pagebreak
 Overall, our results are expressed by the following table:
 \begin{factorcounttable}{Cost Driver}
 	Required Software Reliability (RELY) & High & 1.10\\
@@ -843,6 +924,18 @@ In case of delay, we could mitigate by balancing the amount of features in each 
 			\includegraphics[scale=0.55]{./Images/7-ThirdRelease18.pdf} 
 		\end{figure}
 		\end{landscape}
+
+\section{Resource allocation}
+In  the early analysis and design part of the project we worked together on the various tasks in order to keep a shared view of the product. On the other hand we need additional people to develop the project by deadlines, this requires a form of task assignment to different team members.
+\par We adopt a hierarchical approach to accomplish tasks' assignment which consist in people being subdivided into 2 teams, lead by one of the original member. The team leader is assigned an area of the project, and assign tasks to team members. One of the original project member act as project manager, and daily meets with the team leaders, keeping a global perspective on the project.
+\par The teams and areas we identified are:
+\begin{itemize}
+	\item \textbf{Project manager}
+	\item{ \textbf{Developers team 1}: Code implementation \\
+	 (team leader + 3 members)}
+	\item{\textbf{Developers team 2}: Testing\\
+	 (team leader + 2 members)}
+\end{itemize}
 		
 \section{Risk management}
 
@@ -925,13 +1018,13 @@ In case of delay, we could mitigate by balancing the amount of features in each 
 	
 	
 
-
+\pagebreak
 \section{Effort Spent}
 
 \begin{itemize}
-		\item Alessandro Erba $\approx$ 10h
-		\item Filippo Leveni 	$\approx$ 10h
-		\item Luca Lodi $\approx$ 10h
+		\item Alessandro Erba $\approx$ 14h
+		\item Filippo Leveni 	$\approx$ 14h
+		\item Luca Lodi $\approx$ 14h
 	\end{itemize}
 
 
