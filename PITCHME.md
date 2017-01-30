@@ -267,11 +267,7 @@ returned value should be positive) */
 #VSLIDE
 **R.25** handle unpaid rents
 
-#VSLIDE
-## Car state chart
 
-#VSLIDE
-<img height="700" src="presentation/car_status.pdf.png" />
 
 
 #HSLIDE
@@ -283,13 +279,12 @@ returned value should be positive) */
 ![icon](presentation/presentationDD/electric-car photo.png)
 #VSLIDE
 <img height="640" src="presentation/auto.png" />
+#VSLIDE
+## Car state chart
 
+#VSLIDE
+<img height="700" src="presentation/car_status.pdf.png" />
 #HSLIDE
-## User
-#VSLIDE
-### Smart devices
-#VSLIDE
-<img height="640" src="presentation/smartphone.png" />
 ### interfaces
 #VSLIDE
 <img height="550" src="presentation/presentationDD/insertPIN.png" />
