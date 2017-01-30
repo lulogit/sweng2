@@ -273,28 +273,23 @@ returned value should be positive) */
 #VSLIDE
 <img height="700" src="presentation/car_status.pdf.png" />
 
-#HSLIDE
-# Hardware
-
-#VSLIDE
-## Cars
-#VSLIDE
-<img height="640" src="presentation/auto.png" />
-
-#VSLIDE
-### Smart devices
-#VSLIDE
-<img height="640" src="presentation/smartphone.png" />
 
 #HSLIDE
+## deployment diagrm
 <img height="500" src="presentation/presentationDD/High Level.png" />
 
 #HSLIDE
 ### PowerEnJoy cars
 ![icon](presentation/presentationDD/electric-car photo.png)
+#VSLIDE
+<img height="640" src="presentation/auto.png" />
 
 #HSLIDE
 ## User
+#VSLIDE
+### Smart devices
+#VSLIDE
+<img height="640" src="presentation/smartphone.png" />
 ### interfaces
 #VSLIDE
 <img height="550" src="presentation/presentationDD/insertPIN.png" />
@@ -706,8 +701,7 @@ def compute_discounts_for_safe_areas(map_state):
   * geography type and operations
 
 #HSLIDE 
-##INTEGRATION TEST
-
+## INTEGRATION TEST
 #VSLIDE
 ## CHOOSEN TECNIQUE
 
@@ -717,12 +711,10 @@ def compute_discounts_for_safe_areas(map_state):
 ### FUNCTION POINTS
 #VSLIDE
 ### COCOMO II
-
 #VSLIDE 
-## SCHEDULE
-
+### SCHEDULE
 #VSLIDE
-## RISK ASSESTMENT
+### RISK ASSESTMENT
 
 #HSLIDE
 ### Questions ?
