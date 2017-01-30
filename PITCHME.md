@@ -270,7 +270,7 @@ returned value should be positive) */
 <!--
 #HSLIDE
 ### PowerEnJoy user
-![icon](presentation/powerenjoy_user.png)
+![icon](presentation/powerenjoy_usr.png)
 #VSLIDE
 **R.6** find available cars within a certain distance from current location or from address
 #VSLIDE
