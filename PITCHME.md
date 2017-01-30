@@ -47,6 +47,19 @@
 <li> **G.9** authorized personal quickly react to emergencies, user’s safety </li><!-- .element: class="fragment" -->
 <li> **G.10** programmable interface, reduce maintainance costs, third party developers. </li><!-- .element: class="fragment" -->
 
+#VSLIDE
+## Class diagram
+
+#VSLIDE?image=presentation/class_diag.pdf.png
+
+#VSLIDE
+<img height="650" src="presentation/user_services.pdf.png" />
+
+#VSLIDE
+<img height="650" src="presentation/efficiency_prod.pdf.png" />
+
+#VSLIDE
+<img height="650" src="presentation/estensibility.pdf.png" />
 
 #HSLIDE
 # Actors
@@ -147,20 +160,6 @@
 
 #VSLIDE
 <img height="700" src="presentation/car_status.pdf.png" />
-
-#VSLIDE
-## Class diagram
-
-#VSLIDE?image=presentation/class_diag.pdf.png
-
-#VSLIDE
-<img height="650" src="presentation/user_services.pdf.png" />
-
-#VSLIDE
-<img height="650" src="presentation/efficiency_prod.pdf.png" />
-
-#VSLIDE
-<img height="650" src="presentation/estensibility.pdf.png" />
 
 #HSLIDE
 # Hardware
