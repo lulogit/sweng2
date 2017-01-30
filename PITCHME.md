@@ -47,7 +47,7 @@
 <li> **G.9** authorized personal quickly react to emergencies, user’s safety </li><!-- .element: class="fragment" -->
 <li> **G.10** programmable interface, reduce maintainance costs, third party developers. </li><!-- .element: class="fragment" -->
 
-#VSLIDE
+#HSLIDE
 ## Class diagram
 
 #VSLIDE?image=presentation/class_diag.pdf.png
@@ -166,8 +166,6 @@
 **R.18** notification of relocation/maintenance requests
 #VSLIDE
 **R.19** car relocation
-
-
 
 
 #HSLIDE
