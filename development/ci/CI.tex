@@ -1,0 +1,562 @@
+\documentclass[english]{article}
+\usepackage{amsmath}
+\usepackage{ae,aecompl}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage{eurosym}
+\usepackage[hidelinks]{hyperref}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{tabto}
+\usepackage{verbatim}
+\usepackage{etoolbox}
+\usepackage[table]{xcolor}
+\usepackage{booktabs}
+\usepackage{wasysym}
+\usepackage{multirow}
+\usepackage{fancyhdr}
+\usepackage{pdflscape}
+\usepackage[scaled]{beramono}
+\usepackage{listings}
+\usepackage{csquotes}
+\usepackage{comment}
+\lstset{
+	breaklines=true,
+	}
+\pagestyle{fancy}
+\lhead{\powerenjoy I.T.P.D.}
+\makeatletter
+\makeatother
+\usepackage{babel}
+
+\newcommand\fnurl[2]{%
+	\href{#2}{#1}\footnote{\url{#2}}%
+}
+\newcommand{\rent}{\textit{rent }}
+\newcommand{\carsharing}{\textit {car sharing }}
+\newcommand{\powerenjoy}{\textit{PowerEnjoy }}
+\newcommand{\registereduser}{\textit {registered user }}
+\newcommand{\registeredusers}{\textit {registered users }}
+\newcommand{\powerenjoyuser}{\textit{PowerEnjoy User }}
+\newcommand{\staff}{\textit{staff }}
+\newcommand{\service}{\textit{service }}
+\newcommand{\services }{\textit{services }}
+\newcommand{\safearea}{\textit{safe area }}
+\newcommand{\safeareas}{\textit{safe areas }}
+\newcommand{\powerplug}{\textit{power plug }}
+\newcommand{\powerplugs}{\textit{power plugs }}
+\newcommand{\reservation}{\textit{reservation }}
+\newcommand{\stand}{\textit{stand }}
+\newcommand{\fieldstaff}{\textit{field staff }}
+\newcommand{\resevation}{\textit{reservation }}
+\newcommand{\stopover}{\textit{stopover }}
+\newcommand{\personalpin}{\textit{personal pin }}
+\newcommand{\guest}{\textit{guest }}
+\newcommand{\thirdparty}{\textit{third party developer }}
+\newcommand{\powerplugslot}{\textit{power plug slot }}
+\newcommand{\moneysaving}{\textit{money saving }}
+\begin{document}
+\lstset{language=Java} 
+
+	\begin{figure}
+		\centering
+		\includegraphics[scale=0.5]{logo.pdf} 
+	\end{figure}
+
+
+	\title{PowerEnJoy\\
+	Integration Test Plan Document\\
+	}
+
+	\date{A.A 2016/2017}
+	
+	\author{Erba Alessandro\\
+	 Leveni Filippo\\
+	 Lodi Luca}
+	
+	\maketitle
+	\pagebreak{}
+	\tableofcontents{} \pagebreak{}
+	
+\section{IterateSectionWidget}
+	\subsection{Functional role}
+	
+	This class extends \textquote{ModelScreeWidget} to provide a renderer for a widget as HTML. 
+	\par Specifically it render a widget containing multiple \textquote{sections}, and iterate over those sections to render them, keeping count of pagination and position in the \textquote{page}.
+	\par It also inherit the \textquote{.accept(ModelWidgetVisitor visitor)} from  the \textquote{ModelWidget} class, which implement the  \textquote{visitor} pattern to traverse the tree of widgets and handle them different ways, according to their class type:
+	a .accept(visitor) method in the visited class calls the .visit(this) in the visitor class, which should have a .visit(class-type) for each class-type to visit.
+	
+	\subsection{Application of the checklist}
+	
+\subsubsection*{Class attributes }	
+\begin{itemize}
+
+\item[2.]{line 56
+		\begin{lstlisting} 
+public class IterateSectionWidget extends ModelScreenWidget {
+		\end{lstlisting}
+		Class name should be nouns, in mixed case, with the first letter of each word
+in capitalized. `Iterate' is a verb, thus class name should be changed to `SectionWidgetIterator'.}
+
+\item[7.]{line 58
+		\begin{lstlisting} 
+public static final String module = IterateSectionWidget.class.getName();
+		\end{lstlisting}
+		Constant declared without respecting UPPERCASE naming convention.}
+
+		\item[18.]{lines  *\\
+		Lack of comment describing the purpose of the code.}
+\end{itemize}
+
+\subsubsection*{Class constructor}	
+\begin{itemize}
+\item[13.]{lines 70, 87, 88, 95, 99, 101 \\
+		line exceed recommended 80 characters length.}
+
+\item[14.]{lines  87, 99\\
+		line exceed 120 characters length.}
+\item[18.]{lines  *\\
+		Lack of comment describing the purpose of the code.}
+		
+\item[23.]{The javadoc is not used as shows at this link:\\
+https://ci.apache.org/projects/ofbiz/site/javadocs/org/apache/ofbiz/widget/model/IterateSectionWidget.html}
+	\item[25.]{line 55
+		\begin{lstlisting}
+@SuppressWarnings("serial")
+		\end{lstlisting}
+Between class documentation comment and class statement must not be any code.
+}
+
+\item[33.]{ 
+			\begin{itemize}
+				\item{line 77
+						\begin{lstlisting}
+String entryName = iterateSectionElement.getAttribute("entry");
+						\end{lstlisting} must be moved to the top}
+				\item{line 82
+						\begin{lstlisting}
+String keyName = iterateSectionElement.getAttribute("key");
+						\end{lstlisting} must be moved to the top}
+				\item{line 89
+						\begin{lstlisting}
+int viewSize = DEFAULT_PAGE_SIZE;
+						\end{lstlisting} must be moved to the top}
+				\item{line 90
+						\begin{lstlisting}
+String viewSizeStr = iterateSectionElement.getAttribute("view-size");
+						\end{lstlisting} must be moved to the top}
+				\item{line 95
+						\begin{lstlisting}
+List<? extends Element> childElementList = UtilXml.childElementList(iterateSectionElement);
+						\end{lstlisting} must be moved to the top}
+			\end{itemize}
+}
+		
+		\item[39.]{ 
+			\begin{itemize}
+				\item{line 95
+						\begin{lstlisting}
+List<? extends Element> childElementList = UtilXml.childElementList(iterateSectionElement);
+						\end{lstlisting} must be declared using a constructor.}
+			\end{itemize}
+}
+\end{itemize}
+	
+\subsubsection*{.getSectionList}	
+\begin{itemize}
+\item[18.]{lines  *\\
+		Lack of comment describing the purpose of the code.}
+\end{itemize}
+\subsubsection*{.renderWidgetString}
+\begin{itemize}
+    
+    	\item[12.]{ line 223-227
+		\begin{lstlisting}
+}
+/*
+ * @return
+ */
+ public String getPaginateTarget(Map<String, Object> context) {
+		\end{lstlisting} should separate sections of file though blank lines and optional comments.}
+		
+\item[13.]{lines 113, 122, 129, 134, 150-152, 157, 193, 197, 208, 210-211 \\
+		line exceed recommended 80 characters length.}
+
+\item[14.]{lines  113, 122\\
+		line exceed 120 characters length.}
+		
+		\item[18.]{lines  *\\
+		Lack of comment describing the purpose of the code.}
+
+	\item[27.]{The method is too long (90 lines), it should be reduced.
+}
+		\item[33.]{ 
+			\begin{itemize}
+				\item{line 132
+						\begin{lstlisting}
+List<?> theList = null;
+						\end{lstlisting} must be moved to the top}
+				\item{line 146
+						\begin{lstlisting}
+int startPageNumber = WidgetWorker.getPaginatorNumber(context);
+						\end{lstlisting} must be moved to the top}
+				\item{line 171
+						\begin{lstlisting}
+Iterator<?> iter = theList.iterator();
+						\end{lstlisting} must be moved to the top}
+				\item{line 172
+						\begin{lstlisting}
+int itemIndex = -1;
+						\end{lstlisting} must be moved to the top}
+				\item{line 173
+						\begin{lstlisting}
+int iterateIndex = 0;
+						\end{lstlisting} must be moved to the top}
+				\item{line 179
+						\begin{lstlisting}
+Object item = iter.next();
+						\end{lstlisting} must be moved to the top of the "while" block}
+			\end{itemize}
+		}
+		\item[39.]{ 
+			\begin{itemize}
+				\item{line 132
+						\begin{lstlisting}
+List<?> theList = null;
+						\end{lstlisting} must be declared using a constructor.}
+			\end{itemize}
+}
+	\item[40.]{ line 128
+		\begin{lstlisting}
+if (obj == null)
+		\end{lstlisting} must be replaced using
+		\begin{lstlisting}
+if (obj.equals(null))
+		\end{lstlisting}}
+	\item[42.]{line 129
+		\begin{lstlisting}
+Debug.logError(``No object found for listName:''+ listNameExdr.toString(), module);
+		\end{lstlisting}
+		the description of the log could be more precise because in order to make more comprehensible the problem.}
+	\item[42.]{line 142.		\begin{lstlisting} 
+Debug.logError(``Object not list or map type'', module);
+		\end{lstlisting}
+		the description of the log could be more precise because in order to make more comprehensible the problem.}
+	\item[42.]{line 218
+		\begin{lstlisting} 
+ Debug.logError(e, module);
+		\end{lstlisting}
+		the description of the log could be more precise because in order to make more comprehensible the problem.}
+	
+\end{itemize}
+
+\subsubsection*{.getPaginateTarget}
+\begin{itemize}
+\item[18.]{lines  *\\
+		Lack of comment describing the purpose of the code.}
+\end{itemize}
+
+\subsubsection*{.getPaginate}
+\begin{itemize}
+\item[13.]{lines 232-233 \\
+		line exceed recommended 80 characters length.}
+\end{itemize}
+\subsubsection*{.getViewSize}
+\begin{itemize}
+\item[18.]{lines  *\\
+		Lack of comment describing the purpose of the code.}
+\end{itemize}
+\subsubsection*{.renderNextPrev}
+	\begin{itemize}
+	
+	\item[11.]{ line 318-319
+		\begin{lstlisting}
+if (linkText.indexOf("?") < 0)  linkText.append("?");
+else linkText.append("&amp;");
+		\end{lstlisting} must be replaced using
+		\begin{lstlisting}
+if (linkText.indexOf("?") < 0)  {
+    linkText.append("?");
+} else {
+    linkText.append("&amp;");
+}
+		\end{lstlisting}}
+		
+		\item[11.]{ line 340-341
+		\begin{lstlisting}
+if (linkText.indexOf("?") < 0)  linkText.append("?");
+else linkText.append("&amp;");
+		\end{lstlisting} must be replaced using
+		\begin{lstlisting}
+if (linkText.indexOf("?") < 0)  {
+    linkText.append("?");
+} else {
+    linkText.append("&amp;");
+}
+		\end{lstlisting}}
+	
+	\item[13.]{lines 243, 249, 250, 257, 300, 305-306, 308-309, 311, 320, 324, 327-329, 333-335, 345, 348-350 \\
+		line exceed recommended 80 characters length.}
+
+\item[14.]{lines  243, 324, 328, 333-334, 345\\
+		line exceed 120 characters length.}
+		
+		\item[18.]{lines  *\\
+		Lack of comment describing the purpose of the code.}
+		
+\item[19.]{ line 282-296
+		\begin{lstlisting}
+/*
+int highIndex = -1;
+try {
+    highIndex = modelForm.getHighIndex();
+} catch (Exception e) {
+    highIndex = 0;
+}
+
+int lowIndex = -1;
+try {
+    lowIndex = modelForm.getLowIndex();
+} catch (Exception e) {
+    lowIndex = 0;
+}
+ */
+		\end{lstlisting}
+		Code commented out without indication of the reason nor of the date by which remove the comment.}
+		
+\item[19.]{ line 320
+		\begin{lstlisting}
+//if (queryString != null && !queryString.equals("null")) linkText += queryString + "&";	
+		\end{lstlisting}
+		Code commented out without indication of the reason nor of the date by which remove the comment.}
+		
+
+	\item[27.]{The method is too long (100 lines), it should be reduced.
+}	
+		\item[33.]{ 
+			\begin{itemize}
+				\item{line 249
+						\begin{lstlisting}
+Map<String, Object> inputFields = UtilGenerics.checkMap(context.get("requestParameters"));
+						\end{lstlisting} must be moved to the top}
+				\item{line 250
+						\begin{lstlisting}
+Map<String, Object> queryStringMap = UtilGenerics.toMap(context.get("queryStringMap"));
+						\end{lstlisting} must be moved to the top}
+				\item{line 255
+						\begin{lstlisting}
+String queryString = UtilHttp.urlEncodeArgs(inputFields);
+						\end{lstlisting} must be moved to the top}
+				\item{line 256
+						\begin{lstlisting}
+int paginatorNumber = WidgetWorker.getPaginatorNumber(context);
+						\end{lstlisting} must be moved to the top}
+				\item{line 267
+						\begin{lstlisting}
+int viewIndex = -1;
+						\end{lstlisting} must be moved to the top}
+				\item{line 274
+						\begin{lstlisting}
+int viewSize = -1;
+						\end{lstlisting} must be moved to the top}
+				\item{line 298
+						\begin{lstlisting}
+int lowIndex = viewIndex * viewSize;
+						\end{lstlisting} must be moved to the top}
+				\item{line 299
+						\begin{lstlisting}
+int highIndex = (viewIndex + 1) * viewSize;
+						\end{lstlisting} must be moved to the top}
+				\item{line 305
+						\begin{lstlisting}
+HttpServletRequest request = (HttpServletRequest) context.get("request");
+						\end{lstlisting} must be moved to the top}
+				\item{line 306
+						\begin{lstlisting}
+HttpServletResponse response = (HttpServletResponse) context.get("response");
+						\end{lstlisting} must be moved to the top}
+				\item{line 308
+						\begin{lstlisting}
+ServletContext ctx = (ServletContext) request.getAttribute("servletContext");
+						\end{lstlisting} must be moved to the top}
+				\item{line 309
+						\begin{lstlisting}
+RequestHandler rh = (RequestHandler) ctx.getAttribute("_REQUEST_HANDLER_");
+						\end{lstlisting} must be moved to the top}
+				\item{line 317
+						\begin{lstlisting}
+StringBuilder linkText = new StringBuilder(targetService);
+						\end{lstlisting} must be moved to the top of the "if" block}
+				\item{line 328
+						\begin{lstlisting}
+String previous = UtilProperties.getMessage("CommonUiLabels", "CommonPrevious", (Locale) context.get("locale"));
+						\end{lstlisting} must be moved to the top of the "if" block}
+				\item{line 339
+						\begin{lstlisting}
+StringBuilder linkText = new StringBuilder(targetService);
+						\end{lstlisting} must be moved to the top of the "if" block}
+				\item{line 349
+						\begin{lstlisting}
+String next = UtilProperties.getMessage("CommonUiLabels", "CommonNext", (Locale) context.get("locale"));
+						\end{lstlisting} must be moved to the top of the "if" block}
+			\end{itemize}
+		}
+		
+	\item[40.]{ line 245 
+		\begin{lstlisting}
+if (targetService = = null) 
+		\end{lstlisting} must be replaced using
+		\begin{lstlisting}
+if (targetService.equals(null))
+		\end{lstlisting}}
+	
+	
+	 \item[42.]{line 263
+		\begin{lstlisting} 
+ Debug.logWarning(``TargetService is empty.'', module);
+		\end{lstlisting}
+		the description of the log could be more precise because in order to make more comprehensible the problem.}
+\end{itemize}
+\subsubsection*{.accept}
+\begin{itemize}
+\item[18.]{lines  *\\
+		Lack of comment describing the purpose of the code.}
+\end{itemize}
+\subsubsection*{.getListNameExdr}
+\begin{itemize}
+\item[18.]{lines  *\\
+		Lack of comment describing the purpose of the code.}
+\end{itemize}
+\subsubsection*{.getEntryNameExdr}
+\begin{itemize}
+\item[18.]{lines  *\\
+		Lack of comment describing the purpose of the code.}
+\end{itemize}
+\subsubsection*{.getKeyNameExdr}
+\begin{itemize}
+\item[18.]{lines  *\\
+		Lack of comment describing the purpose of the code.}
+\end{itemize}
+\subsubsection*{.getPaginateTarget}
+\begin{itemize}
+\item[18.]{lines  *\\
+		Lack of comment describing the purpose of the code.}
+\end{itemize}
+\subsubsection*{.getPaginate}
+\begin{itemize}
+\item[18.]{lines  *\\
+		Lack of comment describing the purpose of the code.}
+\end{itemize}
+
+
+\section{OfbizCatalogAltUrlTransform}
+	\subsection{Functional role}
+	
+	This class implements the \textquote{freemarker.template.TemplateTransformModel} interface, thus is used to transform part of the output of a freemarker template before serving the output to the user. In this specific case transforms URLs of catalog items into complete URLs according to the corrent HTTPServletRequest and other environment variables. 
+	\par It returns a writer through \textquote{.getWriter(final Writer out, final Map args)} that according to enviroment variables and the argument passed in \textquote{args} write to writer \textquote{out} the input received, transforming incomplete catalog URLs into correct ones.
+	
+	\subsection{Application of the checklist}
+
+\subsubsection*{Class attributes }	
+\begin{itemize}
+
+\item[7.]{line 52
+		\begin{lstlisting} 
+public final static String module = OfbizCatalogUrlTransform.class.getName();
+		\end{lstlisting}
+		Constant declared without respecting UPPERCASE naming convention.}
+
+\item[13.]{line 52
+		\begin{lstlisting} 
+public final static String module = OfbizCatalogUrlTransform.class.getName();
+		\end{lstlisting}
+		line exceed recommended 80 characters length.}
+		
+		\item[18.]{lines  *\\
+		Lack of comment describing the purpose of the code.}
+		
+			\item[23.]{The javadoc is not used as shows at this link:\\
+https://ci.apache.org/projects/ofbiz/site/javadocs/org/apache/ofbiz/product/category/ftl/OfbizCatalogAltUrlTransform.html}
+	\item[25.]{line 50\\
+There is no class comment. It must be added.
+}
+\end{itemize}
+	
+\subsubsection*{.getStringArg}
+\begin{itemize}
+
+\item[2.]{line 55-64
+		\begin{lstlisting} 
+Object o = args.get(key);
+if (o instanceof SimpleScalar) {
+    return ((SimpleScalar) o).getAsString();
+} else if (o instanceof StringModel) {
+    return ((StringModel) o).getAsString();
+} else if (o instanceof SimpleNumber) {
+    return ((SimpleNumber) o).getAsNumber().toString();
+} else if (o instanceof NumberModel) {
+    return ((NumberModel) o).getAsNumber().toString();
+}
+		\end{lstlisting}
+		single character name for non `throwaway'  variable `o'.}
+
+
+\item[18.]{lines  *\\
+		Lack of comment describing the purpose of the code.}
+\end{itemize}
+\subsubsection*{.checkArg}
+\begin{itemize}
+
+\item[2.]{line 55-64
+		\begin{lstlisting} 
+Object o = args.get(key);
+if (o instanceof SimpleScalar) {
+    SimpleScalar s = (SimpleScalar) o;
+    return "true".equalsIgnoreCase(s.getAsString());
+}
+		\end{lstlisting}
+		single character name for non `throwaway'  variables `o' and `s'.}
+\item[18.]{lines  *\\
+		Lack of comment describing the purpose of the code.}
+\end{itemize}
+\subsubsection*{.getWriter}
+\begin{itemize}
+
+
+
+\item[13.]{lines 91, 105-106, 116, 119, 121, 125, 131-132, 135-137, 139-141\\
+		line exceed recommended 80 characters length.}
+
+\item[14.]{lines  119, 121, 135-137, 139-141\\
+		line exceed 120 characters length.}
+
+\item[18.]{lines  *\\
+		Lack of comment describing the purpose of the code.}
+
+ \item[various.]{line 143
+		\begin{lstlisting} 
+out.write(url.toString());
+		\end{lstlisting}
+		url is declared as String and as the .toString() javadoc for String type suggests 
+\begin{displayquote}
+		String java.lang.String.toString()
+
+This object (which is already a string!) is itself returned.
+\end{displayquote}}
+\end{itemize}
+
+
+
+
+
+\clearpage
+\section{Effort Spent} %In this section you will include information about the number of hours each group member  has worked towards the fulfillment of this deadline.
+	\begin{itemize}
+		\item Alessandro Erba $\approx$ 18h
+		\item Filippo Leveni 	$\approx$ 18h
+		\item Luca Lodi $\approx$ 18h
+	\end{itemize}
+
+\end{document}
