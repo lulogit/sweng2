@@ -47,7 +47,7 @@
 <li> **G.9** authorized personal quickly react to emergencies, user’s safety </li><!-- .element: class="fragment" -->
 <li> **G.10** programmable interface, reduce maintainance costs, third party developers. </li><!-- .element: class="fragment" -->
 
-#VSLIDE
+#HSLIDE
 ## Class diagram
 
 #VSLIDE?image=presentation/class_diag.pdf.png
@@ -63,168 +63,6 @@
 
 #HSLIDE
 # Actors
-
-#HSLIDE
-### PowerEnJoy user
-![icon](presentation/powerenjoy_user.png)
-#VSLIDE
-**R.6** find available cars within a certain distance from current location or from address
-#VSLIDE
-**R.7** reserve a car
-#VSLIDE
-**R.8** cancel the reservation
-#VSLIDE
-**R.9** charge for not pick-up within reservation expiry.
-#VSLIDE
-**R.10** rent a car
-#VSLIDE
-**R.11** service exclusion for pending payments
-#VSLIDE
-**R.12** discount 10% for two other passengers
-#VSLIDE
-**R.13** discount 20% for car left with more than 50% of charge
-#VSLIDE
-**R.14** discount 30% for plugging-in carto the power plug
-#VSLIDE
-**R.15** overcharge 30% for car left >3Km from nearest power plug or \<20% charge
-#VSLIDE
-**R.16** money saving option and discount
-#VSLIDE
-**R.17** service policies change notification
-
-#HSLIDE
-### Field staff users
-![icon](presentation/field_staff.png)
-#VSLIDE
-**R.18** notification of relocation/maintenance requests
-#VSLIDE
-**R.19** car relocation
-
-#HSLIDE
-### Management staff users
-![icon](presentation/management_staff.png)
-#VSLIDE
-**R.21** configure safe areas and power plugs
-#VSLIDE
-**R.22** cofigure cars list
-#VSLIDE
-**R.23** configure service policies
-
-#VSLIDE
-**R.24** manage personnel accounts
-
-#VSLIDE
-**R.25** handle unpaid rents
-
-#HSLIDE
-### Emergency staff user
-![icon](presentation/emergency_staff.png)
-#VSLIDE
-**R.26** notification of emergencies:
-* cars malfunctioning
-* car accidents
-* cars with empty battery not parked in safe areas
-
-#VSLIDE
-**R.27** handle help request
-
-#VSLIDE
-**R.28** overview of state and location of:
-* cars
-* power plugs
-* current rents
-* reservation
-* field staff users
-
-#VSLIDE
-**R.29** actions to resolve issues
-
-#HSLIDE
-# BPM
-### Back-end Process Management
-
-#VSLIDE
-# Relocations
-### assignment
-
-#VSLIDE
-# Money saving option
-
-
-#HSLIDE
-# UML
-#### (RASD)
-
-#VSLIDE
-## Car state chart
-
-#VSLIDE
-<img height="700" src="presentation/car_status.pdf.png" />
-
-#HSLIDE
-# Hardware
-
-#VSLIDE
-## Cars
-#VSLIDE
-<img height="640" src="presentation/auto.png" />
-
-#VSLIDE
-### Smart devices
-#VSLIDE
-<img height="640" src="presentation/smartphone.png" />
-
-#HSLIDE
-# D E S I G N
-### document
-
-#HSLIDE
-# Architecture
-### overview
-
-
-
-
-
-
-#VSLIDE
-<img height="500" src="presentation/presentationDD/High Level.png" />
-
-#HSLIDE
-### PowerEnJoy cars
-![icon](presentation/presentationDD/electric-car photo.png)
-
-#HSLIDE
-## User
-### interfaces
-#VSLIDE
-<img height="550" src="presentation/presentationDD/insertPIN.png" />
-#VSLIDE
-<img height="550" src="presentation/presentationDD/carscreen.png" />
-#VSLIDE
-<img height="550" src="presentation/presentationDD/Stopover-endrent.png" />
-
-#HSLIDE
-## UX
-### flow
-#VSLIDE
-<img height="550" src="presentation/presentationDD/legenda.png" />
-#VSLIDE
-<img height="550" src="presentation/presentationDD/UserPhone.png" />
-#VSLIDE
-<img height="550" src="presentation/presentationDD/Auto.png" />
-
-#HSLIDE
-## Component
-### decomposition
-#VSLIDE
-<img height="500" src="presentation/presentationDD/Car.png" />
-
-
-
-
-
-
 #HSLIDE
 ### PowerEnJoy user
 ![icon](presentation/powerenjoy_user.png)
@@ -330,8 +168,6 @@
 **R.19** car relocation
 
 
-
-
 #HSLIDE
 ### Emergency staff user
 ![icon](presentation/emergency_staff.png)
@@ -432,6 +268,46 @@ returned value should be positive) */
 **R.25** handle unpaid rents
 
 
+
+
+#HSLIDE
+## deployment diagrm
+<img height="500" src="presentation/presentationDD/High Level.png" />
+
+#HSLIDE
+### PowerEnJoy cars
+![icon](presentation/presentationDD/electric-car photo.png)
+#VSLIDE
+<img height="640" src="presentation/auto.png" />
+#VSLIDE
+## Car state chart
+
+#VSLIDE
+<img height="700" src="presentation/car_status.pdf.png" />
+#HSLIDE
+### interfaces
+#VSLIDE
+<img height="550" src="presentation/presentationDD/insertPIN.png" />
+#VSLIDE
+<img height="550" src="presentation/presentationDD/carscreen.png" />
+#VSLIDE
+<img height="550" src="presentation/presentationDD/Stopover-endrent.png" />
+
+#HSLIDE
+## UX
+### flow
+#VSLIDE
+<img height="550" src="presentation/presentationDD/legenda.png" />
+#VSLIDE
+<img height="550" src="presentation/presentationDD/UserPhone.png" />
+#VSLIDE
+<img height="550" src="presentation/presentationDD/Auto.png" />
+
+#HSLIDE
+## Component
+### decomposition
+#VSLIDE
+<img height="500" src="presentation/presentationDD/Car.png" />
 
 
 #HSLIDE
@@ -819,9 +695,22 @@ def compute_discounts_for_safe_areas(map_state):
   * performances
   * geography type and operations
 
+#HSLIDE
+## INTEGRATION TEST
+#VSLIDE
+## CHOOSEN TECNIQUE
+
+#HSLIDE
+## PROJECT PLANNING DOCUMENT
+#VSLIDE
+### FUNCTION POINTS
+#VSLIDE
+### COCOMO II
+#VSLIDE
+### SCHEDULE
+#VSLIDE
+### RISK ASSESTMENT
 
 #HSLIDE
 ### Questions ?
 <img height="400" src="http://nerdlike.com/wp-content/uploads/napoleon-dynamite.jpg" />
-
-
