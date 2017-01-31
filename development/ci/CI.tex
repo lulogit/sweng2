@@ -82,6 +82,12 @@
 	
 \section{IterateSectionWidget}
 	\subsection{Functional role}
+	
+	This class extends \textquote{ModelScreeWidget} to provide a renderer for a widget as HTML. 
+	\par Specifically it render a widget containing multiple \textquote{sections}, and iterate over those sections to render them, keeping count of pagination and position in the \textquote{page}.
+	\par It also inherit the \textquote{.accept(ModelWidgetVisitor visitor)} from  the \textquote{ModelWidget} class, which implement the  \textquote{visitor} pattern to traverse the tree of widgets and handle them different ways, according to their class type:
+	a .accept(visitor) method in the visited class calls the .visit(this) in the visitor class, which should have a .visit(class-type) for each class-type to visit.
+	
 	\subsection{Application of the checklist}
 	
 \subsubsection*{Class attributes }	
@@ -447,6 +453,10 @@ if (targetService.equals(null))
 
 \section{OfbizCatalogAltUrlTransform}
 	\subsection{Functional role}
+	
+	This class implements the \textquote{freemarker.template.TemplateTransformModel} interface, thus is used to transform part of the output of a freemarker template before serving the output to the user. In this specific case transforms URLs of catalog items into complete URLs according to the corrent HTTPServletRequest and other environment variables. 
+	\par It returns a writer through \textquote{.getWriter(final Writer out, final Map args)} that according to enviroment variables and the argument passed in \textquote{args} write to writer \textquote{out} the input received, transforming incomplete catalog URLs into correct ones.
+	
 	\subsection{Application of the checklist}
 
 \subsubsection*{Class attributes }	
@@ -544,9 +554,9 @@ This object (which is already a string!) is itself returned.
 \clearpage
 \section{Effort Spent} %In this section you will include information about the number of hours each group member  has worked towards the fulfillment of this deadline.
 	\begin{itemize}
-		\item Alessandro Erba $\approx$ 19h
-		\item Filippo Leveni 	$\approx$ 17h
-		\item Luca Lodi $\approx$ 15h
+		\item Alessandro Erba $\approx$ 18h
+		\item Filippo Leveni 	$\approx$ 18h
+		\item Luca Lodi $\approx$ 18h
 	\end{itemize}
 
 \end{document}
